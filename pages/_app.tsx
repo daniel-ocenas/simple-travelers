@@ -1,9 +1,6 @@
 import type { AppProps } from 'next/app';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import SideBar from '../components/SideBar';
-import SocialSideBar from '../components/SocialSideBar';
 import Head from 'next/head';
+import Layout from '../components/layout';
 
 import '../styles/styles.css';
 import '../styles/min576.css';
@@ -15,7 +12,7 @@ import '../styles/burger-menu.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<>
+		<Layout>
 			<Head>
 				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				<link
@@ -31,11 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					href='/icons/icon-96x96.png'
 				/>
 			</Head>
-			<Header />
-			<SideBar />
-			<SocialSideBar />
 			<Component {...pageProps} />
-			<Footer />
-		</>
+		</Layout>
 	);
 }

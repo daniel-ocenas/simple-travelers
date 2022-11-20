@@ -1084,6 +1084,7 @@ td {
 */
 
 .galleryWrapper {
+	width: 100%;
 	position: relative;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

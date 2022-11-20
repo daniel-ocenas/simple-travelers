@@ -75,7 +75,7 @@ function Galeria() {
 					{filterOptions}
 				</Select>
 			</Form.Item>
-			{filterState.map((item) => {
+			{filterState.map((item: any) => {
 				return (
 					<div key={item.option}>
 						<h3>{item.title}</h3>
