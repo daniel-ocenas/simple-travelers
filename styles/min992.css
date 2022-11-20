@@ -1,0 +1,35 @@
+@media (min-width: 992px) {
+	body {
+		margin: 0;
+		padding: 0;
+		--sideLeftMargin: calc(1% + var(--socialMediaIconSize));
+		--sideRightMargin: 35%;
+		--sideLeftMarginSmall: 1%;
+		--sideRightMarginSmall: 1%;
+		--headerHeight: 300px;
+	}
+	::-webkit-scrollbar {
+		appearance: auto;
+		-webkit-appearance: none;
+		width: 8px;
+	}
+
+	.st-tabs-container h1 {
+		font-size: 3rem;
+	}
+
+	.fb-page iframe {
+		display: inline-block;
+	}
+	.side-panel {
+		display: inline-block;
+	}
+
+	.titleContainer p {
+		font-size: 1.5em;
+	}
+
+	.social-sidebar {
+		top: 55%;
+	}
+}
