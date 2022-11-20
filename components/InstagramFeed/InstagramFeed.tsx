@@ -8,7 +8,7 @@ function InstagramFeed(props: any) {
 	const [data, setData] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isError, setIsError] = useState<boolean>(false);
-	const [showImage, setShowImage] = useState<boolean>(false);
+	const [showImage, setShowImage] = useState<boolean>(true);
 
 	let url = `https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=${props.token}`;
 
@@ -18,10 +18,7 @@ function InstagramFeed(props: any) {
 			fetch(url)
 				.then((response) => response.json())
 				.then((result) => {
-					setData(result.data);
-					console.log(
-						'JavaScript version is here https://codecanyon.net/item/instaget-javascript-library-for-instagram/26300578'
-					);
+					setData(result.data.slice(0, props.counter));
 				})
 				.catch(() => setIsError(true))
 				.finally(() => {
@@ -42,7 +39,7 @@ function InstagramFeed(props: any) {
 		if (placeholder.current) observer.observe(placeholder.current);
 
 		return () => observer.disconnect();
-	}, [url]);
+	}, [url, props.counter]);
 
 	return (
 		<>
@@ -53,8 +50,7 @@ function InstagramFeed(props: any) {
 			) : (
 				<div className={styles.instagramItems} ref={placeholder}>
 					{showImage &&
-						data &&
-						data.slice(0, props.counter).map((item: any, index: any) => (
+						data.map((item: any, index: any) => (
 							<div key={index} className={styles.instagramItem}>
 								<a
 									key={index}
