@@ -1,7 +1,7 @@
-import Footer from './Footer';
-import Header from './Header';
-import SideBar from './SideBar';
-import SocialSideBar from './SocialSideBar';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import SideBar from './components/SideBar';
+import SocialSideBar from './components/SocialSideBar';
 
 export default function Layout({ children }: { children: any }) {
 	return (

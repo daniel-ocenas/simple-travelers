@@ -16,17 +16,10 @@
 		"incremental": true
 	},
 	"include": [
-		"components/InstagramFeed/InstagramFeed.js",
+		"components/Article/ArticleRenderer.js",
 		"next-env.d.ts",
 		"**/*.ts",
-		"**/*.tsx",
-		"components/ImageGrid/ImageGrid.js",
-		"data/GalleryImages.js",
-		"data/Countries.js",
-		"data/ArticlesListConst.js",
-		"data/Articles.js",
-		"components/Layout/index.js",
-		"data/mongodb.js"
+		"**/*.tsx"
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "layout.jsx"]
 }

@@ -6,11 +6,19 @@ import styles from './InstagramFeed.module.css';
 function InstagramFeed(props: any) {
 	const placeholder = useRef<any>();
 	const [data, setData] = useState<any[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isError, setIsError] = useState<boolean>(false);
 	const [showImage, setShowImage] = useState<boolean>(false);
 
 	let url = `https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=${props.token}`;
+
+	const callback = (entries: any) => {
+		entries.forEach((entry: any) => {
+			if (entry.isIntersecting) {
+				setShowImage(true);
+			}
+		});
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -31,22 +39,9 @@ function InstagramFeed(props: any) {
 
 		fetchData();
 
-		const callback = (entries: any) => {
-			entries.forEach((entry: any) => {
-				if (entry.isIntersecting) {
-					setShowImage(true);
-				}
-			});
-		};
+		const observer = new IntersectionObserver(callback, { threshold: 1.0 });
+		if (placeholder.current) observer.observe(placeholder.current);
 
-		const options = {
-			threshold: 1.0,
-		};
-
-		const observer = new IntersectionObserver(callback, options);
-		observer.observe(placeholder.current);
-
-		// intersection observer set-up
 		return () => observer.disconnect();
 	}, [url]);
 
