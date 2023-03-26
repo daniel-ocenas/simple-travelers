@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import GetWidth from '../GetWidth';
+import useScreenSize from '../useScreenSize';
 import Burger from './BurgerButton';
 
 const SidebarData = [
@@ -121,8 +121,9 @@ function NavMenu() {
 }
 
 function Header() {
+	const { width } = useScreenSize();
 	const RenderTabs = () => {
-		if (GetWidth().width < 768) return <NavMenu />;
+		if (width < 768) return <NavMenu />;
 		return <NavList />;
 	};
 	return (

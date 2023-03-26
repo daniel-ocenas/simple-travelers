@@ -1,8 +1,8 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function GetWidth() {
+function useScreenSize() {
 	const [size, setSize] = useState([0, 0]);
-	useLayoutEffect(() => {
+	useEffect(() => {
 		function updateSize() {
 			setSize([window.innerWidth, window.innerHeight]);
 		}
@@ -11,7 +11,6 @@ function GetWidth() {
 		return () => window.removeEventListener('resize', updateSize);
 	}, []);
 	return { width: size[0], height: size[1] };
-	// return { width: 1200, height: 800 };
 }
 
-export default GetWidth;
+export default useScreenSize;

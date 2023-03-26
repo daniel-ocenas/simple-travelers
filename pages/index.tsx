@@ -27,7 +27,7 @@ export default function Home() {
 			newArticleList = [
 				{
 					title: 'Cestovateľský blog, ktorý nakopne tvoju chuť objavovať svet',
-					image: '/images/photosFull/ZionAngelsLanding16-9.jpg',
+					image: '/images/photosFull/ZionAngelsLandingLandscape.jpg',
 					url: '/blog',
 					class: 'slider-content-header',
 				},
