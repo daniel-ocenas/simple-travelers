@@ -1,9 +1,9 @@
-import React from 'react';
-import {FacebookProvider, Page} from 'react-facebook';
+import React from 'react'
+import { FacebookProvider, Page } from 'react-facebook'
 
 export default function FacebookPage(props: any) {
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={{ textAlign: 'center' }}>
       <FacebookProvider appId={props.token}>
         <Page
           href={'https://www.facebook.com/WeAreSimpleTravelers'}
@@ -11,5 +11,5 @@ export default function FacebookPage(props: any) {
         />
       </FacebookProvider>
     </div>
-  );
+  )
 }

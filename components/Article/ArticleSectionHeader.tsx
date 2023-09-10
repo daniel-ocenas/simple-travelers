@@ -1,5 +1,7 @@
-const ArticleSectionHeader = (props: any) => {
-	return <h3 className={props.className}>{props.text}</h3>;
-};
+import React from 'react'
 
-export default ArticleSectionHeader;
+const ArticleSectionHeader = (props: any) => {
+  return <h3 className={props.className}>{props.text}</h3>
+}
+
+export default ArticleSectionHeader

@@ -1,0 +1,41 @@
+.socialSidebar {
+  visibility: hidden;
+  position: fixed;
+  top: 34%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.socialSidebar a {
+  display: block;
+  transition: background-color 0.3s ease;
+  border-radius: 7px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.socialSidebar a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+}
+
+.socialSidebar a:hover {
+  background-color: var(--secondaryColor);
+}
+
+@media (min-width: 768px) {
+  .socialSidebar {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 992px) {
+  .socialSidebar {
+    top: 50%;
+  }
+}

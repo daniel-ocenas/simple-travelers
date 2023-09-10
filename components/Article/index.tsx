@@ -9,13 +9,13 @@ import ArticleVideo from './ArticleVideo';
 import ArticleHeader from './ArticleHeader';
 
 export {
-	ArticleImage,
-	ArticleLink,
-	ArticleSectionHeader,
-	ArticleSimpleText,
-	ArticleText,
-	ArticleTextRenderer,
-	ArticleVideo,
-	ArticleHeader,
+  ArticleImage,
+  ArticleLink,
+  ArticleSectionHeader,
+  ArticleSimpleText,
+  ArticleText,
+  ArticleTextRenderer,
+  ArticleVideo,
+  ArticleHeader,
 };
 export default ArticleRenderer;

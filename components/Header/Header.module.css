@@ -1,0 +1,224 @@
+.tabsContainer {
+  width: 100%;
+  height: var(--tabsHeight);
+  position: relative;
+  z-index: 100;
+  background: linear-gradient(
+      180deg,
+      var(--backgroundColor) 0%,
+      var(--backgroundColor) 96%,
+      var(--primaryColor) 97%,
+      var(--backgroundColor) 100%
+  );
+  margin-bottom: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.navList {
+  vertical-align: middle;
+  display: inline-block;
+  list-style: none;
+  line-height: 2.3em;
+  white-space: nowrap;
+  font-size: 22px;
+  margin: auto;
+}
+
+.inlineLink {
+  color: blue;
+  text-decoration: none;
+}
+
+.navListItem {
+  display: inline-block;
+  color: var(--titleColor);
+}
+
+.navLink a {
+  color: var(--titleColor);
+  text-decoration: none;
+  padding: 0.5vw;
+  margin: 0.5vw;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.navLink a:hover {
+  background-color: var(--secondaryColor);
+  color: var(--titleColor);
+  border-radius: 5px;
+  text-shadow: 0 0 0.01px gray;
+}
+
+.articleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Nav Menu */
+.navbarIcon {
+  position: fixed;
+  right: 0.8em;
+  top: 0.8em;
+  z-index: 201;
+}
+
+.navMenu {
+  position: absolute;
+  background-color: var(--backgroundColor);
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  transition: 350ms ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  z-index: 200;
+}
+
+.navMenuActive {
+  background-color: var(--backgroundColor);
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: fixed;
+
+  right: 0;
+  top: 0;
+  transition: 350ms ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  z-index: 200;
+
+  transition: 350ms ease;
+}
+
+.navMenuItems {
+  width: 100%;
+  padding: 0;
+}
+
+.navText {
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  height: 60px;
+}
+
+.navText a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navText a:hover {
+  color: black;
+  background-color: var(--secondaryColor);
+}
+
+.navTextItems {
+  width: 100%;
+}
+
+
+.titleContainer {
+  text-align: center;
+  background-color: var(--backgroundColor);
+  padding-bottom: 3px;
+}
+
+@media (max-width: 767px) {
+  .titleContainer {
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 101;
+    top: 0;
+  }
+}
+
+.titleContainer p {
+  font-family: 'Indie Flower';
+  text-align: center;
+  font-size: 1.2em;
+  margin: 0px;
+}
+
+.titleTravelers {
+  width: 100%;
+  height: calc(var(--headerHeight) - 5em);
+  clear: both;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.titleTravelers:hover {
+  transform: scale(1.1);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.titleTravelers:active {
+  transform: scale(0.9);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.socialMenu {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.socialMenu a {
+  position: relative;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  border-radius: 7px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.socialMenu a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+}
+
+.socialMenu a:hover {
+  background-color: var(--secondaryColor);
+}
+
+@media (min-width: 768px) {
+  .titleContainer {
+    position: relative;
+    top: 0;
+  }
+
+  .tabsContainer {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .titleContainer p {
+    font-size: 1.5em;
+  }
+}

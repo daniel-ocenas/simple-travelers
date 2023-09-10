@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Slider(props: any) {
   const [sliderState, setSliderState] = useState(props.slides);
@@ -83,40 +83,25 @@ function Slider(props: any) {
                 priority={true}
               />
               <div className={sliderState[prevPicState].class}>
-                <p className='header-moto'>{sliderState[prevPicState].title}</p>
-                {sliderState[prevPicState].class !==
-                  'slider-content-header' && (
-                    <Link className='slider-link' href={''} passHref>
-                      Prečítať
-                    </Link>
-                  )}
+                {sliderState[prevPicState].title}
               </div>
             </div>
           </div>
           <div className='current pic'>
             <div style={{position: 'relative'}}>
-              <Image
-                src={sliderState[currentPicState].image}
-                alt='Current Slider Picture'
-                layout='fill'
-                objectFit={'cover'}
-                priority={true}
-              />
-              <div className={sliderState[currentPicState].class}>
-                <p className='header-moto'>
+              <Link className='slider-link' href={sliderState[currentPicState].url} passHref>
+                <Image
+                  src={sliderState[currentPicState].image}
+                  alt='Current Slider Picture'
+                  layout='fill'
+                  objectFit={'cover'}
+                  priority={true}
+                />
+                <div className={sliderState[currentPicState].class}>
                   {sliderState[currentPicState].title}
-                </p>
-                {sliderState[currentPicState].class !==
-                  'slider-content-header' && (
-                    <Link
-                      className='slider-link'
-                      href={sliderState[currentPicState].url}
-                      passHref
-                    >
-                      Prečítať
-                    </Link>
-                  )}
-              </div>
+                </div>
+                <div className="tooltip">Prečítať</div>
+              </Link>
             </div>
           </div>
           <div className='next pic'>
@@ -129,13 +114,7 @@ function Slider(props: any) {
                 priority={true}
               />
               <div className={sliderState[nextPicState].class}>
-                <p className='header-moto'>{sliderState[nextPicState].title}</p>
-                {sliderState[nextPicState].class !==
-                  'slider-content-header' && (
-                    <Link className='slider-link' href={''} passHref>
-                      Prečítať
-                    </Link>
-                  )}
+                {sliderState[nextPicState].title}
               </div>
             </div>
           </div>

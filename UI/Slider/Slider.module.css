@@ -28,12 +28,14 @@
 }
 
 .pic img {
-    filter: brightness(65%);
     object-fit: contain;
     width: 100% !important;
     position: relative !important;
     height: unset !important;
     z-index: 0;
+}
+.pic img:hover {
+    filter: brightness(65%);
 }
 
 .move .pic {

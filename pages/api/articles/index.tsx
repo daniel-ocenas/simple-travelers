@@ -1,42 +1,41 @@
-import ArticleList from '../../../data/ArticleList';
-import { connectToDatabase } from '../../../data/mongodb';
+import React from 'react'
+import ArticleList from '../../../data/ArticleList'
+import { connectToDatabase } from '../../../data/mongodb'
 
 async function articleCreate(lang: any, article: any) {
-	article.dateCreated = new Date().toLocaleDateString();
+  article.dateCreated = new Date().toLocaleDateString()
 
-	const { db } = await connectToDatabase();
-	const result = await db
-		.collection('articles-list-' + lang)
-		.insertOne(article);
+  const { db } = await connectToDatabase()
+  const result = await db.collection('articles-list-' + lang).insertOne(article)
 
-	return result;
+  return result
 }
 
 export default async function Articles(req: any, res: any) {
-	const httpMetod = req.method;
+  const httpMetod = req.method
 
-	switch (httpMetod) {
-		case 'GET':
-			try {
-				const articleList = await ArticleList('sk');
-				res.status(200).json(articleList);
-			} catch (e) {
-				res.status(500).json('Acrticle could not be retrieved');
-			}
+  switch (httpMetod) {
+    case 'GET':
+      try {
+        const articleList = await ArticleList('sk')
+        res.status(200).json(articleList)
+      } catch (e) {
+        res.status(500).json('Acrticle could not be retrieved')
+      }
 
-			break;
+      break
 
-		// case 'POST':
-		//     try{
-		//         const result = await articleCreate('sk',req.body)
-		//         res.status(200).json(result);
-		//     }catch(e){
-		//         res.status(500).json("Acrticle could not be created");
-		//     }
+    // case 'POST':
+    //     try{
+    //         const result = await articleCreate('sk',req.body)
+    //         res.status(200).json(result);
+    //     }catch(e){
+    //         res.status(500).json("Acrticle could not be created");
+    //     }
 
-		//     break;
-		default:
-			res.setHeader('Allow', ['GET' /*, 'POST' */]);
-			res.status(405).end('Method not allowed');
-	}
+    //     break;
+    default:
+      res.setHeader('Allow', ['GET' /*, 'POST' */])
+      res.status(405).end('Method not allowed')
+  }
 }
