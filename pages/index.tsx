@@ -18,7 +18,7 @@ export default function Home() {
         return start - +new Date(a.dateCreated);
       });
       let newArticleList = sortedArticleList.slice(0, 3);
-      let newFurtherArticleList = sortedArticleList.slice(3, 7);
+      let newFurtherArticleList = sortedArticleList.slice(3);
 
       newArticleList.forEach((article: any) => {
         article['url'] = '/blog' + article['url'];

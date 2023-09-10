@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     --sideLeftMargin: calc(1% + var(--socialMediaIconSize));
-    --sideRightMargin: 35%;
+    --sideRightMargin: 25%;
     --sideLeftMarginSmall: 1%;
     --sideRightMarginSmall: 1%;
     --headerHeight: 300px;

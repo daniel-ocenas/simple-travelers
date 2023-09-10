@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import useScreenSize from '../useScreenSize'
-import Burger from './BurgerButton'
-import styles from './Header.module.css'
+import useScreenSize from '../useScreenSize';
+import Burger from './BurgerButton';
+import styles from './Header.module.css';
 
 const SidebarData = [
   {
@@ -32,35 +32,33 @@ const SidebarData = [
     path: '/videa',
     listTab: true,
   },
-]
+];
 
 function NavList() {
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.navList}>
-        {
-          SidebarData.map((item, index) => (
-            <div key={index} className={styles.navListItem}>
-              <div className={styles.navLink}>
-                <Link href={item.path} passHref>
-                  {item.title}
-                </Link>
-              </div>
+        {SidebarData.map((item, index) => (
+          <div key={index} className={styles.navListItem}>
+            <div className={styles.navLink}>
+              <Link href={item.path} passHref>
+                {item.title}
+              </Link>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
-  )
+  );
 }
 
 function NavMenu() {
-  const [sidebar, setSidebar] = useState(false)
-  const showSidebar = () => setSidebar(!sidebar)
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
-      <Burger showSidebar={showSidebar} buttonState={sidebar}/>
+      <Burger showSidebar={showSidebar} buttonState={sidebar} />
       <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
         <div className={styles.socialMenu}>
           <a
@@ -69,13 +67,7 @@ function NavMenu() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className="image"
-              src="/icons/icon-instagram.png"
-              alt="instagram"
-              width={55}
-              height={55}
-            />
+            <Image className="image" src="/icons/icon-instagram.png" alt="instagram" width={55} height={55} />
           </a>
           <a
             className="facebook"
@@ -83,13 +75,7 @@ function NavMenu() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className="image"
-              src="/icons/icon-facebook.png"
-              alt="facebook"
-              width={55}
-              height={55}
-            />
+            <Image className="image" src="/icons/icon-facebook.png" alt="facebook" width={55} height={55} />
           </a>
         </div>
         <ul className={styles.navMenuItems} onClick={showSidebar}>
@@ -100,7 +86,7 @@ function NavMenu() {
                   {item.title}
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
@@ -116,30 +102,26 @@ function NavMenu() {
         />
       )}
     </>
-  )
+  );
 }
 
 function Header() {
-  const {width} = useScreenSize()
+  const { width } = useScreenSize();
   const RenderTabs = () => {
-    if (width < 768) return <NavMenu/>
-    return <NavList/>
-  }
+    if (width < 768) return <NavMenu />;
+    return <NavList />;
+  };
   return (
     <>
+      {RenderTabs()}
       <div className={styles.titleContainer}>
         <Link href="/" passHref>
-          <img
-            className={styles.titleTravelers}
-            alt="title"
-            src="/icons/SimpleTravelers.svg"
-          />
+          <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
         </Link>
         <p>Travel simply, simply love traveling</p>
       </div>
-      {RenderTabs()}
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;
