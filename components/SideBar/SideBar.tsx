@@ -10,8 +10,8 @@ const SideBar = () => {
         <img
           style={{
             margin: '5px',
-            width: '340px',
-            height: '340px',
+            width: '20vw',
+            minHeight: '20vw',
             objectFit: 'cover',
             borderRadius: '50%',
           }}
