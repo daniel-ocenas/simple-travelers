@@ -1,41 +1,45 @@
-import React, {useState} from 'react';
 import Link from 'next/link';
+import React, { useState } from 'react';
+import { Flex } from '../Flex';
 import Loader from '../Loader';
+import { MarginBox } from '../MarginBox';
+import styles from './Card.module.css';
 
-function CardHeader(props: any) {
-  const [cardHeaderState] = useState(props);
-
-  return (
-    <img
-      className='card-header-img'
-      src={cardHeaderState.image}
-      alt={cardHeaderState.title}
-    />
-  );
+function CardHeader({ title, image, vertical }: CardProps) {
+  return <img className={vertical ? styles.cardHeaderImgVertical : styles.cardHeaderImg} src={image} alt={title} />;
 }
 
-function CardBody(props: any) {
-  const [cardBodyState] = useState(props);
+function CardBody({ title, date, text, category, vertical }: CardProps) {
   return (
-    <div className='card-body'>
-      <p className='date'>{cardBodyState.date}</p>
-      <h3 className='card-title'>{cardBodyState.title}</h3>
-      <p className='card-category-row'>
-        {cardBodyState.category &&
-          cardBodyState.category.map((category: any) => {
-            return <span key={cardBodyState.title + category}>{category}</span>;
-          })}
-      </p>
-      <div className='screen-reader-text'>
-        <p className='card-text'>{cardBodyState.text} </p>
-      </div>
+    <div className={styles.cardBody}>
+      <MarginBox mx={vertical ? 16 : 0}>
+        <p className={styles.date}>{date}</p>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardCategoryRow}>
+          {category &&
+            category.map((category: any) => {
+              return <span key={title + category}>{category}</span>;
+            })}
+        </p>
+        <div className="screen-reader-text">
+          <p className={styles.cardText}>{text} </p>
+        </div>
+      </MarginBox>
     </div>
   );
 }
 
-function Card(props: any) {
-  const [cardState] = useState(props);
+interface CardProps {
+  title: string;
+  date: string;
+  text: string;
+  image: string;
+  url: string;
+  category: string[];
+  vertical?: boolean;
+}
 
+function Card({ title, date, text, image, url, category, vertical }: CardProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleLoading = () => {
@@ -43,31 +47,33 @@ function Card(props: any) {
   };
 
   return isLoading ? (
-    <Loader/>
+    <Loader />
   ) : (
-    <Link
-      className='article-link'
-      href={cardState.url}
-      key={cardState.url}
-      passHref
-    >
-      <div className='card' onClick={toggleLoading}>
-        <CardHeader {...cardState} />
-        <CardBody {...cardState} />
+    <Link className={styles.articleLink} href={url} passHref>
+      <div className={styles.card} onClick={toggleLoading}>
+        <Flex direction={vertical ? 'row' : 'column'}>
+          <CardHeader
+            title={title}
+            date={date}
+            text={text}
+            image={image}
+            url={url}
+            category={category}
+            vertical={vertical}
+          />
+          <CardBody
+            title={title}
+            date={date}
+            text={text}
+            image={image}
+            url={url}
+            category={category}
+            vertical={vertical}
+          />
+        </Flex>
       </div>
     </Link>
   );
 }
-
-// Card.propTypes = {
-// 	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-
-// 	title: PropTypes.string,
-// 	date: PropTypes.string,
-// 	text: PropTypes.string,
-// 	image: PropTypes.string,
-// 	url: PropTypes.string,
-// 	category: PropTypes.array,
-// };
 
 export default Card;

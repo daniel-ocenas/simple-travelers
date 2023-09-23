@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
+import styles from 'UI/Card/Card.module.css';
 import Card from '../UI/Card';
-import Slider from '../UI/Slider';
 import Loader from '../UI/Loader';
+import Slider from '../UI/Slider';
 
 export default function Home() {
   const [articlesList, setArticlesList] = useState([]);
@@ -34,25 +35,6 @@ export default function Home() {
     fetchArticles();
   }, []);
 
-  const ArticleListView = (articles: any) => {
-    return (
-      <div className="grid-container">
-        {articles.map((card: any, key: any) => (
-          <div key={key} className="grid-item">
-            <Card
-              title={card.title}
-              date={card.date}
-              text={card.text}
-              image={card.image}
-              url={`/blog${card.url}`}
-              category={card.category}
-            />
-          </div>
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div className="page">
       <Head>
@@ -72,7 +54,19 @@ export default function Home() {
       ) : (
         <>
           <Slider slides={articlesList} />
-          {ArticleListView(furtherArticlesList)}
+          <div className={styles.gridContainer}>
+            {furtherArticlesList.map((card: any, key: any) => (
+              <Card
+                key={key}
+                title={card.title}
+                date={card.date}
+                text={card.text}
+                image={card.image}
+                url={card.url}
+                category={card.category}
+              />
+            ))}
+          </div>
         </>
       )}
     </div>

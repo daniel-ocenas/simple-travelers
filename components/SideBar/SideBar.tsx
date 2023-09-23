@@ -1,9 +1,11 @@
 import React from 'react';
+import Divider from '../../UI/Divider';
 import FacebookPage from '../FacebookPage';
 import InstagramFeed from '../InstagramFeed';
-import Divider from '../../UI/Divider';
+import useScreenSize from '../useScreenSize';
 
 const SideBar = () => {
+  const { width } = useScreenSize();
   return (
     <div className="side-panel">
       <div style={{ textAlign: 'center' }}>
@@ -28,11 +30,10 @@ const SideBar = () => {
           za peniaze nekúpiš,“ ale môžeš si kúpiť letenku a to je skoro to isté, no nie?
         </p>
       </div>
-      {/* <h3>Sleduj nás na Facebooku</h3> */}
       <Divider text="Facebook" />
       <FacebookPage token={process.env.NEXT_PUBLIC_FB_APP_ID} />
       <Divider text="Instagram" />
-      <InstagramFeed counter={9} />
+      <InstagramFeed counter={width < 1250 ? 8 : 9} />
     </div>
   );
 };

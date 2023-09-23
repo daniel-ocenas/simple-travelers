@@ -10,6 +10,7 @@
 		"pm2": "pm2 start pm2.json"
 	},
 	"dependencies": {
+		"@react-hook/media-query": "^1.1.1",
 		"@types/node": "18.11.9",
 		"@types/react": "18.0.25",
 		"@types/react-dom": "18.0.9",

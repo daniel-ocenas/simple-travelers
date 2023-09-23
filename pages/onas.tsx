@@ -9,8 +9,8 @@ function Onas() {
         <meta property="og:title" content="Simple Travelers - O nás" />
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
-        <meta property="og:image" content="http://simpletravelers.sk/images/photosFull/AboutUs.jpg" />
-        <meta property="og:url" content="http://simpletravelers.sk/onas" />
+        <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/AboutUs.jpg" />
+        <meta property="og:url" content="https://simpletravelers.sk/onas" />
         <meta name="keywords" content="$OG_KEYWORDS" />
       </Head>
       <div className="articlePictureLandscape">

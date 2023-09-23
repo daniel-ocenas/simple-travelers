@@ -1,8 +1,12 @@
+.headerContainer {
+  height: var(--headerHeight);
+}
+
 .tabsContainer {
   width: 100%;
   height: var(--tabsHeight);
   position: relative;
-  z-index: 100;
+  z-index: 800;
   /*background: linear-gradient(*/
   /*    180deg,*/
   /*    var(--backgroundColor) 0%,*/
@@ -11,8 +15,8 @@
   /*    var(--backgroundColor) 100%*/
   /*);*/
   background: white;
-  -webkit-box-shadow: 0px 1px 5px rgba(190, 190, 190, 0.46);
-  -moz-box-shadow: 0px 1px 5px rgba(190, 190, 190, 0.46);
+  -webkit-box-shadow: 0 1px 5px rgba(190, 190, 190, 0.46);
+  -moz-box-shadow: 0 1px 5px rgba(190, 190, 190, 0.46);
   margin-bottom: 5px;
   vertical-align: middle;
   text-align: center;
@@ -68,7 +72,6 @@
 }
 
 .navMenu {
-  position: absolute;
   background-color: var(--backgroundColor);
   width: 200px;
   height: 100vh;
@@ -98,8 +101,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
   z-index: 200;
-
-  transition: 350ms ease;
 }
 
 .navMenuItems {
@@ -139,14 +140,13 @@
 
 .titleContainer {
   text-align: center;
-  background-color: var(--backgroundColor);
+  /*background-color: var(--backgroundColor);*/
   padding-bottom: 3px;
 }
 
 @media (max-width: 767px) {
   .titleContainer {
     position: sticky;
-    position: -webkit-sticky;
     z-index: 101;
     top: 0;
   }
@@ -155,13 +155,21 @@
 .titleContainer p {
   font-family: 'Indie Flower';
   text-align: center;
-  font-size: 1.2em;
-  margin: 0px;
+  font-size: 1.3em;
+  margin: 0;
+  text-shadow: 2px 3px 3px rgba(255, 255, 255, 1), -3px 3px 3px rgba(255, 255, 255, 1),
+    1px -3px 3px rgba(255, 255, 255, 1), -3px -3px 3px rgba(255, 255, 255, 1);
+}
+
+@media (min-width: 992px) {
+  .titleContainer p {
+    font-size: 1.8em;
+  }
 }
 
 .titleTravelers {
-  width: 100%;
   height: calc(var(--headerHeight) - 5em);
+  max-height: 300px;
   clear: both;
   display: inline-block;
   cursor: pointer;
@@ -204,6 +212,15 @@
   background-color: var(--secondaryColor);
 }
 
+.titleImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--headerHeight);
+  object-fit: cover;
+}
+
 @media (min-width: 768px) {
   .titleContainer {
     position: relative;
@@ -212,13 +229,6 @@
 
   .tabsContainer {
     position: sticky;
-    position: -webkit-sticky;
     top: 0;
-  }
-}
-
-@media (min-width: 992px) {
-  .titleContainer p {
-    font-size: 1.5em;
   }
 }

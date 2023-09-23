@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import { Col, Form, Row, Select } from 'antd';
+import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
+import { useMedium } from '../../components/useBreakpoint';
 
 import Card from '../../UI/Card';
+import styles from '../../UI/Card/Card.module.css';
 import Loader from '../../UI/Loader';
 
 const { Option } = Select;
@@ -30,6 +32,8 @@ function Blog() {
   const [filterOptions, setFilterOptions] = useState([]);
   const [articlesList, setArticlesList] = useState([]);
   const [articlesDisplay, setArticlesDisplay] = useState([]);
+  const medium = useMedium();
+  console.log(medium);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -91,21 +95,6 @@ function Blog() {
     setArticlesDisplay(sortArticles(displayArticlesList, sortState));
   };
 
-  const ArticleListView = (articles: any) => {
-    return articles.map((card: any) => (
-      <div key={sortState + card.url} className="grid-item">
-        <Card
-          title={card.title}
-          date={card.date}
-          text={card.text}
-          image={card.image}
-          url={`/blog${card.url}`}
-          category={card.category}
-        />
-      </div>
-    ));
-  };
-
   return (
     <div className="page">
       <Head>
@@ -140,8 +129,24 @@ function Blog() {
           </Col>
         </Row>
       </Form>
-
-      <div className="grid-container">{articlesList.length === 0 ? <Loader /> : ArticleListView(articlesDisplay)}</div>
+      <div className={styles.gridContainer}>
+        {articlesList.length === 0 ? (
+          <Loader />
+        ) : (
+          articlesList.map((card: any) => (
+            <Card
+              key={sortState + card.url}
+              title={card.title}
+              date={card.date}
+              text={card.text}
+              image={card.image}
+              url={`/blog${card.url}`}
+              category={card.category}
+              vertical={!medium}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }

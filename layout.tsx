@@ -1,12 +1,12 @@
+import { useRouter } from 'next/router';
+import Script from 'next/script';
 import React, { useEffect } from 'react';
 import Footer from './components/Footer';
+
+import * as gtag from './components/gtag';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import SocialSideBar from './components/SocialSideBar';
-import { useRouter } from 'next/router';
-import Script from 'next/script';
-
-import * as gtag from './components/gtag';
 
 declare global {
   interface Window {

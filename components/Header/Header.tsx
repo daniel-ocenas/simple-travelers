@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 import useScreenSize from '../useScreenSize';
 import Burger from './BurgerButton';
@@ -114,11 +114,13 @@ function Header() {
   return (
     <>
       {RenderTabs()}
-      <div className={styles.titleContainer}>
-        <Link href="/" passHref>
-          <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
-        </Link>
-        <p>Travel simply, simply love traveling</p>
+      <div className={styles.headerContainer}>
+        <div className={styles.titleContainer}>
+          <Link href="/" passHref>
+            <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
+          </Link>
+          <p>Travel simply, simply love traveling</p>
+        </div>
       </div>
     </>
   );

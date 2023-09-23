@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Divider.module.css';
-import PropTypes from 'prop-types';
 
 const Divider = (props: any) => {
   return (
@@ -10,10 +9,6 @@ const Divider = (props: any) => {
       <span></span>
     </div>
   );
-};
-
-Divider.propTypes = {
-  text: PropTypes.string,
 };
 
 export default Divider;
