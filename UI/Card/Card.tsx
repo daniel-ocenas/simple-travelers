@@ -9,17 +9,16 @@ function CardHeader({ title, image, vertical }: CardProps) {
   return <img className={vertical ? styles.cardHeaderImgVertical : styles.cardHeaderImg} src={image} alt={title} />;
 }
 
-function CardBody({ title, date, text, category, vertical }: CardProps) {
+function CardBody({ title, date, text, category }: CardProps) {
   return (
     <div className={styles.cardBody}>
       <MarginBox mx={16}>
-        <p className={styles.date}>{date}</p>
         <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.date}>{date}</p>
         <p className={styles.cardCategoryRow}>
-          {category &&
-            category.map((category: any) => {
-              return <span key={title + category}>{category}</span>;
-            })}
+          {category.map((cat: string) => {
+            return <span key={title + category}>{`${cat}`}</span>;
+          })}
         </p>
         <div className="screen-reader-text">
           <p className={styles.cardText}>{text} </p>

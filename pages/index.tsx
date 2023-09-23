@@ -65,7 +65,7 @@ export default function Home() {
                 text={card.text}
                 image={card.image}
                 url={card.url}
-                category={card.category}
+                category={card.category ?? []}
                 vertical={!medium}
               />
             ))}

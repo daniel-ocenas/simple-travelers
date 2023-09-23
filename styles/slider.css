@@ -42,7 +42,7 @@
 }
 
 .move .pic {
-  transition: all .8s ease;
+  transition: all 0.8s ease;
 }
 
 .current {
@@ -89,7 +89,7 @@
   right: 3em;
   left: 3em;
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
   color: white;
   z-index: 11;
 }
@@ -107,7 +107,7 @@
   color: white;
   font-size: 2em;
   opacity: 0;
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .slider-link:hover .tooltip {
@@ -124,13 +124,11 @@
 
 .right {
   transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
   margin-right: 4px;
 }
 
 .left {
   transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
   margin-left: 4px;
 }
 
@@ -179,7 +177,6 @@
   height: 1px;
 }
 
-
 @media (min-width: 576px) {
   .slider-container {
     --sliderSideMargin: 3.5em;
@@ -207,11 +204,9 @@
   .sliderButtonRight {
     right: 1em;
   }
-
 }
 
 @media (min-width: 768px) {
-
   .slider-container {
     --sliderHeight: 47vw;
     --sliderSideMargin: 4em;
@@ -220,17 +215,19 @@
   .header-moto {
     font-size: 2em;
   }
+
+  .slider-content {
+    font-size: 2em;
+  }
 }
 
 @media (min-width: 992px) {
-
   .slider-container {
     --sliderHeight: 34vw;
   }
 }
 
 @media (min-width: 1199px) {
-
   .slider-container {
     --sliderHeight: 33vw;
   }
@@ -241,9 +238,3 @@
     font-size: 3em;
   }
 }
-
-
-
-
-
- 

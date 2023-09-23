@@ -25,17 +25,12 @@
   border-radius: 5px;
 }
 
-.card:hover {
-  box-shadow: 0 0 20px 2px var(--primaryColorLight);
-}
-
 .card::after {
   color: black;
 }
 
-.card:hover .body-content,
 .card:hover .cardTitle,
-.card:hover .card-category-row {
+.card:hover .cardCategoryRow {
   filter: brightness(1.08);
 }
 
@@ -63,52 +58,35 @@
   filter: brightness(1.08);
 }
 
-/* .card:active{
-    transform: scale(0.85);
-} */
-
 .card-body {
   padding: 1%;
   width: 95%;
 }
 
-/* .cardHeaderContent{
-    display: none;
-} */
-
-.subtitle {
-  margin: 0.5em 0;
-}
-
 .date {
-  margin: 0.7em 0;
-  font-size: 11px;
+  margin: 6px 0;
+  font-size: 12px;
   font-weight: 600;
-  color: grey;
+  color: #5a5a5a;
 }
 
-.body-content {
-  color: black;
-  font-size: 1em;
-  line-height: 1.4;
-  text-align: justify;
-}
-
-.card-category-row {
-  color: black;
+.cardCategoryRow {
   text-align: left;
   margin: 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5a5a5a;
 }
 
-.card-category-row span:first-child {
+.cardCategoryRow span:first-child {
   margin: 0;
 }
 
-.card-category-row span:after {
+.cardCategoryRow span:after {
   content: ', ';
 }
 
-.card-category-row span:last-child:after {
+.cardCategoryRow span:last-child:after {
   content: '';
 }
 
@@ -124,5 +102,3 @@
 .ant-select-selection-item span {
   margin: 0;
 }
-
-/* Card End */

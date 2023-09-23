@@ -1,5 +1,5 @@
-import React from 'react';
 import Head from 'next/head';
+import React from 'react';
 
 function Onas() {
   return (
@@ -98,11 +98,11 @@ function Onas() {
             </a>
           </div>
           <p>
-            Momentálne som až po uši zahltený programovaním a IT, ktoré študujem na VUT v Brne. Únik z tohto kolobehu
-            nachádzam počas turistík na vrcholoch hôr, kde si môžem vychutnať prírodu ale rovnako sú pre mňa zdroj novej
-            energie. Svoju kreativitu sa snažím obohatiť pri tvorení fotiek prírody, nočnej oblohy a časozberných videí.
-            Zvyšok času a energie venujem behu, pri ktorom môžem prekonávať sám seba. Avšak zo všetkého mám najradšej
-            moju Liv a spoznávanie sveta s ňou.
+            Momentálne som až po uši zahltený programovaním. Svoju kreativitu sa snažím čerpať pri tvorení blogu,
+            vlogových videií, krajinných a našich spoločných fotografií. Výplňou môjho voľného času je aj tréning na
+            ultra trail behy, pri ktorých môžem prekonávať sám seba. Únik z tohto kolobehu rád nachádzam počas turistík
+            na vrcholoch hôr, kde si môžem vychutnať prírodu ale rovnako sú pre mňa zdroj novej energie. Avšak zo
+            všetkého mám najradšej moju Liv a spoznávanie sveta s ňou.
           </p>
         </div>
       </div>

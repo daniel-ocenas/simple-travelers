@@ -6,7 +6,7 @@
     --sideRightMargin: 25%;
     --sideLeftMarginSmall: 1%;
     --sideRightMarginSmall: 1%;
-    --headerHeight: 300px;
+    --headerHeight: 250px;
   }
 
   ::-webkit-scrollbar {

@@ -14,17 +14,15 @@ const optionsSel = [
 ];
 
 const sortArticles = (articles: any, order: any) => {
-  const orderedArticles =
-    order === 'asc'
-      ? articles.sort((a: any, b: any) => {
-          const start = +new Date(b.dateCreated);
-          return start - +new Date(a.dateCreated);
-        })
-      : articles.sort((a: any, b: any) => {
-          const start = +new Date(a.dateCreated);
-          return start - +new Date(b.dateCreated);
-        });
-  return orderedArticles;
+  return order === 'asc'
+    ? articles.sort((a: any, b: any) => {
+        const start = +new Date(b.dateCreated);
+        return start - +new Date(a.dateCreated);
+      })
+    : articles.sort((a: any, b: any) => {
+        const start = +new Date(a.dateCreated);
+        return start - +new Date(b.dateCreated);
+      });
 };
 
 function Blog() {
@@ -140,7 +138,7 @@ function Blog() {
               text={card.text}
               image={card.image}
               url={`/blog${card.url}`}
-              category={card.category}
+              category={card.category ?? []}
               vertical={!medium}
             />
           ))

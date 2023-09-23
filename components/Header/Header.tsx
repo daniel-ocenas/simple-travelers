@@ -114,13 +114,11 @@ function Header() {
   return (
     <>
       {RenderTabs()}
-      <div className={styles.headerContainer}>
-        <div className={styles.titleContainer}>
-          <Link href="/" passHref>
-            <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
-          </Link>
-          <p>Travel simply, simply love traveling</p>
-        </div>
+      <div className={styles.titleContainer}>
+        <Link href="/" passHref>
+          <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
+        </Link>
+        <p>Travel simply, simply love traveling</p>
       </div>
     </>
   );
