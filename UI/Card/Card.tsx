@@ -12,7 +12,7 @@ function CardHeader({ title, image, vertical }: CardProps) {
 function CardBody({ title, date, text, category, vertical }: CardProps) {
   return (
     <div className={styles.cardBody}>
-      <MarginBox mx={vertical ? 16 : 0}>
+      <MarginBox mx={16}>
         <p className={styles.date}>{date}</p>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardCategoryRow}>
