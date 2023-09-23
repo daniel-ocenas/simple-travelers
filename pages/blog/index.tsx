@@ -33,7 +33,6 @@ function Blog() {
   const [articlesList, setArticlesList] = useState([]);
   const [articlesDisplay, setArticlesDisplay] = useState([]);
   const medium = useMedium();
-  console.log(medium);
 
   useEffect(() => {
     const fetchArticles = async () => {

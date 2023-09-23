@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import styles from 'UI/Card/Card.module.css';
+import { useMedium } from '../components/useBreakpoint';
 import Card from '../UI/Card';
 import Loader from '../UI/Loader';
 import Slider from '../UI/Slider';
@@ -9,6 +10,7 @@ export default function Home() {
   const [articlesList, setArticlesList] = useState([]);
   const [furtherArticlesList, setFurtherArticlesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const medium = useMedium();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -64,6 +66,7 @@ export default function Home() {
                 image={card.image}
                 url={card.url}
                 category={card.category}
+                vertical={!medium}
               />
             ))}
           </div>
