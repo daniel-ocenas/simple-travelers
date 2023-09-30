@@ -64,7 +64,7 @@ export default function Home() {
                 date={card.date}
                 text={card.text}
                 image={card.image}
-                url={card.url}
+                url={`blog/${card.url}`}
                 category={card.category ?? []}
                 vertical={!medium}
               />
