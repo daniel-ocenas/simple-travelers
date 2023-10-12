@@ -30,7 +30,6 @@ export function useBreakpoint() {
     useMediaQuery(`(min-width: ${breakpoint.xl}px)`),
     useMediaQuery(`(min-width: ${breakpoint.xxl}px)`),
   ];
-  console.log(matches);
   return matches.reduce((acc, next, i) => (next ? i : acc), 0);
 }
 

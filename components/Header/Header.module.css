@@ -140,7 +140,7 @@
 
 .titleContainer {
   text-align: center;
-  /*background-color: var(--backgroundColor);*/
+  background-color: var(--backgroundColor);
   padding-bottom: 3px;
 }
 
