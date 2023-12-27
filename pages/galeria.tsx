@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
 import { Form, Select } from 'antd';
+import Head from 'next/head';
+import React, { useState } from 'react';
 
 import ImageGrid from '../components/ImageGrid';
 import { CestaSNPIMAGES, IMAGES } from '../data/GalleryImages';
@@ -57,8 +57,6 @@ function Galeria() {
         <link rel="canonical" href="https://simpletravelers.sk/galeria" />
         <meta name="keywords" content="" />
       </Head>
-
-      <h2>Galéria</h2>
       <Form.Item label="Filtovať fotky">
         <Select style={{ marginLeft: '5px' }} mode="multiple" allowClear onChange={handleFilterChange}>
           {filterOptions}

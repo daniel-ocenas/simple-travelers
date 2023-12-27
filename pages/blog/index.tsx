@@ -106,11 +106,10 @@ function Blog() {
           content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"
         />
       </Head>
-      <h2>Blog</h2>
       <Form layout="horizontal">
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row">
-            <Form.Item label="Zoradiť články">
+            <Form.Item label="Zoradiť">
               <Select defaultValue="najnovšie" onChange={handleSortChange}>
                 <Option value={0}>najnovšie</Option>
                 <Option value={1}>najstaršie</Option>
@@ -118,7 +117,7 @@ function Blog() {
             </Form.Item>
           </Col>
           <Col className="gutter-row">
-            <Form.Item label="Filtrovať články">
+            <Form.Item label="Filtrovať">
               <Select mode="multiple" allowClear onChange={handleFilterChange} style={{ minWidth: '150px' }}>
                 {filterOptions}
               </Select>

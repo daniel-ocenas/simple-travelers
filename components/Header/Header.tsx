@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import useScreenSize from '../useScreenSize';
@@ -35,12 +36,13 @@ const SidebarData = [
 ];
 
 function NavList() {
+  const location = useRouter();
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.navList}>
         {SidebarData.map((item, index) => (
           <div key={index} className={styles.navListItem}>
-            <div className={styles.navLink}>
+            <div className={`${styles.navLink} ${location.pathname === item.path && styles.navLinkActive}`}>
               <Link href={item.path} passHref>
                 {item.title}
               </Link>
