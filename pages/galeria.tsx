@@ -1,7 +1,7 @@
 import { Form, Select } from 'antd';
 
 import ImageGrid from 'components/ImageGrid';
-import { BALI_IMAGES, IMAGES, SNP_IMAGES } from 'data/GalleryImages';
+import { BALI_IMAGES, IMAGES, OTHER_IMAGES, SNP_IMAGES } from 'data/GalleryImages';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
@@ -14,14 +14,19 @@ const galleryOptions = [
     images: IMAGES,
   },
   {
+    title: 'Bali',
+    option: 'Bali',
+    images: BALI_IMAGES,
+  },
+  {
     title: 'Cesta hrdinov SNP',
     option: 'Cesta SNP',
     images: SNP_IMAGES,
   },
   {
-    title: 'Bali',
-    option: 'Bali',
-    images: BALI_IMAGES,
+    title: 'Ďalšie fotky',
+    option: 'Ďalšie fotky',
+    images: OTHER_IMAGES,
   },
 ];
 const filterOptions = galleryOptions.map((item) => {
