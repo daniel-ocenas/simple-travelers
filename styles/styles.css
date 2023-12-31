@@ -10,6 +10,7 @@ html {
   /* --primaryColor: #ffbf80;  */
   --primaryColor: #000000;
   --primaryColorLight: #f5dbb0;
+  --primaryColorExtraLight: #f6e8d8;
   --primaryColorDark: #030e12;
   --secondaryColor: #ffcc99;
   --secondaryDark: #efa869;
@@ -415,23 +416,7 @@ td {
 
 /* Page footer END*/
 
-/* Videos */
-.page iframe {
-  margin: 0 3vw;
-  width: 80%;
-  height: 60vh;
-}
-
-/* Videos End */
-
-.preparation {
-  font-size: 2em;
-  text-align: center;
-  opacity: 0.75;
-}
-
 /* Social Media Icons */
-
 .social-media-container {
   position: fixed;
   top: 0;
@@ -635,24 +620,6 @@ td {
   align-self: center;
 }
 
-/*
-@media (min-width: 576px) {
-
-}
-
-@media (min-width: 768px) {
-
-}
-
-@media (min-width: 992px) {
-
-}
-
-@media (min-width: 1200px) {
-
-}
-*/
-
 .galleryWrapper {
   width: 100%;
   position: relative;
@@ -674,3 +641,21 @@ td {
 .galleryItem:hover {
   opacity: 0.8;
 }
+
+/*
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+*/

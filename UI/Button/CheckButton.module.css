@@ -1,0 +1,43 @@
+.checkButton {
+  position: relative;
+  padding: 8px;
+  margin: 4px;
+  background-color: var(--secondaryColor);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
+  background-size: 300% 100%;
+}
+
+.checkButton:hover {
+  background-color: var(--secondaryDark);
+}
+
+.checkButton:after {
+  content: '';
+  position: absolute;
+  border-radius: 4px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 5px 10px var(--primaryColorExtraLight);
+}
+
+.checkButton:active:after {
+  box-shadow: 0 0 0 0 var(--primaryColorExtraLight);
+  position: absolute;
+  border-radius: 4px;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.checkButtonActive {
+  border: 2px solid var(--secondaryDark);
+}

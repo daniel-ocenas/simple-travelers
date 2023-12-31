@@ -1,11 +1,11 @@
 import { Col, Form, Row, Select } from 'antd';
+import { useMedium } from 'components/useBreakpoint';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { useMedium } from '../../components/useBreakpoint';
 
-import Card from '../../UI/Card';
-import styles from '../../UI/Card/Card.module.css';
-import Loader from '../../UI/Loader';
+import Card from 'UI/Card';
+import styles from 'UI/Card/Card.module.css';
+import Loader from 'UI/Loader';
 
 const { Option } = Select;
 const optionsSel = [

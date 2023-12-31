@@ -12,3 +12,9 @@
     box-shadow: 8px 8px 2px var(--secondaryColor);
   }
 }
+
+@media (min-width: 420px) {
+  .galleryItem {
+    height: 200px;
+  }
+}

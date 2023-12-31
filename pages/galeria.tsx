@@ -1,13 +1,21 @@
 import { Form, Select } from 'antd';
-
 import ImageGrid from 'components/ImageGrid';
+import { useMedium } from 'components/useBreakpoint';
 import { BALI_IMAGES, IMAGES, OTHER_IMAGES, SNP_IMAGES } from 'data/GalleryImages';
 import Head from 'next/head';
 import React, { useState } from 'react';
+import { CheckButton } from 'UI/Button/CheckButton';
+import { Flex } from 'UI/Flex';
 
 const { Option } = Select;
 
-const galleryOptions = [
+interface GalleryOption {
+  title: string;
+  option: string;
+  images: any[];
+}
+
+const galleryOptions: GalleryOption[] = [
   {
     title: 'Výber našich najlepších fotiek',
     option: 'Výber fotiek',
@@ -34,22 +42,15 @@ const filterOptions = galleryOptions.map((item) => {
 });
 
 function Galeria() {
-  const [filterState, setFilterState] = useState(galleryOptions);
+  const [filterState, setFilterState] = useState<GalleryOption>(galleryOptions[0]);
+  const medium = useMedium();
 
-  const handleFilterChange = (selectionList: any) => {
-    let displayGallery: any[] = [];
-    if (selectionList.length === 0) {
-      galleryOptions.forEach((item) => {
-        displayGallery.push(item);
-      });
-    } else {
-      galleryOptions.forEach((item) => {
-        if (selectionList.includes(item.option)) {
-          displayGallery.push(item);
-        }
-      });
-    }
-    setFilterState(displayGallery);
+  const handleFilterChange = (value: string) => {
+    setFilterState(galleryOptions.find((item) => item.option === value) ?? galleryOptions[0]);
+  };
+
+  const handleButtonChange = (id: string, checked: boolean) => {
+    setFilterState(checked ? galleryOptions.find((item) => item.title === id) ?? galleryOptions[0] : galleryOptions[0]);
   };
 
   return (
@@ -67,25 +68,30 @@ function Galeria() {
         <link rel="canonical" href="https://simpletravelers.sk/galeria" />
         <meta name="keywords" content="" />
       </Head>
-      <Form.Item label="Filtovať fotky">
-        <Select style={{ marginLeft: '5px' }} mode="multiple" allowClear onChange={handleFilterChange}>
-          {filterOptions}
-        </Select>
-      </Form.Item>
-      {filterState.map((item: any) => {
-        return (
-          <div key={item.option}>
-            <h3>{item.title}</h3>
-            <ImageGrid images={item.images} />
-          </div>
-        );
-      })}
+      {medium ? (
+        <Form.Item label="Filtovať fotky">
+          <Select style={{ marginLeft: '5px' }} onChange={handleFilterChange}>
+            {filterOptions}
+          </Select>
+        </Form.Item>
+      ) : (
+        <Flex>
+          {galleryOptions.map((btn) => {
+            return (
+              <CheckButton
+                key={`btn-${btn.title}`}
+                label={btn.title}
+                value={filterState.title === btn.title}
+                onChange={(checked) => handleButtonChange(btn.title, checked)}
+              />
+            );
+          })}
+        </Flex>
+      )}
+      <h3>{filterState.title}</h3>
+      <ImageGrid images={filterState.images} />
     </div>
   );
 }
-
-// const Galeria = () => {
-// 	return <></>;
-// };
 
 export default Galeria;
