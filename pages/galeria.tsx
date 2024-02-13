@@ -1,18 +1,19 @@
 import { Form, Select } from 'antd';
 import ImageGrid from 'components/ImageGrid';
-import { useMedium } from 'components/useBreakpoint';
+import { GalleryImageProps } from 'components/ImageGrid/ImageGrid';
 import { BALI_IMAGES, IMAGES, OTHER_IMAGES, SNP_IMAGES } from 'data/GalleryImages';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { CheckButton } from 'UI/Button/CheckButton';
 import { Flex } from 'UI/Flex';
+import { useMedium } from 'utils/useBreakpoint';
 
 const { Option } = Select;
 
 interface GalleryOption {
   title: string;
   option: string;
-  images: any[];
+  images: GalleryImageProps[];
 }
 
 const galleryOptions: GalleryOption[] = [
@@ -56,7 +57,7 @@ function Galeria() {
   return (
     <div className="page screen-reader-text">
       <Head>
-        <title>Galéria | Cestovateľský blog</title>
+        <title>Galéria, Simple Travelers</title>
         <meta property="og:title" content="Simple Travelers - Galéria" />
         <meta
           property="og:description"

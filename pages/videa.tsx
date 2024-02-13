@@ -1,15 +1,15 @@
-import { useMedium } from 'components/useBreakpoint';
 import { Video } from 'components/Video/Video';
 import Head from 'next/head';
 import { Flex } from 'UI/Flex/Flex';
 import { MarginBox } from 'UI/MarginBox';
+import { useMedium } from 'utils/useBreakpoint';
 
 function Videos() {
   const medium = useMedium();
   return (
     <div className="page">
       <Head>
-        <title>Videá</title>
+        <title>Videá, Simple Travelers</title>
         <meta property="og:title" content="Videá" />
         <meta property="og:description" content="Videá cestovateľského blogu Simple Travelers" />
         <meta name="description" content="Videá cestovateľského blogu Simple Travelers" />

@@ -1,12 +1,12 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
-import Footer from './components/Footer';
 
-import * as gtag from './components/gtag';
+import * as gtag from 'utils/gtag';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
-import SocialSideBar from './components/SocialSideBar';
 
 declare global {
   interface Window {
@@ -14,6 +14,7 @@ declare global {
     gtag: any;
   }
 }
+
 export default function Layout({ children }: { children: any }) {
   const router = useRouter();
 
@@ -33,6 +34,10 @@ export default function Layout({ children }: { children: any }) {
   }, [router.events]);
   return (
     <>
+      <Head>
+        <link rel={'manifest'} href={'/manifest.json'} />
+        <meta name="theme-color" content="#ff6600" />
+      </Head>
       <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
       <Script
         id="gtag-init"
@@ -42,7 +47,6 @@ export default function Layout({ children }: { children: any }) {
         window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
           gtag('config', '${gtag.GA_TRACKING_ID}', {
             page_path: window.location.pathname
           });`,
@@ -50,7 +54,6 @@ export default function Layout({ children }: { children: any }) {
       />
       <Header />
       <SideBar />
-      <SocialSideBar />
       <main>{children}</main>
       <Footer />
     </>

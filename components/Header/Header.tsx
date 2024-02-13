@@ -1,9 +1,10 @@
+import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
-import useScreenSize from '../useScreenSize';
+import useScreenSize from 'utils/useScreenSize';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
@@ -49,6 +50,7 @@ function NavList() {
             </div>
           </div>
         ))}
+        <SocialNetworkLinks />
       </div>
     </div>
   );

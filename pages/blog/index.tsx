@@ -1,11 +1,12 @@
 import { Col, Form, Row, Select } from 'antd';
-import { useMedium } from 'components/useBreakpoint';
+import { ArticlesList } from 'data/ArticlesListConst';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
 import Card from 'UI/Card';
 import styles from 'UI/Card/Card.module.css';
 import Loader from 'UI/Loader';
+import { useMedium } from 'utils/useBreakpoint';
 
 const { Option } = Select;
 const optionsSel = [
@@ -15,11 +16,11 @@ const optionsSel = [
 
 const sortArticles = (articles: any, order: any) => {
   return order === 'asc'
-    ? articles.sort((a: any, b: any) => {
+    ? articles?.sort((a: any, b: any) => {
         const start = +new Date(b.dateCreated);
         return start - +new Date(a.dateCreated);
       })
-    : articles.sort((a: any, b: any) => {
+    : articles?.sort((a: any, b: any) => {
         const start = +new Date(a.dateCreated);
         return start - +new Date(b.dateCreated);
       });
@@ -34,10 +35,14 @@ function Blog() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      // Load articles from databse
+      // Load articles from database
       const response = await fetch('/api/articles');
-      const data = await response.json();
-
+      let data = await response.json();
+      if (response.status !== 200) {
+        data = {
+          articleList: ArticlesList,
+        };
+      }
       // Set all articles list
       setArticlesList(data.articleList);
 
@@ -46,8 +51,8 @@ function Blog() {
 
       // load categories for filtering
       let filterCategories: any = [];
-      data.articleList.forEach((article: any) => {
-        article.category.forEach((category: any) => {
+      data.articleList?.forEach((article: any) => {
+        article.category?.forEach((category: any) => {
           if (!filterCategories.includes(category)) {
             filterCategories.push(category);
           }
@@ -95,7 +100,7 @@ function Blog() {
   return (
     <div className="page">
       <Head>
-        <title>Blog | Cestopisy | Cestovateľský blog</title>
+        <title>Blog, Simple Travelers</title>
         <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
         <meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
         <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
@@ -126,18 +131,18 @@ function Blog() {
         </Row>
       </Form>
       <div className={styles.gridContainer}>
-        {articlesList.length === 0 ? (
+        {articlesList?.length === 0 ? (
           <Loader />
         ) : (
-          articlesList.map((card: any) => (
+          articlesList?.map((card: any) => (
             <Card
-              key={sortState + card.url}
+              key={`card-blog-${sortState}-${card.url}`}
               title={card.title}
               date={card.date}
               text={card.text}
               image={card.image}
               url={`/blog${card.url}`}
-              category={card.category ?? []}
+              category={card?.category ?? []}
               vertical={!medium}
             />
           ))

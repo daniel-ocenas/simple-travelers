@@ -1,15 +1,12 @@
 .socialSidebar {
-  visibility: hidden;
-  position: fixed;
-  top: 35%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
 }
 
 .socialSidebar a {
-  display: block;
+  display: inline-block;
   transition: background-color 0.3s ease;
   border-radius: 7px;
   padding: 5px;
@@ -26,16 +23,4 @@
 
 .socialSidebar a:hover {
   background-color: var(--secondaryColor);
-}
-
-@media (min-width: 768px) {
-  .socialSidebar {
-    visibility: visible;
-  }
-}
-
-@media (min-width: 992px) {
-  .socialSidebar {
-    top: 50%;
-  }
 }

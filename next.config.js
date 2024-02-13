@@ -1,5 +1,22 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  sw: '/sw.js',
+  runtimeCaching: [
+    {
+      urlPattern: '/',
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'pages-cache',
+      },
+    },
+  ],
+});
+
+const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -13,4 +30,6 @@ module.exports = {
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'sk-SK',
   },
-};
+});
+
+module.exports = nextConfig;

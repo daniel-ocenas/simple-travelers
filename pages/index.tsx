@@ -1,10 +1,11 @@
+import { ArticlesList } from 'data/ArticlesListConst';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import Card from 'UI/Card';
 import styles from 'UI/Card/Card.module.css';
-import { useMedium } from '../components/useBreakpoint';
-import Card from '../UI/Card';
-import Loader from '../UI/Loader';
-import Slider from '../UI/Slider';
+import Loader from 'UI/Loader';
+import Slider from 'UI/Slider';
+import { useMedium } from 'utils/useBreakpoint';
 
 export default function Home() {
   const [articlesList, setArticlesList] = useState([]);
@@ -15,22 +16,27 @@ export default function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch('/api/articles');
-      const data = await response.json();
-      let sortedArticleList = data.articleList.sort((a: any, b: any) => {
+      let data = await response.json();
+      if (response.status !== 200) {
+        data = {
+          articleList: ArticlesList,
+        };
+      }
+      let sortedArticleList = data.articleList?.sort((a: any, b: any) => {
         const start = +new Date(b.dateCreated);
         return start - +new Date(a.dateCreated);
       });
-      let newArticleList = sortedArticleList.slice(0, 3);
-      let newFurtherArticleList = sortedArticleList.slice(3);
+      let newArticleList = sortedArticleList?.slice(0, 3);
+      let newFurtherArticleList = sortedArticleList?.slice(3);
 
-      newArticleList.forEach((article: any) => {
-        article['url'] = '/blog' + article['url'];
+      newArticleList?.forEach((article: any) => {
+        // article['url'] = '/blog' + article['url'];
         article['class'] = 'slider-content';
       });
 
-      setArticlesList(newArticleList);
-      setFurtherArticlesList(newFurtherArticleList);
       setIsLoading(false);
+      setArticlesList(newArticleList ?? []);
+      setFurtherArticlesList(newFurtherArticleList);
       return data;
     };
 
@@ -57,15 +63,15 @@ export default function Home() {
         <>
           <Slider slides={articlesList} />
           <div className={styles.gridContainer}>
-            {furtherArticlesList.map((card: any, key: any) => (
+            {furtherArticlesList?.map((card: any) => (
               <Card
-                key={key}
+                key={`card-home-${card.url}`}
                 title={card.title}
                 date={card.date}
                 text={card.text}
                 image={card.image}
-                url={`blog/${card.url}`}
-                category={card.category ?? []}
+                url={`/blog/${card.url}`}
+                category={card?.category ?? []}
                 vertical={!medium}
               />
             ))}

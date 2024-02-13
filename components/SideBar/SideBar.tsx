@@ -1,13 +1,15 @@
+import process from 'process';
 import React from 'react';
+import useScreenSize from 'utils/useScreenSize';
 import Divider from '../../UI/Divider';
 import FacebookPage from '../FacebookPage';
 import InstagramFeed from '../InstagramFeed';
-import useScreenSize from '../useScreenSize';
+import styles from './SideBar.module.css';
 
 const SideBar = () => {
   const { width } = useScreenSize();
   return (
-    <div className="side-panel">
+    <div className={styles.sideBar}>
       <div style={{ textAlign: 'center' }}>
         <img
           style={{

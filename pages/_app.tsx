@@ -2,14 +2,9 @@ import Layout from 'layout';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-
-import 'styles/burger-menu.scss';
-import 'styles/min1200.css';
-import 'styles/min576.css';
-import 'styles/min768.css';
-import 'styles/min992.css';
-import 'styles/slider.css';
-import 'styles/styles.css';
+import '../styles/burger-menu.scss';
+import '../styles/slider.css';
+import '../styles/styles.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

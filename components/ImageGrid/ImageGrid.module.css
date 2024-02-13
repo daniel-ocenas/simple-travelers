@@ -1,0 +1,153 @@
+.galleryWrapper {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-gap: 2px;
+  grid-auto-flow: dense;
+}
+
+.lightboxImgWrapper p {
+  color: white;
+  font-size: 1em;
+  align-self: center;
+}
+
+.galleryItem {
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.galleryItem:hover {
+  opacity: 0.8;
+}
+
+/* Lightbox */
+.lightbox {
+  z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(100, 100, 100, 0.7);
+}
+
+.lightbox button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 3em;
+  height: 70%;
+  z-index: 1010;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.lightbox button:hover {
+  transform: scale(1.2);
+  transition: 0s ease-in-out;
+}
+
+.arrowRight {
+  border: solid #f0f0f0;
+  padding: 10px;
+  border-width: 0 4px 4px 0;
+  transform: rotate(-45deg);
+  margin-right: 4px;
+}
+
+.arrowRight i {
+  transform: rotate(-45deg);
+}
+
+.arrowLeft {
+  border: solid #f0f0f0;
+  padding: 10px;
+  border-width: 0 4px 4px 0;
+  transform: rotate(135deg);
+  margin-left: 4px;
+}
+
+.lightbox button:active {
+  transform: scale(0.9);
+  transition: 0s ease-in-out;
+}
+
+.lightboxButtonLeft {
+  left: 1em;
+}
+
+.lightboxButtonRight {
+  right: 1em;
+}
+
+.lightbox .closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.lightbox .closeBtn:before,
+.lightbox .closeBtn:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 40px;
+  background-color: #f0f0f0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: top left;
+  content: '';
+}
+
+.lightbox .closeBtn:after {
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+
+.lightbox .closeBtn:hover {
+  transform: scale(1.2);
+  transition: 0s ease-in-out;
+}
+
+.lightbox .closeBtn:active {
+  transform: scale(0.9);
+  transition: 0s ease-in-out;
+}
+
+.lightboxImgWrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.lightboxImgLandscape {
+  width: 100%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.lightboxImgPortrait {
+  height: 90%;
+  max-width: 100%;
+  object-fit: contain;
+}

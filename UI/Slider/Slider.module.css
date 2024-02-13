@@ -239,13 +239,13 @@
 
 @media (min-width: 992px) {
   .sliderContainer {
-    --sliderHeight: 33vw;
+    --sliderHeight: 40vw;
   }
 }
 
 @media (min-width: 1199px) {
   .sliderContainer {
-    --sliderHeight: 33vw;
+    --sliderHeight: 40vw;
   }
 }
 

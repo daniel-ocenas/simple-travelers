@@ -1,15 +1,16 @@
-.sidePanel {
+.sideBar {
   position: absolute;
   width: calc(var(--sideRightMargin) - 1em - var(--sideRightMargin) / 7);
   height: 100%;
   display: none;
-  top: var(--headerHeight);
+  right: 0;
+  top: calc(var(--headerHeight) + 20px);
   padding: 0 calc(var(--sideRightMargin) / 10);
-  z-index: 100;
+  z-index: 10;
 }
 
 @media (min-width: 992px) {
-  .side-panel {
+  .sideBar {
     display: inline-block;
   }
 }

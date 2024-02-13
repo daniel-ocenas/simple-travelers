@@ -5,7 +5,7 @@ function Onas() {
   return (
     <div className="page screen-reader-text">
       <Head>
-        <title>O nás | Cestovateľský blog</title>
+        <title>O nás, Simple Travelers</title>
         <meta property="og:title" content="Simple Travelers - O nás" />
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />

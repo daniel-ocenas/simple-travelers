@@ -136,8 +136,8 @@
   position: absolute;
   bottom: 0.5em;
   margin: auto;
-  width: 3.5em;
-  height: 3.5em;
+  width: 4em;
+  height: 4em;
   z-index: 11;
   border-radius: calc(4em + 1px);
   border: 1px solid var(--secondaryColor);

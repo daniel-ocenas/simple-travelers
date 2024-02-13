@@ -9,15 +9,15 @@ function CardHeader({ title, image, vertical }: CardProps) {
   return <img className={vertical ? styles.cardHeaderImgVertical : styles.cardHeaderImg} src={image} alt={title} />;
 }
 
-function CardBody({ title, date, text, category }: CardProps) {
+function CardBody({ title, date, text, category, vertical }: CardProps) {
   return (
     <div className={styles.cardBody}>
-      <MarginBox mx={16}>
+      <MarginBox mx={16} mt={vertical ? '' : 16}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.date}>{date}</p>
         <p className={styles.cardCategoryRow}>
           {category.map((cat: string) => {
-            return <span key={title + category}>{`${cat}`}</span>;
+            return <span key={title + cat}>{cat}</span>;
           })}
         </p>
         <div className="screen-reader-text">
@@ -45,31 +45,33 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
     setIsLoading(true);
   };
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <Link className={styles.articleLink} href={url} passHref>
       <div className={styles.card} onClick={toggleLoading}>
-        <Flex direction={vertical ? 'row' : 'column'}>
-          <CardHeader
-            title={title}
-            date={date}
-            text={text}
-            image={image}
-            url={url}
-            category={category}
-            vertical={vertical}
-          />
-          <CardBody
-            title={title}
-            date={date}
-            text={text}
-            image={image}
-            url={url}
-            category={category}
-            vertical={vertical}
-          />
-        </Flex>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Flex direction={vertical ? 'row' : 'column'}>
+            <CardHeader
+              title={title}
+              date={date}
+              text={text}
+              image={image}
+              url={url}
+              category={category}
+              vertical={vertical}
+            />
+            <CardBody
+              title={title}
+              date={date}
+              text={text}
+              image={image}
+              url={url}
+              category={category}
+              vertical={vertical}
+            />
+          </Flex>
+        )}
       </div>
     </Link>
   );

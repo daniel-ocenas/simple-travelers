@@ -5,7 +5,7 @@ function GDPRBlog() {
   return (
     <div className="page screen-reader-text">
       <Head>
-        <title>Simple Travelers | GDPR</title>
+        <title>GDPR, Simple Travelers</title>
         <meta property="og:title" content="Simple Travelers | GDPR" />
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
