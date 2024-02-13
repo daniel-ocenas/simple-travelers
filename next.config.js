@@ -16,7 +16,7 @@ const withPWA = require('next-pwa')({
   ],
 });
 
-const nextConfig = withPWA({
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -30,6 +30,6 @@ const nextConfig = withPWA({
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'sk-SK',
   },
-});
+};
 
-module.exports = nextConfig;
+module.exports = process.env.NODE_ENV === 'development' ? nextConfig : withPWA(nextConfig);

@@ -1,3 +1,4 @@
+import ScrollToTopButton from 'components/ScrollToTopButton';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -54,6 +55,7 @@ export default function Layout({ children }: { children: any }) {
       />
       <Header />
       <SideBar />
+      <ScrollToTopButton />
       <main>{children}</main>
       <Footer />
     </>

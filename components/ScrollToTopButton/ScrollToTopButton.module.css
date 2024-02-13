@@ -1,0 +1,13 @@
+.iconWrapper {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 2000;
+}
+
+.iconWrapper img {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  solid-color: #bfbfbf;
+}

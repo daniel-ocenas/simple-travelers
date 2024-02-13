@@ -95,7 +95,7 @@ function Slider(props: any) {
           </div>
           <div className={'current pic'}>
             <div style={{ position: 'relative' }}>
-              <Link className={'slider-link'} href={sliderState[currentPicState].url} passHref>
+              <Link className={'slider-link'} href={`/blog/${sliderState[currentPicState].url}`} passHref>
                 <Image
                   src={sliderState[currentPicState].image}
                   alt={'Current Slider Picture'}
