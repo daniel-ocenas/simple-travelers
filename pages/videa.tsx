@@ -20,6 +20,11 @@ function Videos() {
       <MarginBox mx={medium ? 8 : '10%'}>
         <Flex direction={'column'}>
           <Video
+            src="https://www.youtube.com/embed/ixmHwvUFBiU?si=Oi4ceeV_BSWuGNiv"
+            title="Bali treba jednoducho zažiť"
+          />
+          <MarginBox mt={16} />
+          <Video
             src="https://www.youtube.com/embed/DujsK0pmo_o?si=1RM-ke-QdVcV8Sjv"
             title="Cestovanie a turistika po Gruzínsku"
           />

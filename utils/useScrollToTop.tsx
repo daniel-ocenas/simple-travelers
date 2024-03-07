@@ -17,7 +17,7 @@ export function useScrollToTop() {
   return scroll;
 }
 
-export function scrollToTopSmooth(top?: number) {
+export function scrollToTopSmooth(top?: number): void {
   window.scrollTo({
     top: top ?? 0,
     left: 0,

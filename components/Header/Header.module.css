@@ -43,7 +43,8 @@
 }
 
 .navLink a {
-  color: var(--titleColor);
+  color: #4d4d4d;
+  position: relative;
   text-decoration: none;
   padding: 7px 10px;
   margin: 3px;
@@ -51,18 +52,40 @@
   font-weight: 400;
 }
 
-.navLink a:hover {
-  background-color: var(--secondaryColor);
-  color: var(--titleColor);
-  border-radius: 8px;
-  text-shadow: 0 0 1px gray;
+.navLink a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  border-radius: 5px;
+  height: 0.1em;
+  bottom: 0;
+  left: 0;
+  background: currentcolor;
+  transform-origin: bottom left;
+  transition: transform 0.25s ease-out;
+}
+
+.navLink a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .navLinkActive a {
-  background-color: var(--secondaryColor);
   color: var(--titleColor);
   border-radius: 8px;
-  text-shadow: 0 0 0.01px gray;
+}
+
+.navLinkActive a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(1);
+  border-radius: 5px;
+  height: 0.1em;
+  bottom: 0;
+  left: 0;
+  background: var(--primaryColor);
 }
 
 .articleLink {

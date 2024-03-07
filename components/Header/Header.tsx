@@ -1,38 +1,33 @@
 import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { Link } from 'UI/Link';
 
 import useScreenSize from 'utils/useScreenSize';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
-const SidebarData = [
+const SIDEBAR_DATA = [
   {
     title: 'Úvodná stránka',
     path: '/',
-    listTab: true,
   },
   {
     title: 'O nás',
     path: '/onas',
-    listTab: true,
   },
   {
     title: 'Blog',
     path: '/blog',
-    listTab: true,
   },
   {
     title: 'Galéria',
     path: '/galeria',
-    listTab: true,
   },
   {
     title: 'Videá',
     path: '/videa',
-    listTab: true,
   },
 ];
 
@@ -41,7 +36,7 @@ function NavList() {
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.navList}>
-        {SidebarData.map((item, index) => (
+        {SIDEBAR_DATA.map((item, index) => (
           <div key={index} className={styles.navListItem}>
             <div className={`${styles.navLink} ${location.pathname === item.path && styles.navLinkActive}`}>
               <Link href={item.path} passHref>
@@ -65,25 +60,15 @@ function NavMenu() {
       <Burger showSidebar={showSidebar} buttonState={sidebar} />
       <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
         <div className={styles.socialMenu}>
-          <a
-            className="instagram"
-            href="https://www.instagram.com/simple__travelers"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://www.instagram.com/simple__travelers" className="instagram" external newTab passHref>
             <Image className="image" src="/icons/icon-instagram.png" alt="instagram" width={55} height={55} />
-          </a>
-          <a
-            className="facebook"
-            href="https://www.facebook.com/WeAreSimpleTravelers"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          </Link>
+          <Link href="https://www.facebook.com/WeAreSimpleTravelers" className="facebook" external newTab passHref>
             <Image className="image" src="/icons/icon-facebook.png" alt="facebook" width={55} height={55} />
-          </a>
+          </Link>
         </div>
         <ul className={styles.navMenuItems} onClick={showSidebar}>
-          {SidebarData.map((item, index) => {
+          {SIDEBAR_DATA.map((item, index) => {
             return (
               <li key={index} className={styles.navText}>
                 <Link href={item.path} passHref>
