@@ -84,7 +84,7 @@ function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, image
         className={styles.galleryItem}
         onClick={() => showImage(item)}
         style={{
-          backgroundImage: `url(https://simpletravelers.sk/${item.thumbnail})`,
+          backgroundImage: `url(/static/${item.thumbnail})`,
           minHeight: !small ? '200px' : '300px',
         }}
       />
@@ -111,7 +111,7 @@ function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, image
                     ? styles.lightboxImgPortrait
                     : styles.lightboxImgLandscape
                 }
-                src={imageToShow.src}
+                src={`/static/${imageToShow.src}`}
                 alt={imageToShow.src}
               />
               <p>{imageToShow.caption}</p>

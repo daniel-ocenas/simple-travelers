@@ -84,10 +84,10 @@ function Slider(props: any) {
           <div className={'prev pic'}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={sliderState[prevPicState].image}
+                src={`/static${sliderState[prevPicState].image}`}
                 alt={'Prev Slider Picture'}
-                layout={'fill'}
-                objectFit={'cover'}
+                style={{ objectFit: 'contain' }}
+                fill
                 priority={true}
               />
               <div className={sliderState[prevPicState].class}>{sliderState[prevPicState].title}</div>
@@ -95,12 +95,12 @@ function Slider(props: any) {
           </div>
           <div className={'current pic'}>
             <div style={{ position: 'relative' }}>
-              <Link className={'slider-link'} href={`/blog/${sliderState[currentPicState].url}`} passHref>
+              <Link className={'slider-link'} href={`/blog${sliderState[currentPicState].url}`} passHref>
                 <Image
-                  src={sliderState[currentPicState].image}
+                  src={`/static${sliderState[currentPicState].image}`}
                   alt={'Current Slider Picture'}
-                  layout={'fill'}
-                  objectFit={'cover'}
+                  style={{ objectFit: 'contain' }}
+                  fill
                   priority={true}
                 />
                 <div className={sliderState[currentPicState].class}>{sliderState[currentPicState].title}</div>
@@ -111,10 +111,10 @@ function Slider(props: any) {
           <div className={'next pic'}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={sliderState[nextPicState].image}
+                src={`/static${sliderState[nextPicState].image}`}
                 alt={'Next Slider Picture'}
-                layout={'fill'}
-                objectFit={'cover'}
+                style={{ objectFit: 'contain' }}
+                fill
                 priority={true}
               />
               <div className={sliderState[nextPicState].class}>{sliderState[nextPicState].title}</div>

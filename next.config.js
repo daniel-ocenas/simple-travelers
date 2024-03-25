@@ -20,7 +20,18 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['simpletravelers.sk'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'simpletravelers.sk',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
   },
   i18n: {
     // These are all the locales you want to support in

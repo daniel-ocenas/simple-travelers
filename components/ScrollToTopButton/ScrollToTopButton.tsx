@@ -1,9 +1,9 @@
 import React from 'react';
-import { scrollToTopSmooth, useScrollToTop } from 'utils/useScrollToTop';
+import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import styles from './ScrollToTopButton.module.css';
 
 const ScrollToTopButton = () => {
-  const scroll = useScrollToTop();
+  const scroll = useGetScroll();
 
   if (scroll === 0) {
     return null;

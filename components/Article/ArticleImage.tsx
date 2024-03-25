@@ -22,14 +22,13 @@ const ArticleImage = (props: any) => {
   const displaySingleImage = props.src.length === 1;
   const imageHeight = displaySingleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
   return (
-    // <div className={ props.src.length === 1 ? props.class : 'twoPicInRowPortrait'}>
     <>
       {props.src?.map((image: any, idx: any) => {
         return (
           <Image
             key={image.name}
             alt={image.name}
-            src={image.src.substring(2)}
+            src={`/static${image.src.substring(2)}`}
             width={imageWidth}
             height={imageHeight}
             priority={props.idx < 4}

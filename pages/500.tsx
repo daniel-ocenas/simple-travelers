@@ -1,5 +1,6 @@
+import Page from 'components/Page';
 import React from 'react';
 
 export default function Custom500() {
-  return <h2>500 Internal Server Error</h2>;
+  return <Page>500 Internal Server Error</Page>;
 }

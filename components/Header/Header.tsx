@@ -1,9 +1,10 @@
+import { SideBar, SMarginBox, SNavList, STabsContainers } from 'components/Header/Header.styled';
 import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'UI/Link';
-
+import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import useScreenSize from 'utils/useScreenSize';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
@@ -32,10 +33,12 @@ const SIDEBAR_DATA = [
 ];
 
 function NavList() {
-  const location = useRouter();
+  const scroll = useGetScroll();
+  const isTop = scroll === 0;
+
   return (
-    <div className={styles.tabsContainer}>
-      <div className={styles.navList}>
+    <STabsContainers $isTop={isTop}>
+      <SNavList>
         {SIDEBAR_DATA.map((item, index) => (
           <div key={index} className={styles.navListItem}>
             <div className={`${styles.navLink} ${location.pathname === item.path && styles.navLinkActive}`}>
@@ -46,8 +49,8 @@ function NavList() {
           </div>
         ))}
         <SocialNetworkLinks />
-      </div>
-    </div>
+      </SNavList>
+    </STabsContainers>
   );
 }
 
@@ -57,6 +60,7 @@ function NavMenu() {
 
   return (
     <>
+      <SMarginBox />
       <Burger showSidebar={showSidebar} buttonState={sidebar} />
       <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
         <div className={styles.socialMenu}>
@@ -79,38 +83,26 @@ function NavMenu() {
           })}
         </ul>
       </div>
-      {sidebar && (
-        <div
-          style={{
-            position: 'absolute',
-            width: '100vw',
-            height: '100vh',
-            zIndex: '-1',
-          }}
-          onClick={showSidebar}
-        />
-      )}
+      {sidebar && <SideBar onClick={showSidebar} />}
     </>
   );
 }
 
 function Header() {
   const { width } = useScreenSize();
-  const RenderTabs = () => {
-    if (width < 768) return <NavMenu />;
-    return <NavList />;
-  };
-  return (
-    <>
-      {RenderTabs()}
-      <div className={styles.titleContainer}>
-        <Link href="/" passHref>
-          <img className={styles.titleTravelers} alt="title" src="/icons/SimpleTravelers.svg" />
-        </Link>
-        <p>Travel simply, simply love traveling</p>
-      </div>
-    </>
-  );
+  const location = useRouter();
+  const { height } = useScreenSize();
+  const scroll = useGetScroll();
+  const medium = width < 768;
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      scrollToTopSmooth(height - (medium ? 0 : 16));
+    }
+    // eslint-disable-next-line
+  }, [location]);
+
+  return medium ? <NavMenu /> : <NavList />;
 }
 
 export default Header;

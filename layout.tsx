@@ -1,4 +1,6 @@
 import ScrollToTopButton from 'components/ScrollToTopButton';
+import SideBar from 'components/SideBar';
+import WelcomePhoto from 'components/WelcomePhoto';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -7,7 +9,6 @@ import React, { useEffect } from 'react';
 import * as gtag from 'utils/gtag';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import SideBar from './components/SideBar';
 
 declare global {
   interface Window {
@@ -53,9 +54,10 @@ export default function Layout({ children }: { children: any }) {
           });`,
         }}
       />
+      <WelcomePhoto />
       <Header />
-      <SideBar />
       <ScrollToTopButton />
+      <SideBar />
       <main>{children}</main>
       <Footer />
     </>

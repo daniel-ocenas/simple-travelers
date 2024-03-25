@@ -1,12 +1,9 @@
 import { Col, Form, Row, Select } from 'antd';
+import BlogCardsView from 'components/BlogCardsView';
+import Page from 'components/Page';
 import { ArticlesList } from 'data/ArticlesListConst';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-
-import Card from 'UI/Card';
-import styles from 'UI/Card/Card.module.css';
-import Loader from 'UI/Loader';
-import { useMedium } from 'utils/useBreakpoint';
 
 const { Option } = Select;
 const optionsSel = [
@@ -31,7 +28,6 @@ function Blog() {
   const [filterOptions, setFilterOptions] = useState([]);
   const [articlesList, setArticlesList] = useState([]);
   const [articlesDisplay, setArticlesDisplay] = useState([]);
-  const medium = useMedium();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -98,7 +94,7 @@ function Blog() {
   };
 
   return (
-    <div className="page">
+    <>
       <Head>
         <title>Blog, Simple Travelers</title>
         <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
@@ -111,44 +107,29 @@ function Blog() {
           content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"
         />
       </Head>
-      <Form layout="horizontal">
-        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col className="gutter-row">
-            <Form.Item label="Zoradiť">
-              <Select defaultValue="najnovšie" onChange={handleSortChange}>
-                <Option value={0}>najnovšie</Option>
-                <Option value={1}>najstaršie</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col className="gutter-row">
-            <Form.Item label="Filtrovať">
-              <Select mode="multiple" allowClear onChange={handleFilterChange} style={{ minWidth: '150px' }}>
-                {filterOptions}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-      </Form>
-      <div className={styles.gridContainer}>
-        {articlesList?.length === 0 ? (
-          <Loader />
-        ) : (
-          articlesList?.map((card: any) => (
-            <Card
-              key={`card-blog-${sortState}-${card.url}`}
-              title={card.title}
-              date={card.date}
-              text={card.text}
-              image={card.image}
-              url={`/blog${card.url}`}
-              category={card?.category ?? []}
-              vertical={!medium}
-            />
-          ))
-        )}
-      </div>
-    </div>
+      <Page>
+        <Form layout="horizontal">
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Col className="gutter-row">
+              <Form.Item label="Zoradiť">
+                <Select defaultValue="najnovšie" onChange={handleSortChange}>
+                  <Option value={0}>najnovšie</Option>
+                  <Option value={1}>najstaršie</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col className="gutter-row">
+              <Form.Item label="Filtrovať">
+                <Select mode="multiple" allowClear onChange={handleFilterChange} style={{ minWidth: '150px' }}>
+                  {filterOptions}
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+        <BlogCardsView articles={articlesDisplay} />
+      </Page>
+    </>
   );
 }
 

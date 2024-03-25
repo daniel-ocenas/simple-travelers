@@ -37,6 +37,7 @@ next-env.d.ts
 
 /public/icons/
 /public/images/
+/public/static/
 /public/videos/
 /public/sw.js*
 /public/workbox*
