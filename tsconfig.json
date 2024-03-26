@@ -19,7 +19,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["vite-plugin-svgr/client"]
+    "types": [
+      "vite-plugin-svgr/client"
+    ]
   },
   "include": [
     "next-env.d.ts",

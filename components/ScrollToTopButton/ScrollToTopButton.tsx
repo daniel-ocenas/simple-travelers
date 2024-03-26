@@ -11,7 +11,7 @@ const ScrollToTopButton = () => {
 
   return (
     <div className={styles.iconWrapper}>
-      <img src={'./icons/arrow-circle-up.svg'} alt={'btn-scroll-top'} onClick={() => scrollToTopSmooth()} />
+      <img src={'/static/icons/arrow-circle-up.svg'} alt={'btn-scroll-top'} onClick={() => scrollToTopSmooth()} />
     </div>
   );
 };
