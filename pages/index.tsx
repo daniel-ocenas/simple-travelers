@@ -44,11 +44,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Simple Travelers | Cestovateľský blog</title>
+        <title>Simple Travelers, cestovateľský blog</title>
         <meta property="og:title" content="Simple Travelers" />
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
-        <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/" />
         <meta
           name="keywords"

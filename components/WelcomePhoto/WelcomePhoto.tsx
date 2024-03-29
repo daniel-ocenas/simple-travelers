@@ -21,7 +21,6 @@ const WelcomePhoto = () => {
           fill
         />
       </SWelcomePhotoDivider>
-
       <TitleContainer>
         <Link href="/" passHref>
           <TitleTravelers alt="title" src="/static/icons/SimpleTravelers.svg" />

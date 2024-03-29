@@ -23,8 +23,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <Layout>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="icon" type="image/png" sizes="72x72" href="/icons/icon-72x72.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="72x72" href="/static/icons/icon-72x72.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/static/icons/icon-96x96.png" />
       </Head>
       {getLayout(<Component {...pageProps} />)}
     </Layout>

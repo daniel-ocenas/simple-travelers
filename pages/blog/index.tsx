@@ -100,7 +100,7 @@ function Blog() {
         <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
         <meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
         <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
-        <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/blog" />
         <meta
           name="keywords"

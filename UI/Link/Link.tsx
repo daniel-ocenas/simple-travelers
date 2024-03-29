@@ -11,7 +11,7 @@ export type LinkProps = PropsWithChildren<{
 }>;
 
 export function Link({ href, className, external, download, newTab, passHref, children }: LinkProps) {
-  const newTabProps = newTab && { target: '_blank', rel: 'noopener noreferrer' };
+  const newTabProps = newTab && { target: '_blank', rel: 'noopener' };
   return external ? (
     <a className={className} href={href} download={download} {...newTabProps}>
       {children}

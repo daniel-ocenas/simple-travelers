@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: any }) {
     <>
       <Head>
         <link rel={'manifest'} href={'/manifest.json'} />
-        <meta name="theme-color" content="#ff6600" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
       <Script

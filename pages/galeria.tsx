@@ -65,7 +65,7 @@ export default function Galeria() {
           content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete."
         />
         <meta name="description" content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
-        <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/galeria" />
         <link rel="canonical" href="https://simpletravelers.sk/galeria" />
         <meta name="keywords" content="" />

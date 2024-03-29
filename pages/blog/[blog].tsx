@@ -35,34 +35,31 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
   }, []);
 
   return (
-    <Page>
-      <div ref={refTextArea} className="screen-reader-text">
-        {articleData.content === undefined ? (
-          <h4>Article Could Not Be Found</h4>
-        ) : (
-          <>
-            {articleData.tags && (
-              <Head>
-                <title>{articleTitle}, Simple Travelers</title>
-                <meta property="og:title" content={articleData.tags.title ? articleData.tags.title : ''} />
-                <meta
-                  property="og:description"
-                  content={articleData.tags.description ? articleData.tags.description : ''}
-                />
-                <meta name="description" content={articleData.tags.description ? articleData.tags.description : ''} />
-                <meta
-                  property="og:image"
-                  content={articleData.tags.image ? 'https://simpletravelers.sk/' + articleData.tags.image : ''}
-                />
-                <meta name="keywords" content={articleData.tags.keywords ? articleData.tags.keywords : ''} />
-                <meta property="og:url" content={'https://simpletravelers.sk/' + articleData.url} />
-              </Head>
-            )}
-            {articleData.content.map((data: any, idx: any) => ArticleRenderer(data, idx, textAreaWidth))}
-          </>
-        )}
-      </div>
-    </Page>
+    <>
+      {articleData.tags && (
+        <Head>
+          <title>{articleTitle}, Simple Travelers</title>
+          <meta property="og:title" content={articleData.tags.title ? articleData.tags.title : ''} />
+          <meta property="og:description" content={articleData.tags.description ? articleData.tags.description : ''} />
+          <meta name="description" content={articleData.tags.description ? articleData.tags.description : ''} />
+          <meta
+            property="og:image"
+            content={articleData.tags.image ? 'https://simpletravelers.sk/static/' + articleData.tags.image : ''}
+          />
+          <meta name="keywords" content={articleData.tags.keywords ? articleData.tags.keywords : ''} />
+          <meta property="og:url" content={'https://simpletravelers.sk/static/' + articleData.url} />
+        </Head>
+      )}
+      <Page>
+        <div ref={refTextArea} className="screen-reader-text">
+          {articleData.content === undefined ? (
+            <h4>Article Could Not Be Found</h4>
+          ) : (
+            <>{articleData.content.map((data: any, idx: any) => ArticleRenderer(data, idx, textAreaWidth))}</>
+          )}
+        </div>
+      </Page>
+    </>
   );
 };
 

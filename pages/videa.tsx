@@ -4,10 +4,8 @@ import Head from 'next/head';
 import React from 'react';
 import { Flex } from 'UI/Flex/Flex';
 import { MarginBox } from 'UI/MarginBox';
-import { useMedium } from 'utils/useBreakpoint';
 
 export default function Videos() {
-  const medium = useMedium();
   return (
     <>
       <Head>
@@ -15,7 +13,7 @@ export default function Videos() {
         <meta property="og:title" content="Videá" />
         <meta property="og:description" content="Videá cestovateľského blogu Simple Travelers" />
         <meta name="description" content="Videá cestovateľského blogu Simple Travelers" />
-        <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/videa" />
         <meta name="keywords" content="video, videos" />
       </Head>

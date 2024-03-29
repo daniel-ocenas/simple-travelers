@@ -12,7 +12,10 @@ export default function GDPRBlog() {
           <meta property="og:title" content="Simple Travelers | GDPR" />
           <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
           <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
-          <meta property="og:image" content="https://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+          <meta
+            property="og:image"
+            content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg"
+          />
           <meta property="og:url" content="https://simpletravelers.sk/zasadypouzivaniaosobnychudajov" />
           <meta name="keywords" content="" />
         </Head>
