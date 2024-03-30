@@ -15,6 +15,7 @@ export default function Videos() {
         <meta name="description" content="Videá cestovateľského blogu Simple Travelers" />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/videa" />
+        <meta property="og:type" content="article" />
         <meta name="keywords" content="video, videos" />
       </Head>
       <Page>

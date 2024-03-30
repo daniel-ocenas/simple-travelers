@@ -46,6 +46,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
             property="og:image"
             content={articleData.tags.image ? 'https://simpletravelers.sk/static/' + articleData.tags.image : ''}
           />
+          <meta property="og:type" content="article" />
           <meta name="keywords" content={articleData.tags.keywords ? articleData.tags.keywords : ''} />
           <meta property="og:url" content={'https://simpletravelers.sk/static/' + articleData.url} />
         </Head>

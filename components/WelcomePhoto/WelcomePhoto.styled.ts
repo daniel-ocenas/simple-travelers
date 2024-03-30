@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SWelcomePhoto = styled.div`
   position: absolute;
   width: 100%;
-  height: calc(100vh + 100px);
+  height: calc(100vh + 97px);
   top: 0;
   right: 0;
   object-fit: cover;
@@ -11,15 +11,15 @@ export const SWelcomePhoto = styled.div`
 
 export const SWelcomePhotoDivider = styled.div`
   position: absolute;
-  width: 100%;
-  height: 100px;
-  top: 100vh;
-  right: 0;
+  width: 102%;
+  height: 104px;
+  top: calc(100vh - 1px);
+  left: -1px;
   overflow: hidden;
 
   img {
     filter: drop-shadow(0px 100px 0 var(--backgroundColor));
-    transform: translateY(-100px);
+    transform: translateY(-105px);
   }
 `;
 

@@ -102,6 +102,7 @@ function Blog() {
         <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/blog" />
+        <meta property="og:type" content="article" />
         <meta
           name="keywords"
           content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"

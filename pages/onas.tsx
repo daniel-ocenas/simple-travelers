@@ -13,6 +13,7 @@ export default function Onas() {
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/AboutUs.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/onas" />
+        <meta property="og:type" content="article" />
         <meta name="keywords" content="$OG_KEYWORDS" />
       </Head>
       <Page>

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { Link } from 'UI/Link';
+import useScreenSize from 'utils/useScreenSize';
 import {
   SWelcomePhoto,
   SWelcomePhotoDivider,
@@ -10,9 +11,15 @@ import {
 } from './WelcomePhoto.styled';
 
 const WelcomePhoto = () => {
+  const { width } = useScreenSize();
   return (
     <SWelcomePhoto>
-      <Image alt={'welcome-photo'} src={'/static/images/Background.jpg'} style={{ objectFit: 'cover' }} fill />
+      <Image
+        alt={'welcome-photo'}
+        src={`/static/images/${width < 850 ? 'BackgroundSmall' : 'Background'}.jpg`}
+        style={{ objectFit: 'cover' }}
+        fill
+      />
       <SWelcomePhotoDivider>
         <Image
           alt={'welcome-photo-divider'}

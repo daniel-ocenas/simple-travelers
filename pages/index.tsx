@@ -50,6 +50,7 @@ export default function Home() {
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/" />
+        <meta property="og:type" content="article" />
         <meta
           name="keywords"
           content="cestovateľský blog, cestuj po svete, erasmus, roadtrip, lacné cestovanie, cestovanie bez cestovky"
