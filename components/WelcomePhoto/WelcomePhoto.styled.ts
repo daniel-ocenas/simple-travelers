@@ -28,10 +28,14 @@ export const TitleContainer = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  margin-top: 10vh;
+  margin-top: 1vh;
   text-align: center;
   /*background-color: var(--backgroundColor);*/
   padding-bottom: 3px;
+
+  @media (min-width: 850px) {
+    margin-top: 8vh;
+  }
 `;
 
 export const TitleTravelers = styled.img`
@@ -51,15 +55,15 @@ export const TitleTravelers = styled.img`
   }
 `;
 
-export const TitleCatchLine = styled.p`
-  font-family: 'Indie Flower';
+export const TitleCatchLine = styled.div`
+  font-family: 'Indie Flower', 'serif';
   text-align: center;
-  font-size: 1.3em;
+  font-size: 2.5em;
   margin: 0;
   text-shadow: 2px 3px 3px rgba(255, 255, 255, 1), -3px 3px 3px rgba(255, 255, 255, 1),
     1px -3px 3px rgba(255, 255, 255, 1), -3px -3px 3px rgba(255, 255, 255, 1);
 
-  @media (min-width: 992px) {
-    font-size: 1.8em;
+  @media (min-width: 850px) {
+    font-size: 2em;
   }
 `;

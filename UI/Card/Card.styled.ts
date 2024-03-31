@@ -33,11 +33,10 @@ export const SCardImage = styled.div<{ $src: string }>`
 `;
 
 export const CategoryRow = styled.div`
+  font-family: 'Quicksand', serif;
   text-align: left;
+  font-size: 1.1em;
   margin: 6px 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: #5a5a5a;
   text-decoration: none;
 
   span:first-child {

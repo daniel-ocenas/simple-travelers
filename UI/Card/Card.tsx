@@ -25,7 +25,8 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
   return (
     <Link href={url} className={'linkNoDecoration'} passHref>
       <SCard onClick={toggleLoading}>
-        <Flex direction={'column'} maxHeight={600}>
+        {/*<Flex direction={'column'} maxHeight={600}>*/}
+        <Flex direction={'column'}>
           <SCardImage $src={image} />
           {isLoading ? (
             <CenterFlex>
@@ -34,7 +35,7 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
           ) : (
             <MarginBox mx={16}>
               <h3>{title}</h3>
-              <p>{date}</p>
+              <h6>{date}</h6>
               <CategoryRow>
                 {category.map((cat: string) => {
                   return <span key={title + cat}>{cat}</span>;
