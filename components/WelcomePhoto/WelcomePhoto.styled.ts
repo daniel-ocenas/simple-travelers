@@ -33,7 +33,7 @@ export const TitleContainer = styled.div`
   /*background-color: var(--backgroundColor);*/
   padding-bottom: 3px;
 
-  @media (min-width: 850px) {
+  @media (min-width: 768px) {
     margin-top: 8vh;
   }
 `;
@@ -44,12 +44,12 @@ export const TitleTravelers = styled.img`
   display: inline-block;
   cursor: pointer;
 
-  :hover {
+  &:hover {
     transform: scale(1.1);
     transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  :active {
+  &:active {
     transform: scale(0.9);
     transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
@@ -63,7 +63,7 @@ export const TitleCatchLine = styled.div`
   text-shadow: 2px 3px 3px rgba(255, 255, 255, 1), -3px 3px 3px rgba(255, 255, 255, 1),
     1px -3px 3px rgba(255, 255, 255, 1), -3px -3px 3px rgba(255, 255, 255, 1);
 
-  @media (min-width: 850px) {
+  @media (min-width: 768px) {
     font-size: 2em;
   }
 `;

@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import backgroundPhoto from 'public/static/images/Background.jpg';
+import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
 import { Flex } from 'UI/Flex';
 import { Link } from 'UI/Link';
@@ -13,15 +15,13 @@ import {
 
 const WelcomePhoto = () => {
   const { width } = useScreenSize();
-  const smallView = width < 850;
+  const smallView = width < 768;
+  const backgroundImage = smallView ? backgroundPhotoSmall : backgroundPhoto;
+  console.log(smallView, width);
+  console.log(backgroundImage);
   return (
     <SWelcomePhoto>
-      <Image
-        alt={'welcome-photo'}
-        src={`/static/images/${smallView ? 'BackgroundSmall' : 'Background'}.jpg`}
-        style={{ objectFit: 'cover' }}
-        fill
-      />
+      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fill />
       <SWelcomePhotoDivider>
         <Image
           alt={'welcome-photo-divider'}

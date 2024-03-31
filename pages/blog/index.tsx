@@ -4,6 +4,7 @@ import Page from 'components/Page';
 import { ArticlesList } from 'data/ArticlesListConst';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import Loader from 'UI/Loader';
 
 const { Option } = Select;
 const optionsSel = [
@@ -28,6 +29,7 @@ function Blog() {
   const [filterOptions, setFilterOptions] = useState([]);
   const [articlesList, setArticlesList] = useState([]);
   const [articlesDisplay, setArticlesDisplay] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -55,6 +57,7 @@ function Blog() {
         });
       });
 
+      setIsLoading(false);
       // set categories
       setFilterOptions(
         filterCategories.map((option: any) => {
@@ -128,7 +131,7 @@ function Blog() {
             </Col>
           </Row>
         </Form>
-        <BlogCardsView articles={articlesDisplay} />
+        {isLoading ? <Loader /> : <BlogCardsView articles={articlesDisplay} />}
       </Page>
     </>
   );
