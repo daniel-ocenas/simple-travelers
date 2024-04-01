@@ -1,8 +1,7 @@
+import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-
-import ArticleRenderer from '../../components/Article';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;

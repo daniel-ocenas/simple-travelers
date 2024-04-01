@@ -1,19 +1,18 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import { Link } from 'UI/Link';
 
 const ArticleLink = (props: any) => {
-  if (props.type === 'external')
-    return (
-      <a href={props.url} target="_blank" rel="noopener noreferrer">
-        {props.text}
-      </a>
-    )
-
   return (
-    <Link className="inline-link" href={props.url} passHref>
+    <Link
+      className="inline-link"
+      href={props.url}
+      external={props.type === 'external'}
+      newTab={props.type === 'external'}
+      passHref
+    >
       {props.text}
     </Link>
-  )
-}
+  );
+};
 
-export default ArticleLink
+export default ArticleLink;

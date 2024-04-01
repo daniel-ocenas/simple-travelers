@@ -17,8 +17,7 @@ const WelcomePhoto = () => {
   const { width } = useScreenSize();
   const smallView = width < 768;
   const backgroundImage = smallView ? backgroundPhotoSmall : backgroundPhoto;
-  console.log(smallView, width);
-  console.log(backgroundImage);
+
   return (
     <SWelcomePhoto>
       <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fill />
