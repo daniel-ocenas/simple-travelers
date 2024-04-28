@@ -21,7 +21,7 @@ const emptyArticle: Article = {
   category: undefined,
   content: [
     {
-      component: 'h3',
+      component: 'h2',
       text: '',
       order: 0,
     },
@@ -107,21 +107,25 @@ const CreateArticle = () => {
         <MarginBox mt={16} />
         <div className="screen-reader-text">
           {articleContent.content?.map((data: any, idx: number) => {
-            return preview ? (
-              ArticleRenderer(data, idx, 500)
-            ) : (
-              <>
-                <EditableComponent
-                  item={data}
-                  articleContent={articleContent.content}
-                  setArticleContent={(content) => setArticleContent({ ...articleContent, content })}
-                />
-                <MarginBox mt={16} />
-              </>
+            return (
+              <div key={idx}>
+                {preview ? (
+                  ArticleRenderer(data, idx, 500)
+                ) : (
+                  <>
+                    <EditableComponent
+                      item={data}
+                      articleContent={articleContent.content}
+                      setArticleContent={(content) => setArticleContent({ ...articleContent, content })}
+                    />
+                    <MarginBox mt={16} />
+                  </>
+                )}
+              </div>
             );
           })}
         </div>
-        <ComponentSelector addComponent={addComponent} itemsCount={articleContent.content.length} />
+        {!preview && <ComponentSelector addComponent={addComponent} itemsCount={articleContent.content.length} />}
       </Flex>
       <MarginBox mt={32} />
       <Flex direction={'row'} justify={'flex-end'} align={'center'}>

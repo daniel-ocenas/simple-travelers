@@ -1,14 +1,8 @@
-import React from 'react'
-import ArticleTextRenderer from './ArticleTextRenderer'
+import Parser from 'html-react-parser';
+import React from 'react';
 
 const ArticleText = (props: any) => {
-  return (
-    <p className={props.className}>
-      {props.children.map((data: any, idx: any) =>
-        ArticleTextRenderer(data, idx)
-      )}
-    </p>
-  )
-}
+  return <>{Parser(props.text)}</>;
+};
 
-export default ArticleText
+export default ArticleText;

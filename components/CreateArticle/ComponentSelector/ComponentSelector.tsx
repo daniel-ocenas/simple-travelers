@@ -8,9 +8,31 @@ import {
   emptySubtitleComponent,
   emptyTextComponent,
 } from 'components/CreateArticle/ComponentSelector/ComponentType';
+import { useState } from 'react';
 import { Flex } from 'UI/Flex';
-import { TextArea, TextInput } from 'UI/Inputs';
+import { TextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
+import { RichTextEditor } from 'UI/RichTextEditor';
+
+export interface UploadFile<T = any> extends Blob {
+  uid: string;
+  size: number;
+  name: string;
+  fileName?: string;
+  lastModified?: number;
+  lastModifiedDate?: Date;
+  url?: string;
+  status?: 'done' | 'uploading' | 'error' | 'removed';
+  percent?: number;
+  thumbUrl?: string;
+  originFileObj?: File | Blob;
+  response?: T;
+  error?: any;
+  linkProps?: any;
+  type: string;
+  xhr?: T;
+  preview?: string;
+}
 
 interface ComponentSelectorProps {
   addComponent: (component: ArticleComponent) => void;
@@ -60,6 +82,8 @@ interface EditableComponentSelectorProps {
 }
 
 export const EditableComponent = ({ item, articleContent, setArticleContent }: EditableComponentSelectorProps) => {
+  const [fileList, setFileList] = useState<any>([]);
+  console.log(fileList);
   const move = (direction: 'up' | 'down', order?: number) => {
     if (order) {
       const tmpContent = [...articleContent];
@@ -73,13 +97,62 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
     }
   };
 
+  const updateH3 = (text: string, order?: number) => {
+    if (order) {
+      const tmpContent = [...articleContent];
+      const current = tmpContent.splice(order, 1)[0];
+      setArticleContent(tmpContent.splice(order, 0, { ...current, text }));
+    }
+  };
+
+  const updateP = (text: string, order?: number) => {
+    console.log('UPDATE P', order);
+    console.log(text);
+    if (order) {
+      console.log(articleContent);
+      const tmpContent = [...articleContent];
+      const current = tmpContent.splice(order, 1)[0];
+      console.log('current', current);
+      console.log(tmpContent);
+      tmpContent.splice(order, 0, { ...current, text });
+      setArticleContent(tmpContent);
+    }
+  };
+
   const getEditableComponent = () => {
     switch (item.component) {
       case 'img':
+        const uploadFile = (file: UploadFile) => {
+          console.log(file);
+          const formData = new FormData();
+          formData.append('file', file.originFileObj ?? '');
+          console.log(formData);
+          fetch('/api/image', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+        };
         return (
           <Flex background={'white'}>
             <MarginBox mx={8} my={8}>
-              <Upload listType="picture" maxCount={2} multiple onChange={(item) => console.log(item)}>
+              <Upload
+                listType={'picture'}
+                maxCount={2}
+                multiple
+                onRemove={(file) => {
+                  const index = fileList.indexOf(file);
+                  const newFileList = fileList.slice();
+                  newFileList.splice(index, 1);
+                  setFileList(newFileList);
+                }}
+                beforeUpload={(file, fileList) => {
+                  setFileList([...fileList]);
+                  return false;
+                }}
+              >
                 <Button icon={<UploadOutlined />}>Upload (Max: 2)</Button>
               </Upload>
             </MarginBox>
@@ -92,9 +165,14 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
           </Flex>
         );
       case 'h3':
-        return <TextInput value={item.text} onChange={(value) => console.log(value)} />;
+        return <TextInput value={item.text} onChange={(value) => updateH3(value, item.order)} />;
       case 'p':
-        return <TextArea value={item.text} onChange={(value) => console.log(value)} />;
+        return (
+          <Flex direction={'column'}>
+            <RichTextEditor theme={'snow'} value={item.text} onChange={(richText) => updateP(richText, item.order)} />
+            <MarginBox mt={64} />
+          </Flex>
+        );
       default:
         return <></>;
     }

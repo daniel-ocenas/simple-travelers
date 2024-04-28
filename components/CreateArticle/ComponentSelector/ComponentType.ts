@@ -12,27 +12,24 @@ interface ImageSrcType {
 }
 
 // component initial values
-export const emptyTextComponent: ArticleComponent = {
-  component: 'p',
-  children: [
-    {
-      component: 'simpleText',
-      text: 'a',
-    },
-  ] as SimpleTextComponentType[],
-};
+
 export const emptyImgComponent: ArticleComponent = {
   component: 'img',
   src: [
     {
       src: '',
-      name: 'a',
+      name: '',
     },
   ] as ImageSrcType[],
 };
+export const emptyTextComponent: ArticleComponent = {
+  component: 'p',
+  text: '',
+};
+
 export const emptySubtitleComponent: ArticleComponent = {
   component: 'h3',
-  text: 'aa',
+  text: '',
 };
 
 export interface ArticleComponent {
