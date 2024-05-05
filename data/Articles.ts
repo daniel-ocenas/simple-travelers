@@ -1637,7 +1637,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"Pokračovanie článku&nbsp; "<a href="/blog/roadtrip-usa-1" >Roadtrip USA (1. časť) Zo San Francisca do Monumet Valley</a>',
+        text: 'Pokračovanie článku&nbsp; <a href="/blog/roadtrip-usa-1" >Roadtrip USA (1. časť) Zo San Francisca do Monumet Valley</a>',
       },
       {
         component: 'h3',
@@ -2671,11 +2671,11 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"<a href="/blog/cestahrdinovsnpzapisky" >Naša cesta naprieč sLOVEenskom časť 1.</a>"',
+        text: '<a href="/blog/cestahrdinovsnpzapisky" >Naša cesta naprieč sLOVEenskom časť 1.</a>',
       },
       {
         component: 'p',
-        text: '"<a href="/galeria?view=cestahrdinovsnp" >Galéria z našej Cesty hrdinov SNP</a>"',
+        text: '<a href="/galeria?view=cestahrdinovsnp" >Galéria z našej Cesty hrdinov SNP</a>',
       },
     ],
   },
@@ -2844,7 +2844,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"O&nbsp;tom, čo všetko je potrebné vybaviť pri podávaní prihlášky na Erasmus a ako vyzerali naše jednotlivé kroky, sa dočítaš v&nbsp;článku "<a href="/blog/radyatipyersmusvybavovacky" >Erasmus vybavovačky krok za krokom</a>',
+        text: 'O&nbsp;tom, čo všetko je potrebné vybaviť pri podávaní prihlášky na Erasmus a ako vyzerali naše jednotlivé kroky, sa dočítaš v&nbsp;článku <a href="/blog/radyatipyersmusvybavovacky" >Erasmus vybavovačky krok za krokom</a>',
       },
       {
         component: 'p',
@@ -3123,7 +3123,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"Ak je zámerom tvojho cestovania spoznávanie, na presun jednoznačne odporúčame auto. Spravidla najväčšou položkou cestovateľkých výdajov býva práve jeho zapožičanie. Na lepšiu prehľadnosť sme sa rozhodli napísať samostatný článok a&nbsp;zdôrazniť najdôležitejšie body, na ktoré si treba dať pozor pri požičiavaní auta v&nbsp;Spojených štátoch. "<a href="/blog/radyatipyusapozicanieauta" >Požičanie auta v USA</a>',
+        text: 'Ak je zámerom tvojho cestovania spoznávanie, na presun jednoznačne odporúčame auto. Spravidla najväčšou položkou cestovateľkých výdajov býva práve jeho zapožičanie. Na lepšiu prehľadnosť sme sa rozhodli napísať samostatný článok a&nbsp;zdôrazniť najdôležitejšie body, na ktoré si treba dať pozor pri požičiavaní auta v&nbsp;Spojených štátoch. <a href="/blog/radyatipyusapozicanieauta" >Požičanie auta v USA</a>',
       },
       {
         component: 'h3',
@@ -3149,7 +3149,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"Asi najbežnejším a&nbsp;najlacnejším spôsobom je Airbnb, ktoré aj my s&nbsp;obľubou využívame. Ceny sa líšia od mesta a&nbsp;od vzdialenosti od centra. Ak ešte nemáš vytvorený účet na Airbnb, použi tento "<a href="https://sk.airbnb.com/c/liviab1667?currency=EUR" >odkaz</a>" a&nbsp;získaš zľavu na svoje prvé ubytovanie."',
+        text: 'Asi najbežnejším a&nbsp;najlacnejším spôsobom je Airbnb, ktoré aj my s&nbsp;obľubou využívame. Ceny sa líšia od mesta a&nbsp;od vzdialenosti od centra. Ak ešte nemáš vytvorený účet na Airbnb, použi tento <a href="https://sk.airbnb.com/c/liviab1667?currency=EUR" >odkaz</a> a&nbsp;získaš zľavu na svoje prvé ubytovanie.',
       },
       {
         component: 'p',
@@ -3299,7 +3299,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"Pripájame "<a href="https://carrental.deals/blg/best-car-rental-companies-in-usa/#/searchcars" rel="noopener noreferrer" target="_blank">odkaz</a>" na stránku, kde si môžeš porovnať výhody a&nbsp;nevýhody ponúkaných služieb v&nbsp;jednotlivých spoločnostiach."',
+        text: 'Pripájame <a href="https://carrental.deals/blg/best-car-rental-companies-in-usa/#/searchcars" rel="noopener noreferrer" target="_blank">odkaz</a> na stránku, kde si môžeš porovnať výhody a&nbsp;nevýhody ponúkaných služieb v&nbsp;jednotlivých spoločnostiach.',
       },
       {
         component: 'img',
@@ -3415,11 +3415,11 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: '"V&nbsp;Alamo sa nám podarilo uplatniť ISIC zľavu, vďaka ktorej sme nemuseli platiť poplatok za mladého a&nbsp;druhého vodiča, zníženie daňových poplatkov, plná nádrž a&nbsp;odovzdanie auta na inej pobočke. -&gt; Good deal!&nbsp; "<a href="https://partner.rentalcar.com/isic-angebot/?locale=en_GB" rel="noopener noreferrer" target="_blank">Alamo s ISIC zľavou</a>',
+        text: 'V&nbsp;Alamo sa nám podarilo uplatniť ISIC zľavu, vďaka ktorej sme nemuseli platiť poplatok za mladého a&nbsp;druhého vodiča, zníženie daňových poplatkov, plná nádrž a&nbsp;odovzdanie auta na inej pobočke. -&gt; Good deal!&nbsp; <a href="https://partner.rentalcar.com/isic-angebot/?locale=en_GB" rel="noopener noreferrer" target="_blank">Alamo s ISIC zľavou</a>',
       },
       {
         component: 'p',
-        text: '"V&nbsp;Enterprise, sme si objednali auto, ktoré spadalo do najnižšej kategórie, ale&nbsp;ústretový pracovník nám ho &nbsp;bez poplatku vymenil za auto o&nbsp;3 kategórie lepšie. "<a href="https://www.enterprise.com/en/home.html" rel="noopener noreferrer" target="_blank">Požičovňa enterprise</a>',
+        text: 'V&nbsp;Enterprise, sme si objednali auto, ktoré spadalo do najnižšej kategórie, ale&nbsp;ústretový pracovník nám ho &nbsp;bez poplatku vymenil za auto o&nbsp;3 kategórie lepšie. <a href="https://www.enterprise.com/en/home.html" rel="noopener noreferrer" target="_blank">Požičovňa enterprise</a>',
       },
     ],
   },

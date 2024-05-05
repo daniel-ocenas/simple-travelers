@@ -6,15 +6,14 @@ import React, { useEffect, useState } from 'react';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
-  const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
-    return undefined;
-  });
-
-  let data = await response?.json();
-  if (response?.status !== 200) {
-    data = ArticlesContent.find((article) => article.url === id);
-    // const data = ArticlesContent.find((article) => article.url === id);
-  }
+  // const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
+  //   return undefined;
+  // });
+  // let data = await response?.json();
+  // if (response?.status !== 200) {
+  //   data = ArticlesContent.find((article) => article.url === id);
+  const data = ArticlesContent.find((article) => article.url === id);
+  // }
 
   return {
     props: {
@@ -46,9 +45,9 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     title: `${title}, Simple Travelers`,
     articleTitle: `${title ?? ''}`,
     description: `${description ?? ''}`,
-    image: `${image ? 'https://simpletravelers.sk/static/' + image : ''}`,
+    image: `${image ? 'https://simpletravelers.sk/static' + image : ''}`,
     keywords: `${keywords ?? ''}`,
-    url: `https://simpletravelers.sk/static/${articleData.url}`,
+    url: `https://simpletravelers.sk/blog/${articleData.url}`,
   };
 
   return (
