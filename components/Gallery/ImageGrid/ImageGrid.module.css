@@ -6,10 +6,11 @@
   grid-auto-flow: dense;
 }
 
-.lightboxImgWrapper p {
+.lightboxImgCaption {
   color: white;
   font-size: 1em;
   align-self: center;
+  padding: 0 15vw;
 }
 
 .galleryItem {
@@ -147,13 +148,13 @@
 }
 
 .lightboxImgLandscape {
-  width: 70vw;
+  max-width: 70vw;
   max-height: 80vh;
   object-fit: contain;
 }
 
 .lightboxImgPortrait {
-  height: 90vh;
-  max-width: 90vh;
+  max-width: 70vw;
+  max-height: 80vh;
   object-fit: contain;
 }

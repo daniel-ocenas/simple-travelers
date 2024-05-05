@@ -107,14 +107,14 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
 
   const updateP = (text: string, order?: number) => {
     console.log('UPDATE P', order);
-    console.log(text);
     if (order) {
-      console.log(articleContent);
+      const updatedText = text.substring(0, text.length - 4).substring(3);
+      console.log(updatedText);
       const tmpContent = [...articleContent];
       const current = tmpContent.splice(order, 1)[0];
       console.log('current', current);
       console.log(tmpContent);
-      tmpContent.splice(order, 0, { ...current, text });
+      tmpContent.splice(order, 0, { ...current, text: updatedText });
       setArticleContent(tmpContent);
     }
   };

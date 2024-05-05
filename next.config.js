@@ -41,6 +41,17 @@ const nextConfig = {
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'sk-SK',
   },
+  transpilePackages: [
+    'antd',
+    '@ant-design',
+    'rc-util',
+    'rc-pagination',
+    'rc-picker',
+    'rc-notification',
+    'rc-tooltip',
+    'rc-tree',
+    'rc-table',
+  ],
 };
 
 module.exports = process.env.NODE_ENV === 'development' ? nextConfig : withPWA(nextConfig);

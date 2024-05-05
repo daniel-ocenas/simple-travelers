@@ -1,12 +1,20 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
+import { ArticlesContent } from 'data/Articles';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
-  const res = await fetch('https://simpletravelers.sk/api/articlecontent/' + id);
-  const data = await res.json();
+  const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
+    return undefined;
+  });
+
+  let data = await response?.json();
+  if (response?.status !== 200) {
+    data = ArticlesContent.find((article) => article.url === id);
+    // const data = ArticlesContent.find((article) => article.url === id);
+  }
 
   return {
     props: {
@@ -18,7 +26,8 @@ export async function getServerSideProps({ query }: { query: any }) {
 const BlogPage = ({ articleData }: { articleData: any }) => {
   const [textAreaWidth, setTextAreaWidth] = useState(300);
   const refTextArea = React.useRef<any>();
-  const articleTitle = articleData.tags.title;
+  const { title, description, image, keywords } = articleData.tags;
+
   const getTextAreaWidth = () => {
     const newWidth = refTextArea.current.clientWidth;
     setTextAreaWidth(newWidth);
@@ -33,25 +42,31 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     return () => window.removeEventListener('resize', getTextAreaWidth);
   }, []);
 
+  const head = {
+    title: `${title}, Simple Travelers`,
+    articleTitle: `${title ?? ''}`,
+    description: `${description ?? ''}`,
+    image: `${image ? 'https://simpletravelers.sk/static/' + image : ''}`,
+    keywords: `${keywords ?? ''}`,
+    url: `https://simpletravelers.sk/static/${articleData.url}`,
+  };
+
   return (
     <>
       {articleData.tags && (
         <Head>
-          <title>{articleTitle}, Simple Travelers</title>
-          <meta property="og:title" content={articleData.tags.title ? articleData.tags.title : ''} />
-          <meta property="og:description" content={articleData.tags.description ? articleData.tags.description : ''} />
-          <meta name="description" content={articleData.tags.description ? articleData.tags.description : ''} />
-          <meta
-            property="og:image"
-            content={articleData.tags.image ? 'https://simpletravelers.sk/static/' + articleData.tags.image : ''}
-          />
-          <meta property="og:type" content="article" />
-          <meta name="keywords" content={articleData.tags.keywords ? articleData.tags.keywords : ''} />
-          <meta property="og:url" content={'https://simpletravelers.sk/static/' + articleData.url} />
+          <title>{head.title}</title>
+          <meta property="og:title" content={head.articleTitle} />
+          <meta property="og:description" content={head.description} />
+          <meta name="description" content={head.description} />
+          <meta property="og:image" content={head.image} />
+          <meta property="og:url" content={head.url} />
+          <meta property="og:type" content={'article'} />
+          <meta name="keywords" content={head.keywords} />
         </Head>
       )}
       <Page>
-        <div ref={refTextArea} className="screen-reader-text">
+        <div ref={refTextArea} className="screen-reader-text article">
           {articleData.content === undefined ? (
             <h4>Article Could Not Be Found</h4>
           ) : (

@@ -1,6 +1,6 @@
+import styles from 'components/Gallery/ImageGrid/ImageGrid.module.css';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import useScreenSize from 'utils/useScreenSize';
-import styles from './ImageGrid.module.css';
 
 export interface GalleryImageProps {
   src: string;
@@ -114,7 +114,7 @@ function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, image
                 src={`/static/${imageToShow.src}`}
                 alt={imageToShow.src}
               />
-              <p>{imageToShow.caption}</p>
+              <p className={styles.lightboxImgCaption}>{imageToShow.caption}</p>
             </div>
           )}
           <span className={styles.closeBtn} onClick={hideLightBox}></span>

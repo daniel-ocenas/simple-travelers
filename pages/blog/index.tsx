@@ -33,18 +33,18 @@ function Blog() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      // Load articles from database
-      const response = await fetch('/api/articles');
-      let data = await response.json();
-      if (response.status !== 200) {
+      const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
+        return undefined;
+      });
+
+      let data = await response?.json();
+      if (response?.status !== 200) {
         data = {
           articleList: ArticlesList,
         };
       }
-      // Set all articles list
-      setArticlesList(data.articleList);
 
-      // set display articles
+      setArticlesList(data.articleList);
       setArticlesDisplay(sortArticles(data.articleList, 'asc'));
 
       // load categories for filtering
@@ -103,7 +103,10 @@ function Blog() {
         <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
         <meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
         <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
-        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta
+          property="og:image"
+          content="https://simpletravelers.sk/static/images/photosFull/BaliBlackBeachDroneUs.jpg"
+        />
         <meta property="og:url" content="https://simpletravelers.sk/blog" />
         <meta property="og:type" content="article" />
         <meta

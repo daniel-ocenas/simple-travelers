@@ -8,9 +8,9 @@ html {
   /*--primaryColor: #ffbf80;  */
   --primaryColor: #000000;
   --primaryColorLight: #88ab8e;
-  --primaryColorExtraLight: #f6e8d8;
+  --primaryColorExtraLight: #b6ccb9;
   --primaryColorDark: #030e12;
-  --secondaryColor: #88ab8e;
+  --secondaryColor: #f6e8d8;
   --secondaryDark: #f6e8d8;
   overflow-x: hidden;
   --defaultBorderRadius: 3px;
@@ -35,17 +35,22 @@ html {
 body {
   margin: 0;
   padding: 0;
-  --sideLeftMargin: 2%;
-  --sideRightMargin: 2%;
-  --sideLeftMarginSmall: 1%;
-  --sideRightMarginSmall: 1%;
+  --sideLeftMargin: 3%;
+  --sideRightMargin: 3%;
+  --sideLeftMarginSmall: 2%;
+  --sideRightMarginSmall: 2%;
   --headerHeight: 160px;
   --tabsHeight: 52px;
   --socialMediaIconSize: 48px;
   font-family: 'Roboto';
+  background-color: var(--backgroundColor);
 }
 
 #__next {
+  background-color: var(--backgroundColor);
+}
+
+#safari {
   background-color: var(--backgroundColor);
 }
 
@@ -453,6 +458,12 @@ td {
 
   .side-panel {
     display: inline-block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .article {
+    margin-left: 10vw;
   }
 }
 

@@ -12,15 +12,18 @@ export default function Home() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch('/api/articles');
-      let data = await response.json();
-      console.log(data);
-      if (response.status !== 200) {
+      const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
+        return undefined;
+      });
+
+      let data = await response?.json();
+      if (response?.status !== 200) {
         data = {
           articleList: ArticlesList,
         };
       }
-      let sortedArticleList = data.articleList?.sort((a: any, b: any) => {
+
+      let sortedArticleList = data?.articleList?.sort((a: any, b: any) => {
         const start = +new Date(b.dateCreated);
         return start - +new Date(a.dateCreated);
       });

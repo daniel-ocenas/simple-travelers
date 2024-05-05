@@ -1,8 +1,8 @@
-import Parser from 'html-react-parser';
+import parse from 'html-react-parser';
 import React from 'react';
 
 const ArticleText = (props: any) => {
-  return <>{Parser(props.text)}</>;
+  return <p>{parse(props.text)}</p>;
 };
 
 export default ArticleText;

@@ -27,6 +27,7 @@ const WelcomePhoto = () => {
           src={'/static/images/BackgroundDivider.png'}
           style={{ objectFit: 'cover' }}
           fill
+          fetchPriority={'high'}
         />
       </SWelcomePhotoDivider>
       <TitleContainer>
