@@ -3,7 +3,7 @@ import { Link } from 'UI/Link';
 import { CenterFlex, Flex } from '../Flex';
 import Loader from '../Loader';
 import { MarginBox } from '../MarginBox';
-import { CategoryRow, SCard, SCardImage } from './Card.styled';
+import { CardText, CategoryRow, SCard, SCardImage } from './Card.styled';
 
 interface CardProps {
   title: string;
@@ -25,7 +25,6 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
   return (
     <Link href={url} className={'linkNoDecoration'} passHref>
       <SCard onClick={toggleLoading}>
-        {/*<Flex direction={'column'} maxHeight={600}>*/}
         <Flex direction={'column'}>
           <SCardImage $src={image} />
           {isLoading ? (
@@ -35,15 +34,15 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
           ) : (
             <MarginBox mx={16}>
               <h3>{title}</h3>
-              <h6>{date}</h6>
               <CategoryRow>
                 {category.map((cat: string) => {
                   return <span key={title + cat}>{cat}</span>;
                 })}
               </CategoryRow>
-              <div className="screen-reader-text">
+              <h6>{date}</h6>
+              <CardText>
                 <p>{text}</p>
-              </div>
+              </CardText>
             </MarginBox>
           )}
         </Flex>

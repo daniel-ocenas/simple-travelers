@@ -1,6 +1,6 @@
-import { ArrowDownOutlined, ArrowUpOutlined, UploadOutlined } from '@ant-design/icons';
-import { Button, Upload } from 'antd';
-import ArticleHeader from 'components/Article/ArticleHeader';
+import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { ArticleHeader } from 'components/Article';
 import {
   ArticleComponent,
   ArticleComponentType,
@@ -8,11 +8,12 @@ import {
   emptySubtitleComponent,
   emptyTextComponent,
 } from 'components/CreateArticle/ComponentSelector/ComponentType';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { TextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
 import { RichTextEditor } from 'UI/RichTextEditor';
+import EditableImageComponent from './EditableComponents/EditableImageComponent';
 
 export interface UploadFile<T = any> extends Blob {
   uid: string;
@@ -83,7 +84,6 @@ interface EditableComponentSelectorProps {
 
 export const EditableComponent = ({ item, articleContent, setArticleContent }: EditableComponentSelectorProps) => {
   const [fileList, setFileList] = useState<any>([]);
-  console.log(fileList);
   const move = (direction: 'up' | 'down', order?: number) => {
     if (order) {
       const tmpContent = [...articleContent];
@@ -108,8 +108,8 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
   const updateP = (text: string, order?: number) => {
     console.log('UPDATE P', order);
     if (order) {
-      const updatedText = text.substring(0, text.length - 4).substring(3);
-      console.log(updatedText);
+      const updatedText = text;
+      console.log('updatedText', updatedText);
       const tmpContent = [...articleContent];
       const current = tmpContent.splice(order, 1)[0];
       console.log('current', current);
@@ -122,42 +122,7 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
   const getEditableComponent = () => {
     switch (item.component) {
       case 'img':
-        const uploadFile = (file: UploadFile) => {
-          console.log(file);
-          const formData = new FormData();
-          formData.append('file', file.originFileObj ?? '');
-          console.log(formData);
-          fetch('/api/image', {
-            method: 'POST',
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
-        };
-        return (
-          <Flex background={'white'}>
-            <MarginBox mx={8} my={8}>
-              <Upload
-                listType={'picture'}
-                maxCount={2}
-                multiple
-                onRemove={(file) => {
-                  const index = fileList.indexOf(file);
-                  const newFileList = fileList.slice();
-                  newFileList.splice(index, 1);
-                  setFileList(newFileList);
-                }}
-                beforeUpload={(file, fileList) => {
-                  setFileList([...fileList]);
-                  return false;
-                }}
-              >
-                <Button icon={<UploadOutlined />}>Upload (Max: 2)</Button>
-              </Upload>
-            </MarginBox>
-          </Flex>
-        );
+        return <EditableImageComponent />;
       case 'h2':
         return (
           <Flex justify={'center'}>
@@ -179,21 +144,24 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
   };
 
   return (
-    <Flex direction={'row'}>
-      {getEditableComponent()}
-      {item.order !== 0 && (
-        <MarginBox ml={8}>
-          <Flex direction={'row'} justify={'flex-end'}>
-            <Button onClick={() => move('up', item.order)} icon={<ArrowUpOutlined />} disabled={item.order === 1} />
-            <MarginBox mr={8} />
-            <Button
-              onClick={() => move('down', item.order)}
-              icon={<ArrowDownOutlined />}
-              disabled={item.order === articleContent.length - 1}
-            />
-          </Flex>
-        </MarginBox>
-      )}
+    <Flex direction={'column'}>
+      <Flex direction={'row'}>
+        {getEditableComponent()}
+        {item.order !== 0 && (
+          <MarginBox ml={8}>
+            <Flex direction={'row'} justify={'flex-end'}>
+              <Button onClick={() => move('up', item.order)} icon={<ArrowUpOutlined />} disabled={item.order === 1} />
+              <MarginBox mr={8} />
+              <Button
+                onClick={() => move('down', item.order)}
+                icon={<ArrowDownOutlined />}
+                disabled={item.order === articleContent.length - 1}
+              />
+            </Flex>
+          </MarginBox>
+        )}
+      </Flex>
+      <MarginBox mt={16} />
     </Flex>
   );
 };

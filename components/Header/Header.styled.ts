@@ -5,7 +5,7 @@ export const STabsContainers = styled.div<{ $isTop: boolean }>`
   height: var(--tabsHeight);
   position: sticky;
   top: 0;
-  
+
   /*background: linear-gradient(*/
   /*    180deg,*/
   /*    var(--backgroundColor) 0%,*/
@@ -44,4 +44,17 @@ export const SideBar = styled.div`
 export const SMarginBox = styled.div`
   width: 100%;
   height: var(--tabsHeight);
+`;
+
+export const TitleWrapper = styled.div<{ $xl: boolean }>`
+  position: absolute;
+  font-family: 'Indie Flower';
+  text-align: center;
+  color: var(--primaryColor);
+  font-size: ${({ $xl }) => ($xl ? '2.4em' : '1.5em')};
+  top: ${({ $xl }) => ($xl ? '0' : '8px')};
+  left: ${({ $xl }) => ($xl ? '32px' : '16px')};
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 0;
 `;

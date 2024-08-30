@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
+import { Flex } from 'UI/Flex';
+import { MarginBox } from 'UI/MarginBox';
+import { useLarge } from 'utils/useBreakpoint';
 
 interface ImageProps {
   src: string;
@@ -13,30 +16,37 @@ interface ArticleImage {
 }
 
 const ArticleImage = (props: any) => {
+  const large = useLarge();
   if (!Array.isArray(props?.src)) return null;
+  let imageWidth = !isNaN(props.width) ? props.width - 2 : 300;
+  if (props.src.length > 1 && large) imageWidth = imageWidth / 2;
 
-  let imageWidth = !isNaN(props.width) ? props.width : 300;
-  if (props.src.length > 1) imageWidth = imageWidth / 2 - 10;
+  const singleImage = props.src.length === 1;
+  const imageHeight = singleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
 
-  const imageObjectFit = props.src.length === 1 ? 'contain' : undefined;
-  const displaySingleImage = props.src.length === 1;
-  const imageHeight = displaySingleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
   return (
-    <>
-      {props.src?.map((image: any, idx: any) => {
+    <Flex direction={large ? 'row' : 'column'} align={'center'}>
+      {props.src?.map((image: any) => {
         return (
-          <Image
-            key={image.name}
-            alt={image.name}
-            src={`/static${image.src.substring(2)}`}
-            width={imageWidth}
-            height={imageHeight}
-            priority={props.idx < 4}
-            style={{ objectFit: imageObjectFit, width: displaySingleImage ? '100%' : imageWidth, height: 'auto' }}
-          />
+          <MarginBox mx={1} key={image.name}>
+            <Image
+              alt={image.name}
+              key={image.name}
+              src={`/static${image.src.substring(2)}`}
+              width={imageWidth}
+              height={imageHeight}
+              priority={props.idx < 4}
+              style={{
+                objectFit: 'cover',
+                width: imageWidth,
+                height: 'auto',
+                borderRadius: '2px',
+              }}
+            />
+          </MarginBox>
         );
       })}
-    </>
+    </Flex>
   );
 };
 export default ArticleImage;

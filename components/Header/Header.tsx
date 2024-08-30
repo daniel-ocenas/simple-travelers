@@ -1,17 +1,19 @@
 import { SideBar, SMarginBox, SNavList, STabsContainers } from 'components/Header/Header.styled';
+import { TitleHeader } from 'components/Header/TitleHeader';
 import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { Flex } from 'UI/Flex';
 import { Link } from 'UI/Link';
 import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import useScreenSize from 'utils/useScreenSize';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
-const SIDEBAR_DATA = [
+const NAV_LINK_DATA = [
   {
-    title: 'Úvodná stránka',
+    title: 'Domov',
     path: '/',
   },
   {
@@ -38,18 +40,21 @@ function NavList() {
 
   return (
     <STabsContainers $isTop={isTop}>
-      <SNavList>
-        {SIDEBAR_DATA.map((item, index) => (
-          <div key={index} className={styles.navListItem}>
-            <div className={`${styles.navLink} ${location.pathname === item.path && styles.navLinkActive}`}>
-              <Link href={item.path} passHref>
-                {item.title}
-              </Link>
+      <Flex direction={'row'}>
+        <TitleHeader />
+        <SNavList>
+          {NAV_LINK_DATA.map((item, index) => (
+            <div key={index} className={styles.navListItem}>
+              <div className={`${styles.navLink} ${location.pathname === item.path && styles.navLinkActive}`}>
+                <Link href={item.path} passHref>
+                  {item.title}
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-        <SocialNetworkLinks />
-      </SNavList>
+          ))}
+          <SocialNetworkLinks />
+        </SNavList>
+      </Flex>
     </STabsContainers>
   );
 }
@@ -72,7 +77,7 @@ function NavMenu() {
           </Link>
         </div>
         <ul className={styles.navMenuItems} onClick={showSidebar}>
-          {SIDEBAR_DATA.map((item, index) => {
+          {NAV_LINK_DATA.map((item, index) => {
             return (
               <li key={index} className={styles.navText}>
                 <Link href={item.path} passHref>
@@ -92,7 +97,6 @@ function Header() {
   const { width } = useScreenSize();
   const location = useRouter();
   const { height } = useScreenSize();
-  const scroll = useGetScroll();
   const medium = width < 768;
 
   useEffect(() => {

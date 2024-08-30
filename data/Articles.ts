@@ -327,7 +327,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'h3',
-        text: 'Ostrá (1&nbsp;247&nbsp;m n. m.)',
+        text: 'Ostrá (1247 m n. m.)',
       },
       {
         component: 'p',
@@ -3678,6 +3678,160 @@ export const ArticlesContent: ArticleContent[] = [
       {
         component: 'p',
         text: 'Pomaly kráčame dolu a&nbsp;naše kolená dostávajú poriadne zabrať. Najradšej by sme sa tým kopcom už len skotúľali priamo do auta. Na poslednej rovinke sme sa cítili ako Usain Bolt, keď prebieha cieľovou čiarou. Zvládli sme to! Zdolali sme Veľkofatranskú magistrálu. Za dva dni sme prešli 46 km na nastúpali 2&nbsp;500 výškových metrov. Sme na seba hrdí.',
+      },
+    ],
+  },
+  {
+    url: 'najkrajsie-vyhlady-na-bali',
+    tags: {
+      title: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
+      description: '',
+      image: 'images/photosFull/VFPloskaBorisovUs.jpg',
+      keywords:
+        'bali, vyhlady na bali, zapady slnka na bali, vychody slnka na bali, turistika na bali, foto miesta na bali, instagramové miesta na bali, bali instagram',
+    },
+    content: [
+      {
+        component: 'h2',
+        text: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
+      },
+      {
+        component: 'p',
+        text: 'Ostrov Bali v Indonézii, známy aj ako „Ostrov bohov,“ ponúka množstvo nádherných miest s úchvatnými výhľadmi. Pre tých, ktorí milujú panoramatické scenérie, východy a západy slnka, je Bali skutočným rajom. V tomto článku vám dáme tipy na päť (must visit) miest, ktoré by ste nemali vynechať, pokiaľ si chcete vychutnať jedny z najočarujúcejších miest na Bali.',
+      },
+      {
+        component: 'h3',
+        text: '1. Lahangan Sweet',
+      },
+      {
+        component: 'p',
+        text: 'Lahangan Sweet je menej známe, ale rýchlo sa stávajúce populárne miesto pre nádherné výhľady na Bali. Nachádza sa v oblasti Karangasem a ponúka pokoj a nádherné panoramatické scenérie.',
+      },
+      {
+        component: 'p',
+        text: '<b>Prečo navštíviť:</b><ul><li><strong>Pokojné prostredie:</strong> Lahangan Sweet je ideálnym miestom pre tých, ktorí hľadajú únik od turistického ruchu. Môžete tu relaxovať a užívať si kľud a krásu prírody.</li><li><strong>Výhľad na horu Agung:</strong> Jedným z hlavných lákadiel je úžasný výhľad na majestátnu horu Agung. Pohľad na túto posvätnú horu, obklopenú zeleňou a dedinami, je fascinujúci, najmä pri západe slnka.</li><li><strong>Fotografické príležitosti:</strong> Lahangan Sweet je obľúbené medzi fotografmi vďaka svojim jedinečným výhľadom a fotogenickým miestam, vrátane hojdačiek a bambusových plošín, ktoré ponúkajú dokonalý rám pre vaše fotografie.</li></ul>',
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '../images/photosFull/BaliLahanganPointing.jpg',
+            name: 'BaliLahanganPointing',
+          },
+        ],
+        class: 'articlePictureLandscape',
+      },
+      {
+        component: 'h3',
+        text: '2. Campuhan Ridge Walk',
+      },
+      {
+        component: 'p',
+        text: 'Campuhan Ridge Walk je obľúbenou turistickou trasou v srdci Ubudu, ktorá ponúka nádherné výhľady na okolité údolia a ryžové polia.',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Malebná prechádzka:&nbsp;</strong>Trasa je ideálna na rannú alebo večernú prechádzku, keď je slnko nízko a svetlo je mäkké a zlatisté. Pohľad na zelené kopce a údolia je skutočne upokojujúci.</li><li><strong>Blízko Ubudu:</strong>&nbsp;Nachádza sa len kúsok od centra Ubudu, čo z neho robí ľahko dostupné miesto pre turistov, ktorí chcú uniknúť z mestského ruchu.</li><li><strong>Kaviarne a reštaurácie:&nbsp;</strong>Po prechádzke môžete navštíviť niektorú z okolitých kaviarní alebo reštaurácií, kde si môžete vychutnať osviežujúci nápoj alebo chutné jedlo s nádherným výhľadom.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '../images/photosFull/BaliCampuhanRidgeWalk.jpg',
+            name: 'BaliCapunhanRidgeWalk',
+          },
+          {
+            src: '../images/photosFull/BaliCampuhanPool.jpg',
+            name: 'BaliCapunhanPool',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: `3. Tegallalang Rice Terrace`,
+      },
+      {
+        component: 'p',
+        text: `Tegallalang Rice Terrace je jedným z najznámejších a najfotogenickejších miest na Bali. Nachádza sa v blízkosti Ubudu a ponúka nádherné výhľady na terasovité ryžové polia.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Nádherné scenérie:</strong> Tegallalang ponúka úchvatný pohľad na zelené ryžové polia usporiadané do terás, ktoré sa tiahnú do diaľky. Pohľad na tieto terasy, najmä pri východe alebo západe slnka, je skutočne nádherný.</li><li><strong>Kultúrne zážitky:</strong> Návšteva Tegallalang vám poskytne aj pohľad do života miestnych farmárov, ktorí pracujú na poliach. Môžete sa tiež dozvedieť viac o tradičných poľnohospodárskych technikách, ktoré sa na Bali používajú po stáročia.</li><li><strong>Fotografické príležitosti:</strong> Tegallalang je obľúbené miesto pre fotografov vďaka svojim malebným výhľadom a jedinečným terasám. Mnoho návštevníkov sa tu zastaví, aby si urobili krásne fotografie, ktoré zachytávajú krásu balijskej krajiny.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '../images/photosFull/BaliRiceFieldsUs.jpg',
+            name: 'BaliRiceFieldsUs',
+          },
+          {
+            src: '../images/photosFull/BaliRiceFieldsHatLiv.jpg',
+            name: 'BaliRiceFieldsHatLiv',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: '4. Východ slnka na hore Batur',
+      },
+      {
+        component: 'p',
+        text: 'Hora Batur je aktívny vulkán nachádzajúci sa v severovýchodnej časti Bali a je jedným z najpopulárnejších miest na ostrove pre turistov, ktorí milujú dobrodružstvo a nádherné výhľady. Vyjsť na Batur bez sprievodcu je prakticky nemožné. My sme sa o to pokúsili, ale všetky cestičky na vrchol sú pod sú pod prísnym dohľadom miestnych obyvateľov, ktorých sme nazvali Batúrska mafia. Ich hlavnou snahou je vytiahnuť od turistov, čo najviac peňazí. Sú teda len dve možnosti ako sa dostať na vrchol. Prvá je, že si zarezervujete výlet online, v rámci ktorého dostanete balík služieb, vrátane odvozu/dovozu z hotela, „služby“ sprievodcu pri výstupe, malé občerstvenie na vrchole. Cena takéhoto balíku sa pohybuje okolo 30€/osoba. Druhá možnosť, ktorú sme zvolili aj my, je, že sa vydáte na horu po vlastnej réžii. Mali sme so sebou len malý obnos hotovosti (20€) a tvárili sme sa, že sme netušili, že sa bez sprievodcu nedá vyjsť. ',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Východ slnka:</strong> Výstup na vrchol hory Batur začína ešte za tmy, aby ste mohli zažiť úchvatný východ slnka. Keď sa obloha začína zafarbovať do oranžových a ružových odtieňov, pohľad na vychádzajúce slnko nad Balijským morom a okolité hory je nezabudnuteľný.</li><li><strong>Panoramatický výhľad:</strong> Z vrcholu Baturu môžete vidieť aj jazero Batur, ktoré sa nachádza v kráteri vulkánu. Pohľad na jazero zhora, obklopené zeleňou a so stúpajúcou parou z teplých prameňov, je skutočne magický.</li><li><strong>Dobrodružný zážitok:</strong> Výstup je stredne náročný a trvá približne dve hodiny. Cesta vedie cez rôzne terény, vrátane lesov a skalnatých úsekov, čo robí tento zážitok ešte vzrušujúcejším.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '../images/photosFull/BaliSunriseBaturs.jpg',
+            name: 'BaliSunriseBaturs',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: '5. Východ slnka na hore Agung',
+      },
+      {
+        component: 'p',
+        text: 'Mount Agung je najvyšším vrcholom na Bali a je považovaná za posvätnú horu, ktorá hrá dôležitú úlohu v balijskej kultúre a náboženstve.',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Úchvatné scenérie:</strong> Východ slnka z hory Agung ponúka jedinečný pohľad na celý ostrov Bali, vrátane hory Batur a Lomboku na horizonte. Slnko stúpajúce nad horizontom a postupne osvetľujúce ostrov je zážitok, ktorý sa vryje do pamäti.<li><strong>Duchovný význam:</strong> Pre mnohých Balijčanov je hora Agung miestom duchovného významu. Výstup na horu nie je len fyzickým, ale aj duchovným zážitkom.</li><li><strong>Výzva pre horolezcov:</strong> Výstup na Agung je náročnejší ako na Batur a vyžaduje dobrú fyzickú kondíciu. Cesta začína v noci a trvá približne šesť až sedem hodín. Odmenou za námahu je úžasný výhľad z vrcholu.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '../images/photosFull/BaliAgungView.jpg',
+            name: 'BaliAgungView',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: 'Tipy na návštevu',
+      },
+      {
+        component: 'p',
+        text: `<b>Pripravte sa:</b> Nezabudnite si vziať teplé oblečenie, keďže teploty na vrcholoch môžu byť nízke, najmä pred východom slnka. Tiež si nezabudnite vziať dostatok vody a občerstvenia.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Sprevádzači:</b> Pre výstupy na hory Batur a Agung sa odporúča najatie miestneho sprievodcu, ktorý vás bezpečne prevedie a poskytne cenné informácie o okolí.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Časovanie:</b> Na dosiahnutie vrcholov pred východom slnka je potrebné začať výstup veľmi skoro ráno, často okolo 2-3 hodiny ráno. Zvážte rezerváciu výletu vopred.`,
+      },
+      {
+        component: 'p',
+        text: `Bali je skutočným rajom pre tých, ktorí milujú nádherné výhľady a dobrodružstvo. Či už sa rozhodnete pre východ slnka na niektorej z posvätných hôr alebo pre pokojný výhľad z Tegallalang Rice Terrace, tieto miesta vám ponúknu nezabudnuteľné zážitky a krásne scenérie, ktoré budete chcieť zdieľať s ostatnými.`,
       },
     ],
   },

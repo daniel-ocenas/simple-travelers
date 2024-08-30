@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../data/mongodb';
+import { connectToDatabase } from 'data/mongodb';
 
 async function articleContentCreate(lang: any, content: any) {
   const { db } = await connectToDatabase();

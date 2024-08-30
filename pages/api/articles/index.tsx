@@ -1,5 +1,5 @@
-import ArticleList from '../../../data/ArticleList';
-import { connectToDatabase } from '../../../data/mongodb';
+import ArticleList from 'data/ArticleList';
+import { connectToDatabase } from 'data/mongodb';
 
 async function articleCreate(lang: any, article: any) {
   article.dateCreated = new Date().toLocaleDateString();
@@ -19,6 +19,7 @@ export default async function Articles(req: any, res: any) {
         const articleList = await ArticleList('sk');
         res.status(200).json(articleList);
       } catch (e) {
+        console.error(e);
         res.status(500).json('Article could not be retrieved');
       }
       break;

@@ -27,23 +27,27 @@ const sortArticles = (articles: any, order: any) => {
 function Blog() {
   const [sortState, setSortState] = useState(optionsSel[0].value);
   const [filterOptions, setFilterOptions] = useState([]);
-  const [articlesList, setArticlesList] = useState([]);
+  let [articlesList, setArticlesList] = useState<[]>([]);
   const [articlesDisplay, setArticlesDisplay] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
-        return undefined;
-      });
+      // const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
+      //   return undefined;
+      // });
 
-      let data = await response?.json();
-      if (response?.status !== 200) {
-        data = {
-          articleList: ArticlesList,
-        };
-      }
+      // let data = await response?.json();
+      // if (response?.status !== 200) {
+      //   data = {
+      //     articleList: ArticlesList,
+      //   };
+      // }
+      const data = {
+        articleList: ArticlesList,
+      };
 
+      // @ts-ignore
       setArticlesList(data.articleList);
       setArticlesDisplay(sortArticles(data.articleList, 'asc'));
 

@@ -5,6 +5,6 @@ export const SBlogCardsContainer = styled.div`
   margin: 0 auto;
   display: grid;
   grid-gap: 32px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   //grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
 `;

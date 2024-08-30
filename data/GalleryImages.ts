@@ -44,8 +44,8 @@ const IMAGES = [
     caption: 'Skúšanie tratičného klubúku na ryžových poliach. Bali, júl 2022.',
   },
   {
-    src: '/images/photosFull/BaliRiceFIeldsUs.jpg',
-    thumbnail: '/images/photosMobile/BaliRiceFIeldsUs.jpg',
+    src: '/images/photosFull/BaliRiceFieldsUs.jpg',
+    thumbnail: '/images/photosMobile/BaliRiceFieldsUs.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
     caption: 'Prechádzka po ryžových poliach. Bali, júl 2022.',
@@ -582,8 +582,8 @@ const BALI_IMAGES = [
     caption: 'Skúšanie tratičného klubúku na ryžových poliach. Bali, júl 2022.',
   },
   {
-    src: '/images/photosFull/BaliRiceFIeldsUs.jpg',
-    thumbnail: '/images/photosMobile/BaliRiceFIeldsUs.jpg',
+    src: '/images/photosFull/BaliRiceFieldsUs.jpg',
+    thumbnail: '/images/photosMobile/BaliRiceFieldsUs.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
     caption: 'Prechádzka po ryžových poliach. Bali, júl 2022.',

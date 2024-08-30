@@ -112,14 +112,11 @@ const CreateArticle = () => {
                 {preview ? (
                   ArticleRenderer(data, idx, 500)
                 ) : (
-                  <>
-                    <EditableComponent
-                      item={data}
-                      articleContent={articleContent.content}
-                      setArticleContent={(content) => setArticleContent({ ...articleContent, content })}
-                    />
-                    <MarginBox mt={16} />
-                  </>
+                  <EditableComponent
+                    item={data}
+                    articleContent={articleContent.content}
+                    setArticleContent={(content) => setArticleContent({ ...articleContent, content })}
+                  />
                 )}
               </div>
             );

@@ -30,17 +30,22 @@ const nextConfig = {
     ],
   },
   compiler: {
-    // Enables the styled-components SWC transform
     styledComponents: true,
   },
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: ['sk-SK', 'sk'],
+    locales: ['sk', 'sk-SK'],
     // This is the default locale used when visiting
     // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: 'sk-SK',
+    defaultLocale: 'sk',
   },
+  domains: [
+    {
+      domain: 'simpletravelers.sk',
+      defaultLocale: 'sk',
+    },
+  ],
   transpilePackages: [
     'antd',
     '@ant-design',

@@ -6,14 +6,16 @@ import React, { useEffect, useState } from 'react';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
-  // const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
-  //   return undefined;
-  // });
+  // TODO shot local articles
+  const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
+    return undefined;
+  });
+
   // let data = await response?.json();
   // if (response?.status !== 200) {
   //   data = ArticlesContent.find((article) => article.url === id);
-  const data = ArticlesContent.find((article) => article.url === id);
   // }
+  const data = ArticlesContent.find((article) => article.url === id);
 
   return {
     props: {

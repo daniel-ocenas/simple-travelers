@@ -54,7 +54,6 @@ export const RichTextEditor = ({ value, onChange, readOnly, theme = 'snow' }: Ri
 
   const [code, setCode] = useState(value);
   const handleProcedureContentChange = (text: string) => {
-    console.log(text);
     setCode(text);
     onChange && onChange(text);
   };

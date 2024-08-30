@@ -19,7 +19,7 @@ export default function Home() {
       let data = await response?.json();
       if (response?.status !== 200) {
         data = {
-          articleList: ArticlesList,
+          articleList: ArticlesList.slice(0, 6),
         };
       }
 

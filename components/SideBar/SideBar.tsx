@@ -13,6 +13,7 @@ const SideBar = () => {
     <div style={{ position: 'relative' }}>
       <SSideBar>
         <MarginBox mt={'110vh'} />
+        {/*TODO zmenit fotku z faerov*/}
         <div style={{ textAlign: 'center' }}>
           <img
             style={{
@@ -26,13 +27,11 @@ const SideBar = () => {
             src="/static/images/photosFull/AboutUs.jpg"
           />
         </div>
-        <div className="screen-reader-text">
-          <p style={{ fontSize: '1.25em' }}>
-            Ahoj, my sme Liv a Dan, dvaja cestovatelia, ktorým dobrodružstvo koluje v žilách. Naše plány vznikajú
-            spontánne a čím šialenejšie znejú, tým viac sa pre ich realizáciu nadchneme. Cestujeme na vlastnú päsť,
-            výhradne bez cestovky, s batohom na pleciach a častokrát riešime veci za pochodu. Zdieľame naše zážitky,
-            skúsenosti a fotografie z ciest, tak aby sme nakopli aj tvoju chuť objavovať svet. Hovorí sa, že: „šťastie
-            si za peniaze nekúpiš,“ ale môžeš si kúpiť letenku a to je skoro to isté, no nie?
+        <div style={{ textAlign: 'center' }}>
+          <h4>My sme Liv a Dan</h4>
+          <p>
+            Mladý pár zo Slovenska s vášňou pre cestovanie, fotografovanie a dobrodružstvo. Na našom blogu a sociálnych
+            sieťach zdieľame autentické zážitky z ciest a inšpirujeme ostatných, že cestovať sa dá jednoducho a lacno.
           </p>
         </div>
         <Divider text="Facebook" />

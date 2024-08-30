@@ -1,4 +1,4 @@
-import ArticleGet from '../../../data/ArticleContentGet';
+import ArticleGet from 'data/ArticleContentGet';
 
 export default async function handler(req: any, res: any) {
   const httpMetod = req.method;
