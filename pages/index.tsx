@@ -1,13 +1,12 @@
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
-import { ArticlesList } from 'data/ArticlesListConst';
+import { ArticleProps, ArticlesList, sortArticlesByDate } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import Loader from 'UI/Loader';
 
 export default function Home() {
   const [articlesList, setArticlesList] = useState([]);
-  // const [furtherArticlesList, setFurtherArticlesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export default function Home() {
       let data = await response?.json();
       if (response?.status !== 200) {
         data = {
-          articleList: ArticlesList.slice(0, 6),
+          articleList: sortArticlesByDate(ArticlesList.slice(0, 6) as ArticleProps[]),
         };
       }
 
@@ -27,17 +26,9 @@ export default function Home() {
         const start = +new Date(b.dateCreated);
         return start - +new Date(a.dateCreated);
       });
-      // let newArticleList = sortedArticleList?.slice(0, 3);
-      // let newFurtherArticleList = sortedArticleList?.slice(3);
-
-      // newArticleList?.forEach((article: any) => {
-      //   // article['url'] = '/blog' + article['url'];
-      //   article['class'] = 'slider-content';
-      // });
 
       setIsLoading(false);
       setArticlesList(sortedArticleList ?? []);
-      // setFurtherArticlesList(newFurtherArticleList);
       return data;
     };
 
@@ -59,16 +50,7 @@ export default function Home() {
           content="cestovateľský blog, cestuj po svete, erasmus, roadtrip, lacné cestovanie, cestovanie bez cestovky"
         />
       </Head>
-      <Page>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            {/*<Slider slides={articlesList} />*/}
-            <BlogCardsView articles={articlesList} />
-          </>
-        )}
-      </Page>
+      <Page>{isLoading ? <Loader /> : <BlogCardsView articles={articlesList} />}</Page>
     </>
   );
 }

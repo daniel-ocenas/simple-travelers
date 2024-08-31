@@ -32,14 +32,12 @@ const ArticleImage = (props: any) => {
             <Image
               alt={image.name}
               key={image.name}
-              src={`/static${image.src.substring(2)}`}
+              src={image.src}
               width={imageWidth}
               height={imageHeight}
               priority={props.idx < 4}
               style={{
                 objectFit: 'cover',
-                width: imageWidth,
-                height: 'auto',
                 borderRadius: '2px',
               }}
             />

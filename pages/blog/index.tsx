@@ -1,7 +1,7 @@
 import { Col, Form, Row, Select } from 'antd';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
-import { ArticlesList } from 'data/ArticlesListConst';
+import { ArticleProps, ArticlesList, sortArticlesByDate } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import Loader from 'UI/Loader';
@@ -44,7 +44,7 @@ function Blog() {
       //   };
       // }
       const data = {
-        articleList: ArticlesList,
+        articleList: sortArticlesByDate(ArticlesList.slice(0, 6) as ArticleProps[]),
       };
 
       // @ts-ignore

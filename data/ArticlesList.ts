@@ -1,32 +1,196 @@
-interface ArticleContent {
+export interface ArticleProps {
   url: string;
-  tags: {
-    title: string;
-    description: string;
-    image: string;
-    keywords: string;
-  };
+  title: string;
+  description: string;
+  date: string;
+  dateCreated: string;
+  image?: string;
+  keywords?: string;
+  category?: string[];
   content: any;
 }
 
-export const ArticlesContent: ArticleContent[] = [
+export function sortArticlesByDate(articleList: ArticleProps[]): ArticleProps[] {
+  return articleList?.sort((a: any, b: any) => {
+    const start = +new Date(b.dateCreated);
+    return start - +new Date(a.dateCreated);
+  });
+}
+
+export const ArticlesList: ArticleProps[] = [
   {
-    url: 'srdcovkyapril',
-    tags: {
-      title: 'Slovenské srdcovky apríl 2020',
-      description:
-        'Prvý článok v sérií Slovenských srdcoviek, v ktorých budeme pravidelne pridávať 5 zaujímavých miest na Slovensku, ktoré sa oplatí navštíviť.',
-      image: 'images/photosFull/srdcovky/SlovenskeSrdcovky.jpg',
-      keywords: 'slovenské srdcovky, cestovanie po slovensku, rady a tipy, kam na výlet, výlet s rodinou',
-    },
+    url: 'najkrajsie-vyhlady-na-bali',
+    title: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
+    description:
+      'Ostrov Bali v Indonézii, známy aj ako „Ostrov bohov,“ ponúka množstvo nádherných miest s úchvatnými výhľadmi. Pre tých, ktorí milujú panoramatické scenérie, východy a západy slnka, je Bali skutočným rajom. V tomto článku vám dáme tipy na päť (must visit) miest, ktoré by ste nemali vynechať, pokiaľ si chcete vychutnať jedny z najočarujúcejších miest na Bali.',
+    date: '8. júl 2024',
+    dateCreated: '07.08.2024',
+    image: '/static/images/photosFull/BaliLahanganPointing.jpg',
+    keywords:
+      'bali, vyhlady na bali, zapady slnka na bali, vychody slnka na bali, turistika na bali, foto miesta na bali, instagramové miesta na bali, bali instagram',
     content: [
       {
         component: 'h2',
-        text: 'Slovenské srdcovky - Apríl 2020',
+        text: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
       },
       {
         component: 'p',
-        text: 'Už tri roky spolu beháme po svete, spoznávame nové kultúry a&nbsp;nových ľudí. Tento rok je všetko úplne inak. V&nbsp;najbližších dňoch – a&nbsp;nebojíme sa povedať ani v&nbsp;mesiacoch – si tak rýchlo nekúpime letenku. Hranice – zatvorené. Letiská – zatvorené. Doprava – obmedzená. Cestovné kancelárie rušia svoje zájazdy... Každý z&nbsp;nás bol nútený zo dňa na deň zmeniť svoje plány a&nbsp;prispôsobiť sa aktuálnym okolnostiam.',
+        text: 'Ostrov Bali v Indonézii, známy aj ako „Ostrov bohov,“ ponúka množstvo nádherných miest s úchvatnými výhľadmi. Pre tých, ktorí milujú panoramatické scenérie, východy a západy slnka, je Bali skutočným rajom. V tomto článku vám dáme tipy na päť (must visit) miest, ktoré by ste nemali vynechať, pokiaľ si chcete vychutnať jedny z najočarujúcejších miest na Bali.',
+      },
+      {
+        component: 'h3',
+        text: '1. Lahangan Sweet',
+      },
+      {
+        component: 'p',
+        text: 'Lahangan Sweet je menej známe, ale rýchlo sa stávajúce populárne miesto pre nádherné výhľady na Bali. Nachádza sa v oblasti Karangasem a ponúka pokoj a nádherné panoramatické scenérie.',
+      },
+      {
+        component: 'p',
+        text: '<b>Prečo navštíviť:</b><ul><li><strong>Pokojné prostredie:</strong> Lahangan Sweet je ideálnym miestom pre tých, ktorí hľadajú únik od turistického ruchu. Môžete tu relaxovať a užívať si kľud a krásu prírody.</li><li><strong>Výhľad na horu Agung:</strong> Jedným z hlavných lákadiel je úžasný výhľad na majestátnu horu Agung. Pohľad na túto posvätnú horu, obklopenú zeleňou a dedinami, je fascinujúci, najmä pri západe slnka.</li><li><strong>Fotografické príležitosti:</strong> Lahangan Sweet je obľúbené medzi fotografmi vďaka svojim jedinečným výhľadom a fotogenickým miestam, vrátane hojdačiek a bambusových plošín, ktoré ponúkajú dokonalý rám pre vaše fotografie.</li></ul>',
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/BaliLahanganPointing.jpg',
+            name: 'BaliLahanganPointing',
+          },
+        ],
+        class: 'articlePictureLandscape',
+      },
+      {
+        component: 'h3',
+        text: '2. Campuhan Ridge Walk',
+      },
+      {
+        component: 'p',
+        text: 'Campuhan Ridge Walk je obľúbenou turistickou trasou v srdci Ubudu, ktorá ponúka nádherné výhľady na okolité údolia a ryžové polia.',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Malebná prechádzka:&nbsp;</strong>Trasa je ideálna na rannú alebo večernú prechádzku, keď je slnko nízko a svetlo je mäkké a zlatisté. Pohľad na zelené kopce a údolia je skutočne upokojujúci.</li><li><strong>Blízko Ubudu:</strong>&nbsp;Nachádza sa len kúsok od centra Ubudu, čo z neho robí ľahko dostupné miesto pre turistov, ktorí chcú uniknúť z mestského ruchu.</li><li><strong>Kaviarne a reštaurácie:&nbsp;</strong>Po prechádzke môžete navštíviť niektorú z okolitých kaviarní alebo reštaurácií, kde si môžete vychutnať osviežujúci nápoj alebo chutné jedlo s nádherným výhľadom.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/BaliCampuhanRidgeWalk.jpg',
+            name: 'BaliCapunhanRidgeWalk',
+          },
+          {
+            src: '/static/images/photosFull/BaliCampuhanPool.jpg',
+            name: 'BaliCapunhanPool',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: `3. Tegallalang Rice Terrace`,
+      },
+      {
+        component: 'p',
+        text: `Tegallalang Rice Terrace je jedným z najznámejších a najfotogenickejších miest na Bali. Nachádza sa v blízkosti Ubudu a ponúka nádherné výhľady na terasovité ryžové polia.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Nádherné scenérie:</strong> Tegallalang ponúka úchvatný pohľad na zelené ryžové polia usporiadané do terás, ktoré sa tiahnú do diaľky. Pohľad na tieto terasy, najmä pri východe alebo západe slnka, je skutočne nádherný.</li><li><strong>Kultúrne zážitky:</strong> Návšteva Tegallalang vám poskytne aj pohľad do života miestnych farmárov, ktorí pracujú na poliach. Môžete sa tiež dozvedieť viac o tradičných poľnohospodárskych technikách, ktoré sa na Bali používajú po stáročia.</li><li><strong>Fotografické príležitosti:</strong> Tegallalang je obľúbené miesto pre fotografov vďaka svojim malebným výhľadom a jedinečným terasám. Mnoho návštevníkov sa tu zastaví, aby si urobili krásne fotografie, ktoré zachytávajú krásu balijskej krajiny.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/BaliRiceFieldsUs.jpg',
+            name: 'BaliRiceFieldsUs',
+          },
+          {
+            src: '/static/images/photosFull/BaliRiceFieldsHatLiv.jpg',
+            name: 'BaliRiceFieldsHatLiv',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: '4. Východ slnka na hore Batur',
+      },
+      {
+        component: 'p',
+        text: 'Hora Batur je aktívny vulkán nachádzajúci sa v severovýchodnej časti Bali a je jedným z najpopulárnejších miest na ostrove pre turistov, ktorí milujú dobrodružstvo a nádherné výhľady. Vyjsť na Batur bez sprievodcu je prakticky nemožné. My sme sa o to pokúsili, ale všetky cestičky na vrchol sú pod sú pod prísnym dohľadom miestnych obyvateľov, ktorých sme nazvali Batúrska mafia. Ich hlavnou snahou je vytiahnuť od turistov, čo najviac peňazí. Sú teda len dve možnosti ako sa dostať na vrchol. Prvá je, že si zarezervujete výlet online, v rámci ktorého dostanete balík služieb, vrátane odvozu/dovozu z hotela, „služby“ sprievodcu pri výstupe, malé občerstvenie na vrchole. Cena takéhoto balíku sa pohybuje okolo 30€/osoba. Druhá možnosť, ktorú sme zvolili aj my, je, že sa vydáte na horu po vlastnej réžii. Mali sme so sebou len malý obnos hotovosti (20€) a tvárili sme sa, že sme netušili, že sa bez sprievodcu nedá vyjsť. ',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Východ slnka:</strong> Výstup na vrchol hory Batur začína ešte za tmy, aby ste mohli zažiť úchvatný východ slnka. Keď sa obloha začína zafarbovať do oranžových a ružových odtieňov, pohľad na vychádzajúce slnko nad Balijským morom a okolité hory je nezabudnuteľný.</li><li><strong>Panoramatický výhľad:</strong> Z vrcholu Baturu môžete vidieť aj jazero Batur, ktoré sa nachádza v kráteri vulkánu. Pohľad na jazero zhora, obklopené zeleňou a so stúpajúcou parou z teplých prameňov, je skutočne magický.</li><li><strong>Dobrodružný zážitok:</strong> Výstup je stredne náročný a trvá približne dve hodiny. Cesta vedie cez rôzne terény, vrátane lesov a skalnatých úsekov, čo robí tento zážitok ešte vzrušujúcejším.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/BaliSunriseBaturs.jpg',
+            name: 'BaliSunriseBaturs',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: '5. Východ slnka na hore Agung',
+      },
+      {
+        component: 'p',
+        text: 'Mount Agung je najvyšším vrcholom na Bali a je považovaná za posvätnú horu, ktorá hrá dôležitú úlohu v balijskej kultúre a náboženstve.',
+      },
+      {
+        component: 'p',
+        text: `<b>Prečo navštíviť:</b><ul><li><strong>Úchvatné scenérie:</strong> Východ slnka z hory Agung ponúka jedinečný pohľad na celý ostrov Bali, vrátane hory Batur a Lomboku na horizonte. Slnko stúpajúce nad horizontom a postupne osvetľujúce ostrov je zážitok, ktorý sa vryje do pamäti.<li><strong>Duchovný význam:</strong> Pre mnohých Balijčanov je hora Agung miestom duchovného významu. Výstup na horu nie je len fyzickým, ale aj duchovným zážitkom.</li><li><strong>Výzva pre horolezcov:</strong> Výstup na Agung je náročnejší ako na Batur a vyžaduje dobrú fyzickú kondíciu. Cesta začína v noci a trvá približne šesť až sedem hodín. Odmenou za námahu je úžasný výhľad z vrcholu.</li></ul>`,
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/BaliAgungView.jpg',
+            name: 'BaliAgungView',
+          },
+        ],
+      },
+      {
+        component: 'h3',
+        text: 'Tipy na návštevu',
+      },
+      {
+        component: 'p',
+        text: `<b>Pripravte sa:</b> Nezabudnite si vziať teplé oblečenie, keďže teploty na vrcholoch môžu byť nízke, najmä pred východom slnka. Tiež si nezabudnite vziať dostatok vody a občerstvenia.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Sprevádzači:</b> Pre výstupy na hory Batur a Agung sa odporúča najatie miestneho sprievodcu, ktorý vás bezpečne prevedie a poskytne cenné informácie o okolí.`,
+      },
+      {
+        component: 'p',
+        text: `<b>Časovanie:</b> Na dosiahnutie vrcholov pred východom slnka je potrebné začať výstup veľmi skoro ráno, často okolo 2-3 hodiny ráno. Zvážte rezerváciu výletu vopred.`,
+      },
+      {
+        component: 'p',
+        text: `Bali je skutočným rajom pre tých, ktorí milujú nádherné výhľady a dobrodružstvo. Či už sa rozhodnete pre východ slnka na niektorej z posvätných hôr alebo pre pokojný výhľad z Tegallalang Rice Terrace, tieto miesta vám ponúknu nezabudnuteľné zážitky a krásne scenérie, ktoré budete chcieť zdieľať s ostatnými.`,
+      },
+    ],
+  },
+  {
+    url: 'slovenskesrdcovky',
+    title: 'Slovenské srdcovky: Tipy na cestovanie po Slovensku',
+    date: '7. júl 2020',
+    dateCreated: '07.07.2020',
+    description:
+      'Slovensko je taká krásna a rozmanitá krajina, že by nám nestačil ani rok na to, aby sme objavili všetky krásy, ktoré nám ponúka. Zbierka slovenských srdcoviek sa nám pomaly, ale isto rozširuje. Prostredníctvom týchto príspevkov sa predovšetkým chceme o tieto miesta podeliť s tebou a motivovať ťa navštíviť ich. Ak máš nadšenie spoznávať Slovensko, možno práve v tomto príspevku nájdeš niečo nové a úchvatné.',
+    image: '/static/images/photosFull/srdcovky/SlovenskeSrdcovky.jpg',
+    keywords: 'slovenské srdcovky, cestovanie po slovensku, rady a tipy, kam na výlet, výlet s rodinou',
+    category: ['Rady a Tipy', 'Slovenské srdcovky', 'Slovensko'],
+    content: [
+      {
+        component: 'h2',
+        text: 'Slovenské srdcovky: Tipy na cestovanie po Slovensku',
+      },
+      {
+        component: 'p',
+        text: 'Slovensko je taká krásna a rozmanitá krajina, že by nám nestačil ani rok na to, aby sme objavili všetky krásy, ktoré nám ponúka. Zbierka slovenských srdcoviek sa nám pomaly, ale isto rozširuje. Prostredníctvom týchto príspevkov sa predovšetkým chceme o tieto miesta podeliť s tebou a motivovať ťa navštíviť ich. Ak máš nadšenie spoznávať Slovensko, možno práve v tomto príspevku nájdeš niečo nové a úchvatné.',
       },
       {
         component: 'p',
@@ -36,7 +200,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/SlovenskeSrdcovky.jpg',
+            src: '/static/images/photosFull/srdcovky/SlovenskeSrdcovky.jpg',
             name: 'SlovenskeSrdcovkyArticle',
           },
         ],
@@ -58,7 +222,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KriznaPano.jpg',
+            src: '/static/images/photosFull/srdcovky/KriznaPano.jpg',
             name: 'KriznaPano',
           },
         ],
@@ -72,7 +236,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KriznaJumpLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/KriznaJumpLiv.jpg',
             name: 'KriznaJumpLiv',
           },
         ],
@@ -82,7 +246,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KriznaUs.jpg',
+            src: '/static/images/photosFull/srdcovky/KriznaUs.jpg',
             name: 'KriznaUs',
           },
         ],
@@ -100,7 +264,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KlakView.jpg',
+            src: '/static/images/photosFull/srdcovky/KlakView.jpg',
             name: 'KlakView',
           },
         ],
@@ -114,7 +278,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFul/KlakForest.jpg',
+            src: '/static/images/photosFull/srdcovky/KlakForest.jpg',
             name: 'KlakForest',
           },
         ],
@@ -124,7 +288,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KlakUs.jpg',
+            src: '/static/images/photosFull/srdcovky/KlakUs.jpg',
             name: 'KlakUs',
           },
         ],
@@ -134,7 +298,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KlakCross.jpg',
+            src: '/static/images/photosFull/srdcovky/KlakCross.jpg',
             name: 'KlakCross',
           },
         ],
@@ -152,7 +316,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KralickyVodopadHang.jpg',
+            src: '/static/images/photosFull/srdcovky/KralickyVodopadHang.jpg',
             name: 'KralickyVodopadHang',
           },
         ],
@@ -162,7 +326,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KralickyVodopadLandscape.jpg',
+            src: '/static/images/photosFull/srdcovky/KralickyVodopadLandscape.jpg',
             name: 'KralickyVodopadLandscape',
           },
         ],
@@ -172,7 +336,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KralickyVodopadPrirodaLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/KralickyVodopadPrirodaLiv.jpg',
             name: 'KralickyVodopadPrirodaLiv',
           },
         ],
@@ -182,7 +346,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KralickyVodopadPriroda.jpg',
+            src: '/static/images/photosFull/srdcovky/KralickyVodopadPriroda.jpg',
             name: 'KralickyVodopadPriroda',
           },
         ],
@@ -205,11 +369,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'BadinskyVodopad',
-            src: '../images/photosFull/srdcovky/BadinskyVodopad.jpg',
+            src: '/static/images/photosFull/srdcovky/BadinskyVodopad.jpg',
           },
           {
             name: 'BadinskyLes',
-            src: '../images/photosFull/srdcovky/BadinskyLes.jpg',
+            src: '/static/images/photosFull/srdcovky/BadinskyLes.jpg',
           },
         ],
       },
@@ -217,7 +381,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/KremnickeVrchy.jpg',
+            src: '/static/images/photosFull/srdcovky/KremnickeVrchy.jpg',
             name: 'KremnickeVrchy',
           },
         ],
@@ -235,7 +399,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/ZrakovaPyramida.jpg',
+            src: '/static/images/photosFull/srdcovky/ZrakovaPyramida.jpg',
             name: 'ZrakovaPyramida',
           },
         ],
@@ -249,7 +413,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/SulovViewLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/SulovViewLiv.jpg',
             name: 'SulovViewLiv',
           },
         ],
@@ -259,7 +423,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/SulovView.jpg',
+            src: '/static/images/photosFull/srdcovky/SulovView.jpg',
             name: 'SulovView',
           },
         ],
@@ -269,18 +433,6 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'p',
         text: 'Keď sa rozhodneš preskúmať niektorú z&nbsp;našich slovenských srdcoviek, budeme radi, ak nám napíšeš, ako sa ti tam páčilo, čo ťa zaujalo, aký zážitok si si stade odniesol a&nbsp;čo všetko si popritom objavil. ',
       },
-    ],
-  },
-  {
-    url: 'srdcovkymaj',
-    tags: {
-      title: 'Slovenské srdcovky máj 2020',
-      description:
-        'Kam najbližšie vyraziť? Možeš sa inšpirovať práve v tomto článku, ktorý obsahuje päť zaujímavých tipov na výlet.',
-      image: 'images/photosFull/srdcovky/ChocHold.jpg',
-      keywords: 'slovenské srdcovky, cestovanie po slovensku, rady a tipy, kam na výlet, výlet s rodinou',
-    },
-    content: [
       {
         component: 'h2',
         text: 'Slovenské srdcovky - Máj 2020',
@@ -301,7 +453,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/ChocHold.jpg',
+            src: '/static/images/photosFull/srdcovky/ChocHold.jpg',
             name: 'ChocHold',
           },
         ],
@@ -315,7 +467,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/ChocPano.jpg',
+            src: '/static/images/photosFull/srdcovky/ChocPano.jpg',
             name: 'ChocPano',
           },
         ],
@@ -338,11 +490,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'OstraScarp',
-            src: '../images/photosFull/srdcovky/OstraScarp.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraScarp.jpg',
           },
           {
             name: 'OstraSteps',
-            src: '../images/photosFull/srdcovky/OstraSteps.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraSteps.jpg',
           },
         ],
       },
@@ -350,7 +502,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/OstraEastDan.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraEastDan.jpg',
             name: 'OstraEastDan',
           },
         ],
@@ -360,7 +512,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/OstraKriz.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraKriz.jpg',
             name: 'OstraKriz',
           },
         ],
@@ -370,7 +522,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/OstraSide.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraSide.jpg',
             name: 'OstraSide',
           },
         ],
@@ -380,7 +532,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/OstraVrchol.jpg',
+            src: '/static/images/photosFull/srdcovky/OstraVrchol.jpg',
             name: 'OstraVrchol',
           },
         ],
@@ -399,12 +551,12 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'KjeragboltenPoniky',
-            src: '../images/photosFull/srdcovky/KjeragboltenPoniky.jpg',
+            src: '/static/images/photosFull/srdcovky/KjeragboltenPoniky.jpg',
             description: 'Hradisko na Kláštore',
           },
           {
             name: 'KjeragboltenNorway',
-            src: '../images/photosFull/srdcovky/KjeragboltenNorway.jpg',
+            src: '/static/images/photosFull/srdcovky/KjeragboltenNorway.jpg',
             description: 'Kjeragbolten, Nórsko',
           },
         ],
@@ -421,7 +573,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/PonikyKriz.jpg',
+            src: '/static/images/photosFull/srdcovky/PonikyKriz.jpg',
             name: 'PonikyKriz',
           },
         ],
@@ -448,11 +600,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'RebrikAlone',
-            src: '../images/photosFull/srdcovky/RebrikAlone.jpg',
+            src: '/static/images/photosFull/srdcovky/RebrikAlone.jpg',
           },
           {
             name: 'RebrikUs',
-            src: '../images/photosFull/srdcovky/RebrikUs.jpg',
+            src: '/static/images/photosFull/srdcovky/RebrikUs.jpg',
           },
         ],
       },
@@ -460,7 +612,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/RebrikLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/RebrikLiv.jpg',
             name: 'RebrikLiv',
           },
         ],
@@ -486,7 +638,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/MalachovSkalyBBus.jpg',
+            src: '/static/images/photosFull/srdcovky/MalachovSkalyBBus.jpg',
             name: 'MalachovSkalyBBus',
           },
         ],
@@ -496,24 +648,12 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/MalachovSkalyBB.jpg',
+            src: '/static/images/photosFull/srdcovky/MalachovSkalyBB.jpg',
             name: 'MalachovSkalyBB',
           },
         ],
         class: 'articlePictureLandscape',
       },
-    ],
-  },
-  {
-    url: 'srdcovkyjul',
-    tags: {
-      title: 'Slovenské srdcovky júl 2020',
-      description:
-        'V júlových srdcovkých píšeme o zaujímavých miestach v srdci Slovenska, Vysokých Tatrách ale aj o príležitosti adrenalínového zážitku.',
-      image: 'images/photosFull/srdcovky/PolanaUs.jpg',
-      keywords: 'slovenské srdcovky, cestovanie po slovensku, rady a tipy, kam na výlet, výlet s rodinou',
-    },
-    content: [
       {
         component: 'h2',
         text: 'Slovenské srdcovky - Júl 2020',
@@ -534,7 +674,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/BachledkaView.jpg',
+            src: '/static/images/photosFull/srdcovky/BachledkaView.jpg',
             name: 'BachledkaView',
           },
         ],
@@ -549,7 +689,7 @@ export const ArticlesContent: ArticleContent[] = [
         text: 'Na výber máš dva varianty. Tým rýchlejším je lanovka, ktorá ťa pohodlne vyvezie na vrchol kopca. Cena pre dospelého je 11 € a&nbsp;pre deti 9 €. Náročnejším variantom je pešia túra v&nbsp;strmom teréne, ktorú si musíš krvopotne odmakať. Nám to trvalo približne jednu hodinu. Pokiaľ si aj ty zvolíš túto možnosť, určite oceníš kvalitnú a&nbsp;pevnú obuv.',
       },
       {
-        component: 'h3',
+        component: 'h4',
         text: 'Otváracie hodiny',
       },
       {
@@ -557,7 +697,7 @@ export const ArticlesContent: ArticleContent[] = [
         text: 'Veľkou výhodou chodníka korunami stromov je jeho celoročná prevádzka. ',
       },
       {
-        component: 'h3',
+        component: 'h4',
         text: 'Lístky',
       },
       {
@@ -568,7 +708,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/BachledkaNet.jpg',
+            src: '/static/images/photosFull/srdcovky/BachledkaNet.jpg',
             name: 'BachledkaNet',
           },
         ],
@@ -578,19 +718,15 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/BachledkaTower.jpg',
+            src: '/static/images/photosFull/srdcovky/BachledkaTower.jpg',
             name: 'BachledkaTower',
           },
         ],
         class: 'articlePictureLandscape',
       },
       {
-        component: 'p',
-        text: "Pri písaní tejto srdcovky mi napadla priam idylická pesnička od skupiny Para – LINDA. Nielenže jej názov dokonale ladí s&nbsp;názvom nášho cestovateľského blogu (Li'n'Da Travelers), ale jej text krásne vystihuje atmosféru prechádzky korunami stromov: „...&nbsp;vo výškach stromov roky vo vesmíre miznú nám...“ ",
-      },
-      {
         component: 'h3',
-        text: 'Poľana (1&nbsp;458 m n. m.) a&nbsp;vodopád Bystré',
+        text: 'Poľana (1458 m n. m.) a vodopád Bystré',
       },
       {
         component: 'p',
@@ -600,7 +736,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/PolanaLadder.jpg',
+            src: '/static/images/photosFull/srdcovky/PolanaLadder.jpg',
             name: 'PolanaLadder',
           },
         ],
@@ -610,7 +746,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/PolanaGroup.jpg',
+            src: '/static/images/photosFull/srdcovky/PolanaGroup.jpg',
             name: 'PolanaGroup',
           },
         ],
@@ -624,7 +760,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/VodopadBystreLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/VodopadBystreLiv.jpg',
             name: 'VodopadBystreLiv',
           },
         ],
@@ -634,7 +770,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/IMG_3764.jpg',
+            src: '/static/images/photosFull/srdcovky/IMG_3764.jpg',
             name: 'IMG_3764',
           },
         ],
@@ -652,7 +788,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/PolanaUs.jpg',
+            src: '/static/images/photosFull/srdcovky/PolanaUs.jpg',
             name: 'PolanaUs',
           },
         ],
@@ -670,7 +806,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/FerrataLiv.jpg',
+            src: '/static/images/photosFull/srdcovky/FerrataLiv.jpg',
             name: 'FerrataLiv',
           },
         ],
@@ -680,7 +816,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/FerrataView.jpg',
+            src: '/static/images/photosFull/srdcovky/FerrataView.jpg',
             name: 'FerrataView',
           },
         ],
@@ -694,7 +830,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/srdcovky/FerrataBridge.jpg',
+            src: '/static/images/photosFull/srdcovky/FerrataBridge.jpg',
             name: 'FerrataBridge',
           },
         ],
@@ -708,12 +844,14 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'erasmusvofinsku',
-    tags: {
-      title: 'Erasmus vo Fínsku',
-      description: 'To NAJ z nášho Erasmu vo Fínsku',
-      image: 'images/photosMobile/Erasmus/ErasmusSnowBorder2.jpg',
-      keywords: 'erasmus, erazmus, oulu, rady a tipy, cestopisy, cestovateľský blog',
-    },
+    title: 'Erasmus vo Fínsku: Extrémne výzvy, nezabudnuteľné zážitky a fínsky humor',
+    description:
+      'Erasmus je továreň na nezabudnuteľné zážitky. Niet pochýb o tom, že Erasmus vo Fínsku bola pre nás neskutočná jazda. Priniesol so sebou množstvo výziev a nových skúseností vďaka ktorým sme získali nový pohľad na svet...',
+    date: '20. máj 2020',
+    dateCreated: '20.5.2020',
+    image: '/static/images/photosFull/Erasmus/ErasmusSnowBorder.jpg',
+    keywords: 'erasmus, erazmus, oulu, rady a tipy, cestopisy, cestovateľský blog',
+    category: ['Cestopisy', 'Erasmus', 'Fínsko'],
     content: [
       {
         component: 'h2',
@@ -727,7 +865,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/ErasmusHeart.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusHeart.jpg',
             name: 'ErasmusHeart',
           },
         ],
@@ -746,11 +884,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusFrozenLiv',
-            src: '../images/photosFull/Erasmus/ErasmusFrozenLiv.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusFrozenLiv.jpg',
           },
           {
             name: 'ErasmusFrozenDan',
-            src: '../images/photosFull/Erasmus/ErasmusFrozenDan.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusFrozenDan.jpg',
           },
         ],
       },
@@ -766,7 +904,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/ErasmusZapadIntrak.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusZapadIntrak.jpg',
             name: 'ErasmusZapadIntrak',
           },
         ],
@@ -784,7 +922,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/ErasmusArcticCircle.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusArcticCircle.jpg',
             name: 'ErasmusArcticCircle',
           },
         ],
@@ -799,7 +937,7 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusArcticCircle',
-            src: '../images/photosFull/Erasmus/ErasmusAuroraFake.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusAuroraFake.jpg',
           },
         ],
         class: 'articlePicturePortrait',
@@ -813,7 +951,7 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusAurora',
-            src: '../images/photosFull/Erasmus/ErasmusAurora.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusAurora.jpg',
           },
         ],
         class: 'articlePictureLandscape',
@@ -831,11 +969,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusSaunaSompa',
-            src: '../images/photosFull/Erasmus/ErasmusSaunaSompa.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusSaunaSompa.jpg',
           },
           {
             name: 'ErasmusSauna',
-            src: '../images/photosFull/Erasmus/ErasmusSauna.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusSauna.jpg',
           },
         ],
       },
@@ -876,11 +1014,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusReindeerParohy',
-            src: '../images/photosFull/Erasmus/ErasmusReindeerParohy.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusReindeerParohy.jpg',
           },
           {
             name: 'ErasmusReindeerWhite',
-            src: '../images/photosFull/Erasmus/ErasmusReindeerWhite.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusReindeerWhite.jpg',
           },
         ],
       },
@@ -889,11 +1027,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusReindeer',
-            src: '../images/photosFull/Erasmus/ErasmusReindeer.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusReindeer.jpg',
           },
           {
             name: 'ErasmusReindeerLiv',
-            src: '../images/photosFull/Erasmus/ErasmusReindeerLiv.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusReindeerLiv.jpg',
           },
         ],
       },
@@ -910,7 +1048,7 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusIceDipRovaniemi',
-            src: '../images/photosFull/Erasmus/ErasmusIceDipRovaniemi.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusIceDipRovaniemi.jpg',
           },
         ],
         class: 'articlePicturePortrait',
@@ -924,11 +1062,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusIceDipLiv',
-            src: '../images/photosFull/Erasmus/ErasmusIceDipLiv.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusIceDipLiv.jpg',
           },
           {
             name: 'ErasmusIceDipDan',
-            src: '../images/photosFull/Erasmus/ErasmusIceDipDan.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusIceDipDan.jpg',
           },
         ],
       },
@@ -945,11 +1083,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'ErasmusIceFishingDan',
-            src: '../images/photosFull/Erasmus/ErasmusIceFishingDan.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusIceFishingDan.jpg',
           },
           {
             name: 'ErasmusIceFishCatch',
-            src: '../images/photosFull/Erasmus/ErasmusIceFishCatch.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusIceFishCatch.jpg',
           },
         ],
       },
@@ -961,14 +1099,15 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'roadtrip-usa-1',
-    tags: {
-      title: 'Roadtrip USA - 1. časť',
-      description:
-        'Prvá časť roadtripu o tom, ako sme 18 dní žili v aute a cestovali po západnom pobreží Ameriky. Zo San Francisca do Monument Valley, kde sa snažíme pochodiť čo najviac národných parkov Ameriky a zaujímavých miest.',
-      image: 'images/photosFull/SFGoldenGateArticle.jpg',
-      keywords:
-        'cestovateľský blog, roadtrip, usa, národné parky, san francisco, yosemite, sequoje, death valley, údolie smrti, las vegas, valey of fire, zion, angels landing, bryce canyon, monument valley',
-    },
+    title: 'Roadtrip USA - 1. časť',
+    date: '1. Apríl 2020',
+    dateCreated: '04.01.2020',
+    description:
+      'Prvá časť roadtripu o tom, ako sme 18 dní žili v aute a cestovali po západnom pobreží Ameriky. Zo San Francisca do Monument Valley, kde sa snažíme pochodiť čo najviac národných parkov Ameriky a zaujímavých miest.',
+    image: '/static/images/photosFull/SFGoldenGateArticle.jpg',
+    keywords:
+      'cestovateľský blog, roadtrip, usa, národné parky, san francisco, yosemite, sequoje, death valley, údolie smrti, las vegas, valey of fire, zion, angels landing, bryce canyon, monument valley',
+    category: ['Cestopisy', 'Roadtrip', 'USA'],
     content: [
       {
         component: 'h2',
@@ -982,7 +1121,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MtPrincetonView.jpg',
+            src: '/static/images/photosFull/MtPrincetonView.jpg',
             name: 'MtPrincetonView',
           },
         ],
@@ -1012,7 +1151,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/TiledSteps.jpg',
+            src: '/static/images/photosFull/TiledSteps.jpg',
             name: 'TiledSteps',
           },
         ],
@@ -1022,7 +1161,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFNoBridgeView.jpg',
+            src: '/static/images/photosFull/SFNoBridgeView.jpg',
             name: 'SFNoBridgeView',
           },
         ],
@@ -1032,7 +1171,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFHeart.jpg',
+            src: '/static/images/photosFull/SFHeart.jpg',
             name: 'SFHeart',
           },
         ],
@@ -1050,7 +1189,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFBakerBeach.jpg',
+            src: '/static/images/photosFull/SFBakerBeach.jpg',
             name: 'SFBakerBeach',
           },
         ],
@@ -1060,7 +1199,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFGoldenGateArticle.jpg',
+            src: '/static/images/photosFull/SFGoldenGateArticle.jpg',
             name: 'SFGoldenGateArticle',
           },
         ],
@@ -1070,7 +1209,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFBernalHeights.jpg',
+            src: '/static/images/photosFull/SFBernalHeights.jpg',
             name: 'SFBernalHeights',
           },
         ],
@@ -1084,7 +1223,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFLombardiStreetBus.jpg',
+            src: '/static/images/photosFull/SFLombardiStreetBus.jpg',
             name: 'SFLombardiStreetBus',
           },
         ],
@@ -1094,7 +1233,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFLombardiStreet.jpg',
+            src: '/static/images/photosFull/SFLombardiStreet.jpg',
             name: 'SFLombardiStreet',
           },
         ],
@@ -1104,7 +1243,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFCableCar.jpg',
+            src: '/static/images/photosFull/SFCableCar.jpg',
             name: 'SFCableCar',
           },
         ],
@@ -1118,7 +1257,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFPier39Liv.jpg',
+            src: '/static/images/photosFull/SFPier39Liv.jpg',
             name: 'SFPier39Liv',
           },
         ],
@@ -1128,7 +1267,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFPier39Lunch.jpg',
+            src: '/static/images/photosFull/SFPier39Lunch.jpg',
             name: 'SFPier39Lunch',
           },
         ],
@@ -1138,7 +1277,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SFPier39Seals.jpg',
+            src: '/static/images/photosFull/SFPier39Seals.jpg',
             name: 'SFPier39Seals',
           },
         ],
@@ -1160,7 +1299,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/YosemiteHalfDome.jpg',
+            src: '/static/images/photosFull/YosemiteHalfDome.jpg',
             name: 'YosemiteHalfDome',
           },
         ],
@@ -1170,7 +1309,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/YGlacierPointTrail3.jpg',
+            src: '/static/images/photosFull/YGlacierPointTrail3.jpg',
             name: 'YGlacierPointTrail3',
           },
         ],
@@ -1181,11 +1320,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'YGlacierPoint',
-            src: '../images/photosFull/YGlacierPoint.jpg',
+            src: '/static/images/photosFull/YGlacierPoint.jpg',
           },
           {
             name: 'YGlacierPointTrail2',
-            src: '../images/photosFull/YGlacierPointTrail2.jpg',
+            src: '/static/images/photosFull/YGlacierPointTrail2.jpg',
           },
         ],
       },
@@ -1202,11 +1341,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'SeqMamut',
-            src: '../images/photosFull/SeqMamut.jpg',
+            src: '/static/images/photosFull/SeqMamut.jpg',
           },
           {
             name: 'SeqHug',
-            src: '../images/photosFull/SeqHug.jpg',
+            src: '/static/images/photosFull/SeqHug.jpg',
           },
         ],
       },
@@ -1214,7 +1353,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SeqHeart.jpg',
+            src: '/static/images/photosFull/SeqHeart.jpg',
             name: 'SeqHeart',
           },
         ],
@@ -1232,7 +1371,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVZabrisky.jpg',
+            src: '/static/images/photosFull/DVZabrisky.jpg',
             name: 'DVZabrisky',
           },
         ],
@@ -1242,7 +1381,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVSunsetRoad.jpg',
+            src: '/static/images/photosFull/DVSunsetRoad.jpg',
             name: 'DVSunsetRoad',
           },
         ],
@@ -1252,7 +1391,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVPlain.jpg',
+            src: '/static/images/photosFull/DVPlain.jpg',
             name: 'DVPlain',
           },
         ],
@@ -1266,7 +1405,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVNightSkyBad.jpg',
+            src: '/static/images/photosFull/DVNightSkyBad.jpg',
             name: 'DVNightSkyBad',
           },
         ],
@@ -1276,7 +1415,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVSunrise.jpg',
+            src: '/static/images/photosFull/DVSunrise.jpg',
             name: 'DVSunrise',
           },
         ],
@@ -1302,7 +1441,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVBadWater.jpg',
+            src: '/static/images/photosFull/DVBadWater.jpg',
             name: 'DVBadWater',
           },
         ],
@@ -1312,7 +1451,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVScvrkol.jpg',
+            src: '/static/images/photosFull/DVScvrkol.jpg',
             name: 'DVScvrkol',
           },
         ],
@@ -1322,7 +1461,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/DVjump.jpg',
+            src: '/static/images/photosFull/DVjump.jpg',
             name: 'DVjump',
           },
         ],
@@ -1340,7 +1479,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVNY.jpg',
+            src: '/static/images/photosFull/LVNY.jpg',
             name: 'LVNY',
           },
         ],
@@ -1350,7 +1489,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVCasinoLiv.jpg',
+            src: '/static/images/photosFull/LVCasinoLiv.jpg',
             name: 'LVCasinoLiv',
           },
         ],
@@ -1364,7 +1503,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVCircus.jpg',
+            src: '/static/images/photosFull/LVCircus.jpg',
             name: 'LVCircus',
           },
         ],
@@ -1374,7 +1513,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVLivNight.jpg',
+            src: '/static/images/photosFull/LVLivNight.jpg',
             name: 'LVLivNight',
           },
         ],
@@ -1384,7 +1523,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVBellagio.jpg',
+            src: '/static/images/photosFull/LVBellagio.jpg',
             name: 'LVBellagio',
           },
         ],
@@ -1403,11 +1542,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'LVSignQueue',
-            src: '../images/photosFull/LVSignQueue.jpg',
+            src: '/static/images/photosFull/LVSignQueue.jpg',
           },
           {
             name: 'LVChapelRing',
-            src: '../images/photosFull/LVChapelRing.jpg',
+            src: '/static/images/photosFull/LVChapelRing.jpg',
           },
         ],
       },
@@ -1415,7 +1554,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LVChapel.jpg',
+            src: '/static/images/photosFull/LVChapel.jpg',
             name: 'LVChapel',
           },
         ],
@@ -1433,7 +1572,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VoFRoad.jpg',
+            src: '/static/images/photosFull/VoFRoad.jpg',
             name: 'VoFRoad',
           },
         ],
@@ -1443,7 +1582,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VoFView.jpg',
+            src: '/static/images/photosFull/VoFView.jpg',
             name: 'VoFView',
           },
         ],
@@ -1453,7 +1592,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VoFRoadView.jpg',
+            src: '/static/images/photosFull/VoFRoadView.jpg',
             name: 'VoFRoadView',
           },
         ],
@@ -1467,7 +1606,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/ZionAngelsLanding.jpg',
+            src: '/static/images/photosFull/ZionAngelsLanding.jpg',
             name: 'ZionAngelsLanding',
           },
         ],
@@ -1477,7 +1616,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/ZionClimb.jpg',
+            src: '/static/images/photosFull/ZionClimb.jpg',
             name: 'ZionClimb',
           },
         ],
@@ -1487,7 +1626,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/ZionChipmunk.jpg',
+            src: '/static/images/photosFull/ZionChipmunk.jpg',
             name: 'ZionChipmunk',
           },
         ],
@@ -1505,7 +1644,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/ZionWatchman.jpg',
+            src: '/static/images/photosFull/ZionWatchman.jpg',
             name: 'ZionWatchman',
           },
         ],
@@ -1515,7 +1654,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/ZionCanyonLow.jpg',
+            src: '/static/images/photosFull/ZionCanyonLow.jpg',
             name: 'ZionCanyonLow',
           },
         ],
@@ -1537,7 +1676,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/BryceSunrise.jpg',
+            src: '/static/images/photosFull/BryceSunrise.jpg',
             name: 'BryceSunrise',
           },
         ],
@@ -1547,7 +1686,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/BryceSunrise2.jpg',
+            src: '/static/images/photosFull/BryceSunrise2.jpg',
             name: 'BryceSunrise2',
           },
         ],
@@ -1565,7 +1704,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/HorseShoeUs.jpg',
+            src: '/static/images/photosFull/HorseShoeUs.jpg',
             name: 'HorseShoeUs',
           },
         ],
@@ -1575,7 +1714,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/HorseShoePeople.jpg',
+            src: '/static/images/photosFull/HorseShoePeople.jpg',
             name: 'HorseShoePeople',
           },
         ],
@@ -1589,7 +1728,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MVRoad.jpg',
+            src: '/static/images/photosFull/MVRoad.jpg',
             name: 'MVRoad',
           },
         ],
@@ -1599,7 +1738,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MVRoadJump.jpg',
+            src: '/static/images/photosFull/MVRoadJump.jpg',
             name: 'MVRoadJump',
           },
         ],
@@ -1609,7 +1748,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MVSunrise.jpg',
+            src: '/static/images/photosFull/MVSunrise.jpg',
             name: 'MVSunrise',
           },
         ],
@@ -1623,13 +1762,15 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'roadtrip-usa-2',
-    tags: {
-      title: 'Roadtrip USA - 2. časť',
-      description: 'Pokračovanie roadtripu z Monument Valley až do San Diega.',
-      image: 'images/photosFull/GCLivPano.jpg',
-      keywords:
-        'cestovateľský blog, monument valley, grand canyon, grand kanon, route 66, púšť mojave, mojave desert, universal studios, holywood sign,  los angeles, san diego',
-    },
+    title: 'Roadtrip USA - 2. časť',
+    date: '4. Apríl 2020',
+    dateCreated: '04.04.2020',
+    description:
+      'Pokračovanie roadtripu z Monument Valley až do San Diega. Cestovateľský sen sa stal skutočnosťou a mohli sme si odfajknúť vytúženú vec z nášho bucketlistu –  Grand Canyon.',
+    image: '/static/images/photosFull/GCLivPano.jpg',
+    keywords:
+      'cestovateľský blog, monument valley, grand canyon, grand kanon, route 66, púšť mojave, mojave desert, universal studios, holywood sign,  los angeles, san diego',
+    category: ['Cestopisy', 'Roadtrip', 'USA'],
     content: [
       {
         component: 'h2',
@@ -1651,7 +1792,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCLivPano.jpg',
+            src: '/static/images/photosFull/GCLivPano.jpg',
             name: 'GCLivPano',
           },
         ],
@@ -1673,7 +1814,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCLivAlone.jpg',
+            src: '/static/images/photosFull/GCLivAlone.jpg',
             name: 'GCLivAlone',
           },
         ],
@@ -1683,7 +1824,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCWaitingSpot.jpg',
+            src: '/static/images/photosFull/GCWaitingSpot.jpg',
             name: 'GCWaitingSpot',
           },
         ],
@@ -1693,7 +1834,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCNightSky.jpg',
+            src: '/static/images/photosFull/GCNightSky.jpg',
             name: 'GCNightSky',
           },
         ],
@@ -1715,7 +1856,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCSunrise.jpg',
+            src: '/static/images/photosFull/GCSunrise.jpg',
             name: 'GCSunrise',
           },
         ],
@@ -1725,7 +1866,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCOohAah.jpg',
+            src: '/static/images/photosFull/GCOohAah.jpg',
             name: 'GCOohAah',
           },
         ],
@@ -1735,7 +1876,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCInverseTrek.jpg',
+            src: '/static/images/photosFull/GCInverseTrek.jpg',
             name: 'GCInverseTrek',
           },
         ],
@@ -1749,7 +1890,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCContrastView.jpg',
+            src: '/static/images/photosFull/GCContrastView.jpg',
             name: 'GCContrastView',
           },
         ],
@@ -1759,7 +1900,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCViewUs.jpg',
+            src: '/static/images/photosFull/GCViewUs.jpg',
             name: 'GCViewUs',
           },
         ],
@@ -1769,7 +1910,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/GCViewDown.jpg',
+            src: '/static/images/photosFull/GCViewDown.jpg',
             name: 'GCViewDown',
           },
         ],
@@ -1787,7 +1928,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RD66Road.jpg',
+            src: '/static/images/photosFull/RD66Road.jpg',
             name: 'RD66Road',
           },
         ],
@@ -1797,7 +1938,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RD66MuseumBus.jpg',
+            src: '/static/images/photosFull/RD66MuseumBus.jpg',
             name: 'RD66MuseumBus',
           },
         ],
@@ -1807,7 +1948,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RD66MuseumWall.jpg',
+            src: '/static/images/photosFull/RD66MuseumWall.jpg',
             name: 'RD66MuseumWall',
           },
         ],
@@ -1821,7 +1962,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RD66Bar.jpg',
+            src: '/static/images/photosFull/RD66Bar.jpg',
             name: 'RD66Bar',
           },
         ],
@@ -1832,11 +1973,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'RD66Selfie',
-            src: '../images/photosFull/RD66Selfie.jpg',
+            src: '/static/images/photosFull/RD66Selfie.jpg',
           },
           {
             name: 'RD66Bar2',
-            src: '../images/photosFull/RD66Bar2.jpg',
+            src: '/static/images/photosFull/RD66Bar2.jpg',
           },
         ],
       },
@@ -1848,7 +1989,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MojaveTreesDetail.jpg',
+            src: '/static/images/photosFull/MojaveTreesDetail.jpg',
             name: 'MojaveTreesDetail',
           },
         ],
@@ -1858,7 +1999,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MojaveWalk.jpg',
+            src: '/static/images/photosFull/MojaveWalk.jpg',
             name: 'MojaveWalk',
           },
         ],
@@ -1868,7 +2009,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/MojaveJoshuaTreeDetail.jpg',
+            src: '/static/images/photosFull/MojaveJoshuaTreeDetail.jpg',
             name: 'MojaveJoshuaTreeDetail',
           },
         ],
@@ -1898,7 +2039,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LASign.jpg',
+            src: '/static/images/photosFull/LASign.jpg',
             name: 'LASign',
           },
         ],
@@ -1908,7 +2049,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAHollywoodSignUs.jpg',
+            src: '/static/images/photosFull/LAHollywoodSignUs.jpg',
             name: 'LAHollywoodSignUs',
           },
         ],
@@ -1918,7 +2059,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAToweWings.jpg',
+            src: '/static/images/photosFull/LAToweWings.jpg',
             name: 'LAToweWings',
           },
         ],
@@ -1941,11 +2082,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'LAWalkFameDan',
-            src: '../images/photosFull/LAWalkFameDan.jpg',
+            src: '/static/images/photosFull/LAWalkFameDan.jpg',
           },
           {
             name: 'LAWalkFameLiv',
-            src: '../images/photosFull/LAWalkFameLiv.jpg',
+            src: '/static/images/photosFull/LAWalkFameLiv.jpg',
           },
         ],
       },
@@ -1970,11 +2111,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'LAHeadLiv',
-            src: '../images/photosFull/LAHeadLiv.jpg',
+            src: '/static/images/photosFull/LAHeadLiv.jpg',
           },
           {
             name: 'LAHeadLiv',
-            src: '../image/photosFull/LAHeadLiv.jpg',
+            src: 'static/image/photosFull/LAHeadLiv.jpg',
           },
         ],
       },
@@ -1990,7 +2131,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAUniversal.jpg',
+            src: '/static/images/photosFull/LAUniversal.jpg',
             name: 'LAUniversal',
           },
         ],
@@ -2008,7 +2149,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAUniversalDonkey.jpg',
+            src: '/static/images/photosFull/LAUniversalDonkey.jpg',
             name: 'LAUniversalDonkey',
           },
         ],
@@ -2019,7 +2160,7 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'LAUniversalAle',
-            src: '../images/photosFull/LAUniversalAle.jpg',
+            src: '/static/images/photosFull/LAUniversalAle.jpg',
           },
           {
             name: 'LAUniversalKrusty',
@@ -2044,11 +2185,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'LABeverlyHillsUs',
-            src: '../images/photosFull/LABeverlyHillsUs.jpg',
+            src: '/static/images/photosFull/LABeverlyHillsUs.jpg',
           },
           {
             name: 'LARodeoDriveLiv',
-            src: '../images/photosFull/LARodeoDriveLiv.jpg',
+            src: '/static/images/photosFull/LARodeoDriveLiv.jpg',
           },
         ],
       },
@@ -2056,7 +2197,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LARodeoDrive.jpg',
+            src: '/static/images/photosFull/LARodeoDrive.jpg',
             name: 'LARodeoDrive',
           },
         ],
@@ -2066,7 +2207,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAGriffith.jpg',
+            src: '/static/images/photosFull/LAGriffith.jpg',
             name: 'LAGriffith',
           },
         ],
@@ -2084,7 +2225,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LAPalms.jpg',
+            src: '/static/images/photosFull/LAPalms.jpg',
             name: 'LAPalms',
           },
         ],
@@ -2094,7 +2235,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LATent.jpg',
+            src: '/static/images/photosFull/LATent.jpg',
             name: 'LATent',
           },
         ],
@@ -2132,7 +2273,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSVAC.jpg',
+            src: '/static/images/photosFull/SDSVAC.jpg',
             name: 'SDSVAC',
           },
         ],
@@ -2142,7 +2283,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSWTiles.jpg',
+            src: '/static/images/photosFull/SDSWTiles.jpg',
             name: 'SDSWTiles',
           },
         ],
@@ -2152,7 +2293,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSWTilesLiv.jpg',
+            src: '/static/images/photosFull/SDSWTilesLiv.jpg',
             name: 'SDSWTilesLiv',
           },
         ],
@@ -2162,7 +2303,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDBotanicGarden.jpg',
+            src: '/static/images/photosFull/SDBotanicGarden.jpg',
             name: 'SDBotanicGarden',
           },
         ],
@@ -2172,7 +2313,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/LASWHouse.jpg',
+            src: '/static/images/photosFull/LASWHouse.jpg',
             name: 'LASWHouse',
           },
         ],
@@ -2190,7 +2331,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSwim.jpg',
+            src: '/static/images/photosFull/SDSwim.jpg',
             name: 'SDSwim',
           },
         ],
@@ -2200,7 +2341,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSunsetChill.jpg',
+            src: '/static/images/photosFull/SDSunsetChill.jpg',
             name: 'SDSunsetChill',
           },
         ],
@@ -2210,7 +2351,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SDSunsetSiluethe.jpg',
+            src: '/static/images/photosFull/SDSunsetSiluethe.jpg',
             name: 'SDSunetSiluethe',
           },
         ],
@@ -2224,23 +2365,24 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'cestahrdinovsnpzapisky',
-    tags: {
-      title: 'Z Dukly na Devín za 32 dní - 1. časť',
-      description:
-        'Počas cesty sme sa snažili zdokumentovať každý deň nášho putovania. Pocity, dojmy, zážitky, nečakané zvraty. Taká bola pôvodná predstava, ale nebudeme klamať. Entuziazmus z písania denníka nás veľmi rýchlo opustil. Postupne sa stávali z \tdenníka krátke zápisky, zo zápiskov odrážky, z \todrážok slovné spojenia a \tzo slovných spojení ostali už len citoslovcia a \tsmajlíky. Na napísanie nasledujúceho článku nám to bohato stačilo.',
-      image: 'images/photosFull/SNPDuklaPamatnik.jpg',
-      keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
-    },
+    title: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 1.časť',
+    date: '27. október 2020',
+    dateCreated: '27.10.2020',
+    description:
+      'Počas cesty sme sa snažili zdokumentovať každý deň nášho putovania. Pocity, dojmy, zážitky, nečakané zvraty. Taká bola pôvodná predstava, ale nebudeme klamať. Entuziazmus z písania denníka nás veľmi rýchlo opustil. Postupne sa stávali z \tdenníka krátke zápisky, zo zápiskov odrážky, z \todrážok slovné spojenia a \tzo slovných spojení ostali už len citoslovcia a \tsmajlíky. Na napísanie nasledujúceho článku nám to bohato stačilo.',
+    image: '/static/images/photosFull/SNPDuklaPamatnik.jpg',
+    keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
+    category: ['Cestopisy', 'Hiking', 'Slovensko'],
     content: [
       {
         component: 'h2',
-        text: 'Z Dukly na Devín za 32 dní - 1. časť',
+        text: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 1.časť',
       },
       {
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPDuklaPamatnik.jpg',
+            src: '/static/images/photosFull/SNPDuklaPamatnik.jpg',
             name: 'SNPDuklaPamatnik',
           },
         ],
@@ -2260,7 +2402,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'Napriek poctivej príprave, tréningu, radám od skúsených SNPčkárov, načítaným blogom s&nbsp;blížiacim sa dátumom odchodu gradovali vo mne obavy a&nbsp;pochybnosti. Naozaj máme na to pokoriť túto výzvu? Chodiť na jednodňové turistiky je jedna vec, ale prejsť 760&nbsp;km za 32 dní bolo pre mňa niečo nepredstaviteľné.',
+        text: 'Napriek poctivej príprave, tréningu, radám od skúsených SNPčkárov, načítaným blogom s&nbsp;blížiacim sa dátumom odchodu gradovali vo mne obavy a&nbsp;pochybnosti. Naozaj máme na to pokoriť túto výzvu? Chodiť na jednodňové turistiky je jedna vec, ale prejsť 760&nbsp;km za 30 dní bolo pre mňa niečo nepredstaviteľné.',
       },
       {
         component: 'p',
@@ -2278,7 +2420,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPLietadlo.jpg',
+            src: '/static/images/photosFull/SNPLietadlo.jpg',
             name: 'SNPLietadlo',
           },
         ],
@@ -2288,7 +2430,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPTank.jpg',
+            src: '/static/images/photosFull/SNPTank.jpg',
             name: 'SNPTank',
           },
         ],
@@ -2302,7 +2444,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPKranieVDzungli.jpg',
+            src: '/static/images/photosFull/SNPKranieVDzungli.jpg',
             name: 'SNPKranieVDzungli',
           },
         ],
@@ -2328,7 +2470,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPPosed.jpg',
+            src: '/static/images/photosFull/SNPPosed.jpg',
             name: 'SNPPosed',
           },
         ],
@@ -2350,7 +2492,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPMagura.jpg',
+            src: '/static/images/photosFull/SNPMagura.jpg',
             name: 'SNPMagura',
           },
         ],
@@ -2368,7 +2510,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPSuseniePradla.jpg',
+            src: '/static/images/photosFull/SNPSuseniePradla.jpg',
             name: 'SNPSuseniePradla',
           },
         ],
@@ -2378,7 +2520,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'video',
         src: [
           {
-            src: '../videos/SNPUmyvanie.mp4',
+            src: 'static/videos/SNPUmyvanie.mp4',
             name: 'SNPSuseniePradla',
             type: 'video/mp4',
           },
@@ -2388,7 +2530,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPckarskaSprcha.jpg',
+            src: '/static/images/photosFull/SNPckarskaSprcha.jpg',
             name: 'SNPckarskaSprcha',
             description: 'Aj na takomto mieste sme sa "sprchovali"',
           },
@@ -2408,11 +2550,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'SNPHojdacka',
-            src: '../images/photosFull/SNPHojdacka.jpg',
+            src: '/static/images/photosFull/SNPHojdacka.jpg',
           },
           {
             name: 'SNPPadDoBlata',
-            src: '../images/photosFull/SNPPadDoBlata.jpg',
+            src: '/static/images/photosFull/SNPPadDoBlata.jpg',
           },
         ],
       },
@@ -2425,11 +2567,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'SNPHervartov',
-            src: '../images/photosFull/SNPHervartov.jpg',
+            src: '/static/images/photosFull/SNPHervartov.jpg',
           },
           {
             name: 'SNPBlatovaCesta',
-            src: '../images/photosFull/SNPBlatovaCesta.jpg',
+            src: '/static/images/photosFull/SNPBlatovaCesta.jpg',
           },
         ],
       },
@@ -2441,7 +2583,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPCergov.jpg',
+            src: '/static/images/photosFull/SNPCergov.jpg',
             name: 'SNPCergov',
           },
         ],
@@ -2459,17 +2601,18 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'cestahrdinovsnpzapisky2',
-    tags: {
-      title: 'Z Dukly na Devín za 32 dní - 2. časť',
-      description:
-        'Ďalšia dávka našich zážitkov a príhod počas 32 dňového užívania si prírody, slobody a zdravého pohybu.',
-      image: '/images/photosFull/SNPPortraitVT.jpg',
-      keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
-    },
+    title: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 2.časť',
+    date: '7. november 2020',
+    dateCreated: '11.07.2020',
+    description:
+      'Poznáš ten nepríjemný pocit, keď ti začne krútiť črevá, sociálne zariadenie je na míle ďaleko a ty v snahe zabrániť blížiacej sa pohrome prekrižuješ nohy a zatínaš ritné polky. Na SNPčke takýto problém nastať nemôže. Záchod nájdeš na každom kroku. Kedykoľvek to na teba príde, môžeš si jednoducho odskočiť za najbližší krík.',
+    image: '/static/images/photosFull/SNPPortraitVT.jpg',
+    keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
+    category: ['Cestopisy', 'Hiking', 'Slovensko'],
     content: [
       {
         component: 'h2',
-        text: 'Z Dukly na Devín za 32 dní - 2. časť',
+        text: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 2.časť',
       },
       {
         component: 'h3',
@@ -2483,7 +2626,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPNaPosratie.jpg',
+            src: '/static/images/photosFull/SNPNaPosratie.jpg',
             name: 'SNPNaPosratie',
           },
         ],
@@ -2501,7 +2644,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPVolovecGulas.jpg',
+            src: '/static/images/photosFull/SNPVolovecGulas.jpg',
             name: 'SNPVolovecGulas',
           },
         ],
@@ -2515,7 +2658,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPVolovecOpica.jpg',
+            src: '/static/images/photosFull/SNPVolovecOpica.jpg',
             name: 'SNPVolovecOpica',
           },
         ],
@@ -2529,7 +2672,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPSkalisko.jpg',
+            src: '/static/images/photosFull/SNPSkalisko.jpg',
             name: 'SNPSkalisko',
             description: 'Východ slnka s krásnou inverziou na Skalisku.',
           },
@@ -2548,7 +2691,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPGalovaUtulna.jpg',
+            src: '/static/images/photosFull/SNPGalovaUtulna.jpg',
             name: 'SNPGalovaUtulna',
             description: 'Utulňa Gálová.',
           },
@@ -2575,7 +2718,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPGolgotaUkryt.jpg',
+            src: '/static/images/photosFull/SNPGolgotaUkryt.jpg',
             name: 'SNPGolgotaUkryt',
           },
         ],
@@ -2589,7 +2732,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPNTPrsiplast.jpg',
+            src: '/static/images/photosFull/SNPNTPrsiplast.jpg',
             name: 'SNPNTPrsiplast',
           },
         ],
@@ -2631,7 +2774,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPZlab.jpg',
+            src: '/static/images/photosFull/SNPZlab.jpg',
             name: 'SNPZlab',
             description: 'Utulňa Žľab.',
           },
@@ -2648,7 +2791,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'h3',
-        text: 'Komáre a&nbsp;iné (h)ovady ',
+        text: 'Komáre a iné (h)ovady ',
       },
       {
         component: 'p',
@@ -2659,11 +2802,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'SNPKomare',
-            src: '../images/photosFull/SNPKomare.jpg',
+            src: '/static/images/photosFull/SNPKomare.jpg',
           },
           {
             name: 'SNPFotenie',
-            src: '../images/photosFull/SNPFotenie.jpg',
+            src: '/static/images/photosFull/SNPFotenie.jpg',
             description:
               'Na záver náš verný kamarát, ktorý s nami zvládol prejsť celú cestu a vždy na slovíčko počúval.',
           },
@@ -2681,14 +2824,15 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'cestahrdinovsnp',
-    tags: {
-      title: 'Cesta hrdinov SNP',
-      description:
-        'Najdlhšia turistická magistrála na území Slovenska. Začína sa v Duklianskom priesmyku a končí sa na hrade Devín. Jej dĺžka je 770 kilometrov. Celú túto trasu sme sa rozhodli prejsť peši a aj sa nám to podarilo. V tomto článku sa dočítaš základne informácie o našom putovaní na Ceste hrdinov SNP.',
-      image: 'images/photosFull/SNPNTKosariska.jpg',
-      keywords:
-        'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry, rady a tipy',
-    },
+    title: 'Z Dukly na Devín za 30 dní: Naša cesta hrdinov SNP v číslach',
+    date: '9. september 2020',
+    dateCreated: '09.09.2020',
+    description:
+      'Najdlhšia turistická magistrála na území Slovenska. Začína sa v Duklianskom priesmyku a končí sa na hrade Devín. Jej dĺžka je 770 kilometrov. Celú túto trasu sme sa rozhodli prejsť peši a aj sa nám to podarilo. V tomto článku sa dočítaš základne informácie o našom putovaní na Ceste hrdinov SNP.',
+    image: '/static/images/photosFull/SNPNTKosariska.jpg',
+    keywords:
+      'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry, rady a tipy',
+    category: ['Cestopisy', 'Hiking', 'Slovensko'],
     content: [
       {
         component: 'h2',
@@ -2696,13 +2840,13 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'Naša cesta zhrnutá v&nbsp;číslach. Prešli sme 770 km za 32 dní s&nbsp;výškovým prevýšením 30&nbsp;000 metrov. Denne sme nachodili v&nbsp;priemere 27 km s&nbsp;batohmi vážiacimi plus-mínus 15&nbsp;kg. Zodrali sme 3 páry topánok a&nbsp;5 párov ponožiek. 21 nocí sme spali v&nbsp;stane pod šírym nebom. Dokopy sme zjedli 34 vifoniek, 56 horaliek a&nbsp;vypili 10 litrov kofoly. Počas cesty sme stretli 2 diviakov, 10 srniek, 46 kamzíkov a 1 medveďa. Zdolali sme 19 slovenských pohorí (Laborecká vrchovina, Ondavská vrchovina, Busov, Čergov, Šarišská vrchovina, Čierna hora, Volovské vrchy, Spišsko-gemerský kras, Stolické vrchy, Nízke Tatry, Starohorské vrchy, Veľká Fatra, Kremnické vrchy, Žiar, Malá Fatra, Strážovské vrchy, Biele Karpaty, Myjavská pahorkatina a&nbsp;Malé Karpaty). Celé toto dobrodružstvo nás každého stálo cca 400&nbsp;€.',
+        text: 'Naša cesta zhrnutá v&nbsp;číslach. Prešli sme 770 km za 30 dní s&nbsp;výškovým prevýšením 30&nbsp;000 metrov. Denne sme nachodili v&nbsp;priemere 27 km s&nbsp;batohmi vážiacimi plus-mínus 15&nbsp;kg. Zodrali sme 3 páry topánok a&nbsp;5 párov ponožiek. 21 nocí sme spali v&nbsp;stane pod šírym nebom. Dokopy sme zjedli 34 vifoniek, 56 horaliek a&nbsp;vypili 10 litrov kofoly. Počas cesty sme stretli 2 diviakov, 10 srniek, 46 kamzíkov a 1 medveďa. Zdolali sme 19 slovenských pohorí (Laborecká vrchovina, Ondavská vrchovina, Busov, Čergov, Šarišská vrchovina, Čierna hora, Volovské vrchy, Spišsko-gemerský kras, Stolické vrchy, Nízke Tatry, Starohorské vrchy, Veľká Fatra, Kremnické vrchy, Žiar, Malá Fatra, Strážovské vrchy, Biele Karpaty, Myjavská pahorkatina a&nbsp;Malé Karpaty). Celé toto dobrodružstvo nás každého stálo cca 400&nbsp;€.',
       },
       {
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPDuklaVojak.jpg',
+            src: '/static/images/photosFull/SNPDuklaVojak.jpg',
             name: 'SNPDuklaVojak',
           },
         ],
@@ -2720,7 +2864,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPznacka.jpg',
+            src: '/static/images/photosFull/SNPznacka.jpg',
             name: 'SNPznacka',
           },
         ],
@@ -2742,7 +2886,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPChopok.jpg',
+            src: '/static/images/photosFull/SNPChopok.jpg',
             name: 'SNPChopok',
           },
         ],
@@ -2764,7 +2908,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPStanMorning.jpg',
+            src: '/static/images/photosFull/SNPStanMorning.jpg',
             name: 'SNPStanMorning',
           },
         ],
@@ -2782,7 +2926,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/SNPNTKosariska.jpg',
+            src: '/static/images/photosFull/SNPNTKosariska.jpg',
             name: 'SNPNTKosariska',
           },
         ],
@@ -2792,13 +2936,14 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'radyatipyerasmus',
-    tags: {
-      title: '5 dôvodov prečo (NE)ísť na ERASMUS',
-      description:
-        'V článku 5 dôvodov prečo (NE)ísť na Erasmus sme spísali najčastejšie (NE)podstatné dôvody, ktoré odrádzajú študentov zúčastniť sa Erasmu. Zároveň ti ukážeme, že ani jeden z nich nie je dostatočnou prekážkou na to, aby si nevyužil jednu z najlepších cestovateľských príležitostí, aká sa ti na vysokej škole ponúka.',
-      image: 'images/photosFull/OuluNalikari.jpg',
-      keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
-    },
+    title: '5 dôvodov prečo (NE)ísť na ERASMUS',
+    date: '16. Máj 2020',
+    dateCreated: '05.16.2020',
+    description:
+      'V článku 5 dôvodov prečo (NE)ísť na Erasmus sme spísali najčastejšie (NE)podstatné dôvody, ktoré odrádzajú študentov zúčastniť sa Erasmu. Zároveň ti ukážeme, že ani jeden z nich nie je dostatočnou prekážkou na to, aby si nevyužil jednu z najlepších cestovateľských príležitostí, aká sa ti na vysokej škole ponúka.',
+    image: '/static/images/photosFull/Erasmus/OuluNalikari.jpg',
+    keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
+    category: ['Rady a Tipy', 'Erasmus'],
     content: [
       {
         component: 'h2',
@@ -2824,7 +2969,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/OuluLakeJump.jpg',
+            src: '/static/images/photosFull/Erasmus/OuluLakeJump.jpg',
             name: 'OuluLakeJump',
           },
         ],
@@ -2882,7 +3027,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/OuluTripToPetersburg.jpg',
+            src: '/static/images/photosFull/Erasmus/OuluTripToPetersburg.jpg',
             name: 'OuluTripToPetersburg',
           },
         ],
@@ -2902,7 +3047,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'h3',
-        text: '4. Výučba v&nbsp;cudzom jazyku',
+        text: '4. Výučba v cudzom jazyku',
       },
       {
         component: 'p',
@@ -2948,7 +3093,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/Erasmus/ErasmusMap.jpg',
+            src: '/static/images/photosFull/Erasmus/ErasmusMap.jpg',
             name: 'ErasmusMap',
           },
         ],
@@ -2966,12 +3111,14 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'radyatipyerasmusvybavovacky',
-    tags: {
-      title: 'Erasmus vybavovačky krok za krokom',
-      description: 'Podrobný rozpis o tom, ako prebieha prihlasovanie na Erasmus.',
-      image: 'images/photosFull/Erasmus/ErasmusFlight.jpg',
-      keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
-    },
+    title: 'Erasmus vybavovačky krok za krokom',
+    date: '16. Máj 2020',
+    dateCreated: '05.16.2020',
+    description:
+      'Podrobný rozpis o tom, ako prebieha prihlasovanie na Erasmus. Nezabudni, tie najdôležitejšie a najaktuálnejšie informácie nájdeš na webových stránkach svojej univerzity.',
+    image: '/static/images/photosFull/Erasmus/ErasmusFlight.jpg',
+    keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
+    category: ['Rady a Tipy', 'Erasmus'],
     content: [
       {
         component: 'h2',
@@ -2979,7 +3126,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'h3',
-        text: '1. Pozorne si naštudujpokyny uvedené na webových stránkach tvojej univerzity',
+        text: '1. Pozorne si naštuduj pokyny uvedené na webových stránkach tvojej univerzity',
       },
       {
         component: 'p',
@@ -3069,13 +3216,14 @@ export const ArticlesContent: ArticleContent[] = [
   },
   {
     url: 'radyatipyusa',
-    tags: {
-      title: 'Cestovanie po USA - užitočné rady a tipy',
-      description:
-        'Ako môžeš kúpiť annual pass za najnižšiu cenu?  Čo sa oplatí/neoplatí? Jedny z mála otázok, na ktoré ti ponúkame odpovede v našich článkoch. Možno zopár z nich využiješ aj pri plánovaní tvojho výletu po USA.',
-      image: 'images/photosFull/FlagUSA.jpg',
-      keywords: 'cestovanie, amerika, cestovanie po amerike, rady a tipy, usa, roadtrip',
-    },
+    title: 'Cestovanie po USA - užitočné rady a tipy',
+    date: '12. Apríl 2020',
+    dateCreated: '04.12.2020',
+    description:
+      'Ako môžeš kúpiť annual pass za najnižšiu cenu?  Čo sa oplatí/neoplatí? Jedny z mála otázok, na ktoré ti ponúkame odpovede v našich článkoch. Možno zopár z nich využiješ aj pri plánovaní tvojho výletu po USA.',
+    image: '/static/images/photosFull/FlagUSA.jpg',
+    keywords: 'cestovanie, amerika, cestovanie po amerike, rady a tipy, usa, roadtrip',
+    category: ['Rady a Tipy', 'USA'],
     content: [
       {
         component: 'h2',
@@ -3093,7 +3241,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RTUSA1.jpg',
+            src: '/static/images/photosFull/RTUSA1.jpg',
             name: 'RTUSA1',
           },
         ],
@@ -3115,7 +3263,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RTUSA2.jpg',
+            src: '/static/images/photosFull/RTUSA2.jpg',
             name: 'RTUSA2',
           },
         ],
@@ -3141,7 +3289,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RTUSA3.jpg',
+            src: '/static/images/photosFull/RTUSA3.jpg',
             name: 'RTUSA3',
           },
         ],
@@ -3149,7 +3297,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'Asi najbežnejším a&nbsp;najlacnejším spôsobom je Airbnb, ktoré aj my s&nbsp;obľubou využívame. Ceny sa líšia od mesta a&nbsp;od vzdialenosti od centra. Ak ešte nemáš vytvorený účet na Airbnb, použi tento <a href="https://sk.airbnb.com/c/liviab1667?currency=EUR" >odkaz</a> a&nbsp;získaš zľavu na svoje prvé ubytovanie.',
+        text: 'Asi najbežnejším a&nbsp;najlacnejším spôsobom je Airbnb, ktoré aj my s&nbsp;obľubou využívame. Ceny sa líšia od mesta a&nbsp;od vzdialenosti od centra.',
       },
       {
         component: 'p',
@@ -3179,7 +3327,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/RTUSA4.jpg',
+            src: '/static/images/photosFull/RTUSA4.jpg',
             name: 'RTUSA4',
           },
         ],
@@ -3230,11 +3378,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'RTUSAAP1',
-            src: '../images/photosFull/RTUSAAP1.jpg',
+            src: '/static/images/photosFull/RTUSAAP1.jpg',
           },
           {
             name: 'RTUSAAP2',
-            src: '../images/photosFull/RTUSAAP2.jpg',
+            src: '/static/images/photosFull/RTUSAAP2.jpg',
           },
         ],
       },
@@ -3243,127 +3391,22 @@ export const ArticlesContent: ArticleContent[] = [
 
   {
     url: 'radyatipyusapozicanieauta',
-    tags: {
-      title: 'Na čo si dať pozor pri požičiavaní auta v USA',
-      description:
-        'Čo všetko potrebuješ, aby si si mohol požičať auto? Koľko stojí požičanie auta keď ešte nemáš 25 rokov? Koľko stojí nafta v USA? Aj na tieto otázky nájdeš odpoveď práve v tomto článku.',
-      keywords: 'roadtrip, usa, požičanie auta, lowcost cestovanie, kemping, glamping',
-      image: 'images/photosFull/RTUSA2.jpg',
-    },
+    title: 'Požičiavanie auta v USA: Kompletný sprievodca',
+    date: '12. Apríl 2020',
+    dateCreated: '04.12.2020',
+    description:
+      'Čo všetko potrebuješ, aby si si mohol požičať auto? Koľko stojí požičanie auta keď ešte nemáš 25 rokov? Koľko stojí nafta v USA? Aj na tieto otázky nájdeš odpoveď práve v tomto článku.',
+    keywords: 'roadtrip, usa, požičanie auta, lowcost cestovanie, kemping, glamping',
+    image: '/static/images/photosFull/RTUSA2.jpg',
+    category: ['Rady a Tipy', 'USA'],
     content: [
       {
         component: 'h2',
-        text: 'Požičanie auta v USA - na čo si dať pozor',
+        text: 'Požičiavanie auta v USA: Kompletný sprievodca',
       },
       {
         component: 'p',
-        text: 'Pokiaľ je zámerom tvojho cestovania spoznávanie, na presun jednoznačne odporúčame auto. Spravidla býva najväčšou položkou cestovateľských výdajov, a preto sme sa rozhodli poskytnúť ti zopár užitočných informácii, ktoré by sa ti mohli pri požičiavaní auta v&nbsp;USA zísť.',
-      },
-      {
-        component: 'p',
-        text: 'Keď na Slovensku povieme: „je to tu za rohom,“ máme na mysli 30km vzdialenosť. Keď to povedia v&nbsp;Amerike, väčšinou myslia200km a&nbsp;viac. Je úplne bežné, že presun z&nbsp;jedného miesta na druhé ti zaberie niekoľko hodín, preto odporúčame investovať do kvalitného auta, ktoré ti zabezpečí komfortnú jazdu. ',
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/RTUSA2.jpg',
-            name: 'RTUSA2',
-          },
-        ],
-        class: 'articlePictureLandscape',
-      },
-      {
-        component: 'h3',
-        text: 'Čo budeš potrebovať:',
-      },
-      {
-        component: 'p',
-        text: '• Medzinárodný vodičský preukaz <br />• Pas<br />• Kreditnú kartu (nie debetnú) s&nbsp;dostatočnou finančnou rezervou<br />• Číslo spiatočnej letenky<br />',
-      },
-      {
-        component: 'h3',
-        text: 'Rezervácia auta',
-      },
-      {
-        component: 'p',
-        text: 'Vybavíš ju pohodlne online prostredníctvom webových stránok spoločností. Odporúčame rezervovať auto v&nbsp;dostatočnom predstihu (najlepšie 2-3 mesiace dopredu), vtedy zvyknú byť ceny relatívne nízke.',
-      },
-      {
-        component: 'p',
-        text: 'Cena auta sa pohybuje v&nbsp;rozpätí od 10-130&#36;/deň. Cena závisí od počtu dní, na ktoré si plánuješ auto požičať - čím viac dní, tým je jeho cena na jeden deň nižšia. ',
-      },
-      {
-        component: 'p',
-        text: 'Sieť spoločností, kde si môžeš zapožičať auto je veľmi široká. Medzi tie najvyužívanejšie patria: Alamo, Enterprise, National, Dollar, Sixt.',
-      },
-      {
-        component: 'p',
-        text: 'Pripájame <a href="https://carrental.deals/blg/best-car-rental-companies-in-usa/#/searchcars" rel="noopener noreferrer" target="_blank">odkaz</a> na stránku, kde si môžeš porovnať výhody a&nbsp;nevýhody ponúkaných služieb v&nbsp;jednotlivých spoločnostiach.',
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/RTCAR1.jpg',
-            name: 'RTCAR1',
-          },
-        ],
-        class: 'articlePicturePortrait',
-      },
-      {
-        component: 'h3',
-        text: 'Poplatky za mladého vodiča',
-      },
-      {
-        component: 'p',
-        text: 'Spoločnosti si zvyknú účtovať poplatok za mladého vodiča, ktorý sa vzťahuje na osoby mladšie ako 25 rokov. Cena sa zvykne pohybovať okolo 20&#36;/deň. Poplatok za vodiča pod 21 rokov je ešte vyšší alebo sa môže stať, že ti auto odmietnu zapožičať.',
-      },
-      {
-        component: 'h3',
-        text: 'Poplatky za ďalších vodičov',
-      },
-      {
-        component: 'p',
-        text: 'Za každého ďalšiho vodiča navyše sa pripláca, zvykne to byť 13&#36;/deň. Počet šoférov, je potrebné nahlásiť vopred pri vypĺňaní rezervácie. Pokiaľ to neurobíš a&nbsp;zastavia vás policajti, môže to viesť k&nbsp;vysokej pokute. Ešte závažnejším problémom môže byť, ak&nbsp;nenahlásený vodič spôsobí dopravnú nehodu alebo inú ujm, poisťovňa vzniknutú škodu nepreplatí a&nbsp;všetky náklady budeš cvakať z&nbsp;vlastného vrecka.',
-      },
-      {
-        component: 'h3',
-        text: 'Poistenie a služby',
-      },
-      {
-        component: 'p',
-        text: 'Najväčší rozdiel medzi USA a&nbsp;Slovenskom pri požičiavaní auta je, že poistenie je dobrovoľné. Poistiť si môžeš auto, osoby,  škody spôsobené iným osobám, servis, odťahová služba a iné. ',
-      },
-      {
-        component: 'p',
-        text: 'Rozhodnutie čo všetko zahrnieš do svojho poistenia je na tebe. Riešenie pokazeného auta uprostred Death Valley, kde široko-ďaleko nenájdeš  ani len telefónnu búdku, môže byť dosť náročné. Z&nbsp;toho dôvodu odporúčame vybaviť si plné krytie. V&nbsp;prípade že nastane problém, máš sa na koho spoľahnúť a&nbsp;nebude ťa to stáť ani cent navyše.',
-      },
-      {
-        component: 'p',
-        text: 'Dodatočné poplatky bez poistenia za využitie odťahovej služby sa pohybujú  okolo 150-300&#36;, plus sa pripláca za každý najazdený kilometer odťahového auta (a ako sme už spomínali vyššie, vzdialenosti medzi miestami bývajú veľké). Skontrolovanie auta v&nbsp;srvise je ďalších 400-600&#36;. Cena za opravu závisí od rozsahu škody ale určite na to budeš potrebovať zopár stoviek navyše.',
-      },
-      {
-        component: 'p',
-        text: 'Môže sa stať, že ti spoločnosť bude navrhovať poistenie, ktoré v&nbsp;skutočnosti vôbec potrebovať nebudeš.  Preto si dopredu zisti rozsah krytia TVOJHO cestovného poistenia aby si nemusel platiť za tú istú vec dvakrát (napríklad pripoistenie osôb).',
-      },
-      {
-        component: 'h3',
-        text: 'Vybavenie auta',
-      },
-      {
-        component: 'p',
-        text: '• Takmer všetky autá v&nbsp;USA majú automatickú prevodovku <br />• Klimatizácia – je jedným z&nbsp;hlavných must have. <br />• Navigácia – pokiaľ nemáš vlastnú (stačí ti aj v&nbsp;mobile), spoločnosti s zvyknú účtovať poplatky aj za ňu <br />• E-Z pass – je elektronický systém na výber mýta (princíp diaľničnej známky u&nbsp;nás), používaný na väčšine spoplatnených cestách, mostoch a&nbsp;tuneloch. Využívaný je hlavne na východnom pobreží USA. <br />',
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/RTCAR2.jpg',
-            name: 'RTCAR2',
-          },
-        ],
-        class: 'articlePictureLandscape',
+        text: 'Pokiaľ plánuješ cestovanie po USA a chceš sa zamerať na spoznávanie, auto je najlepšou voľbou pre pohodlný a flexibilný presun. Tu sú všetky dôležité informácie, ktoré potrebuješ vedieť pri požičiavaní auta v USA.',
       },
       {
         component: 'h3',
@@ -3371,27 +3414,81 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'V&nbsp;USA sú jedny z&nbsp;najkvalitnejšie spravench diaľnic, na akých sme doposiaľ jazdili. Cesty sú dlhé, rovné a&nbsp;široké, vďaka čomu je zabezpečená plynulá premávka. Napriek tomu je tam zavedené obmedzenie rýchlosti na 110km/hod. ',
+        text: 'V USA sú jedny z najkvalitnejšie spravených diaľnic, na akých sme doposiaľ jazdili. Cesty sú dlhé, rovné a široké, vďaka čomu je zabezpečená plynulá premávka. Napriek tomu je tam zavedené obmedzenie rýchlosti na 110km/hod.',
       },
       {
         component: 'p',
-        text: 'Šoférovanie vo veľkých&nbsp;mestách ako Los Angeles či Denver už takým pôžitkom nebolo. Veľa áut, neohľaduplní vodiči, sedemprúdové cesty a&nbsp;dlhé kolóny, boli pre nás (hlavne pre Liv) veľmi stresujúce.',
+        text: 'Šoférovanie vo veľkých mestách ako Los Angeles či Denver už takým pôžitkom nebolo. Veľa áut, neohľaduplní vodiči, sedemprúdové cesty a dlhé kolóny, boli pre nás (hlavne pre Liv) veľmi stresujúce.',
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/RTUSA2.jpg',
+            name: 'RTUSA2',
+          },
+        ],
+        class: 'articlePictureLandscape',
       },
       {
         component: 'h3',
-        text: 'Cena nafty',
+        text: 'Čo budeš potrebovať na požičanie auta:',
       },
       {
         component: 'p',
-        text: 'Cena nafty sa&nbsp;pohybuje sa od 2,79 - 4,5  &#36;/galón. Opäť to závisí od štátu a&nbsp;miesta, kde sa práve nachádzate. Kalifornia á ceny bezkonkurenčne najvyššie, naopak Florida najnižšie.',
+        text: '<ul><li><b>Medzinárodný vodičský preukaz:</b> je nevyhnutný pre identifikáciu a prevádzkovanie auta. Skontroluj, či je platný v štátoch, ktoré navštíviš.</li><li><b>Pas:</b> potrebný na overenie tvojej identity pri prenájme auta.</li><li><b>Kreditná karta:</b> výhoda kreditnej karty je najmä pri požičiavaní auta, vďaka ktorej požičovne nevyžadujú dodatočné poplatky za poistenie.</li><li><b>Číslo spiatočnej letenky: </b>môže byť požadované pri registrácii auta, ale aj pri pasovej kontrole pri vstupe do USA.</li></ul>',
+      },
+      {
+        component: 'h3',
+        text: 'Rezervácia auta',
       },
       {
         component: 'p',
-        text: 'Popri diaľnici sú pumpy rozmiestnené v&nbsp;pravidelných intervaloch. V&nbsp;národných parkoch a&nbsp;menej osídlených oblastiach ich už nájdeš zriedkavejšie, čo sa odzrkadľuje aj na zvýšenej cene nafty.',
+        text: '<ul><li>Rezerváciu je najlepšie vykonať online prostredníctvom webových stránok požičovní. Odporúča sa rezervovať auto 2-3 mesiace vopred na zabezpečenie najlepších cien.</li><li>Ceny sa pohybujú od 10 do 130 USD za deň v závislosti od typu auta a počtu dní prenájmu; dlhšie prenájmy zvyčajne znamenajú nižšiu cenu za deň.</li><li>Medzi obľúbené spoločnosti na prenájom áut patria Alamo, Enterprise, National, Dollar a Sixt. Porovnaj ich ponuky pomocou online nástrojov na porovnávanie cien a služieb.</li></ul>',
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/RTCAR1.jpg',
+            name: 'RTCAR1',
+          },
+        ],
+        class: 'articlePicturePortrait',
+      },
+      {
+        component: 'h3',
+        text: 'Poplatky a poistenie:',
       },
       {
         component: 'p',
-        text: 'Odporúčame: Do kufra si nachystj bandasku s&nbsp;naftou ako rezervu pre prípad núdze. ',
+        text: '<ul><li><b>Poplatok za mladého vodiča:</b> pre vodičov mladších ako 25 rokov je poplatok približne 20 USD za deň; vodiči mladší ako 21 rokov môžu čeliť ešte vyšším poplatkom alebo môžu mať problémy s prenájmom auta.</li><li><b>Poplatky za ďalších vodičov:</b> za každého ďalšieho vodiča sa zvyčajne účtuje 13USD za deň. Je dôležité nahlásiť všetkých vodičov pri rezervácii, aby si sa vyhol problémom a pokutám.</li><li><b>Poistenie:</b> poistenie je v USA dobrovoľné, ale odporúča sa vybaviť si plné krytie. Zváž zahrnúť krytie na odťahovanie, opravy a zodpovednosť za škody. Bez poistenia môžu byť náklady na odťahovanie a opravy veľmi vysoké (150-300 USD za odťah, 400-600 USD za servis).</li></ul>',
+      },
+      {
+        component: 'h3',
+        text: 'Vybavenie auta',
+      },
+      {
+        component: 'p',
+        text: '<ul><li>V USA väčšina áut má automatickú prevodovku a klimatizáciu, ktorá je veľmi dôležitá.</li><li>Ak nemáš vlastnú navigáciu, môžeš si ju požičať za poplatok. Skontroluj, či má auto aj USB porty a ďalšie vybavenie, ktoré môžeš potrebovať.</li><li><b>E-Z Pass:</b> Tento elektronický systém na platenie mýta je bežný na východnom pobreží USA. Ak plánuješ cestovanie v týchto oblastiach, zisti, či má auto tento systém alebo si ho môžeš prenajať.</li></ul>',
+      },
+      {
+        component: 'img',
+        src: [
+          {
+            src: '/static/images/photosFull/RTCAR2.jpg',
+            name: 'RTCAR2',
+          },
+        ],
+        class: 'articlePictureLandscape',
+      },
+      {
+        component: 'h3',
+        text: 'Cesty a ceny nafty',
+      },
+      {
+        component: 'p',
+        text: '<ul><li>Cesty v USA sú známe svojou kvalitou: dlhé, rovné a široké s obmedzením rýchlosti väčšinou na 110 km/h. Avšak, jazda v veľkých mestách môže byť náročná kvôli hustej premávke a kolónam.</li><li>Cena nafty sa pohybuje medzi 2,79 a 4,5 USD za galón, pričom ceny sú vyššie v Kalifornii a nižšie na Floride. V odľahlých oblastiach sú pumpy menej časté a cena nafty môže byť vyššia.</li><li><b>Tip:</b> Maj so sebou rezervnú bandasku na naftu pre prípad núdze, najmä ak plánuješ cestovať do menej osídlených oblastí.</li></ul>',
       },
       {
         component: 'h3',
@@ -3399,7 +3496,7 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'Šoférovanie pod vplyvom alkoholu je považované za závažný trestný čin, za ktorý sú udeľované mastné pokuty. Na rozdiel od Slovenska, v&nbsp;Spojených štátoch je zakázaný aj prevoz alkoholu v&nbsp;otvorenej nádobe, týka sa to aj kufra alebo požívania alkoholu ostatnými spolucestujúcmi.',
+        text: '<ul><li>Šoférovanie pod vplyvom alkoholu je v USA považované za závažný trestný čin, a to aj pre cestujúcich s alkoholom v otvorených nádobách. Pokuty sú vysoké a pravidlá sú prísne, preto sa uistite, že sa vyhýbaš porušovaniu tohto zákona.</li></ul>',
       },
       {
         component: 'h3',
@@ -3407,31 +3504,28 @@ export const ArticlesContent: ArticleContent[] = [
       },
       {
         component: 'p',
-        text: 'Nie je podmienkou, že požičané auto musíš vrátiť na miesto odkiaľ si ho vyzdvihol. Veľkou výhodou tejto služby, je flexibilita pre tvoj cestovateľský plán. Máš možnosť zvoliť si miesto, na ktorej pobočke chceš auto vrátiť. Aj pri využití tejto služby si spoločnosti zvyknú účtovať poplatok, ktorý je však zanedbateľný. ',
+        text: '<ul><li>Mnoho požičovní umožňuje vrátenie auta na inej pobočke ako je miesto, kde si auto vyzdvihol, čo môže byť veľmi praktické pre flexibilitu v cestovaní. Uvedom si však, že táto služba môže byť spoplatnená, aj keď poplatok je zvyčajne nízky.</li></ul>',
       },
       {
         component: 'h3',
-        text: 'Naše skúsenosti s&nbsp;požičiavaním auta',
+        text: 'Naše skúsenosti',
       },
       {
         component: 'p',
-        text: 'V&nbsp;Alamo sa nám podarilo uplatniť ISIC zľavu, vďaka ktorej sme nemuseli platiť poplatok za mladého a&nbsp;druhého vodiča, zníženie daňových poplatkov, plná nádrž a&nbsp;odovzdanie auta na inej pobočke. -&gt; Good deal!&nbsp; <a href="https://partner.rentalcar.com/isic-angebot/?locale=en_GB" rel="noopener noreferrer" target="_blank">Alamo s ISIC zľavou</a>',
-      },
-      {
-        component: 'p',
-        text: 'V&nbsp;Enterprise, sme si objednali auto, ktoré spadalo do najnižšej kategórie, ale&nbsp;ústretový pracovník nám ho &nbsp;bez poplatku vymenil za auto o&nbsp;3 kategórie lepšie. <a href="https://www.enterprise.com/en/home.html" rel="noopener noreferrer" target="_blank">Požičovňa enterprise</a>',
+        text: '<ul><li><b>Alamo:</b> Vďaka ISIC zľave sme ušetrili na poplatkoch za mladého a druhého vodiča, získali plnú nádrž a možnosť vrátiť auto na inej pobočke – výhodný deal!</li><li><b>Enterprise:</b> Získali sme auto vyššej kategórie bez dodatočných nákladov vďaka ústretovosti pracovníka.</li></ul>',
       },
     ],
   },
   {
     url: 'velkofatranskamagistrala',
-    tags: {
-      title: 'Veľkofatranská magistrála',
-      description:
-        'Článok o tom, čo sme zažili počas túry cez Veľkofatranskú magistrálu. Dvanásť kilové batohy na chrbtoch. Krvopotne odmakané kilometre. V daždi, v hmle. Cez deň, ale aj za tmy. Výškové prevýšenie by sme prirovnali k húsenkovej drahé. Prudko hore-dole, až človeku príde nevoľno 😀. Podarilo sa nám pokoriť Veľkofatranskú magistrálu (Ľubochňa-Turecká) dlhú 46km a s celkovým prevýšením 2 500m.',
-      image: 'images/photosFull/VFPloskaBorisovUs.jpg',
-      keywords: 'veľkofatranská magistrála, ľubochňa, krížna, ostredok, borišov, turistika, viacdenná turistika',
-    },
+    title: 'Veľkofatranská magistrála',
+    date: '12. júl 2020',
+    dateCreated: '07.12.2020',
+    description:
+      'Článok o tom, čo sme zažili počas túry cez Veľkofatranskú magistrálu. Dvanásť kilové batohy na chrbtoch. Krvopotne odmakané kilometre. V daždi, v hmle. Cez deň, ale aj za tmy. Výškové prevýšenie by sme prirovnali k húsenkovej drahé. Prudko hore-dole, až človeku príde nevoľno 😀. Podarilo sa nám pokoriť Veľkofatranskú magistrálu (Ľubochňa-Turecká) dlhú 46km a s celkovým prevýšením 2 500m.',
+    image: '/static/images/photosFull/VFPloskaBorisovUs.jpg',
+    keywords: 'veľkofatranská magistrála, ľubochňa, krížna, ostredok, borišov, turistika, viacdenná turistika',
+    category: ['Cestopisy', 'Hiking', 'Slovensko'],
     content: [
       {
         component: 'h2',
@@ -3465,7 +3559,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFLubochna.jpg',
+            src: '/static/images/photosFull/VFLubochna.jpg',
             name: 'VFLubochna',
           },
         ],
@@ -3480,11 +3574,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'VFDzungle',
-            src: '../images/photosFull/VFDzungle.jpg',
+            src: '/static/images/photosFull/VFDzungle.jpg',
           },
           {
             name: 'VFDzungle3',
-            src: '../images/photosFull/VFDzungle3.jpg',
+            src: '/static/images/photosFull/VFDzungle3.jpg',
           },
         ],
       },
@@ -3492,7 +3586,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFDzungle2.jpg',
+            src: '/static/images/photosFull/VFDzungle2.jpg',
             name: 'VFDzungle2',
           },
         ],
@@ -3515,11 +3609,11 @@ export const ArticlesContent: ArticleContent[] = [
         src: [
           {
             name: 'VFKlak',
-            src: '../images/photosFull/VFKlak.jpg',
+            src: '/static/images/photosFull/VFKlak.jpg',
           },
           {
             name: 'VFZapad',
-            src: '../images/photosFull/VFZapad.jpg',
+            src: '/static/images/photosFull/VFZapad.jpg',
           },
         ],
       },
@@ -3527,7 +3621,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFStan.jpg',
+            src: '/static/images/photosFull/VFStan.jpg',
             name: 'VFStan',
           },
         ],
@@ -3565,7 +3659,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFBreakfast.jpg',
+            src: '/static/images/photosFull/VFBreakfast.jpg',
             name: 'VFBreakfast',
           },
         ],
@@ -3583,7 +3677,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFPloskaBorisov.jpg',
+            src: '/static/images/photosFull/VFPloskaBorisov.jpg',
             name: 'VFPloskaBorisov',
           },
         ],
@@ -3593,7 +3687,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFPloskaBorisovUs.jpg',
+            src: '/static/images/photosFull/VFPloskaBorisovUs.jpg',
             name: 'VFPloskaBorisovUs',
           },
         ],
@@ -3607,7 +3701,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFBorisovLiv.jpg',
+            src: '/static/images/photosFull/VFBorisovLiv.jpg',
             name: 'VFBorisovLiv',
           },
         ],
@@ -3621,7 +3715,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFOstredokLiv.jpg',
+            src: '/static/images/photosFull/VFOstredokLiv.jpg',
             name: 'VFOstredokLiv',
           },
         ],
@@ -3631,7 +3725,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFOstredokDan.jpg',
+            src: '/static/images/photosFull/VFOstredokDan.jpg',
             name: 'VFOstredokDan',
           },
         ],
@@ -3641,7 +3735,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFOstredokUs.jpg',
+            src: '/static/images/photosFull/VFOstredokUs.jpg',
             name: 'VFOstredokUs',
           },
         ],
@@ -3655,7 +3749,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFKrizna.jpg',
+            src: '/static/images/photosFull/VFKrizna.jpg',
             name: 'VFKrizna',
           },
         ],
@@ -3665,7 +3759,7 @@ export const ArticlesContent: ArticleContent[] = [
         component: 'img',
         src: [
           {
-            src: '../images/photosFull/VFKriznacoffe.jpg',
+            src: '/static/images/photosFull/VFKriznacoffe.jpg',
             name: 'VFKriznacoffe',
           },
         ],
@@ -3678,160 +3772,6 @@ export const ArticlesContent: ArticleContent[] = [
       {
         component: 'p',
         text: 'Pomaly kráčame dolu a&nbsp;naše kolená dostávajú poriadne zabrať. Najradšej by sme sa tým kopcom už len skotúľali priamo do auta. Na poslednej rovinke sme sa cítili ako Usain Bolt, keď prebieha cieľovou čiarou. Zvládli sme to! Zdolali sme Veľkofatranskú magistrálu. Za dva dni sme prešli 46 km na nastúpali 2&nbsp;500 výškových metrov. Sme na seba hrdí.',
-      },
-    ],
-  },
-  {
-    url: 'najkrajsie-vyhlady-na-bali',
-    tags: {
-      title: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
-      description: '',
-      image: 'images/photosFull/VFPloskaBorisovUs.jpg',
-      keywords:
-        'bali, vyhlady na bali, zapady slnka na bali, vychody slnka na bali, turistika na bali, foto miesta na bali, instagramové miesta na bali, bali instagram',
-    },
-    content: [
-      {
-        component: 'h2',
-        text: 'Najkrajšie Výhľady na Bali: západy a východy slnka, ktoré vás očaria',
-      },
-      {
-        component: 'p',
-        text: 'Ostrov Bali v Indonézii, známy aj ako „Ostrov bohov,“ ponúka množstvo nádherných miest s úchvatnými výhľadmi. Pre tých, ktorí milujú panoramatické scenérie, východy a západy slnka, je Bali skutočným rajom. V tomto článku vám dáme tipy na päť (must visit) miest, ktoré by ste nemali vynechať, pokiaľ si chcete vychutnať jedny z najočarujúcejších miest na Bali.',
-      },
-      {
-        component: 'h3',
-        text: '1. Lahangan Sweet',
-      },
-      {
-        component: 'p',
-        text: 'Lahangan Sweet je menej známe, ale rýchlo sa stávajúce populárne miesto pre nádherné výhľady na Bali. Nachádza sa v oblasti Karangasem a ponúka pokoj a nádherné panoramatické scenérie.',
-      },
-      {
-        component: 'p',
-        text: '<b>Prečo navštíviť:</b><ul><li><strong>Pokojné prostredie:</strong> Lahangan Sweet je ideálnym miestom pre tých, ktorí hľadajú únik od turistického ruchu. Môžete tu relaxovať a užívať si kľud a krásu prírody.</li><li><strong>Výhľad na horu Agung:</strong> Jedným z hlavných lákadiel je úžasný výhľad na majestátnu horu Agung. Pohľad na túto posvätnú horu, obklopenú zeleňou a dedinami, je fascinujúci, najmä pri západe slnka.</li><li><strong>Fotografické príležitosti:</strong> Lahangan Sweet je obľúbené medzi fotografmi vďaka svojim jedinečným výhľadom a fotogenickým miestam, vrátane hojdačiek a bambusových plošín, ktoré ponúkajú dokonalý rám pre vaše fotografie.</li></ul>',
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/BaliLahanganPointing.jpg',
-            name: 'BaliLahanganPointing',
-          },
-        ],
-        class: 'articlePictureLandscape',
-      },
-      {
-        component: 'h3',
-        text: '2. Campuhan Ridge Walk',
-      },
-      {
-        component: 'p',
-        text: 'Campuhan Ridge Walk je obľúbenou turistickou trasou v srdci Ubudu, ktorá ponúka nádherné výhľady na okolité údolia a ryžové polia.',
-      },
-      {
-        component: 'p',
-        text: `<b>Prečo navštíviť:</b><ul><li><strong>Malebná prechádzka:&nbsp;</strong>Trasa je ideálna na rannú alebo večernú prechádzku, keď je slnko nízko a svetlo je mäkké a zlatisté. Pohľad na zelené kopce a údolia je skutočne upokojujúci.</li><li><strong>Blízko Ubudu:</strong>&nbsp;Nachádza sa len kúsok od centra Ubudu, čo z neho robí ľahko dostupné miesto pre turistov, ktorí chcú uniknúť z mestského ruchu.</li><li><strong>Kaviarne a reštaurácie:&nbsp;</strong>Po prechádzke môžete navštíviť niektorú z okolitých kaviarní alebo reštaurácií, kde si môžete vychutnať osviežujúci nápoj alebo chutné jedlo s nádherným výhľadom.</li></ul>`,
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/BaliCampuhanRidgeWalk.jpg',
-            name: 'BaliCapunhanRidgeWalk',
-          },
-          {
-            src: '../images/photosFull/BaliCampuhanPool.jpg',
-            name: 'BaliCapunhanPool',
-          },
-        ],
-      },
-      {
-        component: 'h3',
-        text: `3. Tegallalang Rice Terrace`,
-      },
-      {
-        component: 'p',
-        text: `Tegallalang Rice Terrace je jedným z najznámejších a najfotogenickejších miest na Bali. Nachádza sa v blízkosti Ubudu a ponúka nádherné výhľady na terasovité ryžové polia.`,
-      },
-      {
-        component: 'p',
-        text: `<b>Prečo navštíviť:</b><ul><li><strong>Nádherné scenérie:</strong> Tegallalang ponúka úchvatný pohľad na zelené ryžové polia usporiadané do terás, ktoré sa tiahnú do diaľky. Pohľad na tieto terasy, najmä pri východe alebo západe slnka, je skutočne nádherný.</li><li><strong>Kultúrne zážitky:</strong> Návšteva Tegallalang vám poskytne aj pohľad do života miestnych farmárov, ktorí pracujú na poliach. Môžete sa tiež dozvedieť viac o tradičných poľnohospodárskych technikách, ktoré sa na Bali používajú po stáročia.</li><li><strong>Fotografické príležitosti:</strong> Tegallalang je obľúbené miesto pre fotografov vďaka svojim malebným výhľadom a jedinečným terasám. Mnoho návštevníkov sa tu zastaví, aby si urobili krásne fotografie, ktoré zachytávajú krásu balijskej krajiny.</li></ul>`,
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/BaliRiceFieldsUs.jpg',
-            name: 'BaliRiceFieldsUs',
-          },
-          {
-            src: '../images/photosFull/BaliRiceFieldsHatLiv.jpg',
-            name: 'BaliRiceFieldsHatLiv',
-          },
-        ],
-      },
-      {
-        component: 'h3',
-        text: '4. Východ slnka na hore Batur',
-      },
-      {
-        component: 'p',
-        text: 'Hora Batur je aktívny vulkán nachádzajúci sa v severovýchodnej časti Bali a je jedným z najpopulárnejších miest na ostrove pre turistov, ktorí milujú dobrodružstvo a nádherné výhľady. Vyjsť na Batur bez sprievodcu je prakticky nemožné. My sme sa o to pokúsili, ale všetky cestičky na vrchol sú pod sú pod prísnym dohľadom miestnych obyvateľov, ktorých sme nazvali Batúrska mafia. Ich hlavnou snahou je vytiahnuť od turistov, čo najviac peňazí. Sú teda len dve možnosti ako sa dostať na vrchol. Prvá je, že si zarezervujete výlet online, v rámci ktorého dostanete balík služieb, vrátane odvozu/dovozu z hotela, „služby“ sprievodcu pri výstupe, malé občerstvenie na vrchole. Cena takéhoto balíku sa pohybuje okolo 30€/osoba. Druhá možnosť, ktorú sme zvolili aj my, je, že sa vydáte na horu po vlastnej réžii. Mali sme so sebou len malý obnos hotovosti (20€) a tvárili sme sa, že sme netušili, že sa bez sprievodcu nedá vyjsť. ',
-      },
-      {
-        component: 'p',
-        text: `<b>Prečo navštíviť:</b><ul><li><strong>Východ slnka:</strong> Výstup na vrchol hory Batur začína ešte za tmy, aby ste mohli zažiť úchvatný východ slnka. Keď sa obloha začína zafarbovať do oranžových a ružových odtieňov, pohľad na vychádzajúce slnko nad Balijským morom a okolité hory je nezabudnuteľný.</li><li><strong>Panoramatický výhľad:</strong> Z vrcholu Baturu môžete vidieť aj jazero Batur, ktoré sa nachádza v kráteri vulkánu. Pohľad na jazero zhora, obklopené zeleňou a so stúpajúcou parou z teplých prameňov, je skutočne magický.</li><li><strong>Dobrodružný zážitok:</strong> Výstup je stredne náročný a trvá približne dve hodiny. Cesta vedie cez rôzne terény, vrátane lesov a skalnatých úsekov, čo robí tento zážitok ešte vzrušujúcejším.</li></ul>`,
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/BaliSunriseBaturs.jpg',
-            name: 'BaliSunriseBaturs',
-          },
-        ],
-      },
-      {
-        component: 'h3',
-        text: '5. Východ slnka na hore Agung',
-      },
-      {
-        component: 'p',
-        text: 'Mount Agung je najvyšším vrcholom na Bali a je považovaná za posvätnú horu, ktorá hrá dôležitú úlohu v balijskej kultúre a náboženstve.',
-      },
-      {
-        component: 'p',
-        text: `<b>Prečo navštíviť:</b><ul><li><strong>Úchvatné scenérie:</strong> Východ slnka z hory Agung ponúka jedinečný pohľad na celý ostrov Bali, vrátane hory Batur a Lomboku na horizonte. Slnko stúpajúce nad horizontom a postupne osvetľujúce ostrov je zážitok, ktorý sa vryje do pamäti.<li><strong>Duchovný význam:</strong> Pre mnohých Balijčanov je hora Agung miestom duchovného významu. Výstup na horu nie je len fyzickým, ale aj duchovným zážitkom.</li><li><strong>Výzva pre horolezcov:</strong> Výstup na Agung je náročnejší ako na Batur a vyžaduje dobrú fyzickú kondíciu. Cesta začína v noci a trvá približne šesť až sedem hodín. Odmenou za námahu je úžasný výhľad z vrcholu.</li></ul>`,
-      },
-      {
-        component: 'img',
-        src: [
-          {
-            src: '../images/photosFull/BaliAgungView.jpg',
-            name: 'BaliAgungView',
-          },
-        ],
-      },
-      {
-        component: 'h3',
-        text: 'Tipy na návštevu',
-      },
-      {
-        component: 'p',
-        text: `<b>Pripravte sa:</b> Nezabudnite si vziať teplé oblečenie, keďže teploty na vrcholoch môžu byť nízke, najmä pred východom slnka. Tiež si nezabudnite vziať dostatok vody a občerstvenia.`,
-      },
-      {
-        component: 'p',
-        text: `<b>Sprevádzači:</b> Pre výstupy na hory Batur a Agung sa odporúča najatie miestneho sprievodcu, ktorý vás bezpečne prevedie a poskytne cenné informácie o okolí.`,
-      },
-      {
-        component: 'p',
-        text: `<b>Časovanie:</b> Na dosiahnutie vrcholov pred východom slnka je potrebné začať výstup veľmi skoro ráno, často okolo 2-3 hodiny ráno. Zvážte rezerváciu výletu vopred.`,
-      },
-      {
-        component: 'p',
-        text: `Bali je skutočným rajom pre tých, ktorí milujú nádherné výhľady a dobrodružstvo. Či už sa rozhodnete pre východ slnka na niektorej z posvätných hôr alebo pre pokojný výhľad z Tegallalang Rice Terrace, tieto miesta vám ponúknu nezabudnuteľné zážitky a krásne scenérie, ktoré budete chcieť zdieľať s ostatnými.`,
       },
     ],
   },

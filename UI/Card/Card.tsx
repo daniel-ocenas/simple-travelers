@@ -3,7 +3,7 @@ import { Link } from 'UI/Link';
 import { CenterFlex, Flex } from '../Flex';
 import Loader from '../Loader';
 import { MarginBox } from '../MarginBox';
-import { CardText, CategoryRow, SCard, SCardImage } from './Card.styled';
+import { CardText, SCard, SCardImage } from './Card.styled';
 
 interface CardProps {
   title: string;
@@ -32,14 +32,14 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
               <Loader />
             </CenterFlex>
           ) : (
-            <MarginBox mx={16}>
+            <MarginBox mx={16} mt={8}>
+              <p>{date}</p>
               <h3>{title}</h3>
-              <CategoryRow>
-                {category.map((cat: string) => {
-                  return <span key={title + cat}>{cat}</span>;
-                })}
-              </CategoryRow>
-              <h6>{date}</h6>
+              {/*<CategoryRow>*/}
+              {/*  {category.map((cat: string) => {*/}
+              {/*    return <span key={title + cat}>{cat}</span>;*/}
+              {/*  })}*/}
+              {/*</CategoryRow>*/}
               <CardText>
                 <p>{text}</p>
               </CardText>

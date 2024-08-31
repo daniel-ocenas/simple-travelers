@@ -34,9 +34,9 @@ const BlogCardsView = ({ articles }: BlogCardsContainerProps) => {
           key={`card-home-${card.url}`}
           title={card.title}
           date={card.date}
-          text={card.text}
+          text={card.description}
           image={card.image}
-          url={`/blog${card.url}`}
+          url={`/blog/${card.url}`}
           category={card?.category ?? []}
           vertical={!medium}
         />

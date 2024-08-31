@@ -1,6 +1,6 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
-import { ArticlesContent } from 'data/Articles';
+import { ArticlesList } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
@@ -15,7 +15,7 @@ export async function getServerSideProps({ query }: { query: any }) {
   // if (response?.status !== 200) {
   //   data = ArticlesContent.find((article) => article.url === id);
   // }
-  const data = ArticlesContent.find((article) => article.url === id);
+  const data = ArticlesList.find((article) => article.url === id);
 
   return {
     props: {
@@ -27,7 +27,7 @@ export async function getServerSideProps({ query }: { query: any }) {
 const BlogPage = ({ articleData }: { articleData: any }) => {
   const [textAreaWidth, setTextAreaWidth] = useState(300);
   const refTextArea = React.useRef<any>();
-  const { title, description, image, keywords } = articleData.tags;
+  const { title, description, image, keywords } = articleData;
 
   const getTextAreaWidth = () => {
     const newWidth = refTextArea.current.clientWidth;
@@ -47,10 +47,11 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     title: `${title}, Simple Travelers`,
     articleTitle: `${title ?? ''}`,
     description: `${description ?? ''}`,
-    image: `${image ? 'https://simpletravelers.sk/static' + image : ''}`,
+    image: `${image ? 'https://simpletravelers.sk' + image : ''}`,
     keywords: `${keywords ?? ''}`,
     url: `https://simpletravelers.sk/blog/${articleData.url}`,
   };
+  console.log(head);
 
   return (
     <>

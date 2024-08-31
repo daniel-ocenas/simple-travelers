@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { Link } from 'UI/Link';
+import { useLarge } from 'utils/useBreakpoint';
 import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import useScreenSize from 'utils/useScreenSize';
 import Burger from './BurgerButton';
@@ -94,19 +95,18 @@ function NavMenu() {
 }
 
 function Header() {
-  const { width } = useScreenSize();
   const location = useRouter();
   const { height } = useScreenSize();
-  const medium = width < 768;
+  const large = useLarge();
 
   useEffect(() => {
     if (location.pathname !== '/') {
-      scrollToTopSmooth(height - (medium ? 0 : 16));
+      scrollToTopSmooth(height / 2.3 - (large ? 0 : 16));
     }
     // eslint-disable-next-line
   }, [location]);
 
-  return medium ? <NavMenu /> : <NavList />;
+  return large ? <NavList /> : <NavMenu />;
 }
 
 export default Header;

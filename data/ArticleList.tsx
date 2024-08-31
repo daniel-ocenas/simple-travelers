@@ -1,3 +1,4 @@
+import { ArticlesList } from 'data/ArticlesList';
 import { connectToDatabase } from './mongodb';
 
 async function ArticleList(lang: string) {
@@ -5,17 +6,18 @@ async function ArticleList(lang: string) {
 
   try {
     const findResult = await db
-      .collection('articles-list-' + lang)
+      .collection('articles-' + lang)
       .find()
       .toArray();
 
     return {
-      articleList: findResult,
-      code: 200,
+      articles: findResult,
+      status: 200,
     };
   } catch (e) {
     console.error(e);
     return {
+      articles: ArticlesList,
       status: 500,
       errorMap: e,
     };

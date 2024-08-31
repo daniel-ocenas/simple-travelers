@@ -1,6 +1,7 @@
 import FacebookPage from 'components/FacebookPage';
 import InstagramFeed from 'components/InstagramFeed';
 import { SSideBar } from 'components/SideBar/SideBar.styled';
+import Image from 'next/image';
 import process from 'process';
 import React from 'react';
 import Divider from 'UI/Divider';
@@ -12,10 +13,12 @@ const SideBar = () => {
   return (
     <div style={{ position: 'relative' }}>
       <SSideBar>
-        <MarginBox mt={'110vh'} />
+        <MarginBox mt={'45vh'} />
         {/*TODO zmenit fotku z faerov*/}
         <div style={{ textAlign: 'center' }}>
-          <img
+          <Image
+            width={250}
+            height={250}
             style={{
               margin: '5px',
               width: '20vw',

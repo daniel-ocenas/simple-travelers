@@ -11,7 +11,7 @@ html {
   --primaryColorExtraLight: #b6ccb9;
   --primaryColorDark: #030e12;
   --secondaryColor: #f6e8d8;
-  --secondaryDark: #f6e8d8;
+  --secondaryDark: #f6bc7a;
   overflow-x: hidden;
   --defaultBorderRadius: 3px;
   background-color: var(--backgroundColor);
@@ -20,11 +20,12 @@ html {
 ::-webkit-scrollbar {
   appearance: auto;
   -webkit-appearance: none;
-  width: 2px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;
+  cursor: pointer;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -148,8 +149,11 @@ td {
   font-family: 'Quicksand', serif;
   font-size: 1.2em;
   line-height: 1.5em;
-  text-align-last: left;
   text-align: justify;
+}
+
+.screen-reader-text a {
+  display: inline;
 }
 
 .screen-reader-text h2 {

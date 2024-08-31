@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import backgroundPhoto from 'public/static/images/Background.jpg';
-import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
+import backgroundPhoto from 'public/static/images/Background2.jpg';
+import backgroundPhotoSmall from 'public/static/images/BackgroundSmall2.jpg';
 import React from 'react';
 import { Flex } from 'UI/Flex';
 import { Link } from 'UI/Link';
-import useScreenSize from 'utils/useScreenSize';
+import { MarginBox } from 'UI/MarginBox';
+import { useLarge } from 'utils/useBreakpoint';
 import {
   SWelcomePhoto,
   SWelcomePhotoDivider,
@@ -14,37 +14,10 @@ import {
   TitleTravelers,
 } from './WelcomePhoto.styled';
 
-const NAV_LINK_DATA = [
-  {
-    title: 'Domov',
-    path: '/',
-  },
-  {
-    title: 'O nás',
-    path: '/onas',
-  },
-  {
-    title: 'Blog',
-    path: '/blog',
-  },
-  {
-    title: 'Galéria',
-    path: '/galeria',
-  },
-  {
-    title: 'Videá',
-    path: '/videa',
-  },
-];
-
 const WelcomePhoto = () => {
-  const { width } = useScreenSize();
-  const smallView = width < 768;
-  const location = useRouter();
-  console.log(location);
-  // const navItem = NAV_LINK_DATA.find((item) => item.path === location.pathname);
-  const backgroundImage = smallView ? backgroundPhotoSmall : backgroundPhoto;
-  // const backgroundImage = smallView ? navItem?.imageSmall : navItem?.image;
+  const large = useLarge();
+
+  const backgroundImage = large ? backgroundPhoto : backgroundPhotoSmall;
 
   return (
     <SWelcomePhoto>
@@ -52,28 +25,34 @@ const WelcomePhoto = () => {
       <SWelcomePhotoDivider>
         <Image
           alt={'welcome-photo-divider'}
-          src={'/static/images/BackgroundDivider.png'}
+          src={'/static/images/BackgroundDivider2.png'}
           style={{ objectFit: 'cover' }}
           fill
           fetchPriority={'high'}
         />
       </SWelcomePhotoDivider>
       <TitleContainer>
-        <Link href="/" passHref>
-          <TitleTravelers alt="title" src="/static/icons/SimpleTravelers.svg" />
-        </Link>
+        {!large && (
+          <Link href="/" passHref>
+            <TitleTravelers alt="title" src="/static/icons/SimpleTravelers.svg" />
+          </Link>
+        )}
         <TitleCatchLine>
-          {smallView ? (
+          {large ? (
+            <Flex align={'center'} direction={'column'}>
+              <MarginBox mt={'10vh'} />
+              Travel simply, simply love traveling
+            </Flex>
+          ) : (
             <Flex align={'center'} direction={'column'}>
               <Flex>{'Travel simply,'}</Flex>
               <Flex>{'simply love traveling'}</Flex>
             </Flex>
-          ) : (
-            'Travel simply, simply love traveling'
           )}
         </TitleCatchLine>
       </TitleContainer>
     </SWelcomePhoto>
   );
 };
+
 export default WelcomePhoto;

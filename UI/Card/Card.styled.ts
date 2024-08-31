@@ -7,7 +7,7 @@ export const SCardImage = styled.div<{ $src: string }>`
   min-height: 300px;
   border-radius: 16px 16px 0 0;
   text-align: center;
-  background: 50% 50% ${({ $src }) => `url(/static${$src})`} no-repeat;
+  background: 50% 50% ${({ $src }) => `url(${$src})`} no-repeat;
   background-size: cover;
 
   @media (min-width: 617px) {
@@ -26,23 +26,19 @@ export const SCard = styled.div`
   overflow: hidden;
   cursor: pointer;
   border-radius: 16px;
-  box-shadow: 0 5px 10px 1px #ababab;
   background-color: var(--backgroundColor);
 
   h3 {
     font-size: 20px;
-    margin: 12px 0;
-  }
-
-  h6 {
-    font-size: 18px;
     margin: 8px 0;
-    font-weight: normal;
   }
 
   p {
+    margin: 6px 0;
     font-size: 18px;
   }
+
+  box-shadow: 0 10px 20px -5px #ababab;
 
   &:hover {
     box-shadow: 0 8px 15px 4px #b0aeab;
@@ -70,12 +66,13 @@ export const CategoryRow = styled.div`
 `;
 
 export const CardText = styled.div`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
   text-align: left;
-  max-height: 320px;
+  height: 120px;
   overflow: hidden;
-  text-overflow: ellipsis;
-
-  p {
-    margin: 6px 0 16px 0;
-  }
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 8px;
 `;

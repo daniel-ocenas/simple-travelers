@@ -3,19 +3,27 @@ import styled from 'styled-components';
 export const SWelcomePhoto = styled.div`
   position: absolute;
   width: 100%;
-  height: calc(100vh + 97px);
+  height: 300px;
   top: 0;
   right: 0;
-  object-fit: cover;
+  object-fit: contain;
+
+  @media (min-width: 576px) {
+    height: 400px;
+  }
 `;
 
 export const SWelcomePhotoDivider = styled.div`
   position: absolute;
   width: 102%;
   height: 104px;
-  top: calc(100vh - 1px);
+  top: 235px;
   left: -1px;
   overflow: hidden;
+
+  @media (min-width: 576px) {
+    top: 335px;
+  }
 
   img {
     filter: drop-shadow(0px 100px 0 var(--backgroundColor));
@@ -30,7 +38,6 @@ export const TitleContainer = styled.div`
   left: 0;
   margin-top: 1vh;
   text-align: center;
-  /*background-color: var(--backgroundColor);*/
   padding-bottom: 3px;
 
   @media (min-width: 768px) {
@@ -39,7 +46,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const TitleTravelers = styled.img`
-  max-height: 300px;
+  max-height: 150px;
   clear: both;
   display: inline-block;
   cursor: pointer;
@@ -53,17 +60,21 @@ export const TitleTravelers = styled.img`
     transform: scale(0.9);
     transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  @media (min-width: 768px) {
+    //max-height: 300px;
+  }
 `;
 
 export const TitleCatchLine = styled.div`
   font-family: 'Indie Flower', 'serif';
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2em;
   margin: 0;
-  text-shadow: 2px 3px 3px rgba(255, 255, 255, 1), -3px 3px 3px rgba(255, 255, 255, 1),
-    1px -3px 3px rgba(255, 255, 255, 1), -3px -3px 3px rgba(255, 255, 255, 1);
+  text-shadow: 2px 3px 3px rgba(255, 255, 255, 0.75), -3px 3px 3px rgba(255, 255, 255, 0.75),
+    1px -3px 3px rgba(255, 255, 255, 0.75), -3px -3px 3px rgba(255, 255, 255, 0.75);
 
   @media (min-width: 768px) {
-    font-size: 2em;
+    font-size: 4em;
   }
 `;

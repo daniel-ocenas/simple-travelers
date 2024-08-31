@@ -5,7 +5,7 @@ async function articleCreate(lang: any, article: any) {
   article.dateCreated = new Date().toLocaleDateString();
 
   const { db } = await connectToDatabase();
-  const result = await db.collection('articles-list-' + lang).insertOne(article);
+  const result = await db.collection('articles-' + lang).insertOne(article);
 
   return result;
 }
