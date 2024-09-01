@@ -1,18 +1,49 @@
+import { SSocialNetworkLinks } from 'components/SocialSideBar/SocialNetworkLinks.styled';
 import Image from 'next/image';
 import React from 'react';
 import { Link } from 'UI/Link';
-import styles from './SocialSidebar.module.css';
 
-const SocialNetworkLinks = () => {
+const SocialNetworkLinks = ({
+  outlined,
+  top,
+  right,
+  position,
+}: {
+  outlined?: boolean;
+  top?: number;
+  right?: number;
+  position?: string;
+}) => {
   return (
-    <div className={styles.socialSidebar}>
+    <SSocialNetworkLinks $top={top} $right={right} $position={position}>
       <Link href={'https://www.instagram.com/simple__travelers'} external newTab passHref>
-        <Image className={'image'} src={'/static/icons/icon-instagram.png'} alt={'instagram'} width={40} height={40} />
+        <Image
+          className={'image'}
+          src={`/static/icons/instagram${outlined ? '-outline' : ''}.png`}
+          alt={'instagram'}
+          width={40}
+          height={40}
+        />
       </Link>
       <Link href={'https://www.facebook.com/WeAreSimpleTravelers'} external newTab passHref>
-        <Image className={'image'} src={'/static/icons/icon-facebook.png'} alt={'facebook'} width={40} height={40} />
+        <Image
+          className={'image'}
+          src={`/static/icons/facebook${outlined ? '-outline' : ''}.png`}
+          alt={'facebook'}
+          width={40}
+          height={40}
+        />
       </Link>
-    </div>
+      <Link href={'https://www.tiktok.com/@simple_travelers'} external newTab passHref>
+        <Image
+          className={'image'}
+          src={`/static/icons/tiktok${outlined ? '-outline' : ''}.png`}
+          alt={'tiktok'}
+          width={40}
+          height={40}
+        />
+      </Link>
+    </SSocialNetworkLinks>
   );
 };
 

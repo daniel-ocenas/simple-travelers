@@ -1,4 +1,21 @@
+import { Dropdown } from 'antd';
 import styled from 'styled-components';
+
+export const LogoSimpleTravelers = styled.img<{ $maxHeight?: number }>`
+  max-height: ${({ $maxHeight }) => $maxHeight ?? 'calc(var(--tabsHeight) - 15px)'};
+  cursor: pointer;
+  margin: auto;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  &:active {
+    transform: scale(0.9);
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+`;
 
 export const STabsContainers = styled.div<{ $isTop: boolean }>`
   width: 100%;
@@ -29,7 +46,6 @@ export const SNavList = styled.div`
   display: inline-block;
   list-style: none;
   line-height: 2.3em;
-  white-space: nowrap;
   font-size: 22px;
   margin: auto;
 `;
@@ -57,4 +73,8 @@ export const TitleWrapper = styled.div<{ $xl: boolean }>`
   font-weight: 600;
   margin-bottom: 8px;
   margin-top: 0;
+`;
+
+export const SDropdown = styled(Dropdown)`
+  display: inline;
 `;

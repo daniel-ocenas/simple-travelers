@@ -38,8 +38,6 @@ body {
   padding: 0;
   --sideLeftMargin: 3%;
   --sideRightMargin: 3%;
-  --sideLeftMarginSmall: 2%;
-  --sideRightMarginSmall: 2%;
   --headerHeight: 160px;
   --tabsHeight: 52px;
   --socialMediaIconSize: 48px;
@@ -164,6 +162,12 @@ td {
   margin: 1em 1em;
   font-weight: 400;
   font-family: 'Quicksand', serif;
+}
+
+.screen-reader-text h3,
+.screen-reader-text ul {
+  /* TODO margin top*/
+  margin: 8px 0;
 }
 
 .previous {
@@ -425,8 +429,6 @@ td {
   body {
     --sideLeftMargin: 2%;
     --sideRightMargin: 2%;
-    --sideLeftMarginSmall: 1%;
-    --sideRightMarginSmall: 1%;
   }
 
   .map-wrapper {
@@ -438,14 +440,13 @@ td {
   body {
     --sideLeftMargin: 10%;
     --sideRightMargin: 10%;
-    --sideLeftMarginSmall: 1%;
-    --sideRightMarginSmall: 1%;
+    --tabsHeight: 80px;
   }
 }
 
 @media (min-width: 992px) {
   body {
-    --sideRightMargin: 30%;
+    --sideRightMargin: 10%;
     --headerHeight: 250px;
   }
 

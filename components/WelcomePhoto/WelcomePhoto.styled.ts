@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SWelcomePhoto = styled.div`
+export const SWelcomePhoto = styled.div<{ $height: string }>`
   position: absolute;
   width: 100%;
   height: 300px;
@@ -8,12 +8,13 @@ export const SWelcomePhoto = styled.div`
   right: 0;
   object-fit: contain;
 
-  @media (min-width: 576px) {
-    height: 400px;
+  @media (min-width: 768px) {
+    //height: 55vh;
+    height: ${({ $height }) => $height};
   }
 `;
 
-export const SWelcomePhotoDivider = styled.div`
+export const SWelcomePhotoDivider = styled.div<{ $top: string }>`
   position: absolute;
   width: 102%;
   height: 104px;
@@ -21,13 +22,19 @@ export const SWelcomePhotoDivider = styled.div`
   left: -1px;
   overflow: hidden;
 
-  @media (min-width: 576px) {
-    top: 335px;
+  img {
+    filter: drop-shadow(0 100px 0 var(--backgroundColor));
+    transform: translateY(-105px);
   }
 
-  img {
-    filter: drop-shadow(0px 100px 0 var(--backgroundColor));
-    transform: translateY(-105px);
+  @media (min-width: 768px) {
+    //top: 45vh;
+    top: ${({ $top }) => $top};
+    height: 11vh;
+    img {
+      filter: drop-shadow(0 11vh 0 var(--backgroundColor));
+      transform: translateY(calc(-11vh - 1px));
+    }
   }
 `;
 
@@ -45,36 +52,15 @@ export const TitleContainer = styled.div`
   }
 `;
 
-export const TitleTravelers = styled.img`
-  max-height: 150px;
-  clear: both;
-  display: inline-block;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  &:active {
-    transform: scale(0.9);
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  @media (min-width: 768px) {
-    //max-height: 300px;
-  }
-`;
-
 export const TitleCatchLine = styled.div`
   font-family: 'Indie Flower', 'serif';
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0;
   text-shadow: 2px 3px 3px rgba(255, 255, 255, 0.75), -3px 3px 3px rgba(255, 255, 255, 0.75),
     1px -3px 3px rgba(255, 255, 255, 0.75), -3px -3px 3px rgba(255, 255, 255, 0.75);
 
   @media (min-width: 768px) {
-    font-size: 4em;
+    font-size: 2em;
   }
 `;

@@ -13,9 +13,11 @@
   text-decoration: none;
 }
 
-.navListItem {
-  display: inline-block;
-  color: var(--titleColor);
+.navLink p {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  display: inline;
 }
 
 .navLink a {
@@ -26,6 +28,7 @@
   margin: 3px;
   cursor: pointer;
   font-weight: 400;
+  font-size: 1.1em;
 }
 
 .navLink a::after {

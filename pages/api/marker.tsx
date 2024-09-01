@@ -7,8 +7,8 @@ export default async function Marker(req: any, res: any) {
   switch (httpMetod) {
     case 'GET':
       try {
-        const articlesList = await ArticleList('sk');
-        const sortedArticleList = articlesList.articleList.sort((a: any, b: any) => {
+        const articleList = await ArticleList('sk');
+        const sortedArticleList = [...articleList.articles].sort((a: any, b: any) => {
           const start = +new Date(b.dateCreated);
           return +new Date(a.dateCreated) - start;
         });

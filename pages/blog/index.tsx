@@ -5,6 +5,7 @@ import { ArticleProps, ArticlesList, sortArticlesByDate } from 'data/ArticlesLis
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import Loader from 'UI/Loader';
+import { usePageMargin } from 'utils/useBreakpoint';
 
 const { Option } = Select;
 const optionsSel = [
@@ -25,6 +26,7 @@ const sortArticles = (articles: any, order: any) => {
 };
 
 function Blog() {
+  const pageMargin = usePageMargin();
   const [sortState, setSortState] = useState(optionsSel[0].value);
   const [filterOptions, setFilterOptions] = useState([]);
   let [articlesList, setArticlesList] = useState<[]>([]);
@@ -44,13 +46,13 @@ function Blog() {
       //   };
       // }
       const data = {
-        articleList: sortArticlesByDate(ArticlesList.slice(0, 6) as ArticleProps[]),
+        articleList: sortArticlesByDate(ArticlesList as ArticleProps[]),
       };
 
       // @ts-ignore
       setArticlesList(data.articleList);
       setArticlesDisplay(sortArticles(data.articleList, 'asc'));
-
+      console.log(data.articleList);
       // load categories for filtering
       let filterCategories: any = [];
       data.articleList?.forEach((article: any) => {
@@ -118,7 +120,7 @@ function Blog() {
           content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"
         />
       </Head>
-      <Page>
+      <Page mr={pageMargin}>
         <Form layout="horizontal">
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className="gutter-row">

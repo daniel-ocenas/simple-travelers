@@ -1,20 +1,29 @@
 import FacebookPage from 'components/FacebookPage';
 import InstagramFeed from 'components/InstagramFeed';
 import { SSideBar } from 'components/SideBar/SideBar.styled';
+import { WELCOME_PHOTO_HEIGHT } from 'components/WelcomePhoto/WelcomePhoto';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import process from 'process';
 import React from 'react';
 import Divider from 'UI/Divider';
 import { MarginBox } from 'UI/MarginBox';
-import useScreenSize from 'utils/useScreenSize';
+import { useLarge, useScreenSize } from 'utils/useBreakpoint';
 
 const SideBar = () => {
   const { width } = useScreenSize();
+  const location = useRouter();
+  const large = useLarge();
+  if (location.pathname === '/' || location.pathname === '/onas' || !large) {
+    console.log('return null');
+    return null;
+  }
+
   return (
     <div style={{ position: 'relative' }}>
-      <SSideBar>
-        <MarginBox mt={'45vh'} />
-        {/*TODO zmenit fotku z faerov*/}
+      <SSideBar $width={'30%'}>
+        <MarginBox mt={WELCOME_PHOTO_HEIGHT} />
+        {/*TODO zmenit fotku z faerov s lepsou kvalitou*/}
         <div style={{ textAlign: 'center' }}>
           <Image
             width={250}

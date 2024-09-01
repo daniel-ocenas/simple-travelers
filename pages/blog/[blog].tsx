@@ -3,6 +3,7 @@ import Page from 'components/Page';
 import { ArticlesList } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import { usePageMargin } from 'utils/useBreakpoint';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
@@ -25,6 +26,7 @@ export async function getServerSideProps({ query }: { query: any }) {
 }
 
 const BlogPage = ({ articleData }: { articleData: any }) => {
+  const pageMargin = usePageMargin();
   const [textAreaWidth, setTextAreaWidth] = useState(300);
   const refTextArea = React.useRef<any>();
   const { title, description, image, keywords } = articleData;
@@ -36,7 +38,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
 
   useEffect(() => {
     getTextAreaWidth();
-  }, []);
+  }, [pageMargin]);
 
   useEffect(() => {
     window.addEventListener('resize', getTextAreaWidth);
@@ -51,7 +53,6 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     keywords: `${keywords ?? ''}`,
     url: `https://simpletravelers.sk/blog/${articleData.url}`,
   };
-  console.log(head);
 
   return (
     <>
@@ -67,7 +68,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
           <meta name="keywords" content={head.keywords} />
         </Head>
       )}
-      <Page>
+      <Page mr={pageMargin}>
         <div ref={refTextArea} className="screen-reader-text article">
           {articleData.content === undefined ? (
             <h4>Article Could Not Be Found</h4>

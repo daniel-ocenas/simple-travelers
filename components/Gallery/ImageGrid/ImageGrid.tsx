@@ -1,6 +1,6 @@
 import styles from 'components/Gallery/ImageGrid/ImageGrid.module.css';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import useScreenSize from 'utils/useScreenSize';
+import { useScreenSize } from 'utils/useBreakpoint';
 
 export interface GalleryImageProps {
   src: string;

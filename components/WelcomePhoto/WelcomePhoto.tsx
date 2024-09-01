@@ -1,18 +1,15 @@
+import { LogoSimpleTravelers } from 'components/Header/Header.styled';
 import Image from 'next/image';
-import backgroundPhoto from 'public/static/images/Background2.jpg';
-import backgroundPhotoSmall from 'public/static/images/BackgroundSmall2.jpg';
+import backgroundPhoto from 'public/static/images/Background.jpg';
+import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
 import { Flex } from 'UI/Flex';
-import { Link } from 'UI/Link';
 import { MarginBox } from 'UI/MarginBox';
 import { useLarge } from 'utils/useBreakpoint';
-import {
-  SWelcomePhoto,
-  SWelcomePhotoDivider,
-  TitleCatchLine,
-  TitleContainer,
-  TitleTravelers,
-} from './WelcomePhoto.styled';
+import { SWelcomePhoto, SWelcomePhotoDivider, TitleCatchLine, TitleContainer } from './WelcomePhoto.styled';
+
+export const WELCOME_PHOTO_HEIGHT = '110vh';
+export const WELCOME_PHOTO_DIVIDER_TOP = '100vh';
 
 const WelcomePhoto = () => {
   const large = useLarge();
@@ -20,9 +17,9 @@ const WelcomePhoto = () => {
   const backgroundImage = large ? backgroundPhoto : backgroundPhotoSmall;
 
   return (
-    <SWelcomePhoto>
+    <SWelcomePhoto $height={WELCOME_PHOTO_HEIGHT}>
       <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fill />
-      <SWelcomePhotoDivider>
+      <SWelcomePhotoDivider $top={WELCOME_PHOTO_DIVIDER_TOP}>
         <Image
           alt={'welcome-photo-divider'}
           src={'/static/images/BackgroundDivider2.png'}
@@ -32,23 +29,19 @@ const WelcomePhoto = () => {
         />
       </SWelcomePhotoDivider>
       <TitleContainer>
-        {!large && (
-          <Link href="/" passHref>
-            <TitleTravelers alt="title" src="/static/icons/SimpleTravelers.svg" />
-          </Link>
-        )}
         <TitleCatchLine>
-          {large ? (
-            <Flex align={'center'} direction={'column'}>
-              <MarginBox mt={'10vh'} />
-              Travel simply, simply love traveling
-            </Flex>
-          ) : (
-            <Flex align={'center'} direction={'column'}>
-              <Flex>{'Travel simply,'}</Flex>
-              <Flex>{'simply love traveling'}</Flex>
-            </Flex>
-          )}
+          <Flex align={'center'} direction={'column'}>
+            <MarginBox mt={large ? '8vh' : '0'} />
+            {!large && (
+              <LogoSimpleTravelers
+                $maxHeight={250}
+                alt="simple-travelers-logo"
+                src="/static/icons/SimpleTravelers.svg"
+              />
+            )}
+            <Flex>{'Cestovateľský blog,'}</Flex>
+            <Flex>{'ktorý nakopne tvoju chuť objavovať svet.'}</Flex>
+          </Flex>
         </TitleCatchLine>
       </TitleContainer>
     </SWelcomePhoto>

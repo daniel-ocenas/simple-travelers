@@ -4,8 +4,10 @@ import Head from 'next/head';
 import React from 'react';
 import { Flex } from 'UI/Flex/Flex';
 import { MarginBox } from 'UI/MarginBox';
+import { usePageMargin } from 'utils/useBreakpoint';
 
 export default function Videos() {
+  const pageMargin = usePageMargin();
   return (
     <>
       <Head>
@@ -18,7 +20,7 @@ export default function Videos() {
         <meta property="og:type" content="article" />
         <meta name="keywords" content="video, videos" />
       </Head>
-      <Page>
+      <Page mr={pageMargin}>
         <Flex direction={'column'}>
           <Video
             src="https://www.youtube.com/embed/ixmHwvUFBiU?si=Oi4ceeV_BSWuGNiv"
