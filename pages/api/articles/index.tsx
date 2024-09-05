@@ -31,7 +31,6 @@ export default async function Articles(req: any, res: any) {
     case 'GET':
       try {
         const articles = await ArticleList('sk');
-        console.log(articles, 'articleListResponse');
         res.status(200).json(articles);
       } catch (e) {
         console.error(e);

@@ -65,6 +65,7 @@ registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
   new NetworkOnly({
     cacheName: 'static-image-assets',
+    maximumFileSizeToCacheInBytes: 3000000,
     plugins: [
       new ExpirationPlugin({
         maxEntries: 64,

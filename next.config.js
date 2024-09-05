@@ -5,6 +5,7 @@ const withPWA = require('next-pwa')({
   register: true,
   skipWaiting: true,
   sw: '/sw.js',
+  maximumFileSizeToCacheInBytes: 3000000,
   runtimeCaching: [
     {
       urlPattern: '/',
@@ -19,6 +20,10 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // env: {
+  //   REACT_APP_URL:
+  //     process.env.REACT_APP_URL === 'development' ? 'http://localhost:3000' : 'https://simpletravelers.com',
+  // },
   images: {
     remotePatterns: [
       {
@@ -40,12 +45,12 @@ const nextConfig = {
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'sk',
   },
-  domains: [
-    {
-      domain: 'simpletravelers.sk',
-      defaultLocale: 'sk',
-    },
-  ],
+  // domains: [
+  //   {
+  //     domain: 'simpletravelers.sk',
+  //     defaultLocale: 'sk',
+  //   },
+  // ],
   transpilePackages: [
     'antd',
     '@ant-design',

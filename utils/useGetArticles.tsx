@@ -13,7 +13,7 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
   useEffect(() => {
     // TODO local / vs prod url
     const fetchArticles = async () => {
-      const response = await fetch(`http://localhost:3000/api/articles`).catch((e) => {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles`).catch((e) => {
         return undefined;
       });
 

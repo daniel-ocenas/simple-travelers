@@ -1,6 +1,5 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
-import { ArticlesList } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { usePageMargin } from 'utils/useBreakpoint';
@@ -8,16 +7,14 @@ import { usePageMargin } from 'utils/useBreakpoint';
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
   // TODO local / vs prod url
-  const response = await fetch(`http://localhost:3000/api/articles/${id}`).catch((e) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`).catch((e) => {
     return undefined;
   });
 
   let data = await response?.json();
-  console.log(data);
-  if (response?.status !== 200) {
-    data = ArticlesList.find((article) => article.url === id);
-  }
-  // const data = ArticlesList.find((article) => article.url === id);
+  // if (response?.status !== 200) {
+  //   data = ArticlesList.find((article) => article.url === id);
+  // }
 
   return {
     props: {
