@@ -40,8 +40,8 @@ const CreateArticle = ({
 }) => {
   const [articleContent, setArticleContent] = useState<ArticleProps | undefined>(undefined);
   const [preview, setPreview] = useState(false);
-  console.log(articleContent);
-  console.log(articleContent?.title);
+  // console.log(articleContent);
+  // console.log(articleContent?.title);
   useEffect(() => {
     setArticleContent(article);
   }, [article]);
@@ -75,7 +75,7 @@ const CreateArticle = ({
   const postArticles = async (articlesToPost: (ArticleProps | undefined)[]) => {
     articlesToPost.forEach((articleToPost) => {
       if (articleToPost) {
-        fetch(`http://localhost:3000/api/articles`, {
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(articleToPost),

@@ -26,6 +26,7 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
       //     ),
       //   };
       // }
+      console.log(data);
 
       const articles: ArticleProps[] = maxCount ? [...data?.articles]?.slice(0, maxCount) : data?.articles;
       const publishedArticles = showAll ? articles : articles.filter((artcl) => artcl.isPublished);
