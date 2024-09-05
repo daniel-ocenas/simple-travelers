@@ -1,13 +1,27 @@
+import { ObjectId } from 'bson';
+import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import ArticleList from 'data/ArticleList';
 import { connectToDatabase } from 'data/mongodb';
 
-async function articleCreate(lang: any, article: any) {
-  article.dateCreated = new Date().toLocaleDateString();
-
+async function articleCreate(lang: string, article: ArticleProps) {
+  article.date = new Date(Date.parse(article.dateCreated ?? '')).toLocaleDateString('sk', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  article.dateCreated = article.dateCreated ?? new Date().toLocaleDateString('sk');
   const { db } = await connectToDatabase();
-  const result = await db.collection('articles-' + lang).insertOne(article);
 
-  return result;
+  const _id = new ObjectId(article._id);
+  const newArticle = {
+    ...article,
+    _id,
+  };
+
+  const query = { _id };
+  const update = { $set: newArticle };
+  const options = { upsert: true };
+  return await db.collection('articles-' + lang).updateOne(query, update, options);
 }
 
 export default async function Articles(req: any, res: any) {
@@ -16,23 +30,24 @@ export default async function Articles(req: any, res: any) {
   switch (httpMetod) {
     case 'GET':
       try {
-        const articleList = await ArticleList('sk');
-        res.status(200).json(articleList);
+        const articles = await ArticleList('sk');
+        console.log(articles, 'articleListResponse');
+        res.status(200).json(articles);
       } catch (e) {
         console.error(e);
         res.status(500).json('Article could not be retrieved');
       }
       break;
 
-    // case 'POST':
-    //     try{
-    //         const result = await articleCreate('sk',req.body)
-    //         res.status(200).json(result);
-    //     }catch(e){
-    //         res.status(500).json("Acrticle could not be created");
-    //     }
+    case 'POST':
+      try {
+        const result = await articleCreate('sk', req.body);
+        res.status(200).json(result);
+      } catch (e) {
+        res.status(500).json('Acrticle could not be created');
+      }
 
-    //     break;
+      break;
     default:
       res.setHeader('Allow', ['GET' /*, 'POST' */]);
       res.status(405).end('Method not allowed');

@@ -1,16 +1,6 @@
 //
 
-export interface ArticleProps {
-  url: string;
-  title: string;
-  description: string;
-  date: string;
-  dateCreated: string;
-  image?: string;
-  keywords?: string;
-  category?: string[];
-  content: any;
-}
+import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 
 export function sortArticlesByDate(articleList: ArticleProps[]): ArticleProps[] {
   return articleList?.sort((a: any, b: any) => {
@@ -26,11 +16,12 @@ export const ArticlesList: ArticleProps[] = [
     description:
       'Ostrov Bali v Indonézii, známy aj ako „Ostrov bohov,“ ponúka množstvo nádherných miest s úchvatnými výhľadmi. Pre tých, ktorí milujú panoramatické scenérie, východy a západy slnka, je Bali skutočným rajom. V tomto článku vám dáme tipy na päť (must visit) miest, ktoré by ste nemali vynechať, pokiaľ si chcete vychutnať jedny z najočarujúcejších miest na Bali.',
     date: '8. júl 2024',
-    dateCreated: '07.08.2024',
+    dateCreated: '07. 08. 2024',
     image: '/static/images/photosFull/BaliLahanganPointing.jpg',
     keywords:
       'bali, vyhlady na bali, zapady slnka na bali, vychody slnka na bali, turistika na bali, foto miesta na bali, instagramové miesta na bali, bali instagram',
     category: ['Ázia', 'Rady a Tipy', 'Hiking'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -180,12 +171,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'slovenskesrdcovky',
     title: 'Slovenské srdcovky: tipy na cestovanie po Slovensku',
     date: '7. júl 2020',
-    dateCreated: '07.07.2020',
+    dateCreated: '07. 07. 2020',
     description:
       'Slovensko je taká krásna a rozmanitá krajina, že by nám nestačil ani rok na to, aby sme objavili všetky krásy, ktoré nám ponúka. Zbierka slovenských srdcoviek sa nám pomaly, ale isto rozširuje. Prostredníctvom týchto príspevkov sa predovšetkým chceme o tieto miesta podeliť s tebou a motivovať ťa navštíviť ich. Ak máš nadšenie spoznávať Slovensko, možno práve v tomto príspevku nájdeš niečo nové a úchvatné.',
     image: '/static/images/photosFull/srdcovky/SlovenskeSrdcovky.jpg',
     keywords: 'slovenské srdcovky, cestovanie po slovensku, rady a tipy, kam na výlet, výlet s rodinou',
     category: ['Slovensko', 'Rady a Tipy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -555,12 +547,12 @@ export const ArticlesList: ArticleProps[] = [
           {
             name: 'KjeragboltenPoniky',
             src: '/static/images/photosFull/srdcovky/KjeragboltenPoniky.jpg',
-            description: 'Hradisko na Kláštore',
+            text: 'Hradisko na Kláštore',
           },
           {
             name: 'KjeragboltenNorway',
             src: '/static/images/photosFull/srdcovky/KjeragboltenNorway.jpg',
-            description: 'Kjeragbolten, Nórsko',
+            text: 'Kjeragbolten, Nórsko',
           },
         ],
       },
@@ -851,10 +843,11 @@ export const ArticlesList: ArticleProps[] = [
     description:
       'Erasmus je továreň na nezabudnuteľné zážitky. Niet pochýb o tom, že Erasmus vo Fínsku bola pre nás neskutočná jazda. Priniesol so sebou množstvo výziev a nových skúseností vďaka ktorým sme získali nový pohľad na svet...',
     date: '20. máj 2020',
-    dateCreated: '20.5.2020',
+    dateCreated: '20. 05. 2020',
     image: '/static/images/photosFull/Erasmus/ErasmusSnowBorder.jpg',
     keywords: 'erasmus, erazmus, oulu, rady a tipy, cestopisy, cestovateľský blog',
     category: ['Európa', 'Cestopisy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -1104,13 +1097,14 @@ export const ArticlesList: ArticleProps[] = [
     url: 'roadtrip-usa-1',
     title: 'Roadtrip USA: zo San Francisca do Monument Valley - 1. časť',
     date: '1. Apríl 2020',
-    dateCreated: '04.01.2020',
+    dateCreated: '04. 01. 2020',
     description:
       'Prvá časť roadtripu o tom, ako sme 18 dní žili v aute a cestovali po západnom pobreží Ameriky. Zo San Francisca do Monument Valley, kde sa snažíme pochodiť čo najviac národných parkov Ameriky a zaujímavých miest.',
     image: '/static/images/photosFull/SFGoldenGateArticle.jpg',
     keywords:
       'cestovateľský blog, roadtrip, usa, národné parky, san francisco, yosemite, sequoje, death valley, údolie smrti, las vegas, valey of fire, zion, angels landing, bryce canyon, monument valley',
     category: ['Cestopisy', 'Hiking', 'Amerika'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -1332,7 +1326,7 @@ export const ArticlesList: ArticleProps[] = [
         ],
       },
       {
-        component: 'h',
+        component: 'h3',
         text: 'Deň 4 ',
       },
       {
@@ -1767,13 +1761,14 @@ export const ArticlesList: ArticleProps[] = [
     url: 'roadtrip-usa-2',
     title: 'Roadtrip USA: z Monument Valley do San Diega - 2. časť',
     date: '4. Apríl 2020',
-    dateCreated: '04.04.2020',
+    dateCreated: '04. 04. 2020',
     description:
       'Pokračovanie roadtripu z Monument Valley až do San Diega. Cestovateľský sen sa stal skutočnosťou a mohli sme si odfajknúť vytúženú vec z nášho bucketlistu –  Grand Canyon.',
     image: '/static/images/photosFull/GCLivPano.jpg',
     keywords:
       'cestovateľský blog, monument valley, grand canyon, grand kanon, route 66, púšť mojave, mojave desert, universal studios, holywood sign,  los angeles, san diego',
     category: ['Amerika', 'Cestopisy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -2370,12 +2365,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'cestahrdinovsnpzapisky',
     title: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 1. časť',
     date: '27. október 2020',
-    dateCreated: '27.10.2020',
+    dateCreated: '27. 10. 2020',
     description:
       'Počas cesty sme sa snažili zdokumentovať každý deň nášho putovania. Pocity, dojmy, zážitky, nečakané zvraty. Taká bola pôvodná predstava, ale nebudeme klamať. Entuziazmus z písania denníka nás veľmi rýchlo opustil. Postupne sa stávali z \tdenníka krátke zápisky, zo zápiskov odrážky, z \todrážok slovné spojenia a \tzo slovných spojení ostali už len citoslovcia a \tsmajlíky. Na napísanie nasledujúceho článku nám to bohato stačilo.',
     image: '/static/images/photosFull/SNPDuklaPamatnik.jpg',
     keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
     category: ['Slovensko', 'Cestopisy', 'Hiking'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -2520,22 +2516,12 @@ export const ArticlesList: ArticleProps[] = [
         class: 'articlePicturePortrait',
       },
       {
-        component: 'video',
-        src: [
-          {
-            src: 'static/videos/SNPUmyvanie.mp4',
-            name: 'SNPSuseniePradla',
-            type: 'video/mp4',
-          },
-        ],
-      },
-      {
         component: 'img',
         src: [
           {
             src: '/static/images/photosFull/SNPckarskaSprcha.jpg',
             name: 'SNPckarskaSprcha',
-            description: 'Aj na takomto mieste sme sa "sprchovali"',
+            text: 'Aj na takomto mieste sme sa "sprchovali"',
           },
         ],
         class: 'articlePictureLandscape',
@@ -2606,12 +2592,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'cestahrdinovsnpzapisky2',
     title: 'Ceste hrdinov SNP: 30 dní, tisíce zážitkov - 2.časť',
     date: '7. november 2020',
-    dateCreated: '11.07.2020',
+    dateCreated: '11. 07. 2020',
     description:
       'Poznáš ten nepríjemný pocit, keď ti začne krútiť črevá, sociálne zariadenie je na míle ďaleko a ty v snahe zabrániť blížiacej sa pohrome prekrižuješ nohy a zatínaš ritné polky. Na SNPčke takýto problém nastať nemôže. Záchod nájdeš na každom kroku. Kedykoľvek to na teba príde, môžeš si jednoducho odskočiť za najbližší krík.',
     image: '/static/images/photosFull/SNPPortraitVT.jpg',
     keywords: 'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry',
     category: ['Slovensko', 'Cestopisy', 'Hiking'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -2677,7 +2664,7 @@ export const ArticlesList: ArticleProps[] = [
           {
             src: '/static/images/photosFull/SNPSkalisko.jpg',
             name: 'SNPSkalisko',
-            description: 'Východ slnka s krásnou inverziou na Skalisku.',
+            text: 'Východ slnka s krásnou inverziou na Skalisku.',
           },
         ],
         class: 'articlePictureLandscape',
@@ -2696,7 +2683,7 @@ export const ArticlesList: ArticleProps[] = [
           {
             src: '/static/images/photosFull/SNPGalovaUtulna.jpg',
             name: 'SNPGalovaUtulna',
-            description: 'Utulňa Gálová.',
+            text: 'Utulňa Gálová.',
           },
         ],
         class: 'articlePictureLandscape',
@@ -2754,18 +2741,6 @@ export const ArticlesList: ArticleProps[] = [
         text: 'Titulné stránky časopisov zaplavili správy o&nbsp;pristátí ufa na Chopku. Len žiadna panika, nijaké sci-fi sa nekonalo. Jediní mimozemšťania pobehujúci po Kamennej chate sme my dvaja, teda aspoň my sme sa tak cítili. Ako jedni z&nbsp;mála sme na chrbte niesli obrovské turistické ruksaky, sme prepotení, pretože už piaty deň po sebe nosíme jedno a&nbsp;to isté tričko. Zapáchame aj sami sebe. Obzriem sa po miestnosti a mám pocit, že sme sa dostali na nejakú fashion show. Všetci sú vyobliekaní ako z&nbsp;kultového módneho časopisu. Pôvabné šaty, luxusné kabelky, kožené sandáliky, značkové vestičky či lakované topánky. Uvažujem nad tým, ako nepohodlne by sa v&nbsp;takýchto outfitoch turistikovalo. Jediný spôsob, ako sa mohli dostať hore, je predražená lanovka. Spravili si pár fotiek na Instagram a&nbsp;svoj výlet zavŕšili obedom s&nbsp;nemalou vysokohorskou prirážkou. Keď sme im rozprávali, akej výzve čelíme a&nbsp;čím všetkým sme si už prešli, len nechápavo krútili hlavami nad naším „zvláštnym koníčkom“. ',
       },
       {
-        component: 'video',
-        src: 'https://www.youtube.com/embed/RiNRpOlp_FE',
-        class: 'articleVideoBox',
-        name: 'Chopok',
-      },
-      {
-        component: 'video',
-        src: '',
-        class: 'articleVideoBox',
-        name: 'Timelapse pod Zámotskou hoľou',
-      },
-      {
         component: 'h3',
         text: 'Votrelec na útulni Žľab',
       },
@@ -2779,7 +2754,7 @@ export const ArticlesList: ArticleProps[] = [
           {
             src: '/static/images/photosFull/SNPZlab.jpg',
             name: 'SNPZlab',
-            description: 'Utulňa Žľab.',
+            text: 'Utulňa Žľab.',
           },
         ],
         class: 'articlePictureLandscape',
@@ -2810,8 +2785,7 @@ export const ArticlesList: ArticleProps[] = [
           {
             name: 'SNPFotenie',
             src: '/static/images/photosFull/SNPFotenie.jpg',
-            description:
-              'Na záver náš verný kamarát, ktorý s nami zvládol prejsť celú cestu a vždy na slovíčko počúval.',
+            text: 'Na záver náš verný kamarát, ktorý s nami zvládol prejsť celú cestu a vždy na slovíčko počúval.',
           },
         ],
       },
@@ -2829,13 +2803,14 @@ export const ArticlesList: ArticleProps[] = [
     url: 'cestahrdinovsnp',
     title: 'Z Dukly na Devín za 30 dní: naša cesta hrdinov SNP v číslach',
     date: '9. september 2020',
-    dateCreated: '09.09.2020',
+    dateCreated: '09. 09. 2020',
     description:
       'Najdlhšia turistická magistrála na území Slovenska. Začína sa v Duklianskom priesmyku a končí sa na hrade Devín. Jej dĺžka je 770 kilometrov. Celú túto trasu sme sa rozhodli prejsť peši a aj sa nám to podarilo. V tomto článku sa dočítaš základne informácie o našom putovaní na Ceste hrdinov SNP.',
     image: '/static/images/photosFull/SNPNTKosariska.jpg',
     keywords:
       'cestovateľský blog, cesta hrdinov, snp, dukla, devín, turistika, diaľková turistika, prechod, tatry, rady a tipy',
     category: ['Slovensko', 'Cestopisy', 'Hiking'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -2941,12 +2916,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'radyatipyerasmus',
     title: '5 dôvodov prečo (NE)ísť na ERASMUS',
     date: '16. Máj 2020',
-    dateCreated: '05.16.2020',
+    dateCreated: '05. 16. 2020',
     description:
       'V článku 5 dôvodov prečo (NE)ísť na Erasmus sme spísali najčastejšie (NE)podstatné dôvody, ktoré odrádzajú študentov zúčastniť sa Erasmu. Zároveň ti ukážeme, že ani jeden z nich nie je dostatočnou prekážkou na to, aby si nevyužil jednu z najlepších cestovateľských príležitostí, aká sa ti na vysokej škole ponúka.',
     image: '/static/images/photosFull/Erasmus/OuluNalikari.jpg',
     keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
     category: ['Európa', 'Rady a Tipy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -3116,12 +3092,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'radyatipyerasmusvybavovacky',
     title: 'Erasmus vybavovačky krok za krokom',
     date: '16. Máj 2020',
-    dateCreated: '05.16.2020',
+    dateCreated: '05. 16. 2020',
     description:
       'Podrobný rozpis o tom, ako prebieha prihlasovanie na Erasmus. Nezabudni, tie najdôležitejšie a najaktuálnejšie informácie nájdeš na webových stránkach svojej univerzity.',
     image: '/static/images/photosFull/Erasmus/ErasmusFlight.jpg',
     keywords: 'erasmus, erazmus, oulu, rady a tipy, prečo ísť na erazmus',
     category: ['Európa', 'Rady a Tipy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -3221,13 +3198,14 @@ export const ArticlesList: ArticleProps[] = [
     url: 'radyatipyusa',
     title: 'Cestovanie po USA: užitočné rady a tipy',
     date: '12. Apríl 2020',
-    dateCreated: '04.12.2020',
+    dateCreated: '04. 12. 2020',
     description:
       'Ako môžeš kúpiť annual pass za najnižšiu cenu?  Čo sa oplatí/neoplatí? Jedny z mála otázok, na ktoré ti ponúkame odpovede v našich článkoch. Možno zopár z nich využiješ aj pri plánovaní tvojho výletu po USA.',
     image: '/static/images/photosFull/FlagUSA.jpg',
     // todo zmenit foto
     keywords: 'cestovanie, amerika, cestovanie po amerike, rady a tipy, usa, roadtrip',
     category: ['Amerika', 'Rady a Tipy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -3387,12 +3365,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'radyatipyusapozicanieauta',
     title: 'Požičiavanie auta v USA: kompletný sprievodca',
     date: '12. Apríl 2020',
-    dateCreated: '04.12.2020',
+    dateCreated: '04. 12. 2020',
     description:
       'Čo všetko potrebuješ, aby si si mohol požičať auto? Koľko stojí požičanie auta keď ešte nemáš 25 rokov? Koľko stojí nafta v USA? Aj na tieto otázky nájdeš odpoveď práve v tomto článku.',
     keywords: 'roadtrip, usa, požičanie auta, lowcost cestovanie, kemping, glamping',
     image: '/static/images/photosFull/RTUSA2.jpg',
     category: ['Amerika', 'Rady a Tipy'],
+    isPublished: true,
     content: [
       {
         component: 'h2',
@@ -3514,12 +3493,13 @@ export const ArticlesList: ArticleProps[] = [
     url: 'velkofatranskamagistrala',
     title: 'Veľkofatranská magistrála',
     date: '12. júl 2020',
-    dateCreated: '07.12.2020',
+    dateCreated: '07. 12. 2020',
     description:
       'Článok o tom, čo sme zažili počas túry cez Veľkofatranskú magistrálu. Dvanásť kilové batohy na chrbtoch. Krvopotne odmakané kilometre. V daždi, v hmle. Cez deň, ale aj za tmy. Výškové prevýšenie by sme prirovnali k húsenkovej drahé. Prudko hore-dole, až človeku príde nevoľno 😀. Podarilo sa nám pokoriť Veľkofatranskú magistrálu (Ľubochňa-Turecká) dlhú 46km a s celkovým prevýšením 2 500m.',
     image: '/static/images/photosFull/VFPloskaBorisovUs.jpg',
     keywords: 'veľkofatranská magistrála, ľubochňa, krížna, ostredok, borišov, turistika, viacdenná turistika',
     category: ['Slovensko', 'Cestopisy', 'Hiking'],
+    isPublished: true,
     content: [
       {
         component: 'h2',

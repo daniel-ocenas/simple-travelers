@@ -2,16 +2,18 @@
   position: relative;
   padding: 8px;
   margin: 4px;
-  background-color: var(--primaryColorExtraLight);
+  background-color: var(--primaryColor);
   cursor: pointer;
-  transition: all 0.5s ease-out;
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
   background-size: 300% 100%;
   border-radius: 8px;
-  border: 2px solid var(--primaryColorExtraLight);
+  border: 2px solid var(--primaryColor);
 }
 
-.checkButton:hover,
+.checkButton:hover {
+  background-color: var(--primaryColorLight);
+}
+
 .checkButtonActive {
-  border: 2px solid var(--primaryColorLight);
+  border: 2px solid var(--primaryColorDark);
 }

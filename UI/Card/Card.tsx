@@ -12,10 +12,10 @@ interface CardProps {
   image: string;
   url: string;
   category: string[];
-  vertical?: boolean;
+  edit?: boolean;
 }
 
-function Card({ title, date, text, image, url, category, vertical }: CardProps) {
+function Card({ title, date, text, image, url, category, edit }: CardProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleLoading = () => {
@@ -23,7 +23,14 @@ function Card({ title, date, text, image, url, category, vertical }: CardProps) 
   };
 
   return (
-    <Link href={url} className={'linkNoDecoration'} passHref>
+    <Link
+      href={url}
+      className={'linkNoDecoration'}
+      style={{
+        pointerEvents: edit ? 'none' : 'auto',
+      }}
+      passHref
+    >
       <SCard onClick={toggleLoading}>
         <Flex direction={'column'}>
           <SCardImage $src={image} />

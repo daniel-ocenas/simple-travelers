@@ -12,7 +12,7 @@
   min-width: 300px;
   min-height: 140px;
   overflow: hidden;
-  box-shadow: 5px 5px 2px var(--primaryColorLight);
+  box-shadow: 5px 5px 2px var(--primaryColor);
   z-index: 5;
 }
 

@@ -7,13 +7,13 @@ import {
   emptyImgComponent,
   emptySubtitleComponent,
   emptyTextComponent,
-} from 'components/CreateArticle/ComponentSelector/ComponentType';
+} from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+import EditableImageComponent from 'components/ArticleEditor/CreateArticle/ComponentSelector/EditableComponents/EditableImageComponent';
 import React, { useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { TextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
 import { RichTextEditor } from 'UI/RichTextEditor';
-import EditableImageComponent from './EditableComponents/EditableImageComponent';
 
 export interface UploadFile<T = any> extends Blob {
   uid: string;

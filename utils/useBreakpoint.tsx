@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export const useScreenSize = () => {
@@ -47,6 +48,10 @@ export function useExtraLarge(): boolean {
 export function usePageMargin(): string {
   const large = useLarge();
   const xl = useExtraLarge();
+  const location = useRouter();
+  if (location.pathname === '/editor') {
+    return '10%';
+  }
 
   if (xl) {
     return '30%';

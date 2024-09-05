@@ -17,7 +17,7 @@ import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
-const NAV_LINK_DATA = [
+export const NAV_LINK_DATA = [
   {
     title: 'Domov',
     path: '/',
@@ -112,7 +112,7 @@ function NavList() {
               </div>
             ))}
           </Flex>
-          <SocialNetworkLinks position={'absolute'} top={15} right={0} outlined />
+          <SocialNetworkLinks position={'absolute'} top={10} right={0} outlined />
         </SNavList>
       </Flex>
     </STabsContainers>
@@ -129,9 +129,9 @@ function NavMenu() {
       <SMarginBox />
       <Burger showSidebar={showSidebar} buttonState={sidebar} />
       <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
-        <SocialNetworkLinks outlined />
+        <SocialNetworkLinks top={5} outlined />
         <ul className={styles.navMenuItems} onClick={showSidebar}>
-          {links.slice().map((item, index) => {
+          {links.map((item, index) => {
             return (
               <li key={index} className={styles.navText}>
                 <Link href={item.path} passHref>
@@ -152,9 +152,11 @@ function Header() {
   const { height } = useScreenSize();
   const large = useLarge();
 
+  const initialTop = large ? height : 300;
+
   useEffect(() => {
     if (location.pathname !== '/') {
-      scrollToTopSmooth(height / 2.3 - (large ? 0 : 16));
+      scrollToTopSmooth(initialTop - (large ? 0 : 16));
     }
     // eslint-disable-next-line
   }, [location]);

@@ -1,5 +1,5 @@
 // Component Definitions
-export type ArticleComponentType = 'p' | 'h3' | 'h2' | 'img';
+export type ArticleComponentType = 'p' | 'h4' | 'h3' | 'h2' | 'img';
 
 interface SimpleTextComponentType {
   component: 'simpleText';
@@ -9,6 +9,7 @@ interface SimpleTextComponentType {
 interface ImageSrcType {
   src: string;
   name?: string;
+  text?: string;
 }
 
 // component initial values
@@ -39,4 +40,18 @@ export interface ArticleComponent {
   src?: ImageSrcType[];
   class?: string;
   order?: number;
+}
+
+export interface ArticleProps {
+  _id?: string;
+  url: string;
+  title: string;
+  description: string;
+  date: string;
+  dateCreated?: string;
+  image: string;
+  isPublished: boolean;
+  keywords?: string;
+  category?: string[];
+  content: ArticleComponent[];
 }

@@ -5,7 +5,6 @@ async function ArticleGet(lang: string, articleUrl: string) {
 
   try {
     const result = await db.collection('articles-' + lang).findOne({ url: articleUrl });
-
     if (result === undefined) {
       return {
         article: [

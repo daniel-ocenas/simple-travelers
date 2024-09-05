@@ -1,11 +1,12 @@
 import { Col, Form, Row, Select } from 'antd';
+import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
-import { ArticleProps, ArticlesList, sortArticlesByDate } from 'data/ArticlesList';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import Loader from 'UI/Loader';
 import { usePageMargin } from 'utils/useBreakpoint';
+import { useGetArticles } from 'utils/useGetArticles';
 
 const { Option } = Select;
 const optionsSel = [
@@ -26,53 +27,16 @@ const sortArticles = (articles: any, order: any) => {
 };
 
 function Blog() {
+  const { isLoading, articlesList } = useGetArticles({});
+
   const pageMargin = usePageMargin();
   const [sortState, setSortState] = useState(optionsSel[0].value);
   const [filterOptions, setFilterOptions] = useState([]);
-  let [articlesList, setArticlesList] = useState<[]>([]);
-  const [articlesDisplay, setArticlesDisplay] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [articlesDisplay, setArticlesDisplay] = useState<ArticleProps[]>([]);
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      // const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
-      //   return undefined;
-      // });
-
-      // let data = await response?.json();
-      // if (response?.status !== 200) {
-      //   data = {
-      //     articleList: ArticlesList,
-      //   };
-      // }
-      const data = {
-        articleList: sortArticlesByDate(ArticlesList as ArticleProps[]),
-      };
-
-      // @ts-ignore
-      setArticlesList(data.articleList);
-      setArticlesDisplay(sortArticles(data.articleList, 'asc'));
-      console.log(data.articleList);
-      // load categories for filtering
-      let filterCategories: any = [];
-      data.articleList?.forEach((article: any) => {
-        article.category?.forEach((category: any) => {
-          if (!filterCategories.includes(category)) {
-            filterCategories.push(category);
-          }
-        });
-      });
-
-      setIsLoading(false);
-      // set categories
-      setFilterOptions(
-        filterCategories.map((option: any) => {
-          return <Option key={option}>{option}</Option>;
-        }),
-      );
-    };
-    fetchArticles();
-  }, []);
+    setArticlesDisplay(articlesList);
+  }, [articlesList]);
 
   const handleSortChange = () => {
     setSortState(sortState === optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value);

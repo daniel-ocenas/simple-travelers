@@ -2,9 +2,10 @@ import { Dropdown } from 'antd';
 import styled from 'styled-components';
 
 export const LogoSimpleTravelers = styled.img<{ $maxHeight?: number }>`
-  max-height: ${({ $maxHeight }) => $maxHeight ?? 'calc(var(--tabsHeight) - 15px)'};
+  max-height: ${({ $maxHeight }) => $maxHeight ?? 'calc(var(--tabsHeight) - 8px)'};
   cursor: pointer;
-  margin: auto;
+  margin-top: 3px;
+  margin-bottom: -7px;
 
   &:hover {
     transform: scale(1.1);

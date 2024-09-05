@@ -9,9 +9,8 @@ import Head from 'next/head';
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import 'react-quill/dist/quill.snow.css';
-import '../styles/burger-menu.scss';
-import '../styles/slider.css';
 import '../styles/styles.css';
+// import '../styles/slider.css';
 
 dayjs.locale(dayJsSk);
 

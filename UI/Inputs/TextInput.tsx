@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const { TextArea: AntTextArea } = Input;
 
@@ -10,7 +10,12 @@ interface TextInputProps {
 }
 
 export const TextInput = ({ value, onChange, placeholder }: TextInputProps) => {
-  const [val, setVal] = useState<string>(value ?? '');
+  const [val, setVal] = useState<string | undefined>(value);
+
+  useEffect(() => {
+    setVal(value);
+  }, [value]);
+
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setVal(newValue);
@@ -20,12 +25,24 @@ export const TextInput = ({ value, onChange, placeholder }: TextInputProps) => {
 };
 
 export const TextArea = ({ value, onChange, placeholder }: TextInputProps) => {
-  const [val, setVal] = useState<string>(value ?? '');
+  const [val, setVal] = useState<string | undefined>(value);
+
+  useEffect(() => {
+    setVal(value);
+  }, [value]);
+
   const onValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     setVal(newValue);
     onChange(newValue);
   };
 
-  return <AntTextArea value={val} onChange={onValueChange} placeholder={placeholder} />;
+  return (
+    <AntTextArea
+      value={val}
+      onChange={onValueChange}
+      placeholder={placeholder}
+      styles={{ textarea: { minHeight: '100px' } }}
+    />
+  );
 };

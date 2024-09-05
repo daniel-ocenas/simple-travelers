@@ -10,13 +10,14 @@ import Divider from 'UI/Divider';
 import { MarginBox } from 'UI/MarginBox';
 import { useLarge, useScreenSize } from 'utils/useBreakpoint';
 
+const DISABLED_URLS = ['/', '/onas', '/editor'];
+
 const SideBar = () => {
   const { width } = useScreenSize();
   const location = useRouter();
   const large = useLarge();
-  if (location.pathname === '/' || location.pathname === '/onas' || !large) {
-    console.log('return null');
-    return null;
+  if (DISABLED_URLS.some((url) => url === location.pathname) || !large) {
+    return <></>;
   }
 
   return (

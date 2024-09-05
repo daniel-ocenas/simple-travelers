@@ -7,16 +7,17 @@ import { usePageMargin } from 'utils/useBreakpoint';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
-  // TODO shot local articles
-  const response = await fetch(`https://simpletravelers.sk/api/articlecontent/${id}`).catch((e) => {
+  // TODO local / vs prod url
+  const response = await fetch(`http://localhost:3000/api/articles/${id}`).catch((e) => {
     return undefined;
   });
 
-  // let data = await response?.json();
-  // if (response?.status !== 200) {
-  //   data = ArticlesContent.find((article) => article.url === id);
-  // }
-  const data = ArticlesList.find((article) => article.url === id);
+  let data = await response?.json();
+  console.log(data);
+  if (response?.status !== 200) {
+    data = ArticlesList.find((article) => article.url === id);
+  }
+  // const data = ArticlesList.find((article) => article.url === id);
 
   return {
     props: {

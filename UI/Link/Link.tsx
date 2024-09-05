@@ -8,16 +8,17 @@ export type LinkProps = PropsWithChildren<{
   download?: string;
   newTab?: boolean;
   passHref?: boolean;
+  style?: React.CSSProperties | undefined;
 }>;
 
-export function Link({ href, className, external, download, newTab, passHref, children }: LinkProps) {
+export function Link({ href, className, external, download, newTab, passHref, style, children }: LinkProps) {
   const newTabProps = newTab && { target: '_blank', rel: 'noopener' };
   return external ? (
     <a className={className} href={href} download={download} {...newTabProps}>
       {children}
     </a>
   ) : (
-    <NextLink className={className} href={href} {...newTabProps} passHref={passHref}>
+    <NextLink className={className} href={href} {...newTabProps} passHref={passHref} style={style}>
       {children}
     </NextLink>
   );

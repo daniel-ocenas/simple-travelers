@@ -1,46 +1,19 @@
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import SocialNetworkLinks from 'components/SocialSideBar';
-import { ArticleProps, ArticlesList, sortArticlesByDate } from 'data/ArticlesList';
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { HomePageWelcomeDescription, HomePageWelcomeTitle } from 'styles/AboutUs.styled';
 import { Flex } from 'UI/Flex';
 import Loader from 'UI/Loader';
 import { MarginBox } from 'UI/MarginBox';
 import { useLarge } from 'utils/useBreakpoint';
+import { useGetArticles } from 'utils/useGetArticles';
 
 export default function Home() {
   const large = useLarge();
-  const [articlesList, setArticlesList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const response = await fetch(`https://simpletravelers.sk/api/articles`).catch((e) => {
-        return undefined;
-      });
-
-      let data = await response?.json();
-      if (response?.status !== 200) {
-        data = {
-          articleList: sortArticlesByDate(ArticlesList.slice(0, 6) as ArticleProps[]),
-        };
-      }
-
-      let sortedArticleList = data?.articleList?.sort((a: any, b: any) => {
-        const start = +new Date(b.dateCreated);
-        return start - +new Date(a.dateCreated);
-      });
-
-      setIsLoading(false);
-      setArticlesList(sortedArticleList ?? []);
-      return data;
-    };
-
-    fetchArticles();
-  }, []);
+  const { isLoading, articlesList } = useGetArticles({ maxCount: 6 });
 
   return (
     <>

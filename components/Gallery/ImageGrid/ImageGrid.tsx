@@ -85,7 +85,7 @@ function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, image
         onClick={() => showImage(item)}
         style={{
           backgroundImage: `url(/static/${item.thumbnail})`,
-          minHeight: !small ? '200px' : '300px',
+          minHeight: !small ? '300px' : '400px',
         }}
       />
     );

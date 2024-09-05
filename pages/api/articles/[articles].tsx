@@ -6,11 +6,11 @@ export default async function handler(req: any, res: any) {
   switch (httpMetod) {
     case 'GET':
       try {
-        const articleUrl = '/' + req.query.articles;
-        const articlesList = await ArticleGet('sk', articleUrl);
-        res.status(200).json(articlesList);
+        const articleUrl = req.query.articles;
+        const result = await ArticleGet('sk', articleUrl);
+        res.status(200).json(result.article);
       } catch (e) {
-        res.status(500).json('Acrticle could not be retrieved');
+        res.status(500).json('Article could not be retrieved');
       }
 
       break;
