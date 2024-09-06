@@ -1,5 +1,6 @@
 import { NAV_LINK_DATA } from 'components/Header/Header';
 import styles from 'components/Header/Header.module.css';
+import SocialNetworkLinks from 'components/SocialSideBar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -30,6 +31,7 @@ function Footer() {
             );
           })}
         </Flex>
+        <SocialNetworkLinks outlined />
         <MarginBox mt={24} mb={32}>
           ©2024 Simple Travelers
         </MarginBox>

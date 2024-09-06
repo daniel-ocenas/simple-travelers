@@ -2,10 +2,8 @@
 import { Button, Divider, Input, Switch } from 'antd';
 import ArticleRenderer from 'components/Article';
 import { ArticleComponent, ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
-import {
-  ComponentSelector,
-  EditableComponent,
-} from 'components/ArticleEditor/CreateArticle/ComponentSelector/ComponentSelector';
+import { ComponentPicker } from 'components/ArticleEditor/CreateArticle/ComponentSelector/ComponentPicker';
+import { EditableComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/EditableComponent';
 import { notify } from 'components/Notification/notification';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
@@ -232,7 +230,7 @@ const CreateArticle = ({
               })}
             </div>
             {!preview && (
-              <ComponentSelector addComponent={addComponent} itemsCount={articleContent?.content.length ?? 0} />
+              <ComponentPicker addComponent={addComponent} itemsCount={articleContent?.content.length ?? 0} />
             )}
           </Flex>
           <MarginBox mt={32} />
@@ -240,7 +238,6 @@ const CreateArticle = ({
             {'Preview:'}
             <MarginBox mr={8} />
             <Switch onClick={() => setPreview((prev) => !prev)} checkedChildren="Hide" unCheckedChildren="Show" />
-            <MarginBox mr={8} />
             <MarginBox mr={8} />
             <PublishButton />
           </Flex>

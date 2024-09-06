@@ -28,8 +28,12 @@ export const emptyTextComponent: ArticleComponent = {
   text: '',
 };
 
-export const emptySubtitleComponent: ArticleComponent = {
+export const emptySectionTitleComponent: ArticleComponent = {
   component: 'h3',
+  text: '',
+};
+export const emptySubtitleComponent: ArticleComponent = {
+  component: 'h4',
   text: '',
 };
 

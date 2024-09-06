@@ -1,15 +1,17 @@
-import React from 'react'
-import ArticleText from './ArticleText'
-import ArticleHeader from './ArticleHeader'
-import ArticleSectionHeader from './ArticleSectionHeader'
-import ArticleImage from './ArticleImage'
+import ArticleSubtitle from 'components/Article/ArticleSubtitle';
+import React from 'react';
+import ArticleHeader from './ArticleHeader';
+import ArticleImage from './ArticleImage';
+import ArticleSectionHeader from './ArticleSectionHeader';
+import ArticleText from './ArticleText';
 
 const KeysToComponentMap = {
   p: ArticleText,
   h2: ArticleHeader,
   h3: ArticleSectionHeader,
+  h4: ArticleSubtitle,
   img: ArticleImage,
-}
+};
 
 function ArticleRenderer(config, idx, textAreaWidth) {
   if (typeof KeysToComponentMap[config.component] !== 'undefined') {
@@ -25,12 +27,12 @@ function ArticleRenderer(config, idx, textAreaWidth) {
         idx: idx,
         width: textAreaWidth,
       },
-      config.children
+      config.children,
       // (typeof config.children === "string"
       // 	? config.children
       // 	: config.children.map((item,idx) => ArticleRenderer(item,idx))),
-    )
+    );
   }
 }
 
-export default ArticleRenderer
+export default ArticleRenderer;
