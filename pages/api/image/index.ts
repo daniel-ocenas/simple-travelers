@@ -8,6 +8,7 @@ export const config = {
       sizeLimit: '8mb', // Set desired value here
     },
   },
+  runtime: 'edge',
 };
 
 export default async function Post(req: NextRequest, res: any) {

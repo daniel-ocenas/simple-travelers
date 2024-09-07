@@ -2,10 +2,9 @@ import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined } from '@ant-design/
 import { Button } from 'antd';
 import { ArticleHeader } from 'components/Article';
 import { ArticleComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
-import EditableImageComponent from 'components/ArticleEditor/CreateArticle/ComponentSelector/EditableComponents/EditableImageComponent';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Flex } from 'UI/Flex';
-import { TextInput } from 'UI/Inputs';
+import { FloatingTextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
 import { RichTextEditor } from 'UI/RichTextEditor';
 
@@ -36,22 +35,16 @@ interface EditableComponentSelectorProps {
 }
 
 export const EditableComponent = ({ item, articleContent, setArticleContent }: EditableComponentSelectorProps) => {
-  const [fileList, setFileList] = useState<any>([]);
-
   const deleteItem = useCallback(
     (positionToDelete?: number) => {
       if (positionToDelete) {
-        const nextPosition = positionToDelete + 1;
         const newArticleList = articleContent
           .filter((it) => it.order !== positionToDelete)
-          .map((it) => {
-            if (it.order === nextPosition) {
-              return {
-                ...it,
-                order: positionToDelete,
-              };
-            }
-            return it;
+          .map((it, order) => {
+            return {
+              ...it,
+              order,
+            };
           });
         setArticleContent(newArticleList);
       }
@@ -91,21 +84,12 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
         }
         return article;
       });
-      console.log(order);
-      console.log(newArticleList);
-      // console.log(tmpContent);
-      // const current = [...tmpContent].find(order, 1)[0];
-      // console.log(current);
-      // console.log(tmpContent);
-      // tmpContent.splice(order, 0, { ...current, text })
       setArticleContent(newArticleList);
     }
   };
 
   const getEditableComponent = () => {
     switch (item.component) {
-      case 'img':
-        return <EditableImageComponent />;
       case 'h2':
         return (
           <Flex justify={'center'}>
@@ -113,9 +97,21 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
           </Flex>
         );
       case 'h3':
-        return <TextInput value={item.text} onChange={(value) => updateText(value, item.order)} />;
+        return (
+          <FloatingTextInput
+            label={'Section Title'}
+            value={item.text}
+            onChange={(value) => updateText(value, item.order)}
+          />
+        );
       case 'h4':
-        return <TextInput value={item.text} onChange={(value) => updateText(value, item.order)} />;
+        return (
+          <FloatingTextInput
+            label={'Section Subtitle'}
+            value={item.text}
+            onChange={(value) => updateText(value, item.order)}
+          />
+        );
       case 'p':
         return (
           <Flex direction={'column'}>
@@ -127,15 +123,23 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
             <MarginBox mt={64} />
           </Flex>
         );
+      case 'img':
+        return (
+          <FloatingTextInput
+            label={'Image url'}
+            value={item.text}
+            onChange={(value) => updateText(value, item.order)}
+          />
+        );
       default:
-        return <></>;
+        return <>{`Component "${item.component}" doesnt have implemented render method.`}</>;
     }
   };
 
   return (
     <Flex direction={'column'}>
       <Flex direction={'row'}>
-        {getEditableComponent()}
+        <Flex>{getEditableComponent()}</Flex>
         {item.order !== 0 && (
           <MarginBox ml={8}>
             <Flex direction={'row'} justify={'flex-end'}>

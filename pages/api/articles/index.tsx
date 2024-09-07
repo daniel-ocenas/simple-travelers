@@ -1,7 +1,7 @@
 import { ObjectId } from 'bson';
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
-import ArticleList from 'data/ArticleList';
-import { connectToDatabase } from 'data/mongodb';
+import ArticleList from 'lib/mongodb/ArticleList';
+import { connectToDatabase } from 'lib/mongodb/mongodb';
 
 async function articleCreate(lang: string, article: ArticleProps) {
   article.date = new Date(Date.parse(article.dateCreated ?? '')).toLocaleDateString('sk', {
@@ -36,6 +36,17 @@ export default async function Articles(req: any, res: any) {
         console.error(e);
         res.status(500).json('Article could not be retrieved');
       }
+
+      // CORS
+      // return new NextResponse('Hello, Next.js!', {
+      //   status: 200,
+      //   headers: {
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      //     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      //   },
+      // });
+
       break;
 
     case 'POST':

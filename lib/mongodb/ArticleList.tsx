@@ -1,5 +1,5 @@
 import { ArticlesList } from 'data/ArticlesList';
-import { connectToDatabase } from './mongodb';
+import { connectToDatabase } from 'lib/mongodb/mongodb';
 
 async function ArticleList(lang: string) {
   const { db } = await connectToDatabase();
@@ -9,7 +9,6 @@ async function ArticleList(lang: string) {
       .collection('articles-' + lang)
       .find()
       .toArray();
-
     return {
       articles: findResult,
       status: 200,
