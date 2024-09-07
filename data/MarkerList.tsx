@@ -1,4 +1,4 @@
-import { connectToDatabase } from './mongodb';
+import { connectToDatabase } from 'lib/mongodb/mongodb';
 
 async function MarkerList(lang: string) {
   const { db } = await connectToDatabase();

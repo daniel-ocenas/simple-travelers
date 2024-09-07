@@ -1,5 +1,5 @@
-import ArticleList from 'data/ArticleList';
 import MarkerList from 'data/MarkerList';
+import ArticleList from 'lib/mongodb/ArticleList';
 
 export default async function Marker(req: any, res: any) {
   const httpMetod = req.method;

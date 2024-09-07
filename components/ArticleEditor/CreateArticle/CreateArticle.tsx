@@ -7,7 +7,7 @@ import { EditableComponent } from 'components/ArticleEditor/CreateArticle/Compon
 import { notify } from 'components/Notification/notification';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
-import { TextArea, TextInput } from 'UI/Inputs';
+import { FloatingTextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
 
 export const emptyArticle: ArticleProps = {
@@ -57,7 +57,7 @@ const CreateArticle = ({
   const updateValue = (
     value: string,
     articleContent: ArticleProps | undefined,
-    attribute: 'title' | 'description' | 'date' | 'url' | 'keywords',
+    attribute: 'title' | 'description' | 'date' | 'url' | 'keywords' | 'image',
   ) => {
     if (!articleContent) {
       return;
@@ -176,35 +176,32 @@ const CreateArticle = ({
         <Flex direction={'column'}>
           <MarginBox mt={16} />
           <Flex direction={'column'}>
-            <TextInput
+            <FloatingTextInput
+              label={'Article Title'}
               value={articleContent?.title}
-              placeholder={'Article Title'}
               onChange={(value) => updateValue(value, articleContent, 'title')}
             />
             <MarginBox mt={16} />
-            <TextArea
-              placeholder={'Description'}
+            <FloatingTextInput
+              label={'Description'}
               value={articleContent?.description}
               onChange={(value) => updateValue(value, articleContent, 'description')}
             />
             <MarginBox mt={16} />
-            <TextInput
-              placeholder={`url (cestahrdinovsnpzapisky)`}
+            <FloatingTextInput
+              label={`url (cestahrdinovsnpzapisky)`}
               value={articleContent?.url}
               onChange={(value) => updateValue(value, articleContent, 'url')}
             />
-            {/*<MarginBox mt={16} />*/}
-            {/*<DatePicker*/}
-            {/*  value={date}*/}
-            {/*  onChange={(date: typeof dayjs) => {*/}
-            {/*    const newDate = dayjs(date).add(2, 'h');*/}
-            {/*    updateValue(newDate.toString(), articleContent, setArticleContent, 'date');*/}
-            {/*    setDate(newDate);*/}
-            {/*  }}*/}
-            {/*/>*/}
             <MarginBox mt={16} />
-            <TextInput
-              placeholder={'Keywords separated by comma'}
+            <FloatingTextInput
+              label={'Article Image'}
+              value={articleContent?.image}
+              onChange={(value) => updateValue(value, articleContent, 'image')}
+            />
+            <MarginBox mt={16} />
+            <FloatingTextInput
+              label={'Keywords separated by comma'}
               value={articleContent?.keywords}
               onChange={(value) => updateValue(value, articleContent, 'keywords')}
             />
