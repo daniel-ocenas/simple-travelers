@@ -1,4 +1,4 @@
-import { connectToDatabase } from 'lib/mongodb/mongodb';
+import { connectToDatabase } from './mongodb';
 
 async function ArticleGet(lang: string, articleUrl: string) {
   const { db } = await connectToDatabase();

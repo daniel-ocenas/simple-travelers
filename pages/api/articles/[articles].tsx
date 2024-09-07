@@ -1,4 +1,4 @@
-import ArticleGet from 'lib/mongodb/ArticleGet';
+import ArticleGet from 'data/ArticleGet';
 
 export default async function handler(req: any, res: any) {
   const httpMetod = req.method;

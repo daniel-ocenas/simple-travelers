@@ -1,7 +1,5 @@
 import { Input } from 'antd';
-import { SizeType } from 'antd/es/config-provider/SizeContext';
 import React, { useEffect, useState } from 'react';
-import FloatingLabel from 'UI/Inputs/FloatingLabel';
 
 const { TextArea: AntTextArea } = Input;
 
@@ -9,10 +7,9 @@ interface TextInputProps {
   onChange: (value: string) => void;
   value?: string;
   placeholder?: string;
-  size?: SizeType;
 }
 
-export const TextInput = ({ value, onChange, placeholder, size }: TextInputProps) => {
+export const TextInput = ({ value, onChange, placeholder }: TextInputProps) => {
   const [val, setVal] = useState<string | undefined>(value);
 
   useEffect(() => {
@@ -24,7 +21,7 @@ export const TextInput = ({ value, onChange, placeholder, size }: TextInputProps
     setVal(newValue);
     onChange(newValue);
   };
-  return <Input value={val} onChange={onValueChange} placeholder={placeholder} size={size} />;
+  return <Input value={val} onChange={onValueChange} placeholder={placeholder} />;
 };
 
 export const TextArea = ({ value, onChange, placeholder }: TextInputProps) => {
@@ -47,17 +44,5 @@ export const TextArea = ({ value, onChange, placeholder }: TextInputProps) => {
       placeholder={placeholder}
       styles={{ textarea: { minHeight: '100px' } }}
     />
-  );
-};
-
-interface FloatingTextInput extends TextInputProps {
-  label?: string;
-}
-
-export const FloatingTextInput = (props: FloatingTextInput) => {
-  return (
-    <FloatingLabel label={props.label} placeholder={props.placeholder} value={props.value}>
-      <TextInput {...props} size={'large'} />
-    </FloatingLabel>
   );
 };

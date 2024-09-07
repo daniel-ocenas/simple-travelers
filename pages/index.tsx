@@ -32,7 +32,6 @@ export default function Home() {
       </Head>
       <Page>
         <Flex direction={'column'}>
-          {/*<SignInButton />*/}
           <Flex direction={large ? 'row' : 'column-reverse'}>
             <Flex align={'center'} direction={'column'}>
               <HomePageWelcomeTitle>Ahoj dobrodruh. Vitaj na našom travel blogu!</HomePageWelcomeTitle>
