@@ -6,6 +6,7 @@ import { notify } from 'components/Notification/notification';
 import React, { useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { MarginBox } from 'UI/MarginBox';
+import { useMedium } from 'utils/useBreakpoint';
 import { useGetArticles } from 'utils/useGetArticles';
 
 const CopyArticlesButton = ({ articles }: { articles: ArticleProps[] }) => (
@@ -28,16 +29,18 @@ const CopyArticlesButton = ({ articles }: { articles: ArticleProps[] }) => (
 );
 
 export const ArticleEditor = () => {
+  const medium = useMedium();
   const { articlesList } = useGetArticles({ showAll: true });
   const [articleToEdit, setArticleToEdit] = useState<ArticleProps | undefined>(undefined);
 
   return (
-    <Flex direction={'column'}>
+    <Flex direction={'column'} maxWidth={medium ? 300 : 800}>
       <CopyArticlesButton articles={articlesList} />
       <CreateArticle article={articleToEdit} setArticle={setArticleToEdit} />
       {!articleToEdit && (
         <BlogCardsView articles={articlesList} onClick={(article) => setArticleToEdit(article)} edit />
       )}
+      <MarginBox mt={200} />
     </Flex>
   );
 };

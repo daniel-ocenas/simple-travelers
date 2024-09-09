@@ -11,9 +11,10 @@ import { Flex } from 'UI/Flex';
 import { FloatingTextInput } from 'UI/Inputs';
 import { Link } from 'UI/Link';
 import { MarginBox } from 'UI/MarginBox';
+import { useMedium } from 'utils/useBreakpoint';
 
 const PhotoStorageButton = () => (
-  <MarginBox mx={8}>
+  <MarginBox mx={8} my={8}>
     <Link
       href={
         'https://console.firebase.google.com/project/simpletravelers-5fb5b/storage/simpletravelers-5fb5b.appspot.com/files'
@@ -52,6 +53,7 @@ const CreateArticle = ({
   article?: ArticleProps;
   setArticle: (newArticle?: ArticleProps) => void;
 }) => {
+  const medium = useMedium();
   const [articleContent, setArticleContent] = useState<ArticleProps | undefined>(undefined);
   const [preview, setPreview] = useState(false);
 
@@ -116,7 +118,7 @@ const CreateArticle = ({
     () => (
       <>
         {articleContent && (
-          <MarginBox mx={8}>
+          <MarginBox mx={8} my={8}>
             <Button
               onClick={() => {
                 if (articleContent && articleContent !== emptyArticle) {
@@ -137,7 +139,7 @@ const CreateArticle = ({
     () => (
       <>
         {articleContent && (
-          <MarginBox mx={8}>
+          <MarginBox mx={8} my={8}>
             <Button
               onClick={() => {
                 if (articleContent && articleContent !== emptyArticle) {
@@ -159,7 +161,7 @@ const CreateArticle = ({
     () => (
       <>
         {!articleContent && (
-          <MarginBox mx={8}>
+          <MarginBox mx={8} my={8}>
             <Button onClick={() => setArticle(emptyArticle)} disabled={false}>
               Create New
             </Button>
@@ -175,9 +177,11 @@ const CreateArticle = ({
       <>
         {articleContent && (
           <Flex>
-            <Button icon={<ArrowLeftOutlined />} onClick={() => setArticle(undefined)}>
-              Back
-            </Button>
+            <MarginBox mx={8} my={8}>
+              <Button icon={<ArrowLeftOutlined />} onClick={() => setArticle(undefined)}>
+                Back
+              </Button>
+            </MarginBox>
           </Flex>
         )}
       </>
@@ -188,7 +192,7 @@ const CreateArticle = ({
   return (
     <Flex direction={'column'}>
       <MarginBox my={32}>
-        <Flex direction={'row'} justify={'flex-end'}>
+        <Flex direction={medium ? 'column' : 'row'} justify={'flex-end'}>
           <BackButton />
           <PhotoStorageButton />
           <SaveButton />

@@ -15,7 +15,7 @@ interface CardProps {
   edit?: boolean;
 }
 
-function Card({ title, date, text, image, url, category, edit }: CardProps) {
+const CardWrapper = ({ title, date, text, image, url, category, edit }: CardProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleLoading = () => {
@@ -23,41 +23,53 @@ function Card({ title, date, text, image, url, category, edit }: CardProps) {
   };
 
   return (
-    <Link
-      href={url}
-      className={'linkNoDecoration'}
-      style={{
-        pointerEvents: edit ? 'none' : 'auto',
-      }}
-      passHref
-    >
-      <SCard onClick={toggleLoading}>
-        <Flex direction={'column'}>
-          <SCardImage $src={image} />
-          {isLoading ? (
-            <CenterFlex>
-              <MarginBox my={16}>
-                <Loader />
-              </MarginBox>
-            </CenterFlex>
-          ) : (
-            <MarginBox mx={16} mt={8}>
-              <p>{date}</p>
-              <h3>{title}</h3>
-              {/*<CategoryRow>*/}
-              {/*  {category.map((cat: string) => {*/}
-              {/*    return <span key={title + cat}>{cat}</span>;*/}
-              {/*  })}*/}
-              {/*</CategoryRow>*/}
-              <CardText>
-                <p>{text}</p>
-              </CardText>
+    <SCard onClick={toggleLoading}>
+      <Flex direction={'column'}>
+        <SCardImage $src={image} />
+        {isLoading ? (
+          <CenterFlex>
+            <MarginBox my={16}>
+              <Loader />
             </MarginBox>
-          )}
-        </Flex>
-      </SCard>
-    </Link>
+          </CenterFlex>
+        ) : (
+          <MarginBox mx={16} mt={8}>
+            <p>{date}</p>
+            <h3>{title}</h3>
+            {/*<CategoryRow>*/}
+            {/*  {category.map((cat: string) => {*/}
+            {/*    return <span key={title + cat}>{cat}</span>;*/}
+            {/*  })}*/}
+            {/*</CategoryRow>*/}
+            <CardText>
+              <p>{text}</p>
+            </CardText>
+          </MarginBox>
+        )}
+      </Flex>
+    </SCard>
   );
-}
+};
+
+const Card = ({ title, date, text, image, url, category, edit }: CardProps) => {
+  return (
+    <>
+      {edit ? (
+        <CardWrapper title={title} date={date} text={text} image={image} url={url} category={category} />
+      ) : (
+        <Link
+          href={url}
+          className={'linkNoDecoration'}
+          style={{
+            pointerEvents: edit ? 'none' : 'auto',
+          }}
+          passHref
+        >
+          <CardWrapper title={title} date={date} text={text} image={image} url={url} category={category} />
+        </Link>
+      )}
+    </>
+  );
+};
 
 export default Card;

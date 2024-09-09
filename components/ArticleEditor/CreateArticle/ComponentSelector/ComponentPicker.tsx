@@ -10,6 +10,7 @@ import {
 import React, { useCallback } from 'react';
 import { Flex } from 'UI/Flex';
 import { MarginBox } from 'UI/MarginBox';
+import { useMedium } from 'utils/useBreakpoint';
 
 interface ComponentPickerProps {
   addComponent: (component: ArticleComponent) => void;
@@ -17,6 +18,7 @@ interface ComponentPickerProps {
 }
 
 export const ComponentPicker = ({ addComponent, itemsCount }: ComponentPickerProps) => {
+  const medium = useMedium();
   const handleSelectComponent = useCallback(
     (type: ArticleComponentType) => {
       const order = itemsCount;
@@ -51,13 +53,13 @@ export const ComponentPicker = ({ addComponent, itemsCount }: ComponentPickerPro
   );
 
   return (
-    <Flex direction={'row'} justify={'center'}>
+    <Flex direction={medium ? 'column' : 'row'} justify={'center'}>
       <Button onClick={() => handleSelectComponent('h3')}>{'Section Title'}</Button>
-      <MarginBox mr={8} />
+      <MarginBox mx={4} my={4} />
       <Button onClick={() => handleSelectComponent('h4')}>{'Section Subtitle'}</Button>
-      <MarginBox mr={8} />
+      <MarginBox mx={4} my={4} />
       <Button onClick={() => handleSelectComponent('p')}>{'Text'}</Button>
-      <MarginBox mr={8} />
+      <MarginBox mx={4} my={4} />
       <Button onClick={() => handleSelectComponent('img')}>{'Picture'}</Button>
     </Flex>
   );
