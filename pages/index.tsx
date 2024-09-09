@@ -8,11 +8,11 @@ import { HomePageWelcomeDescription, HomePageWelcomeTitle } from 'styles/AboutUs
 import { Flex } from 'UI/Flex';
 import Loader from 'UI/Loader';
 import { MarginBox } from 'UI/MarginBox';
-import { useLarge } from 'utils/useBreakpoint';
+import { useExtraLarge } from 'utils/useBreakpoint';
 import { useGetArticles } from 'utils/useGetArticles';
 
 export default function Home() {
-  const large = useLarge();
+  const xl = useExtraLarge();
   const { isLoading, articlesList } = useGetArticles({ maxCount: 6 });
 
   return (
@@ -33,26 +33,30 @@ export default function Home() {
       <Page>
         <Flex direction={'column'}>
           {/*<SignInButton />*/}
-          <Flex direction={large ? 'row' : 'column-reverse'}>
-            <Flex align={'center'} direction={'column'}>
-              <HomePageWelcomeTitle>Ahoj dobrodruh. Vitaj na našom travel blogu!</HomePageWelcomeTitle>
-              <HomePageWelcomeDescription>
-                Voláme sa Liv a Dan, sme mladý pár zo Slovenska s vášňou pre cestovanie, fotografovanie a dobrodružstvo.
-                Na našom blogu a sociálnych sieťach zdieľame autentické zážitky z ciest a inšpirujeme ostatných, že
-                cestovať sa dá jednoducho a lacno.
-              </HomePageWelcomeDescription>
+          <Flex direction={xl ? 'row' : 'column-reverse'}>
+            <Flex align={'center'} direction={'column'} justify={'space-evenly'}>
               <Flex align={'center'}>
+                <HomePageWelcomeTitle>Ahoj dobrodruh. Vitaj na našom travel blogu!</HomePageWelcomeTitle>
+              </Flex>
+              <Flex align={'flex-start'}>
+                <HomePageWelcomeDescription>
+                  Voláme sa Liv a Dan, sme mladý pár zo Slovenska s vášňou pre cestovanie, fotografovanie a
+                  dobrodružstvo. Na našom blogu a sociálnych sieťach zdieľame autentické zážitky z ciest a inšpirujeme
+                  ostatných, že cestovať sa dá jednoducho a lacno.
+                </HomePageWelcomeDescription>
+              </Flex>
+              <Flex align={'flex-start'}>
                 <SocialNetworkLinks position={'relative'} outlined />
               </Flex>
             </Flex>
             <MarginBox mr={16} />
-            <Flex align={'center'} justify={'center'} maxWidth={large ? '25vw' : '100vw'}>
+            <Flex align={'center'} justify={'center'} maxWidth={xl ? '30vw' : '100vw'}>
               <Image
                 width={400}
                 height={400}
                 style={{
-                  width: large ? '25vw' : '50vw',
-                  height: large ? '25vw' : '50vw',
+                  width: xl ? '30vw' : '50vw',
+                  height: xl ? '30vw' : '50vw',
                   objectFit: 'cover',
                   borderRadius: '50%',
                   alignContent: 'center',

@@ -1,9 +1,31 @@
+import { Button } from 'antd';
 import CreateArticle from 'components/ArticleEditor/CreateArticle';
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import BlogCardsView from 'components/BlogCardsView';
+import { notify } from 'components/Notification/notification';
 import React, { useState } from 'react';
 import { Flex } from 'UI/Flex';
+import { MarginBox } from 'UI/MarginBox';
 import { useGetArticles } from 'utils/useGetArticles';
+
+const CopyArticlesButton = ({ articles }: { articles: ArticleProps[] }) => (
+  <Flex justify={'flex-end'}>
+    <MarginBox my={8} mx={8}>
+      <Button
+        onClick={() => {
+          if (articles) {
+            navigator.clipboard.writeText(JSON.stringify(articles));
+            notify('success', 'Articles copied to clipboard');
+          } else {
+            notify('error', 'No Articles present');
+          }
+        }}
+      >
+        Copy Articles to Clipboard
+      </Button>
+    </MarginBox>
+  </Flex>
+);
 
 export const ArticleEditor = () => {
   const { articlesList } = useGetArticles({ showAll: true });
@@ -11,6 +33,7 @@ export const ArticleEditor = () => {
 
   return (
     <Flex direction={'column'}>
+      <CopyArticlesButton articles={articlesList} />
       <CreateArticle article={articleToEdit} setArticle={setArticleToEdit} />
       {!articleToEdit && (
         <BlogCardsView articles={articlesList} onClick={(article) => setArticleToEdit(article)} edit />

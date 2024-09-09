@@ -10,9 +10,10 @@ interface TextInputProps {
   value?: string;
   placeholder?: string;
   size?: SizeType;
+  type?: 'text' | 'password';
 }
 
-export const TextInput = ({ value, onChange, placeholder, size }: TextInputProps) => {
+export const TextInput = ({ value, onChange, placeholder, size, type }: TextInputProps) => {
   const [val, setVal] = useState<string | undefined>(value);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const TextInput = ({ value, onChange, placeholder, size }: TextInputProps
     setVal(newValue);
     onChange(newValue);
   };
-  return <Input value={val} onChange={onValueChange} placeholder={placeholder} size={size} />;
+  return <Input value={val} onChange={onValueChange} placeholder={placeholder} size={size} type={type} />;
 };
 
 export const TextArea = ({ value, onChange, placeholder }: TextInputProps) => {

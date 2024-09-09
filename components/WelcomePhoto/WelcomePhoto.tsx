@@ -18,7 +18,7 @@ const WelcomePhoto = () => {
 
   return (
     <SWelcomePhoto $height={WELCOME_PHOTO_HEIGHT}>
-      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fill />
+      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fill fetchPriority={'high'} />
       <SWelcomePhotoDivider $top={WELCOME_PHOTO_DIVIDER_TOP}>
         <Image
           alt={'welcome-photo-divider'}

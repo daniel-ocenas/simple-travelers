@@ -4,7 +4,9 @@ import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import { Flex } from 'UI/Flex';
 import Loader from 'UI/Loader';
+import { MarginBox } from 'UI/MarginBox';
 import { usePageMargin } from 'utils/useBreakpoint';
 import { useGetArticles } from 'utils/useGetArticles';
 
@@ -104,7 +106,14 @@ function Blog() {
             </Col>
           </Row>
         </Form>
-        {isLoading ? <Loader /> : <BlogCardsView articles={articlesDisplay} />}
+        {isLoading ? (
+          <Flex direction={'column'} align={'center'}>
+            <Loader />
+            <MarginBox mt={'130vh'} />
+          </Flex>
+        ) : (
+          <BlogCardsView articles={articlesDisplay} />
+        )}
       </Page>
     </>
   );

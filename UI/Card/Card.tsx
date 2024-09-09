@@ -36,7 +36,9 @@ function Card({ title, date, text, image, url, category, edit }: CardProps) {
           <SCardImage $src={image} />
           {isLoading ? (
             <CenterFlex>
-              <Loader />
+              <MarginBox my={16}>
+                <Loader />
+              </MarginBox>
             </CenterFlex>
           ) : (
             <MarginBox mx={16} mt={8}>

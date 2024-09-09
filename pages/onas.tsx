@@ -1,8 +1,14 @@
 import Page from 'components/Page';
 import Head from 'next/head';
+import Image from 'next/image';
 import React from 'react';
+import { HomePageWelcomeDescription } from 'styles/AboutUs.styled';
+import { Flex } from 'UI/Flex';
+import { MarginBox } from 'UI/MarginBox';
+import { useLarge } from 'utils/useBreakpoint';
 
 export default function Onas() {
+  const large = useLarge();
   return (
     <>
       <Head>
@@ -17,10 +23,28 @@ export default function Onas() {
       </Head>
       <Page>
         <div className="screen-reader-text">
-          <p>
-            Pocit z objavovania krás, ktoré nám svet ponúka je nádherný. No sila našich dobrodružstiev spočíva práve v
-            tom, že všetko prežívame spolu.
-          </p>
+          <MarginBox my={32}>
+            <Flex direction={large ? 'row' : 'column-reverse'} justify={'center'}>
+              <Image
+                width={400}
+                height={400}
+                style={{
+                  objectFit: 'cover',
+                  borderRadius: '50%',
+                  alignContent: 'center',
+                }}
+                alt="Liv a Dan"
+                src="/static/images/photosFull/AboutUs.jpg"
+              />
+              <MarginBox mx={16} my={16} />
+              <Flex align={'center'} justify={'center'} maxWidth={large ? '40vw' : 300}>
+                <HomePageWelcomeDescription>
+                  Pocit z objavovania krás, ktoré nám svet ponúka je nádherný. No sila našich dobrodružstiev spočíva
+                  práve v tom, že všetko prežívame spolu.
+                </HomePageWelcomeDescription>
+              </Flex>
+            </Flex>
+          </MarginBox>
           <h3>Niečo o nás</h3>
           <p>
             Sme Liv a Dan a spoločne tvoríme obsah ako Simple travelers. Sme mladý pár zo Slovenska, ktorý si zaumienil,

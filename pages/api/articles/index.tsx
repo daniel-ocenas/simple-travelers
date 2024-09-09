@@ -59,7 +59,7 @@ export default async function Articles(req: any, res: any) {
 
       break;
     default:
-      res.setHeader('Allow', ['GET' /*, 'POST' */]);
+      res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end('Method not allowed');
       break;
   }

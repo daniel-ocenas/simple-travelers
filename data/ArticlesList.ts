@@ -843,7 +843,7 @@ export const ArticlesList: ArticleProps[] = [
     description:
       'Erasmus je továreň na nezabudnuteľné zážitky. Niet pochýb o tom, že Erasmus vo Fínsku bola pre nás neskutočná jazda. Priniesol so sebou množstvo výziev a nových skúseností vďaka ktorým sme získali nový pohľad na svet...',
     date: '20. máj 2020',
-    dateCreated: '20. 05. 2020',
+    dateCreated: '05. 20. 2020',
     image: '/static/images/photosFull/Erasmus/ErasmusSnowBorder.jpg',
     keywords: 'erasmus, erazmus, oulu, rady a tipy, cestopisy, cestovateľský blog',
     category: ['Európa', 'Cestopisy'],
@@ -3201,7 +3201,7 @@ export const ArticlesList: ArticleProps[] = [
     dateCreated: '04. 12. 2020',
     description:
       'Ako môžeš kúpiť annual pass za najnižšiu cenu?  Čo sa oplatí/neoplatí? Jedny z mála otázok, na ktoré ti ponúkame odpovede v našich článkoch. Možno zopár z nich využiješ aj pri plánovaní tvojho výletu po USA.',
-    image: '/static/images/photosFull/FlagUSA.jpg',
+    image: '/static/images/photosFull/VoFRoad.jpg',
     // todo zmenit foto
     keywords: 'cestovanie, amerika, cestovanie po amerike, rady a tipy, usa, roadtrip',
     category: ['Amerika', 'Rady a Tipy'],

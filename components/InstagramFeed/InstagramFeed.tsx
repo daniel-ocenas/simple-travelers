@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
+import { useGetConfig } from 'utils/useGetConfig';
 import Loader from '../../UI/Loader';
 import styles from './InstagramFeed.module.css';
 
@@ -10,9 +11,21 @@ function InstagramFeed({ counter }: { counter: number }) {
   const [isError, setIsError] = useState<boolean>(false);
   const [showImage, setShowImage] = useState<boolean>(true);
 
-  let url = `https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}`;
+  const { config } = useGetConfig();
+
+  //
+  // useEffect(() => {
+  //   console.log(config?.instagramToken);
+  //   setUrl(
+  //     ,
+  //   );
+  // }, [config]);
 
   useEffect(() => {
+    if (!config?.instagramToken) {
+      return;
+    }
+    const url = `https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=${config?.instagramToken}`;
     const fetchData = async () => {
       setIsLoading(true);
       fetch(url)
@@ -39,7 +52,7 @@ function InstagramFeed({ counter }: { counter: number }) {
     if (placeholder.current) observer.observe(placeholder.current);
 
     return () => observer.disconnect();
-  }, [url, counter]);
+  }, [config, counter]);
 
   return (
     <>

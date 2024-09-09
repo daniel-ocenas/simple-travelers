@@ -1,4 +1,5 @@
 'use client';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Divider, Input, Switch } from 'antd';
 import ArticleRenderer from 'components/Article';
 import { ArticleComponent, ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
@@ -8,7 +9,22 @@ import { notify } from 'components/Notification/notification';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { FloatingTextInput } from 'UI/Inputs';
+import { Link } from 'UI/Link';
 import { MarginBox } from 'UI/MarginBox';
+
+const PhotoStorageButton = () => (
+  <MarginBox mx={8}>
+    <Link
+      href={
+        'https://console.firebase.google.com/project/simpletravelers-5fb5b/storage/simpletravelers-5fb5b.appspot.com/files'
+      }
+      external
+      newTab
+    >
+      <Button>Photo Storage</Button>
+    </Link>
+  </MarginBox>
+);
 
 export const emptyArticle: ArticleProps = {
   url: '',
@@ -38,8 +54,7 @@ const CreateArticle = ({
 }) => {
   const [articleContent, setArticleContent] = useState<ArticleProps | undefined>(undefined);
   const [preview, setPreview] = useState(false);
-  // console.log(articleContent);
-  // console.log(articleContent?.title);
+
   useEffect(() => {
     setArticleContent(article);
   }, [article]);
@@ -155,15 +170,27 @@ const CreateArticle = ({
     [articleContent, setArticle],
   );
 
+  const BackButton = useCallback(
+    () => (
+      <>
+        {articleContent && (
+          <Flex>
+            <Button icon={<ArrowLeftOutlined />} onClick={() => setArticle(undefined)}>
+              Back
+            </Button>
+          </Flex>
+        )}
+      </>
+    ),
+    [articleContent, setArticle],
+  );
+
   return (
     <Flex direction={'column'}>
       <MarginBox my={32}>
         <Flex direction={'row'} justify={'flex-end'}>
-          <Flex>
-            <Flex>
-              <Button onClick={() => setArticle(undefined)}>Back</Button>
-            </Flex>
-          </Flex>
+          <BackButton />
+          <PhotoStorageButton />
           <SaveButton />
           <CreateNewButton />
           <PublishButton />
