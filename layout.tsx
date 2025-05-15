@@ -1,5 +1,4 @@
 import ScrollToTopButton from 'components/ScrollToTopButton';
-import SideBar from 'components/SideBar';
 import WelcomePhoto from 'components/WelcomePhoto';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -34,6 +33,7 @@ export default function Layout({ children }: { children: any }) {
       router.events.off('hashChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
   return (
     <>
       <Head>
@@ -54,10 +54,10 @@ export default function Layout({ children }: { children: any }) {
           });`,
         }}
       />
+      <Script src={'https://scripts.feedspring.com/instagram-attrs.js'} async defer />
       <WelcomePhoto />
       <Header />
       <ScrollToTopButton />
-      <SideBar />
       <main>{children}</main>
       <Footer />
     </>

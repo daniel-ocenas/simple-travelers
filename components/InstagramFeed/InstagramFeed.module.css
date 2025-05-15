@@ -1,6 +1,6 @@
 .instagramItems {
   display: grid;
-  grid-template-columns: repeat(2, 105px);
+  grid-template-columns: repeat(3, 105px);
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
@@ -12,26 +12,9 @@
   max-height: 100px;
   -webkit-box-flex: 0;
   flex: 0 0 calc(100% / 3 - 10px);
-  margin: 5px;
+  margin: 2px;
   display: block;
   position: relative;
-}
-
-@media (min-width: 1250px) {
-  .instagramItems {
-    grid-template-columns: repeat(3, 105px);
-  }
-}
-
-@media (min-width: 1500px) {
-  .instagramItems {
-    grid-template-columns: repeat(3, 120px);
-  }
-
-  .instagramItem {
-    max-width: 110px;
-    max-height: 110px;
-  }
 }
 
 .instagramImg {

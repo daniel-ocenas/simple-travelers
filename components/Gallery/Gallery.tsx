@@ -4,7 +4,7 @@ import { GalleryImageProps } from 'components/Gallery/ImageGrid/ImageGrid';
 import { BALI_IMAGES, IMAGES, OTHER_IMAGES, SNP_IMAGES } from 'data/GalleryImages';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { CheckButton, Flex } from 'UI';
+import { CheckButton, Flex, MarginBox, Text } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 
 const { Option } = Select;
@@ -37,8 +37,9 @@ const galleryOptions: GalleryOption[] = [
     images: OTHER_IMAGES,
   },
 ];
+
 const filterOptions = galleryOptions.map((item) => {
-  return <Option key={item.option}>{item.option}</Option>;
+  return <Option key={item.option}>{item.title}</Option>;
 });
 
 const Gallery = () => {
@@ -64,7 +65,7 @@ const Gallery = () => {
   }, [searchParams]);
 
   return (
-    <div>
+    <Flex direction={'column'}>
       {medium ? (
         <Form.Item label="Filtovať fotky">
           <Select style={{ marginLeft: '5px' }} onChange={handleFilterChange}>
@@ -85,9 +86,10 @@ const Gallery = () => {
           })}
         </Flex>
       )}
-      <h3>{filterState.title}</h3>
+      <MarginBox mt={16} />
+      <Text type={'h3'}>{filterState.title}</Text>
       <ImageGrid images={filterState.images} />
-    </div>
+    </Flex>
   );
 };
 

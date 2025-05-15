@@ -7,25 +7,29 @@ const defaultFontFamily = `"Nunito", sans-serif`;
 // type Cursor = 'initial' | 'pointer';
 // type Decoration = 'none' | 'underline' | 'line-through';
 type FontType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+type AlignType = 'left' | 'center' | 'right';
+type WeightType = number | 'hairline' | 'lighter' | 'light' | 'normal' | 'bold';
 
 interface TextProps {
   family?: string;
   type?: FontType;
-  size?: number;
-  weight?: string;
+  $size?: number;
+  $weight?: WeightType;
   color?: string;
+  align?: AlignType;
   className?: string;
   children?: React.ReactNode;
 }
 
-interface ExtendedTextProps extends TextProps {
-  defaultSize: number;
+interface ExtendedTextProps extends Omit<TextProps, '$size'> {
+  $size: number | string;
 }
 
 const fontStyles = css<ExtendedTextProps>`
   font-family: ${({ family }) => family ?? defaultFontFamily};
-  font-size: ${({ size, defaultSize }) => (size ? `${size}px` : `${defaultSize}px`)};
-  font-weight: ${({ weight }) => weight ?? 'normal'};
+  font-size: ${({ $size }) => (typeof $size === 'string' ? $size : `${$size}px`)};
+  font-weight: ${({ $weight }) => $weight ?? 'normal'};
+  text-align: ${({ align }) => align ?? 'left'};
   color: ${({ color }) => color ?? 'inherit'};
 `;
 
@@ -55,43 +59,43 @@ const Text = (props: TextProps) => {
   switch (props.type) {
     case 'h1':
       return (
-        <H1 {...props} defaultSize={40} weight={'bold'}>
+        <H1 {...props} $size={props.$size ?? 40} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H1>
       );
     case 'h2':
       return (
-        <H2 {...props} defaultSize={36} weight={'bold'}>
+        <H2 {...props} $size={props.$size ?? 36} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H2>
       );
     case 'h3':
       return (
-        <H3 {...props} defaultSize={30} weight={'bold'}>
+        <H3 {...props} $size={props.$size ?? 30} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H3>
       );
     case 'h4':
       return (
-        <H4 {...props} defaultSize={24} weight={'bold'}>
+        <H4 {...props} $size={props.$size ?? 24} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H4>
       );
     case 'h5':
       return (
-        <H5 {...props} defaultSize={20} weight={'bold'}>
+        <H5 {...props} $size={props.$size ?? 20} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H5>
       );
     case 'h6':
       return (
-        <H6 {...props} defaultSize={16} weight={'bold'}>
+        <H6 {...props} $size={props.$size ?? 16} $weight={props.$weight ?? 'bold'}>
           {props.children}
         </H6>
       );
     default:
       return (
-        <P {...props} defaultSize={18} weight={'normal'}>
+        <P {...props} $size={props.$size ?? 18} $weight={props.$weight ?? 'normal'}>
           {props.children}
         </P>
       );

@@ -39,19 +39,23 @@ const CardWrapper = ({ title, date, text, image, category }: CardWrapperProps) =
               <Text color={'black'} type={'h5'}>
                 {title}
               </Text>
-              <Text color={'black'} size={14} weight={'light'}>
+              <Text color={'black'} $size={14} $weight={'light'}>
                 {date}
               </Text>
               <MarginBox mb={6} />
               <CardText>
-                <Text color={'black'}>{text}</Text>
+                <Text color={'black'} $weight={300} $size={16}>
+                  {text}
+                </Text>
               </CardText>
               <Flex direction={'row'}>
                 {category.map((cat: string) => {
                   return (
                     <CategoryButton key={title + cat}>
                       <CenterFlex>
-                        <Text type={'p'}>{cat}</Text>
+                        <Text $size={14} $weight={'bold'} color={'#646464'}>
+                          {cat}
+                        </Text>
                       </CenterFlex>
                     </CategoryButton>
                   );

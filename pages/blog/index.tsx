@@ -2,6 +2,7 @@ import { Col, Form, Row, Select } from 'antd';
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
+import { WithSidebar } from 'components/SideBar/SideBar';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { Flex, Loader, MarginBox } from 'UI';
@@ -76,37 +77,41 @@ function Blog() {
         />
       </Head>
       <Page>
-        <Form layout="horizontal">
-          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-            <Col className="gutter-row">
-              <Form.Item label="Zoradiť">
-                <Select defaultValue="najnovšie" onChange={handleSortChange}>
-                  <Option value={0}>najnovšie</Option>
-                  <Option value={1}>najstaršie</Option>
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col className="gutter-row">
-              <Form.Item label="Filtrovať">
-                <Select
-                  mode="multiple"
-                  allowClear
-                  onChange={handleFilterChange}
-                  style={{ minWidth: '150px' }}
-                  options={filterOptions}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
-        {isLoading ? (
-          <Flex direction={'column'} align={'center'}>
-            <Loader />
-            <MarginBox mt={'130vh'} />
+        <WithSidebar>
+          <Flex direction={'row'} align={'flex-start'}>
+            <Form layout="horizontal">
+              <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                <Col className="gutter-row">
+                  <Form.Item label="Zoradiť">
+                    <Select defaultValue="najnovšie" onChange={handleSortChange}>
+                      <Option value={0}>najnovšie</Option>
+                      <Option value={1}>najstaršie</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row">
+                  <Form.Item label="Filtrovať">
+                    <Select
+                      mode="multiple"
+                      allowClear
+                      onChange={handleFilterChange}
+                      style={{ minWidth: '150px' }}
+                      options={filterOptions}
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
           </Flex>
-        ) : (
-          <BlogCardsView articles={articlesDisplay} />
-        )}
+          {isLoading ? (
+            <Flex direction={'column'} align={'center'}>
+              <Loader />
+              <MarginBox mt={'130vh'} />
+            </Flex>
+          ) : (
+            <BlogCardsView articles={articlesDisplay} />
+          )}
+        </WithSidebar>
       </Page>
     </>
   );

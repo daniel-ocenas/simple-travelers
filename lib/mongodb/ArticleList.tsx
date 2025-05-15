@@ -1,4 +1,3 @@
-import { ArticlesList } from 'data/ArticlesList';
 import { connectToDatabase } from 'lib/mongodb/mongodb';
 
 async function ArticleList(lang: string) {
@@ -16,7 +15,8 @@ async function ArticleList(lang: string) {
   } catch (e) {
     console.error(e);
     return {
-      articles: ArticlesList,
+      // articles: ArticlesList,
+      articles: [],
       status: 500,
       errorMap: e,
     };

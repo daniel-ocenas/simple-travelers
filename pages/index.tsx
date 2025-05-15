@@ -1,13 +1,14 @@
 import WelcomeAboutUs from 'components/AboutUs';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
+import { WithSidebar } from 'components/SideBar/SideBar';
 import Head from 'next/head';
 import React from 'react';
-import { Loader, MarginBox } from 'UI';
+import { Flex, Loader, MarginBox, Text } from 'UI';
 import { useGetArticles } from 'utils/useGetArticles';
 
 export default function Home() {
-  const { isLoading, articlesList } = useGetArticles({ maxCount: 6 });
+  const { isLoading, articlesList } = useGetArticles({ maxCount: 3 });
   return (
     <>
       <Head>
@@ -24,9 +25,16 @@ export default function Home() {
         />
       </Head>
       <Page>
-        <WelcomeAboutUs />
-        <MarginBox mt={16} />
-        {isLoading ? <Loader /> : <BlogCardsView articles={articlesList} />}
+        <Flex direction={'column'} align={'center'}>
+          <WelcomeAboutUs />
+          <MarginBox mt={64} />
+          <WithSidebar>
+            <Flex direction={'column'}>
+              <Text type={'h6'}>Najnovšie články</Text>
+              {isLoading ? <Loader /> : <BlogCardsView articles={articlesList} />}
+            </Flex>
+          </WithSidebar>
+        </Flex>
       </Page>
     </>
   );

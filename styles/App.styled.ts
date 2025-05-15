@@ -7,6 +7,6 @@ export const QuickSand = css`
   font-family: 'Quicksand', serif;
 `;
 
-export const Inter = css`
-  font-family: 'Inter';
+export const Nunito = css`
+  font-family: 'Nunito', sans-serif;
 `;

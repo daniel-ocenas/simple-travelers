@@ -1,15 +1,14 @@
 import styled from 'styled-components';
-import { QuickSand } from 'styles/App.styled';
+import { Nunito } from 'styles/App.styled';
 
 export const SSideBar = styled.div<{ $width: string }>`
-  ${QuickSand};
-  position: absolute;
+  ${Nunito};
   top: 0;
   right: 0;
-  width: calc(${({ $width }) => $width} - 1em - ${({ $width }) => $width} / 7);
-  height: 100%;
+  width: ${({ $width }) => $width};
+  // width: calc(${({ $width }) => $width} - 1em - ${({ $width }) => $width} / 7);
   display: none;
-  padding: 0 calc(var(--sideRightMargin) / 10);
+  margin-left: 16px;
   z-index: 10;
 
   h4 {
@@ -21,7 +20,7 @@ export const SSideBar = styled.div<{ $width: string }>`
     font-weight: normal;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     display: inline-block;
   }
 `;

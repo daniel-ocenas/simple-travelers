@@ -26,23 +26,14 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
       });
 
       let data = await response?.json();
-      // if (!data.articles || response?.status !== 200) {
-      //   console.log('pushing static data');
-      //   data = {
-      //     articles: sortArticlesByDate(
-      //       maxCount ? (ArticlesList as ArticleProps[]) : (ArticlesList as ArticleProps[]),
-      //     ),
-      //   };
-      // }
-      // console.log(data);
 
-      const articles: ArticleProps[] = maxCount ? [...data?.articles]?.slice(0, maxCount) : data?.articles;
+      const articles: ArticleProps[] = data?.articles;
       const publishedArticles = showAll ? articles : articles.filter((artcl) => artcl.isPublished);
-
-      let sortedArticleList = sortArticles(publishedArticles, 'desc');
+      const sortedArticles = sortArticles(publishedArticles, 'desc');
+      const trimmedArticles: ArticleProps[] = maxCount ? [...sortedArticles]?.slice(0, maxCount) : sortedArticles;
 
       setIsLoading(false);
-      setArticlesList(sortedArticleList ?? []);
+      setArticlesList(trimmedArticles ?? []);
     };
 
     fetchArticles();

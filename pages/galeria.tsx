@@ -1,4 +1,5 @@
 import Page from 'components/Page';
+import { WithSidebar } from 'components/SideBar/SideBar';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
@@ -23,7 +24,9 @@ export default function Galeria() {
         <meta name="keywords" content="" />
       </Head>
       <Page>
-        <NoSSRGallery />
+        <WithSidebar>
+          <NoSSRGallery />
+        </WithSidebar>
       </Page>
     </>
   );

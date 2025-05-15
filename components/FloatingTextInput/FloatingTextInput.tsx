@@ -1,4 +1,4 @@
-import { SizeType } from 'antd/es/config-provider/SizeContext';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 import { FloatingLabel, TextInput } from 'UI';
 

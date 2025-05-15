@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from './Divider.module.css';
+import { SDivider } from './Divider.styled';
 
 const Divider = (props: any) => {
   return (
-    // TODO update to SComponent
-    <div className={styles.divider}>
+    <SDivider>
       <span></span>
       <span>{props.text}</span>
       <span></span>
-    </div>
+    </SDivider>
   );
 };
 

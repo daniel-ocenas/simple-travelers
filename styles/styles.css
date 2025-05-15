@@ -17,6 +17,10 @@ html {
   overflow-x: hidden;
   --defaultBorderRadius: 3px;
   background-color: var(--backgroundColor);
+
+  --medium: 768px;
+  --large: 1200px;
+  --xl: 1920px;
 }
 
 ::-webkit-scrollbar {

@@ -2,19 +2,20 @@ import styled from 'styled-components';
 
 export const SCardImage = styled.div<{ $src: string }>`
   width: 100%;
-  height: 250px;
+  height: 227px;
   border-radius: 12px;
   object-fit: cover;
 
   @media (min-width: 1200px) {
-    width: 40%;
+    width: 250px;
+    height: 200px;
   }
   background: 50% 50% ${({ $src }) => `url(${$src})`} no-repeat;
   background-size: cover;
 `;
 
 export const SCard = styled.article`
-  padding: 1rem;
+  //padding: 1rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -33,12 +34,12 @@ export const SCard = styled.article`
 
 export const CategoryButton = styled.div`
   width: fit-content;
-  height: 28px;
+  height: 22px;
   background-color: var(--secondaryColor);
   border-radius: 8px;
-  color: black;
-  padding: 6px 7px 5px;
+  padding: 4px 7px 2px;
   margin: 8px;
+  color: #646464;
 `;
 
 export const CardText = styled.div`
@@ -47,7 +48,6 @@ export const CardText = styled.div`
   -webkit-line-clamp: 4;
   text-align: left;
   overflow: hidden;
-  font-weight: 300;
   line-height: 1.5;
   margin-bottom: 8px;
 `;
@@ -58,7 +58,7 @@ export const SContent = styled.div`
   margin-top: 1rem;
 
   margin-left: 0;
-  @media (min-width: 1024px) {
+  @media (min-width: 1200px) {
     margin-top: 0;
     margin-left: 1rem;
     flex: 1;

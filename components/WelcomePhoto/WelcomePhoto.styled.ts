@@ -7,10 +7,6 @@ export const SWelcomePhoto = styled.div<{ $height: string }>`
   top: 0;
   right: 0;
   object-fit: contain;
-
-  @media (min-width: 768px) {
-    height: ${({ $height }) => $height};
-  }
 `;
 
 export const SWelcomePhotoDivider = styled.div<{ $top: string }>`
@@ -25,16 +21,6 @@ export const SWelcomePhotoDivider = styled.div<{ $top: string }>`
     filter: drop-shadow(0 100px 0 var(--backgroundColor));
     transform: translateY(-105px);
   }
-
-  @media (min-width: 768px) {
-    //top: 45vh;
-    top: ${({ $top }) => $top};
-    height: 11vh;
-    img {
-      filter: drop-shadow(0 11vh 0 var(--backgroundColor));
-      transform: translateY(calc(-11vh - 1px));
-    }
-  }
 `;
 
 export const TitleContainer = styled.div`
@@ -45,8 +31,8 @@ export const TitleContainer = styled.div`
   text-align: center;
   padding-bottom: 3px;
 
-  @media (min-width: 768px) {
-    margin-top: 8vh;
+  @media (min-width: 1200px) {
+    margin-top: 80px;
   }
 `;
 

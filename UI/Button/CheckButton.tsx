@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './CheckButton.module.css';
+import { SCheckButton } from './CheckButton.styled';
 
 interface CheckButtonProps {
   value?: boolean;
@@ -19,9 +19,9 @@ const CheckButton = ({ label, value, onChange }: CheckButtonProps) => {
   }, [value]);
 
   return (
-    <div onClick={onClick} className={`${styles.checkButton} ${checked && styles.checkButtonActive}`}>
+    <SCheckButton onClick={onClick} $checked={checked}>
       {label}
-    </div>
+    </SCheckButton>
   );
 };
 export default CheckButton;

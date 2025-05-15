@@ -3,7 +3,7 @@ import Image from 'next/image';
 import backgroundPhoto from 'public/static/images/Background.jpg';
 import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
-import { Flex, MarginBox } from 'UI';
+import { Flex, Link, MarginBox } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 import { SWelcomePhoto, SWelcomePhotoDivider, TitleCatchLine, TitleContainer } from './WelcomePhoto.styled';
 
@@ -12,7 +12,6 @@ export const WELCOME_PHOTO_DIVIDER_TOP = '270px';
 
 const WelcomePhoto = () => {
   const large = useLarge();
-
   const backgroundImage = large ? backgroundPhoto : backgroundPhotoSmall;
 
   return (
@@ -33,11 +32,13 @@ const WelcomePhoto = () => {
             <MarginBox mt={large ? '8vh' : '0'} />
             {!large && (
               <MarginBox my={24}>
-                <LogoSimpleTravelers
-                  $maxHeight={100}
-                  alt="simple-travelers-logo"
-                  src="/static/icons/SimpleTravelers.svg"
-                />
+                <Link href={'/'}>
+                  <LogoSimpleTravelers
+                    $maxHeight={100}
+                    alt="simple-travelers-logo"
+                    src="/static/icons/SimpleTravelers.svg"
+                  />
+                </Link>
               </MarginBox>
             )}
             <Flex>{'Cestovateľský blog,'}</Flex>

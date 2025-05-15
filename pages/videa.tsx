@@ -1,4 +1,5 @@
 import Page from 'components/Page';
+import { WithSidebar } from 'components/SideBar/SideBar';
 import { Video } from 'components/Video/Video';
 import Head from 'next/head';
 import React from 'react';
@@ -18,22 +19,24 @@ export default function Videos() {
         <meta name="keywords" content="video, videos" />
       </Head>
       <Page>
-        <Flex direction={'column'}>
-          <Video
-            src="https://www.youtube.com/embed/ixmHwvUFBiU?si=Oi4ceeV_BSWuGNiv"
-            title="Bali treba jednoducho zažiť"
-          />
-          <MarginBox mt={16} />
-          <Video
-            src="https://www.youtube.com/embed/DujsK0pmo_o?si=1RM-ke-QdVcV8Sjv"
-            title="Cestovanie a turistika po Gruzínsku"
-          />
-          <MarginBox mt={16} />
-          <Video
-            src="https://www.youtube.com/embed/s-9kaJvCJ9E"
-            title="Slovakia beyond the Arctic Circle, Erasmus 2019"
-          />
-        </Flex>
+        <WithSidebar>
+          <Flex direction={'column'}>
+            <Video
+              src="https://www.youtube.com/embed/ixmHwvUFBiU?si=Oi4ceeV_BSWuGNiv"
+              title="Bali treba jednoducho zažiť"
+            />
+            <MarginBox mt={16} />
+            <Video
+              src="https://www.youtube.com/embed/DujsK0pmo_o?si=1RM-ke-QdVcV8Sjv"
+              title="Cestovanie a turistika po Gruzínsku"
+            />
+            <MarginBox mt={16} />
+            <Video
+              src="https://www.youtube.com/embed/s-9kaJvCJ9E"
+              title="Slovakia beyond the Arctic Circle, Erasmus 2019"
+            />
+          </Flex>
+        </WithSidebar>
       </Page>
     </>
   );

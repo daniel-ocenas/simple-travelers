@@ -16,7 +16,7 @@ const SocialNetworkLinks = ({
 }) => {
   return (
     <SSocialNetworkLinks $top={top} $right={right} $position={position}>
-      <Link href={'https://www.instagram.com/simple__travelers'} external newTab passHref>
+      <Link href={'https://www.instagram.com/simple.travelers'} external newTab passHref>
         <Image
           className={'image'}
           src={`/static/icons/instagram${outlined ? '-outline' : ''}.png`}

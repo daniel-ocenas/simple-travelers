@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
-const runtimeCaching = require('next-pwa/cache');
+const compose = require('./utils/compose');
+// const runtimeCaching = require('next-pwa/cache');
+const withTM = require('next-transpile-modules')([
+  'antd',
+  'rc-input', // Also listed in the call stack
+]);
+
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -63,4 +69,4 @@ const nextConfig = {
   ],
 };
 
-module.exports = process.env.NODE_ENV === 'development' ? nextConfig : withPWA(nextConfig);
+module.exports = compose(withTM, process.env.NODE_ENV !== 'development' && withPWA)(nextConfig);

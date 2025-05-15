@@ -1,5 +1,6 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
+import { WithSidebar } from 'components/SideBar/SideBar';
 import Head from 'next/head';
 import React, { useEffect, useRef, useState } from 'react';
 import { Text } from 'UI';
@@ -52,7 +53,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     keywords: `${keywords ?? ''}`,
     url: `https://simpletravelers.sk/blog/${articleData.url}`,
   };
-
+  console.log(textAreaWidth);
   return (
     <>
       {articleData.tags && (
@@ -68,13 +69,15 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
         </Head>
       )}
       <Page>
-        <div ref={refTextArea}>
-          {articleData.content === undefined ? (
-            <Text type={'h4'}>Article Could Not Be Found</Text>
-          ) : (
-            <>{articleData.content.map((data: any, idx: any) => ArticleRenderer(data, idx, textAreaWidth))}</>
-          )}
-        </div>
+        <WithSidebar>
+          <div ref={refTextArea}>
+            {articleData.content === undefined ? (
+              <Text type={'h4'}>Article Could Not Be Found</Text>
+            ) : (
+              <>{articleData.content.map((data: any, idx: any) => ArticleRenderer(data, idx, textAreaWidth))}</>
+            )}
+          </div>
+        </WithSidebar>
       </Page>
     </>
   );
