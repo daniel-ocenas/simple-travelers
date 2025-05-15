@@ -1,13 +1,13 @@
 import { TitleWrapper } from 'components/Header/Header.styled';
 import React from 'react';
-import { Link } from 'UI/Link';
+import { Link } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 
 export const TitleHeader = () => {
-  const xl = useLarge();
+  const large = useLarge();
   return (
     <Link href={'/'} passHref>
-      <TitleWrapper $xl={xl}>Simple Travelers</TitleWrapper>
+      <TitleWrapper $large={large}>Simple Travelers</TitleWrapper>
     </Link>
   );
 };

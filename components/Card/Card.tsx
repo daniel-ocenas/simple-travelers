@@ -1,11 +1,7 @@
+import { CardText, CategoryButton, SCard, SCardImage, SContent } from 'components/Card/Card.styled';
 import React, { useState } from 'react';
-import { Link } from 'UI/Link';
-import { Text } from 'UI/Text';
+import { CenterFlex, Flex, Link, Loader, MarginBox, Text } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
-import { CenterFlex, Flex } from '../Flex';
-import Loader from '../Loader';
-import { MarginBox } from '../MarginBox';
-import { CardText, CategoryButton, SCard, SCardImage, SContent } from './Card.styled';
 
 interface CardProps {
   title: string;

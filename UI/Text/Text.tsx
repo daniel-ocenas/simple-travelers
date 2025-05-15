@@ -51,7 +51,7 @@ const H6 = styled.h6<ExtendedTextProps>`
   ${fontStyles}
 `;
 
-export const Text = (props: TextProps) => {
+const Text = (props: TextProps) => {
   switch (props.type) {
     case 'h1':
       return (
@@ -97,3 +97,5 @@ export const Text = (props: TextProps) => {
       );
   }
 };
+
+export default Text;

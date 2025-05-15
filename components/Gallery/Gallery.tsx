@@ -4,8 +4,7 @@ import { GalleryImageProps } from 'components/Gallery/ImageGrid/ImageGrid';
 import { BALI_IMAGES, IMAGES, OTHER_IMAGES, SNP_IMAGES } from 'data/GalleryImages';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { CheckButton } from 'UI/Button/CheckButton';
-import { Flex } from 'UI/Flex';
+import { CheckButton, Flex } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 
 const { Option } = Select;

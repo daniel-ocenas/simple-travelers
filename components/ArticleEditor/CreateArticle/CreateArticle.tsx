@@ -5,12 +5,10 @@ import ArticleRenderer from 'components/Article';
 import { ArticleComponent, ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import { ComponentPicker } from 'components/ArticleEditor/CreateArticle/ComponentSelector/ComponentPicker';
 import { EditableComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/EditableComponent';
+import FloatingTextInput from 'components/FloatingTextInput';
 import { notify } from 'components/Notification/notification';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Flex } from 'UI/Flex';
-import { FloatingTextInput } from 'UI/Inputs';
-import { Link } from 'UI/Link';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, Link, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 
 const PhotoStorageButton = () => (

@@ -1,1 +1,3 @@
-export * from 'UI/Text/Text';
+import Text from './Text';
+
+export default Text;

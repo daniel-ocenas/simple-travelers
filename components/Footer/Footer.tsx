@@ -4,11 +4,11 @@ import SocialNetworkLinks from 'components/SocialSideBar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 
 function Footer() {
   const location = useRouter();
+  const year = new Date().getFullYear();
   const links = NAV_LINK_DATA.filter((l) => l.small);
   return (
     <Flex direction={'column'}>
@@ -33,7 +33,7 @@ function Footer() {
         </Flex>
         <SocialNetworkLinks outlined />
         <MarginBox mt={24} mb={32}>
-          ©2025 Simple Travelers
+          ©{year} Simple Travelers
         </MarginBox>
         <Link href={'/zasadypouzivaniaosobnychudajov'}>Zásady používania osobných údajov</Link>
         <MarginBox mt={32} />

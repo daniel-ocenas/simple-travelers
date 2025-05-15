@@ -58,19 +58,14 @@ export const SideBar = styled.div`
   z-index: -1;
 `;
 
-export const SMarginBox = styled.div`
-  width: 100%;
-  height: var(--tabsHeight);
-`;
-
-export const TitleWrapper = styled.div<{ $xl: boolean }>`
+export const TitleWrapper = styled.div<{ $large: boolean }>`
   position: absolute;
   font-family: 'Indie Flower', serif;
   text-align: center;
   color: var(--primaryColor);
-  font-size: ${({ $xl }) => ($xl ? '2.4em' : '1.5em')};
-  top: ${({ $xl }) => ($xl ? '0' : '8px')};
-  left: ${({ $xl }) => ($xl ? '32px' : '16px')};
+  font-size: ${({ $large }) => ($large ? '2.4em' : '1.5em')};
+  top: ${({ $large }) => ($large ? '0' : '8px')};
+  left: ${({ $large }) => ($large ? '32px' : '16px')};
   font-weight: 600;
   margin-bottom: 8px;
   margin-top: 0;

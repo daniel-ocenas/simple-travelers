@@ -2,8 +2,7 @@ import Page from 'components/Page';
 import { Video } from 'components/Video/Video';
 import Head from 'next/head';
 import React from 'react';
-import { Flex } from 'UI/Flex/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 
 export default function Videos() {
   return (

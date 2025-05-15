@@ -7,7 +7,7 @@ interface CheckButtonProps {
   onChange?: (checked: boolean) => void;
 }
 
-export const CheckButton = ({ label, value, onChange }: CheckButtonProps) => {
+const CheckButton = ({ label, value, onChange }: CheckButtonProps) => {
   const [checked, setChecked] = useState<boolean>(false);
   const onClick = () => {
     setChecked((prev) => !prev);
@@ -24,3 +24,4 @@ export const CheckButton = ({ label, value, onChange }: CheckButtonProps) => {
     </div>
   );
 };
+export default CheckButton;

@@ -4,9 +4,7 @@ import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { Flex } from 'UI/Flex';
-import Loader from 'UI/Loader';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, Loader, MarginBox } from 'UI';
 import { useGetArticles } from 'utils/useGetArticles';
 
 const { Option } = Select;

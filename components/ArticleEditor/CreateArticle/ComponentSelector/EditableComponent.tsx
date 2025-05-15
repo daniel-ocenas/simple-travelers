@@ -2,11 +2,9 @@ import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined } from '@ant-design/
 import { Button } from 'antd';
 import { ArticleHeader } from 'components/Article';
 import { ArticleComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+import FloatingTextInput from 'components/FloatingTextInput';
 import React, { useCallback } from 'react';
-import { Flex } from 'UI/Flex';
-import { FloatingTextInput } from 'UI/Inputs';
-import { MarginBox } from 'UI/MarginBox';
-import { RichTextEditor } from 'UI/RichTextEditor';
+import { Flex, MarginBox, RichTextEditor } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 
 export interface UploadFile<T = any> extends Blob {

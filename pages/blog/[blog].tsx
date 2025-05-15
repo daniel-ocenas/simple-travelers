@@ -2,7 +2,7 @@ import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
 import Head from 'next/head';
 import React, { useEffect, useRef, useState } from 'react';
-import { Text } from 'UI/Text';
+import { Text } from 'UI';
 import { useScreenSize } from 'utils/useBreakpoint';
 
 export async function getServerSideProps({ query }: { query: any }) {

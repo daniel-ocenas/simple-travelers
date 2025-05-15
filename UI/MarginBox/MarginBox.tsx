@@ -1,8 +1,8 @@
 import React from 'react';
 
-export type MarginType = number | string;
+type MarginType = number | string;
 
-export interface MarginBoxProps {
+interface MarginBoxProps {
   className?: string;
   children?: React.ReactNode;
   ml?: MarginType;
@@ -13,7 +13,7 @@ export interface MarginBoxProps {
   my?: MarginType;
 }
 
-export const MarginBox = ({ className, children, mb = 0, ml = 0, mr = 0, mt = 0, mx, my }: MarginBoxProps) => {
+const MarginBox = ({ className, children, mb = 0, ml = 0, mr = 0, mt = 0, mx, my }: MarginBoxProps) => {
   ml = mx ? mx : ml;
   mr = mx ? mx : mr;
 
@@ -34,3 +34,5 @@ export const MarginBox = ({ className, children, mb = 0, ml = 0, mr = 0, mt = 0,
     </div>
   );
 };
+
+export default MarginBox;

@@ -3,9 +3,7 @@ import { LogoSimpleTravelers, SDropdown, SideBar, SNavList, STabsContainers } fr
 import SocialNetworkLinks from 'components/SocialSideBar';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Flex } from 'UI/Flex';
-import { Link } from 'UI/Link';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, Link, MarginBox } from 'UI';
 import { useLarge, useScreenSize } from 'utils/useBreakpoint';
 import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import Burger from './BurgerButton';

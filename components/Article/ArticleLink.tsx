@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'UI/Link';
+import { Link } from 'UI';
 
 const ArticleLink = (props: any) => {
   return (

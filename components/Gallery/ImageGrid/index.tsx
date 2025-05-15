@@ -1,3 +1,3 @@
-import ImageGrid from 'components/Gallery/ImageGrid/ImageGrid';
+import ImageGrid from './ImageGrid';
 
 export default ImageGrid;

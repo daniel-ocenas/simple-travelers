@@ -1,9 +1,7 @@
 import { Button } from 'antd';
 import { notify } from 'components/Notification/notification';
 import { useState } from 'react';
-import { Flex } from 'UI/Flex';
-import { TextInput } from 'UI/Inputs';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox, TextInput } from 'UI';
 
 export const LoginForm = () => {
   const [userName, setUserName] = useState('');

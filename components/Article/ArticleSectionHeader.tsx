@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Text } from 'UI';
 
 const ArticleSectionHeader = (props: any) => {
-  return <h3 className={props.className}>{props.text}</h3>
-}
+  return (
+    <Text type={'h3'} className={props.className}>
+      {props.text}
+    </Text>
+  );
+};
 
-export default ArticleSectionHeader
+export default ArticleSectionHeader;

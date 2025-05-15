@@ -90,7 +90,7 @@ interface IconProps {
   round?: boolean;
 }
 
-export const Icon = ({
+const Icon = ({
   IconComponent,
   size = 36,
   width,
@@ -131,3 +131,5 @@ export const Icon = ({
     </IconWrapper>
   );
 };
+
+export default Icon;

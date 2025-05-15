@@ -14,7 +14,7 @@ interface RichTextEditorProps {
   theme?: 'snow' | 'bubble' | undefined;
 }
 
-export const RichTextEditor = ({ value, onChange, readOnly, theme = 'snow' }: RichTextEditorProps) => {
+const RichTextEditor = ({ value, onChange, readOnly, theme = 'snow' }: RichTextEditorProps) => {
   return (
     <EditorProvider extensions={extensions} content={content}>
       <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
@@ -22,7 +22,7 @@ export const RichTextEditor = ({ value, onChange, readOnly, theme = 'snow' }: Ri
     </EditorProvider>
   );
 };
-
+export default RichTextEditor;
 //
 // import dynamic from 'next/dynamic';
 // import React, { useState } from 'react';

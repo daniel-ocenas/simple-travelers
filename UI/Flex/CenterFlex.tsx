@@ -18,7 +18,7 @@ export interface CenterFlexProps {
   background?: string;
 }
 
-export const CenterFlex = ({
+const CenterFlex = ({
   children,
   direction,
   background,
@@ -30,3 +30,5 @@ export const CenterFlex = ({
     </SCenterFlex>
   );
 };
+
+export default CenterFlex;

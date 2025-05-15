@@ -4,8 +4,7 @@ import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSe
 import BlogCardsView from 'components/BlogCardsView';
 import { notify } from 'components/Notification/notification';
 import React, { useState } from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 import { useGetArticles } from 'utils/useGetArticles';
 

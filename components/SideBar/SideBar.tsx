@@ -6,8 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import process from 'process';
 import React from 'react';
-import Divider from 'UI/Divider';
-import { MarginBox } from 'UI/MarginBox';
+import { Divider, MarginBox } from 'UI';
 import { useLarge, useScreenSize } from 'utils/useBreakpoint';
 
 const DISABLED_URLS = ['/', '/onas', '/editor'];

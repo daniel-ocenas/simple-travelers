@@ -1,3 +1,3 @@
-import SocialSideBar from 'components/SocialSideBar/SocialNetworkLinks';
+import SocialSideBar from './SocialNetworkLinks';
 
 export default SocialSideBar;

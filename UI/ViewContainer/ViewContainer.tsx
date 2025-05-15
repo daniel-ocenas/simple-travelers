@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { SViewContainer } from 'UI/ViewContainer/ViewContainer.styled';
+import { SViewContainer } from './ViewContainer.styled';
 
 interface ViewContainerProps extends PropsWithChildren {
   top?: string | number;

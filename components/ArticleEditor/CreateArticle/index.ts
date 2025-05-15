@@ -1,3 +1,3 @@
-import CreateArticle from 'components/ArticleEditor/CreateArticle/CreateArticle';
+import CreateArticle from './CreateArticle';
 
 export default CreateArticle;

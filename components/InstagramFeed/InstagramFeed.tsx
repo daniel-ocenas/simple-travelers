@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
+import { Loader } from 'UI';
 import { useGetConfig } from 'utils/useGetConfig';
-import Loader from '../../UI/Loader';
 import styles from './InstagramFeed.module.css';
 
 function InstagramFeed({ counter }: { counter: number }) {

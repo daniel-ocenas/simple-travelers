@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 
-function Slider(props: any) {
+const Slider = (props: any) => {
   const [sliderState, setSliderState] = useState(props.slides);
   const [currentPicState, setCurrentPicState] = useState(0);
   const [nextPicState, setNextPicState] = useState(1);
@@ -134,6 +134,6 @@ function Slider(props: any) {
   } else {
     return <></>;
   }
-}
+};
 
 export default Slider;

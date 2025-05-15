@@ -3,8 +3,7 @@ import Image from 'next/image';
 import backgroundPhoto from 'public/static/images/Background.jpg';
 import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 import { SWelcomePhoto, SWelcomePhotoDivider, TitleCatchLine, TitleContainer } from './WelcomePhoto.styled';
 

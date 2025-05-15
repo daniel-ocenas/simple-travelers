@@ -1,7 +1,7 @@
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import { SBlogCardsContainer } from 'components/BlogCardsView/BlogCardsView.styled';
+import Card from 'components/Card';
 import React from 'react';
-import Card from 'UI/Card';
 
 interface BlogCardsContainerProps {
   articles: ArticleProps[] | undefined;

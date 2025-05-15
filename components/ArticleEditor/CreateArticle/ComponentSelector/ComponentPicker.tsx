@@ -8,8 +8,7 @@ import {
   emptyTextComponent,
 } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import React, { useCallback } from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
 
 interface ComponentPickerProps {

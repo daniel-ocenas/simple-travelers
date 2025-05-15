@@ -1,7 +1,7 @@
 import { default as NextLink } from 'next/link';
 import React, { PropsWithChildren } from 'react';
 
-export type LinkProps = PropsWithChildren<{
+type LinkProps = PropsWithChildren<{
   href: string;
   className?: string;
   external?: boolean;
@@ -11,7 +11,7 @@ export type LinkProps = PropsWithChildren<{
   style?: React.CSSProperties | undefined;
 }>;
 
-export function Link({ href, className, external, download, newTab, passHref, style, children }: LinkProps) {
+const Link = ({ href, className, external, download, newTab, passHref, style, children }: LinkProps) => {
   const newTabProps = newTab && { target: '_blank', rel: 'noopener' };
   return external ? (
     <a className={className} href={href} download={download} {...newTabProps}>
@@ -22,4 +22,5 @@ export function Link({ href, className, external, download, newTab, passHref, st
       {children}
     </NextLink>
   );
-}
+};
+export default Link;

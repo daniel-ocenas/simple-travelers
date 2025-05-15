@@ -22,7 +22,7 @@ export interface FlexProps extends PropsWithChildren {
   onClick?: () => void;
 }
 
-export const Flex = ({
+const Flex = ({
   children,
   className,
   direction,
@@ -63,3 +63,5 @@ export const Flex = ({
     </div>
   );
 };
+
+export default Flex;

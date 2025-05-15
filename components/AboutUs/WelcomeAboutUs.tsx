@@ -2,8 +2,7 @@ import { HomePageWelcomeDescription, HomePageWelcomeTitle } from 'components/Abo
 import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import React from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 
 const WelcomeAboutUs = () => {

@@ -1,3 +1,3 @@
-import BlogCardsView from 'components/BlogCardsView/BlogCardsView';
+import BlogCardsView from './BlogCardsView';
 
 export default BlogCardsView;

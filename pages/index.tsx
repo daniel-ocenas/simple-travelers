@@ -3,8 +3,7 @@ import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import Head from 'next/head';
 import React from 'react';
-import Loader from 'UI/Loader';
-import { MarginBox } from 'UI/MarginBox';
+import { Loader, MarginBox } from 'UI';
 import { useGetArticles } from 'utils/useGetArticles';
 
 export default function Home() {

@@ -1,2 +1,4 @@
-export * from './Flex';
-export * from './CenterFlex';
+import CenterFlex from './CenterFlex';
+import Flex from './Flex';
+
+export { Flex, CenterFlex };

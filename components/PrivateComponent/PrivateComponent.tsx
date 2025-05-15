@@ -1,8 +1,7 @@
 'use-client';
 import { LoginForm } from 'components/Forms/LoginForm';
 import React, { JSX, useEffect, useState } from 'react';
-import { Flex } from 'UI/Flex';
-import { MarginBox } from 'UI/MarginBox';
+import { Flex, MarginBox } from 'UI';
 
 export interface PrivateComponentProps {
   render: () => JSX.Element;

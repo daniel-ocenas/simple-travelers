@@ -2,7 +2,9 @@ import { Input } from 'antd';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import React, { useEffect, useState } from 'react';
 
-interface TextInputProps {
+const { TextArea: AntTextArea } = Input;
+
+interface TextAreaProps {
   onChange: (value: string) => void;
   value?: string;
   placeholder?: string;
@@ -10,19 +12,26 @@ interface TextInputProps {
   type?: 'text' | 'password';
 }
 
-const TextInput = ({ value, onChange, placeholder, size, type }: TextInputProps) => {
+const TextArea = ({ value, onChange, placeholder }: TextAreaProps) => {
   const [val, setVal] = useState<string | undefined>(value);
 
   useEffect(() => {
     setVal(value);
   }, [value]);
 
-  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     setVal(newValue);
     onChange(newValue);
   };
-  return <Input value={val} onChange={onValueChange} placeholder={placeholder} size={size} type={type} />;
-};
 
-export default TextInput;
+  return (
+    <AntTextArea
+      value={val}
+      onChange={onValueChange}
+      placeholder={placeholder}
+      styles={{ textarea: { minHeight: '100px' } }}
+    />
+  );
+};
+export default TextArea;
