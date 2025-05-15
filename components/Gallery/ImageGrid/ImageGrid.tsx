@@ -25,7 +25,8 @@ interface ImageGridProps {
   images: GalleryImageProps[];
 }
 
-function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, images }: ImageGridProps) {
+//  rowHeight = 212, margin = 2 *
+function ImageGrid({ id = 'ImageGridGallery', images }: ImageGridProps) {
   const [lightboxDisplay, setLightBoxDisplay] = useState<boolean>(false);
   const [imageToShow, setImageToShow] = useState<GalleryImageProps>(emptyImage);
   const { width } = useScreenSize();
@@ -80,6 +81,7 @@ function ImageGrid({ id = 'ImageGridGallery', rowHeight = 212, margin = 2, image
   const imageThumbnails = images.map((item: any, idx: any) => {
     return (
       <div
+        id={id}
         key={idx + item.src}
         className={styles.galleryItem}
         onClick={() => showImage(item)}

@@ -15,7 +15,7 @@ interface CardProps {
 
 type CardWrapperProps = Omit<CardProps, 'url'>;
 
-const CardWrapper = ({ title, date, text, image, category, edit }: CardWrapperProps) => {
+const CardWrapper = ({ title, date, text, image, category }: CardWrapperProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const large = useLarge();

@@ -8,7 +8,7 @@ import { useScreenSize } from 'utils/useBreakpoint';
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
   // TODO local / vs prod url
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`).catch((e) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`).catch(() => {
     return undefined;
   });
 
