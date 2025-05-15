@@ -16,19 +16,10 @@ export const useScreenSize = () => {
 };
 
 export const Breakpoints = {
-  xs: 0,
-  sm: 360,
-  md: 576,
-  lg: 768,
-  xl: 1000,
-  xxl: 1920,
-  '4k': 3800,
+  md: 768,
+  lg: 1200,
+  xl: 1920,
 };
-
-export function useSmall(): boolean {
-  const { width } = useScreenSize();
-  return width <= Breakpoints.sm;
-}
 
 export function useMedium(): boolean {
   const { width } = useScreenSize();
@@ -40,24 +31,24 @@ export function useLarge(): boolean {
   return width >= Breakpoints.lg;
 }
 
-export function useExtraLarge(): boolean {
+export function useXL(): boolean {
   const { width } = useScreenSize();
   return width >= Breakpoints.xl;
 }
 
-export function usePageMargin(): string {
-  const large = useLarge();
-  const xl = useExtraLarge();
+export function usePageMargin(): { mr: string; ml: string } {
+  const md = useMedium();
+  const lg = useLarge();
+  const xxl = useXL();
   const location = useRouter();
   if (location.pathname === '/editor') {
-    return '10%';
+    return { mr: '10%', ml: '10%' };
   }
-
-  if (xl) {
-    return '30%';
-  } else if (large) {
-    return '10%';
+  if (xxl || lg) {
+    return { mr: '20%', ml: '20%' };
+  } else if (md) {
+    return { mr: '10%', ml: '10%' };
   } else {
-    return '2%';
+    return { mr: '2%', ml: '2%' };
   }
 }

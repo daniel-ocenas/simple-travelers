@@ -1,8 +1,9 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
-import { usePageMargin } from 'utils/useBreakpoint';
+import React, { useEffect, useRef, useState } from 'react';
+import { Text } from 'UI/Text';
+import { useScreenSize } from 'utils/useBreakpoint';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
@@ -24,9 +25,9 @@ export async function getServerSideProps({ query }: { query: any }) {
 }
 
 const BlogPage = ({ articleData }: { articleData: any }) => {
-  const pageMargin = usePageMargin();
   const [textAreaWidth, setTextAreaWidth] = useState(300);
-  const refTextArea = React.useRef<any>();
+  const refTextArea = useRef<any>(null);
+  const { width } = useScreenSize();
   const { title, description, image, keywords } = articleData;
 
   const getTextAreaWidth = () => {
@@ -36,7 +37,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
 
   useEffect(() => {
     getTextAreaWidth();
-  }, [pageMargin]);
+  }, [width]);
 
   useEffect(() => {
     window.addEventListener('resize', getTextAreaWidth);
@@ -66,10 +67,10 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
           <meta name="keywords" content={head.keywords} />
         </Head>
       )}
-      <Page mr={pageMargin}>
-        <div ref={refTextArea} className="screen-reader-text article">
+      <Page>
+        <div ref={refTextArea}>
           {articleData.content === undefined ? (
-            <h4>Article Could Not Be Found</h4>
+            <Text type={'h4'}>Article Could Not Be Found</Text>
           ) : (
             <>{articleData.content.map((data: any, idx: any) => ArticleRenderer(data, idx, textAreaWidth))}</>
           )}

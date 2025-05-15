@@ -19,7 +19,6 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   // env: {
   //   REACT_APP_URL:
   //     process.env.REACT_APP_URL === 'development' ? 'http://localhost:3000' : 'https://simpletravelers.com',

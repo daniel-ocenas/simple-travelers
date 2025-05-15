@@ -2,7 +2,7 @@ import { Dropdown } from 'antd';
 import styled from 'styled-components';
 
 export const LogoSimpleTravelers = styled.img<{ $maxHeight?: number }>`
-  max-height: ${({ $maxHeight }) => $maxHeight ?? 'calc(var(--tabsHeight) - 8px)'};
+  max-height: ${({ $maxHeight }) => ($maxHeight ? `${$maxHeight}px` : 'calc(var(--tabsHeight) - 8px)')};
   cursor: pointer;
   margin-top: 3px;
   margin-bottom: -7px;
@@ -65,7 +65,7 @@ export const SMarginBox = styled.div`
 
 export const TitleWrapper = styled.div<{ $xl: boolean }>`
   position: absolute;
-  font-family: 'Indie Flower';
+  font-family: 'Indie Flower', serif;
   text-align: center;
   color: var(--primaryColor);
   font-size: ${({ $xl }) => ($xl ? '2.4em' : '1.5em')};

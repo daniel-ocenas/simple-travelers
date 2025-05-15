@@ -10,6 +10,14 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
   const [articlesList, setArticlesList] = useState<ArticleProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const sortArticles = (articles: ArticleProps[], order: 'asc' | 'desc') => {
+    return [...articles].sort((a, b) => {
+      const dateA = new Date(a.dateCreated).getTime();
+      const dateB = new Date(b.dateCreated).getTime();
+      return order === 'asc' ? dateA - dateB : dateB - dateA;
+    });
+  };
+
   useEffect(() => {
     // TODO local / vs prod url
     const fetchArticles = async () => {
@@ -31,10 +39,7 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
       const articles: ArticleProps[] = maxCount ? [...data?.articles]?.slice(0, maxCount) : data?.articles;
       const publishedArticles = showAll ? articles : articles.filter((artcl) => artcl.isPublished);
 
-      let sortedArticleList = publishedArticles?.sort((a: any, b: any) => {
-        const start = +new Date(b.dateCreated);
-        return start - +new Date(a.dateCreated);
-      });
+      let sortedArticleList = sortArticles(publishedArticles, 'desc');
 
       setIsLoading(false);
       setArticlesList(sortedArticleList ?? []);

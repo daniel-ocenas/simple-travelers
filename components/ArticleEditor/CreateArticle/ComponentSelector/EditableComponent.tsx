@@ -7,6 +7,7 @@ import { Flex } from 'UI/Flex';
 import { FloatingTextInput } from 'UI/Inputs';
 import { MarginBox } from 'UI/MarginBox';
 import { RichTextEditor } from 'UI/RichTextEditor';
+import { useMedium } from 'utils/useBreakpoint';
 
 export interface UploadFile<T = any> extends Blob {
   uid: string;
@@ -35,6 +36,7 @@ interface EditableComponentSelectorProps {
 }
 
 export const EditableComponent = ({ item, articleContent, setArticleContent }: EditableComponentSelectorProps) => {
+  const medium = useMedium();
   const deleteItem = useCallback(
     (positionToDelete?: number) => {
       if (positionToDelete) {
@@ -116,7 +118,7 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
         return (
           <Flex direction={'column'}>
             <RichTextEditor
-              theme={'snow'}
+              // theme={'snow'}
               value={item.text}
               onChange={(richText) => updateText(richText, item.order)}
             />
@@ -142,7 +144,7 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
         <Flex>{getEditableComponent()}</Flex>
         {item.order !== 0 && (
           <MarginBox ml={8}>
-            <Flex direction={'row'} justify={'flex-end'}>
+            <Flex direction={medium ? 'column' : 'row'} justify={'flex-end'}>
               <Button
                 onClick={() => moveItem('up', item.order)}
                 icon={<ArrowUpOutlined />}

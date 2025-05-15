@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet"');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html {
@@ -42,7 +43,7 @@ body {
   --headerHeight: 160px;
   --tabsHeight: 52px;
   --socialMediaIconSize: 48px;
-  font-family: 'Roboto';
+  font-family: 'Roboto', serif;
   background-color: var(--backgroundColor);
 }
 
@@ -53,6 +54,80 @@ body {
 #safari {
   background-color: var(--backgroundColor);
 }
+
+/*Fonts*/
+
+h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  line-height: 1.3em;
+}
+
+h4 {
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+
+h5 {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+
+h6 {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+
+p {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  margin: 0 0 0.5em 0;
+  line-height: 1.5em;
+}
+
+.regular {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  margin: 0 0 0.5em 0;
+  line-height: 1.5em;
+}
+
+p a {
+  display: inline;
+}
+
+p ul {
+  margin: 8px 0;
+}
+
+.bachledkaTablePrice th, td {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  margin: 1em 0;
+  line-height: 1.5em;
+}
+
+/*Fonts*/
+
 
 .linkNoDecoration {
   &:link {
@@ -125,113 +200,6 @@ body {
   }
 }
 
-/* About Us Start */
-.about-us-container {
-  display: -webkit-flex;
-  -webkit-justify-content: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.about-us-couple-photo img {
-  width: 100%;
-}
-
-.about-us-container h4 {
-  margin: 1em;
-}
-
-.about-us-portrait-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-us-portrait-picture {
-  width: 100%;
-}
-
-.about-us-container-icon {
-  width: 32px;
-  margin: 0 6px;
-}
-
-.about-dan {
-  width: 50%;
-  margin: 10px 3% 0 3%;
-  text-align: justify;
-  font-size: 14px;
-}
-
-.about-liv {
-  width: 50%;
-  margin: 10px 3% 0 3%;
-  text-align: justify;
-  font-size: 14px;
-}
-
-/* About Us End */
-
-/* Text Start */
-
-h3 {
-  color: var(--titleColor);
-  font-size: 1.5em;
-  margin: 1em 0;
-  font-weight: bold;
-  text-align: left;
-  font-family: 'Quicksand', serif;
-}
-
-h6 {
-  color: var(--titleColor);
-  font-size: 1.1em;
-  margin: 1em 0;
-  font-family: 'Quicksand', serif;
-}
-
-.screen-reader-text,
-.screen-reader-text p,
-.bachledkaTablePrice th,
-td {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased !important;
-  text-rendering: optimizelegibility !important;
-  font-family: 'Quicksand', serif;
-  font-size: 1.2em;
-  line-height: 1.5em;
-  text-align: justify;
-}
-
-.screen-reader-text a {
-  display: inline;
-}
-
-.screen-reader-text h2 {
-  color: var(--titleColor);
-  text-align: center;
-  font-size: 2em;
-  line-height: 1.1em;
-  margin: 1em 1em;
-  font-weight: 400;
-  font-family: 'Quicksand', serif;
-}
-
-.screen-reader-text h3,
-.screen-reader-text ul {
-  /* TODO margin top*/
-  margin: 8px 0;
-}
-
-.previous {
-  display: none;
-}
-
-.pic-rady-tipy {
-  max-width: 100%;
-  display: inline-block;
-}
 
 .twoPicInRow {
   display: inline-block;
@@ -282,16 +250,6 @@ td {
   }
 }
 
-/* .articlePicturePortraitRight{
-    width: 49.5%;
-    margin-left: 0.5%;
-    text-align: center;
-}
-.articlePicturePortraitLeft{
-    width: 49.5%;
-    margin-right: 0.5%;
-    text-align: center;
-} */
 .articlePicturePortrait img {
   width: 60%;
   margin-left: 20%;
@@ -344,75 +302,6 @@ td {
 
 /* Cookies Panel END*/
 
-/* Page footer */
-.page-footer {
-  position: relative;
-  display: flex;
-  flex-direction: column-reverse;
-  vertical-align: bottom;
-  clear: both;
-  text-align: center;
-  width: 100%;
-  margin-top: 100px;
-  background-color: var(--backgroundColor);
-}
-
-.paragraph-footer {
-  color: #8c8c8c;
-  padding-top: 1vh;
-}
-
-.footer-signature-container {
-  margin-right: var(--sideRightMargin);
-  margin-left: var(--sideLeftMargin);
-  margin-top: 2vh;
-}
-
-.footer-signature-container img {
-  display: inline-block;
-  width: 28vw;
-  height: 35vw;
-  max-width: 153px;
-  max-height: 191px;
-  border-radius: 3px;
-}
-
-.footer-signature {
-  text-align: left;
-  display: inline-block;
-  padding: 0 0.5em;
-  line-height: 1.4em;
-  vertical-align: top;
-  margin-top: 4vh;
-}
-
-.footer-signature h3 {
-  text-align: center;
-  margin: 5px;
-}
-
-.footer-signature a {
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  border-radius: 7px;
-
-  position: relative;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.footer-signature a:hover {
-  background-color: var(--secondaryColor);
-}
-
-.footer-signature a img {
-  width: 32px;
-  height: 32px;
-}
-
-/* Page footer END*/
 
 /* Social Media Icons */
 .social-media-container {
@@ -450,37 +339,11 @@ td {
   box-shadow: 5px 5px 2px var(--secondaryColor);
 }
 
-/* Google react map */
-.map-wrapper {
-  width: 100%;
-  min-width: 300px;
-  height: 400px;
-  margin-top: 30px;
-  border-radius: 3px;
-}
-
-.marker-img {
-  width: 200px;
-  clear: both;
-  border-radius: 3px;
-}
-
-.marker-text {
-  text-align: center;
-  width: 200px;
-  margin: 5px 0 0 0;
-}
-
-/* END */
 
 @media (min-width: 576px) {
   body {
     --sideLeftMargin: 2%;
     --sideRightMargin: 2%;
-  }
-
-  .map-wrapper {
-    box-shadow: 8px 8px 2px var(--secondaryColor);
   }
 }
 

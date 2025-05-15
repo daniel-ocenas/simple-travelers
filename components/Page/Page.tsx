@@ -12,7 +12,7 @@ interface PageProps extends PropsWithChildren {
 const Page = ({ top = WELCOME_PHOTO_DIVIDER_TOP, mr, ml, children }: PageProps) => {
   const large = useLarge();
   const initialTop = !large ? '300px' : top;
-  const topOffset = typeof initialTop === 'string' ? initialTop ?? '' : `${initialTop}px`;
+  const topOffset = typeof initialTop === 'string' ? (initialTop ?? '') : `${initialTop}px`;
   return (
     <SPage id={'page'} $top={topOffset} $mr={mr} $ml={ml}>
       {children}

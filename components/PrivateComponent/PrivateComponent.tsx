@@ -1,6 +1,6 @@
 'use-client';
 import { LoginForm } from 'components/Forms/LoginForm';
-import React, { useEffect, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { MarginBox } from 'UI/MarginBox';
 

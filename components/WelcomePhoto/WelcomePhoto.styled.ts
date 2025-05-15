@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const SWelcomePhoto = styled.div<{ $height: string }>`
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 330px;
   top: 0;
   right: 0;
   object-fit: contain;
 
   @media (min-width: 768px) {
-    //height: 55vh;
     height: ${({ $height }) => $height};
   }
 `;
@@ -43,7 +42,6 @@ export const TitleContainer = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  margin-top: 1vh;
   text-align: center;
   padding-bottom: 3px;
 
@@ -57,8 +55,11 @@ export const TitleCatchLine = styled.div`
   text-align: center;
   font-size: 1.5em;
   margin: 0;
-  text-shadow: 2px 3px 3px rgba(255, 255, 255, 0.75), -3px 3px 3px rgba(255, 255, 255, 0.75),
-    1px -3px 3px rgba(255, 255, 255, 0.75), -3px -3px 3px rgba(255, 255, 255, 0.75);
+  text-shadow:
+    2px 3px 3px rgba(255, 255, 255, 0.75),
+    -3px 3px 3px rgba(255, 255, 255, 0.75),
+    1px -3px 3px rgba(255, 255, 255, 0.75),
+    -3px -3px 3px rgba(255, 255, 255, 0.75);
 
   @media (min-width: 768px) {
     font-size: 2em;

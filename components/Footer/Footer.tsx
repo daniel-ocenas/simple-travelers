@@ -13,7 +13,7 @@ function Footer() {
   return (
     <Flex direction={'column'}>
       <MarginBox mt={48} />
-      <Flex direction={'column'} align={'center'} background={'var(--primaryColorExtraLight)'} minWidth={'100%'}>
+      <Flex direction={'column'} align={'center'} minWidth={'100%'}>
         <MarginBox mt={32} />
         <Flex direction={'row'} align={'center'}>
           {links.map((item, index) => {
@@ -33,7 +33,7 @@ function Footer() {
         </Flex>
         <SocialNetworkLinks outlined />
         <MarginBox mt={24} mb={32}>
-          ©2024 Simple Travelers
+          ©2025 Simple Travelers
         </MarginBox>
         <Link href={'/zasadypouzivaniaosobnychudajov'}>Zásady používania osobných údajov</Link>
         <MarginBox mt={32} />

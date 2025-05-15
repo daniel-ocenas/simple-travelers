@@ -2,13 +2,10 @@ import Page from 'components/Page';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
-import { usePageMargin } from 'utils/useBreakpoint';
 
 const NoSSRGallery = dynamic(() => import('../components/Gallery'), { ssr: false });
 
 export default function Galeria() {
-  const pageMargin = usePageMargin();
-
   return (
     <>
       <Head>
@@ -25,7 +22,7 @@ export default function Galeria() {
         <link rel="canonical" href="https://simpletravelers.sk/galeria" />
         <meta name="keywords" content="" />
       </Head>
-      <Page mr={pageMargin}>
+      <Page>
         <NoSSRGallery />
       </Page>
     </>

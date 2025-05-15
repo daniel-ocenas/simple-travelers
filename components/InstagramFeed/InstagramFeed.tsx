@@ -5,7 +5,7 @@ import Loader from '../../UI/Loader';
 import styles from './InstagramFeed.module.css';
 
 function InstagramFeed({ counter }: { counter: number }) {
-  const placeholder = useRef<any>();
+  const placeholder = useRef<any>(null);
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -13,24 +13,19 @@ function InstagramFeed({ counter }: { counter: number }) {
 
   const { config } = useGetConfig();
 
-  //
-  // useEffect(() => {
-  //   console.log(config?.instagramToken);
-  //   setUrl(
-  //     ,
-  //   );
-  // }, [config]);
-
   useEffect(() => {
     if (!config?.instagramToken) {
       return;
     }
-    const url = `https://graph.instagram.com/me/media?fields=media_count,media_type,permalink,media_url,caption&&access_token=${config?.instagramToken}`;
+    const url = new URL(`https://graph.facebook.com/v19.0/17841432877203336/media`);
+    url.searchParams.set('fields', 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp');
+    url.searchParams.set('access_token', config.instagramToken);
     const fetchData = async () => {
       setIsLoading(true);
       fetch(url)
         .then((response) => response.json())
         .then((result) => {
+          console.log(result);
           setData(result.data.slice(0, counter));
         })
         .catch(() => setIsError(true))
@@ -59,7 +54,7 @@ function InstagramFeed({ counter }: { counter: number }) {
       {isLoading ? (
         <Loader />
       ) : isError ? (
-        <p className="errorMessage"> the access token is not valid</p>
+        <p className="errorMessage">Instagram grid currently unavailable</p>
       ) : (
         <div className={styles.instagramItems} ref={placeholder}>
           {showImage &&

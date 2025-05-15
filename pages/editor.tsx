@@ -1,12 +1,10 @@
 import { ArticleEditor } from 'components/ArticleEditor/ArticleEditor';
 import Page from 'components/Page';
-import PrivateComponent from 'components/PrivateComponent/PrivateComponent';
-import { usePageMargin } from 'utils/useBreakpoint';
+import PrivateComponent from 'components/PrivateComponent';
 
 export default function Editor() {
-  const pageMargin = usePageMargin();
   return (
-    <Page mr={pageMargin}>
+    <Page>
       <PrivateComponent render={() => <ArticleEditor />} />
     </Page>
   );

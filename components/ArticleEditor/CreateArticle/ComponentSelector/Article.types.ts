@@ -52,7 +52,7 @@ export interface ArticleProps {
   title: string;
   description: string;
   date: string;
-  dateCreated?: string;
+  dateCreated: string;
   image: string;
   isPublished: boolean;
   keywords?: string;

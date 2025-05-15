@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'UI/Link';
+import { Text } from 'UI/Text';
+import { useLarge } from 'utils/useBreakpoint';
 import { CenterFlex, Flex } from '../Flex';
 import Loader from '../Loader';
 import { MarginBox } from '../MarginBox';
-import { CardText, SCard, SCardImage } from './Card.styled';
+import { CardText, CategoryButton, SCard, SCardImage, SContent } from './Card.styled';
 
 interface CardProps {
   title: string;
@@ -15,36 +17,52 @@ interface CardProps {
   edit?: boolean;
 }
 
-const CardWrapper = ({ title, date, text, image, url, category, edit }: CardProps) => {
+type CardWrapperProps = Omit<CardProps, 'url'>;
+
+const CardWrapper = ({ title, date, text, image, category, edit }: CardWrapperProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  const large = useLarge();
   const toggleLoading = () => {
     setIsLoading(true);
   };
 
   return (
     <SCard onClick={toggleLoading}>
-      <Flex direction={'column'}>
+      <Flex direction={large ? 'row' : 'column'} maxWidth={large ? 900 : '100%'}>
         <SCardImage $src={image} />
         {isLoading ? (
-          <CenterFlex>
+          <Flex align={'center'} justify={'center'} maxWidth={'60%'}>
             <MarginBox my={16}>
               <Loader />
             </MarginBox>
-          </CenterFlex>
+          </Flex>
         ) : (
-          <MarginBox mx={16} mt={8}>
-            <p>{date}</p>
-            <h3>{title}</h3>
-            {/*<CategoryRow>*/}
-            {/*  {category.map((cat: string) => {*/}
-            {/*    return <span key={title + cat}>{cat}</span>;*/}
-            {/*  })}*/}
-            {/*</CategoryRow>*/}
-            <CardText>
-              <p>{text}</p>
-            </CardText>
-          </MarginBox>
+          <SContent>
+            <Flex direction={'column'}>
+              <Text color={'black'} type={'h5'}>
+                {title}
+              </Text>
+              <Text color={'black'} size={14} weight={'light'}>
+                {date}
+              </Text>
+              <MarginBox mb={6} />
+              <CardText>
+                <Text color={'black'}>{text}</Text>
+              </CardText>
+              <Flex direction={'row'}>
+                {category.map((cat: string) => {
+                  return (
+                    <CategoryButton key={title + cat}>
+                      <CenterFlex>
+                        <Text type={'p'}>{cat}</Text>
+                      </CenterFlex>
+                    </CategoryButton>
+                  );
+                })}
+              </Flex>
+            </Flex>
+          </SContent>
         )}
       </Flex>
     </SCard>
@@ -55,7 +73,7 @@ const Card = ({ title, date, text, image, url, category, edit }: CardProps) => {
   return (
     <>
       {edit ? (
-        <CardWrapper title={title} date={date} text={text} image={image} url={url} category={category} />
+        <CardWrapper title={title} date={date} text={text} image={image} category={category} />
       ) : (
         <Link
           href={url}
@@ -65,7 +83,7 @@ const Card = ({ title, date, text, image, url, category, edit }: CardProps) => {
           }}
           passHref
         >
-          <CardWrapper title={title} date={date} text={text} image={image} url={url} category={category} />
+          <CardWrapper title={title} date={date} text={text} image={image} category={category} />
         </Link>
       )}
     </>

@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
 import Loader from 'UI/Loader';
 import { MarginBox } from 'UI/MarginBox';
-import { usePageMargin } from 'utils/useBreakpoint';
 import { useGetArticles } from 'utils/useGetArticles';
 
 const { Option } = Select;
@@ -30,42 +29,34 @@ const sortArticles = (articles: any, order: any) => {
 
 function Blog() {
   const { isLoading, articlesList } = useGetArticles({});
-
-  const pageMargin = usePageMargin();
   const [sortState, setSortState] = useState(optionsSel[0].value);
-  const [filterOptions, setFilterOptions] = useState([]);
+  const [filterOptions, setFilterOptions] = useState<{ label: string; value: string }[]>([]);
   const [articlesDisplay, setArticlesDisplay] = useState<ArticleProps[]>([]);
 
+  // Extract unique sorted categories on load/update
   useEffect(() => {
     setArticlesDisplay(articlesList);
+
+    const uniqueCategories = Array.from(new Set(articlesList.flatMap((a) => a.category || []))).sort();
+
+    setFilterOptions(uniqueCategories.map((cat) => ({ label: cat, value: cat })));
   }, [articlesList]);
 
+  // Toggle sorting and apply it
   const handleSortChange = () => {
-    setSortState(sortState === optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value);
-    setArticlesDisplay(
-      sortArticles(articlesDisplay, sortState === optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value),
-    );
+    const nextSort = sortState === optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value;
+    setSortState(nextSort);
+    setArticlesDisplay(sortArticles(articlesDisplay, nextSort));
   };
 
-  const handleFilterChange = (categoriesList: any) => {
-    let displayArticlesList: any = [];
-    if (categoriesList.length === 0) {
-      articlesList.forEach((article) => {
-        displayArticlesList.push(article);
-      });
-    } else {
-      let run = true;
-      articlesList.forEach((article: any) => {
-        article.category.forEach((category: any) => {
-          if (run && categoriesList.includes(category)) {
-            displayArticlesList.push(article);
-            run = false;
-          }
-        });
-        run = true;
-      });
-    }
-    setArticlesDisplay(sortArticles(displayArticlesList, sortState));
+  // Filter articles by selected categories
+  const handleFilterChange = (selectedCategories: string[]) => {
+    const filtered =
+      selectedCategories.length === 0
+        ? articlesList
+        : articlesList.filter((article) => article.category?.some((cat: string) => selectedCategories.includes(cat)));
+
+    setArticlesDisplay(sortArticles(filtered, sortState));
   };
 
   return (
@@ -86,7 +77,7 @@ function Blog() {
           content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"
         />
       </Head>
-      <Page mr={pageMargin}>
+      <Page>
         <Form layout="horizontal">
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className="gutter-row">
@@ -99,9 +90,13 @@ function Blog() {
             </Col>
             <Col className="gutter-row">
               <Form.Item label="Filtrovať">
-                <Select mode="multiple" allowClear onChange={handleFilterChange} style={{ minWidth: '150px' }}>
-                  {filterOptions}
-                </Select>
+                <Select
+                  mode="multiple"
+                  allowClear
+                  onChange={handleFilterChange}
+                  style={{ minWidth: '150px' }}
+                  options={filterOptions}
+                />
               </Form.Item>
             </Col>
           </Row>

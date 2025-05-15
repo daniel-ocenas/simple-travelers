@@ -1,68 +1,44 @@
 import styled from 'styled-components';
-import { QuickSand } from 'styles/App.styled';
 
 export const SCardImage = styled.div<{ $src: string }>`
   width: 100%;
-  height: 300px;
-  min-height: 300px;
-  border-radius: 16px 16px 0 0;
-  text-align: center;
+  height: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+
+  @media (min-width: 1200px) {
+    width: 40%;
+  }
   background: 50% 50% ${({ $src }) => `url(${$src})`} no-repeat;
   background-size: cover;
+`;
 
-  @media (min-width: 617px) {
-    height: 300px;
-    min-height: 300px;
+export const SCard = styled.article`
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 1rem auto;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 2rem;
   }
 `;
 
-export const SCard = styled.div`
-  ${QuickSand};
-  width: 100%;
-  height: 100%;
+export const CategoryButton = styled.div`
+  width: fit-content;
+  height: 28px;
+  background-color: var(--secondaryColor);
+  border-radius: 8px;
   color: black;
-  display: block;
-  transition: 0.25s ease-in-out all;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 16px;
-  background-color: var(--backgroundColor);
-
-  h3 {
-    font-size: 20px;
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 6px 0;
-    font-size: 18px;
-  }
-
-  box-shadow: 0 10px 20px -5px #ababab;
-
-  &:hover {
-    box-shadow: 0 8px 15px 4px #b0aeab;
-  }
-`;
-
-export const CategoryRow = styled.div`
-  text-align: left;
-  font-size: 18px;
-  margin: 8px 0;
-  font-weight: normal;
-  text-decoration: none;
-
-  span:first-child {
-    margin: 0;
-  }
-
-  span:after {
-    content: ', ';
-  }
-
-  span:last-child:after {
-    content: '';
-  }
+  padding: 6px 7px 5px;
+  margin: 8px;
 `;
 
 export const CardText = styled.div`
@@ -70,9 +46,21 @@ export const CardText = styled.div`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   text-align: left;
-  height: 120px;
   overflow: hidden;
   font-weight: 300;
   line-height: 1.5;
   margin-bottom: 8px;
+`;
+
+export const SContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  margin-left: 0;
+  @media (min-width: 1024px) {
+    margin-top: 0;
+    margin-left: 1rem;
+    flex: 1;
+  }
 `;

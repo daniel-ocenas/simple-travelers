@@ -51,7 +51,9 @@ const Gallery = () => {
   };
 
   const handleButtonChange = (id: string, checked: boolean) => {
-    setFilterState(checked ? galleryOptions.find((item) => item.title === id) ?? galleryOptions[0] : galleryOptions[0]);
+    setFilterState(
+      checked ? (galleryOptions.find((item) => item.title === id) ?? galleryOptions[0]) : galleryOptions[0],
+    );
   };
 
   useEffect(() => {

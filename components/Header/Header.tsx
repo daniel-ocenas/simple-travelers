@@ -1,17 +1,11 @@
 import { MenuProps } from 'antd';
-import {
-  LogoSimpleTravelers,
-  SDropdown,
-  SideBar,
-  SMarginBox,
-  SNavList,
-  STabsContainers,
-} from 'components/Header/Header.styled';
+import { LogoSimpleTravelers, SDropdown, SideBar, SNavList, STabsContainers } from 'components/Header/Header.styled';
 import SocialNetworkLinks from 'components/SocialSideBar';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Flex } from 'UI/Flex';
 import { Link } from 'UI/Link';
+import { MarginBox } from 'UI/MarginBox';
 import { useLarge, useScreenSize } from 'utils/useBreakpoint';
 import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
 import Burger from './BurgerButton';
@@ -126,10 +120,11 @@ function NavMenu() {
 
   return (
     <>
-      <SMarginBox />
       <Burger showSidebar={showSidebar} buttonState={sidebar} />
       <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
-        <SocialNetworkLinks top={5} outlined />
+        <MarginBox my={5}>
+          <SocialNetworkLinks outlined />
+        </MarginBox>
         <ul className={styles.navMenuItems} onClick={showSidebar}>
           {links.map((item, index) => {
             return (
