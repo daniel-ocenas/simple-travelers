@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const SCardImage = styled.div<{ $src: string }>`
   width: 100%;
-  height: 227px;
+  height: 300px;
   border-radius: 12px;
   object-fit: cover;
 
   @media (min-width: 1200px) {
-    width: 250px;
-    height: 200px;
+    width: 330px;
+    height: 220px;
   }
   background: 50% 50% ${({ $src }) => `url(${$src})`} no-repeat;
   background-size: cover;

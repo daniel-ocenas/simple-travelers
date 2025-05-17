@@ -8,7 +8,7 @@ export const SSideBar = styled.div<{ $width: string }>`
   width: ${({ $width }) => $width};
   // width: calc(${({ $width }) => $width} - 1em - ${({ $width }) => $width} / 7);
   display: none;
-  margin-left: 16px;
+  margin-left: 64px;
   z-index: 10;
 
   h4 {

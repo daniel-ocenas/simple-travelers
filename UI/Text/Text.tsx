@@ -16,7 +16,7 @@ interface TextProps {
   $size?: number;
   $weight?: WeightType;
   color?: string;
-  align?: AlignType;
+  $align?: AlignType;
   className?: string;
   children?: React.ReactNode;
 }
@@ -29,7 +29,7 @@ const fontStyles = css<ExtendedTextProps>`
   font-family: ${({ family }) => family ?? defaultFontFamily};
   font-size: ${({ $size }) => (typeof $size === 'string' ? $size : `${$size}px`)};
   font-weight: ${({ $weight }) => $weight ?? 'normal'};
-  text-align: ${({ align }) => align ?? 'left'};
+  text-align: ${({ $align }) => $align ?? 'left'};
   color: ${({ color }) => color ?? 'inherit'};
 `;
 

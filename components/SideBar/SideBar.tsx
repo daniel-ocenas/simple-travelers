@@ -44,10 +44,10 @@ const SideBar = () => {
             />
           </div>
           <Flex direction={'column'}>
-            <Text type={'h4'} align={'center'}>
+            <Text type={'h4'} $align={'center'}>
               My sme Liv a Dan
             </Text>
-            <Text align={'center'}>
+            <Text $align={'center'}>
               Mladý pár zo Slovenska s vášňou pre cestovanie, fotografovanie a dobrodružstvo. Na našom blogu a
               sociálnych sieťach zdieľame autentické zážitky z ciest a inšpirujeme ostatných, že cestovať sa dá
               jednoducho a lacno.

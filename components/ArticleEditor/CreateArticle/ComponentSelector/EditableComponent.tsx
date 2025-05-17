@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import { ArticleHeader } from 'components/Article';
 import { ArticleComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import FloatingTextInput from 'components/FloatingTextInput';
+import ImageUploader from 'components/ImageUploader/ImageUploader';
 import React, { useCallback } from 'react';
 import { Flex, MarginBox, RichTextEditor } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';
@@ -125,11 +126,14 @@ export const EditableComponent = ({ item, articleContent, setArticleContent }: E
         );
       case 'img':
         return (
-          <FloatingTextInput
-            label={'Image url'}
-            value={item.text}
-            onChange={(value) => updateText(value, item.order)}
-          />
+          <Flex>
+            <ImageUploader endpoint={'api/images'} multiple accept={'image/*'} />
+            <FloatingTextInput
+              label={'Image url'}
+              value={item.text}
+              onChange={(value) => updateText(value, item.order)}
+            />
+          </Flex>
         );
       default:
         return <>{`Component "${item.component}" doesnt have implemented render method.`}</>;
