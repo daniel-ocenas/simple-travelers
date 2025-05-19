@@ -2,10 +2,10 @@ import { MenuProps } from 'antd';
 import { LogoSimpleTravelers, SDropdown, SideBar, SNavList, STabsContainers } from 'components/Header/Header.styled';
 import SocialNetworkLinks from 'components/SocialSideBar';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Flex, Link, MarginBox } from 'UI';
-import { useLarge, useScreenSize } from 'utils/useBreakpoint';
-import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';
+import { useLarge } from 'utils/useBreakpoint';
+import { useGetScroll } from 'utils/useGetScroll';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
@@ -141,18 +141,17 @@ function NavMenu() {
 }
 
 function Header() {
-  const location = useRouter();
-  const { height } = useScreenSize();
   const large = useLarge();
 
-  const initialTop = large ? height : 300;
-
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      scrollToTopSmooth(initialTop - (large ? 0 : 16));
-    }
-    // eslint-disable-next-line
-  }, [location]);
+  // // Autoscroll into view
+  // const location = useRouter();
+  // const initialTop = 280;
+  // useEffect(() => {
+  //   if (location.pathname !== '/') {
+  //     scrollToTopSmooth(initialTop - (large ? 0 : 16));
+  //   }
+  //   // eslint-disable-next-line
+  // }, [location]);
 
   return large ? <NavList /> : <NavMenu />;
 }

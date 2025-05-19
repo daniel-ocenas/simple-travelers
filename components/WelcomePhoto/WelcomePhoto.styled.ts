@@ -6,7 +6,6 @@ export const SWelcomePhoto = styled.div<{ $height: string }>`
   height: 330px;
   top: 0;
   right: 0;
-  object-fit: contain;
 `;
 
 export const SWelcomePhotoDivider = styled.div<{ $top: string }>`

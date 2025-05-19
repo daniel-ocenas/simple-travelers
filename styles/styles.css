@@ -8,19 +8,13 @@ html {
   --titleColor: #0d0d0d;
   /*--primaryColor: #ffbf80;  */
   --primaryColor: #88ab8e;
-  --primaryColorLight: #94b99c;
-  --primaryColorExtraLight: #a8d9a8;
   --primaryColorDark: #6c8872;
-  --primaryColorExtraDark: #445647;
   --secondaryColor: #f6e8d8;
   --secondaryColorDark: #f6bc7a;
+  --secondaryColorLight: #fce8d5;
   overflow-x: hidden;
   --defaultBorderRadius: 3px;
   background-color: var(--backgroundColor);
-
-  --medium: 768px;
-  --large: 1200px;
-  --xl: 1920px;
 }
 
 ::-webkit-scrollbar {

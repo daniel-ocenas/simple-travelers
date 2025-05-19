@@ -16,10 +16,16 @@ export const useScreenSize = () => {
 };
 
 export const Breakpoints = {
+  sm: 380,
   md: 768,
   lg: 1200,
   xl: 1920,
 };
+
+export function useSmall(): boolean {
+  const { width } = useScreenSize();
+  return width <= Breakpoints.sm;
+}
 
 export function useMedium(): boolean {
   const { width } = useScreenSize();

@@ -53,7 +53,7 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     keywords: `${keywords ?? ''}`,
     url: `https://simpletravelers.sk/blog/${articleData.url}`,
   };
-  console.log(textAreaWidth);
+
   return (
     <>
       {articleData.tags && (
