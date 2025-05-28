@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SWelcomePhoto = styled.div<{ $height: string }>`
+export const SWelcomePhoto = styled.div`
   position: absolute;
   width: 100%;
   height: 330px;
@@ -8,7 +8,7 @@ export const SWelcomePhoto = styled.div<{ $height: string }>`
   right: 0;
 `;
 
-export const SWelcomePhotoDivider = styled.div<{ $top: string }>`
+export const SWelcomePhotoDivider = styled.div`
   position: absolute;
   width: 102%;
   height: 104px;

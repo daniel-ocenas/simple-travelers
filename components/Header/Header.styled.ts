@@ -23,18 +23,10 @@ export const STabsContainers = styled.div<{ $isTop: boolean }>`
   height: var(--tabsHeight);
   position: sticky;
   top: 0;
-
-  /*background: linear-gradient(*/
-  /*    180deg,*/
-  /*    var(--backgroundColor) 0%,*/
-  /*    var(--backgroundColor) 96%,*/
-  /*    var(--primaryColor) 97%,*/
-  /*    var(--backgroundColor) 100%*/
-  /*);*/
-  background: var(--backgroundColor);
-  background: ${({ $isTop }) => $isTop && 'transparent'};
+  background: ${({ $isTop }) => ($isTop ? 'transparent' : `var(--backgroundColor)`)};
   -webkit-box-shadow: 0 1px 5px rgba(190, 190, 190, 0.46);
   -moz-box-shadow: 0 1px 5px rgba(190, 190, 190, 0.46);
+  border-bottom: 1px solid rgba(190, 190, 190, 0.46);
   margin-bottom: 5px;
   vertical-align: middle;
   text-align: center;

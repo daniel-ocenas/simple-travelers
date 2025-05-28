@@ -76,6 +76,7 @@ export default function Onas() {
           súčasťou našich nôh. Možno vás niečo z našich zážitkov inšpiruje a bude motivovať vašu chuť objavovať svet. A
           ak sa pri tom budete usmievať, náš zámer bude naplnený.
         </Text>
+        <MarginBox mt={32} />
       </Page>
     </>
   );

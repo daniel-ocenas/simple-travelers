@@ -2,9 +2,9 @@ import Page from 'components/Page';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
-import { Text } from 'UI';
+import { MarginBox, Text } from 'UI';
 
-export default function GDPRBlog() {
+export default function GDPR() {
   return (
     <Page>
       <Head>
@@ -13,15 +13,17 @@ export default function GDPRBlog() {
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
-        <meta property="og:url" content="https://simpletravelers.sk/zasadypouzivaniaosobnychudajov" />
+        <meta property="og:url" content="https://simpletravelers.sk/gdpr" />
         <meta name="keywords" content="" />
       </Head>
+      <MarginBox mt={16} />
       <Text type={'h2'}>Zásady používania osobných údajov</Text>
       <Text>
         Ak ste návštevníkom nášho blogu, poskytujete nám svoje osobné údaje. My vaše údaje spracovávame a za ich
         bezpečnosť ručíme. Sľubujeme, že vaše údaje dostatočne chránime a podriaďujeme sa požiadavkám Nariadení o
         ochrane osobných údajov (GDPR).
       </Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Použitie osobných údajov</Text>
       <Text>
         Aby sme mohli merať ako sa vám na našom blogu páči, kde trávite najviac času a kam klikáte, používame
@@ -30,13 +32,14 @@ export default function GDPRBlog() {
       <Text>Google – Google Analyzics, využívajúci merací kód.</Text>
       <Text>
         Tento nástroj je použitý v prípade, že vyjadríte súhlas so&nbsp;
-        <Link href={'/zasadypouzivaniaosobnychudajov'}>Zásady používania osobných údajov</Link>, na blogu&nbsp;
+        <Link href={'/gdpr.tsx'}>Zásady používania osobných údajov</Link>, na blogu&nbsp;
         <Link href={'/'}>simpletravelers.sk</Link>. Po potvrdení nástroj vygeneruje pomocné cookies súbory, s náhodným
         číslom, ktoré sú asociované s používateľovým prehliadačom. Týmto spôsobom je zaručená anonymizácia osobných
         údajov, ktoré používame pre zbieranie štatistík o prehliadaní nášho blogu.
       </Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Aké údaje spracovávame a prečo</Text>
-      <Text>Vaše osobné údaje spracovávame z dôvodu zlepšenia poskytovania obsahu nášho blogu a jeho kvality.</Text>
+      <Text>Vaše osobné údaje spracovávame z dôvodu zlepšenia poskytovania obsahu nášho blogu a jeho kvality. </Text>
       <Text>
         <b>
           Zbieranie osobných údajov môže znieť hrozivo, avšak jedná sa len o údaje prehliadania našich stránok vo forme
@@ -47,24 +50,27 @@ export default function GDPRBlog() {
         Zoznam údajov, ktoré spracovávame po dobu trvania vášho súhlasu, maximálne však 26 mesiacov od jeho udelenia:
       </Text>
       <Text>COOKIES: Súbory cookies pre nástroj Google Analytics.</Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Správca osobných údajov</Text>
       <Text>
         Daniel Miloslav Očenáš <br />
         +421 915 358 175 <br />
         Terézie Vansovej 18 <br />
         97401, Banská Bystrica <br />
-        danielm.ocenas@gmail.com
+        danielm.ocenas@gmail.com <br />
       </Text>
       <Text>
-        Správca prevádzkuje webové stránky lindatraveler.sk. Správca vaše údaje spravuje a určuje, ako dlho budú osobné
-        údaje spracovávané a za akým účelom. Správca taktiež vyberá ďalších spracovateľov, ktorých k spracovaniu
+        Správca prevádzkuje webové stránky simpletravelers.sk. Správca vaše údaje spravuje a určuje, ako dlho budú
+        osobné údaje spracovávané a za akým účelom. Správca taktiež vyberá ďalších spracovateľov, ktorých k spracovaniu
         využíva.
       </Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Predávanie vašich dát mimo Európsku Úniu</Text>
       <Text>
         Vaše dáta spracovávame výhradne v Európskej Únii alebo v štátoch, ktoré zaisťujú rovnakú úroveň ochrany na
         základe rozhodnutia Európskej komisie.
       </Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Vaše práva v súvislosti s ochranou osobných údajov</Text>
       <Text>
         V súvislosti s ochranou osobných údajov máte radu práv. Ak budete chcieť využiť niektoré z týchto práv, prosím
@@ -85,12 +91,14 @@ export default function GDPRBlog() {
         takom prípade vymažeme všetky vaše osobné údaje, ktoré o vás uchovávame. Na vykonanie tohto práva potrebujeme 30
         dní.
       </Text>
+      <MarginBox mt={32} />
       <Text type={'h3'}>Mlčanlivosť</Text>
       <Text>
         Sme povinní zachovávať mlčanlivosť o osobných údajoch, ktorých zverejnenie by ohrozilo zabezpečenie vašich
         osobných údajov. Táto mlčanlivosť pritom trvá aj po skončení záväzkových vzťahov s nami. Bez vášho súhlasu vaše
         údaje žiadnej inej tretej strane nevydáme.
       </Text>
+      <MarginBox mt={32} />
       <Text>Dátum: 19.04.2020</Text>
     </Page>
   );

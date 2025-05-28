@@ -1,4 +1,3 @@
-import { Divider } from 'antd';
 import { NAV_LINK_DATA } from 'components/Header/Header';
 import styles from 'components/Header/Header.module.css';
 import SocialNetworkLinks from 'components/SocialSideBar';
@@ -7,21 +6,42 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Flex, MarginBox, Text } from 'UI';
-import { useSmall } from 'utils/useBreakpoint';
-import { SFooter, SFooterWrapper } from './Footer.styled';
+import { useMedium, useSmall } from 'utils/useBreakpoint';
+import { SFooter, SFooterCatchLine, SFooterCopyright, SFooterDivider, SFooterWrapper } from './Footer.styled';
 
 function Footer() {
   const small = useSmall();
+  const medium = useMedium();
   const location = useRouter();
   const year = new Date().getFullYear();
-  const links = NAV_LINK_DATA.filter((l) => l.small);
+  const links = NAV_LINK_DATA.filter((l) => l.small || l.footer);
+
   return (
     <SFooterWrapper>
-      <Image src={'/static/images/photosFull/NZSeftonView.jpg'} alt={'footer-image'} fetchPriority={'low'} fill />
+      <Image
+        src={'/static/images/photosFull/NZSeftonView.jpg'}
+        alt={'footer-image'}
+        fetchPriority={'low'}
+        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        fill
+      />
+      <SFooterDivider>
+        <Image
+          alt={'welcome-photo-divider'}
+          src={'/static/images/BackgroundDivider.png'}
+          style={{ objectFit: 'cover' }}
+          fetchPriority={'high'}
+          fill
+        />
+      </SFooterDivider>
       <SFooter>
-        <MarginBox mt={48} />
-        <Divider />
-        <MarginBox mt={32} />
+        <MarginBox mt={96} />
+        <SFooterCatchLine>
+          <Flex align={'center'} direction={'column'}>
+            <Flex>{'Cestovateľský blog,'}</Flex>
+            <Flex>{'ktorý nakopne tvoju chuť objavovať svet.'}</Flex>
+          </Flex>
+        </SFooterCatchLine>
         <Flex direction={'column'} align={'center'}>
           <Flex direction={small ? 'column' : 'row'} align={'center'} justify={'center'}>
             {links.map((item, index) => {
@@ -39,15 +59,16 @@ function Footer() {
               );
             })}
           </Flex>
-          <MarginBox mt={16} />
-          <Link href={'/zasadypouzivaniaosobnychudajov'}>Zásady používania osobných údajov</Link>
         </Flex>
-        <Divider />
-        <Flex direction={small ? 'column' : 'row'} align={'center'} justify={'space-between'}>
-          <Text>©{year} Simple Travelers</Text>
-          <MarginBox mt={small ? 16 : 0} />
-          <SocialNetworkLinks outlined />
-        </Flex>
+        <MarginBox mt={16} />
+        <SFooterCopyright>
+          <Flex direction={medium ? 'column-reverse' : 'row'} align={'center'} justify={'space-between'}>
+            <MarginBox mt={64} />
+            <Text>©{year} Simple Travelers</Text>
+            <MarginBox mt={medium ? 16 : 0} mr={medium ? 0 : 64} />
+            <SocialNetworkLinks />
+          </Flex>
+        </SFooterCopyright>
         <MarginBox mt={32} />
       </SFooter>
     </SFooterWrapper>

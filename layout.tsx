@@ -54,7 +54,6 @@ export default function Layout({ children }: { children: any }) {
           });`,
         }}
       />
-      <Script src={'https://scripts.feedspring.com/instagram-attrs.js'} async defer />
       <WelcomePhoto />
       <Header />
       <ScrollToTopButton />

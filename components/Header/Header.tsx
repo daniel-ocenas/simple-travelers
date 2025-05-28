@@ -9,7 +9,15 @@ import { useGetScroll } from 'utils/useGetScroll';
 import Burger from './BurgerButton';
 import styles from './Header.module.css';
 
-export const NAV_LINK_DATA = [
+interface NavLinkDataProps {
+  title: string;
+  path: string;
+  small: boolean;
+  large: boolean;
+  footer?: boolean;
+}
+
+export const NAV_LINK_DATA: NavLinkDataProps[] = [
   {
     title: 'Domov',
     path: '/',
@@ -46,6 +54,13 @@ export const NAV_LINK_DATA = [
     small: true,
     large: true,
   },
+  {
+    title: 'GDPR',
+    path: '/gdpr',
+    small: true,
+    large: true,
+    footer: true,
+  },
 ];
 
 const BlogCategories = ({ label, active }: { label: string; active: boolean }) => {
@@ -75,7 +90,7 @@ function NavList() {
   const location = useRouter();
 
   const isTop = scroll === 0;
-  const links = NAV_LINK_DATA.filter((l) => l.large);
+  const links = NAV_LINK_DATA.filter((l) => l.large && !l.footer);
 
   const getItem = (path: string, title: string) => {
     switch (title) {
@@ -114,7 +129,7 @@ function NavList() {
 function NavMenu() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  const links = NAV_LINK_DATA.filter((l) => l.small);
+  const links = NAV_LINK_DATA.filter((l) => l.small && !l.footer);
 
   return (
     <>

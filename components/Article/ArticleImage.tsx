@@ -24,25 +24,28 @@ const ArticleImage = (props: any) => {
   const imageHeight = singleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
 
   return (
-    <Flex direction={large ? 'row' : 'column'} align={'center'}>
-      {props.src?.map((image: any) => {
-        return (
-          <MarginBox mx={1} key={image.name}>
-            <Image
-              alt={image.name}
-              key={image.name}
-              src={image.src}
-              width={imageWidth}
-              height={imageHeight}
-              priority={props.idx < 4}
-              style={{
-                objectFit: 'cover',
-                borderRadius: '2px',
-              }}
-            />
-          </MarginBox>
-        );
-      })}
+    <Flex direction={'column'}>
+      <Flex direction={large ? 'row' : 'column'} align={'center'}>
+        {props.src?.map((image: any) => {
+          return (
+            <MarginBox mx={1} key={image.name}>
+              <Image
+                alt={image.name}
+                key={image.name}
+                src={image.src}
+                width={imageWidth}
+                height={imageHeight}
+                priority={props.idx < 4}
+                style={{
+                  objectFit: 'cover',
+                  borderRadius: '2px',
+                }}
+              />
+            </MarginBox>
+          );
+        })}
+      </Flex>
+      <MarginBox mt={16} />
     </Flex>
   );
 };
