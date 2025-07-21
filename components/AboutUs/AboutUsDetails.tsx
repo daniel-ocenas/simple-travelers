@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { Divider, Flex, MarginBox, Text } from 'UI';
+import { useMedium } from 'utils/useBreakpoint';
 
 const AboutUsItem = ({ text, icon, size = 32 }: { text: React.ReactNode; icon: string; size?: number }) => (
   <Flex direction={'row'} align={'center'} justify={'center'}>
@@ -13,9 +14,10 @@ const AboutUsItem = ({ text, icon, size = 32 }: { text: React.ReactNode; icon: s
 );
 
 const AboutUsDetails = () => {
+  const medium = useMedium();
   return (
     <MarginBox my={16}>
-      <Flex direction={'row'} align={'center'}>
+      <Flex direction={medium ? 'row' : 'column'} align={'center'} justify={'center'}>
         <AboutUsItem
           text={
             <>
@@ -26,7 +28,7 @@ const AboutUsDetails = () => {
           size={36}
         />
         <Flex maxWidth={16}>
-          <Divider direction={'vertical'} />
+          <Divider direction={medium ? 'vertical' : 'horizontal'} />
         </Flex>
         <AboutUsItem
           text={
@@ -37,7 +39,7 @@ const AboutUsDetails = () => {
           icon={'group'}
         />
         <Flex maxWidth={16}>
-          <Divider direction={'vertical'} />
+          <Divider direction={medium ? 'vertical' : 'horizontal'} />
         </Flex>
         <AboutUsItem
           text={

@@ -27,8 +27,8 @@ export const useGetArticles = ({ maxCount, showAll }: UseGetArticlesProps) => {
 
       let data = await response?.json();
 
-      const articles: ArticleProps[] = data?.articles;
-      const publishedArticles = showAll ? articles : articles.filter((artcl) => artcl.isPublished);
+      const articles: ArticleProps[] = data?.articles ?? [];
+      const publishedArticles = showAll ? articles : articles?.filter((artcl) => artcl.isPublished);
       const sortedArticles = sortArticles(publishedArticles, 'desc');
       const trimmedArticles: ArticleProps[] = maxCount ? [...sortedArticles]?.slice(0, maxCount) : sortedArticles;
 

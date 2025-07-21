@@ -17,7 +17,6 @@ const InstagramFeed = ({ counter }: { counter: number }) => {
     if (!config?.instagramToken) {
       return;
     }
-    console.log(config?.instagramToken);
 
     const url = new URL(`https://graph.instagram.com/v23.0/daniel_ocenas/media`);
     url.searchParams.set('fields', 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp');

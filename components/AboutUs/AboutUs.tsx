@@ -4,13 +4,14 @@ import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import React from 'react';
 import { Flex, MarginBox } from 'UI';
-import { useLarge } from 'utils/useBreakpoint';
+import { useLarge, useMedium } from 'utils/useBreakpoint';
 
 const AboutUs = () => {
   const large = useLarge();
+  const medium = useMedium();
   return (
-    <Flex direction={'column'} maxWidth={large ? 1200 : 900} align={'center'}>
-      <Flex direction={large ? 'row' : 'column-reverse'}>
+    <Flex direction={'column'} maxWidth={large ? 1200 : medium ? 900 : 300} align={'center'}>
+      <Flex direction={large ? 'row' : 'column-reverse'} align={'center'}>
         <Flex align={large ? 'flex-start' : 'center'} direction={'column'} justify={'space-evenly'} maxWidth={900}>
           <HomePageWelcomeTitle>Ahoj dobrodruh. Vitaj na našom travel blogu!</HomePageWelcomeTitle>
           <Flex align={large ? 'flex-start' : 'center'}>
@@ -36,8 +37,8 @@ const AboutUs = () => {
               alignContent: 'center',
               zIndex: 1,
             }}
-            alt="Liv a Dan"
-            src="/static/images/photosFull/AboutUs2.jpg"
+            alt={'Liv a Dan'}
+            src={'/static/images/photosFull/AboutUs2.jpg'}
           />
         </Flex>
       </Flex>

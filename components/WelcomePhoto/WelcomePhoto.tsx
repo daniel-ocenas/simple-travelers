@@ -4,12 +4,13 @@ import backgroundPhoto from 'public/static/images/Background.jpg';
 import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
 import { Flex, Link, MarginBox } from 'UI';
-import { useLarge } from 'utils/useBreakpoint';
+import { useLarge, useMedium } from 'utils/useBreakpoint';
 import { SWelcomePhoto, SWelcomePhotoDivider, TitleCatchLine, TitleContainer } from './WelcomePhoto.styled';
 
 const WelcomePhoto = () => {
   const large = useLarge();
-  const backgroundImage = large ? backgroundPhoto : backgroundPhotoSmall;
+  const medium = useMedium();
+  const backgroundImage = medium ? backgroundPhoto : backgroundPhotoSmall;
 
   return (
     <SWelcomePhoto>

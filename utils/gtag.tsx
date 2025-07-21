@@ -1,4 +1,4 @@
-// exporting our google analytics measurement id from our .env.production file
+// exporting our google analytics measurement id from our .env.local.production file
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 declare global {
   interface Window {

@@ -24,12 +24,12 @@ export const Breakpoints = {
 
 export function useSmall(): boolean {
   const { width } = useScreenSize();
-  return width <= Breakpoints.sm;
+  return width >= Breakpoints.sm;
 }
 
 export function useMedium(): boolean {
   const { width } = useScreenSize();
-  return width <= Breakpoints.md;
+  return width >= Breakpoints.md;
 }
 
 export function useLarge(): boolean {
