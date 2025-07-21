@@ -42,7 +42,6 @@ next-env.d.ts
 /public/static/
 /public/videos/
 /public/uploads/
-/public/sw.js*
 /public/workbox*
 
 

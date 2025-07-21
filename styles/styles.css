@@ -9,7 +9,8 @@ html {
   /*--primaryColor: #ffbf80;  */
   --primaryColor: #88ab8e;
   --primaryColorDark: #6c8872;
-  --secondaryColor: #f6e8d8;
+  --secondaryColor: #d5e4f6;
+  /*--secondaryColorDark: #f6bc7a;*/
   --secondaryColorDark: #f6bc7a;
   --secondaryColorLight: #fce8d5;
   overflow-x: hidden;

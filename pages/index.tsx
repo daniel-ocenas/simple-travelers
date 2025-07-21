@@ -1,4 +1,4 @@
-import WelcomeAboutUs from 'components/AboutUs';
+import AboutUs from 'components/AboutUs';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import { WithSidebar } from 'components/SideBar/SideBar';
@@ -26,7 +26,7 @@ export default function Home() {
       </Head>
       <Page>
         <Flex direction={'column'} align={'center'}>
-          <WelcomeAboutUs />
+          <AboutUs />
           <MarginBox mt={64} />
           <WithSidebar>
             <Flex direction={'column'}>

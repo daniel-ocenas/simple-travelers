@@ -8,7 +8,7 @@ interface PageProps extends PropsWithChildren {
 
 const Page = ({ mr, ml, children }: PageProps) => {
   return (
-    <SPage id={'page'} $top={'260px'} $mr={mr} $ml={ml}>
+    <SPage id={'page'} $top={'400px'} $mr={mr} $ml={ml}>
       {children}
     </SPage>
   );

@@ -1,15 +1,15 @@
 import { HomePageWelcomeDescription, HomePageWelcomeTitle } from 'components/AboutUs/AboutUs.styled';
+import AboutUsDetails from 'components/AboutUs/AboutUsDetails';
 import SocialNetworkLinks from 'components/SocialSideBar';
 import Image from 'next/image';
 import React from 'react';
 import { Flex, MarginBox } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 
-const WelcomeAboutUs = () => {
+const AboutUs = () => {
   const large = useLarge();
   return (
     <Flex direction={'column'} maxWidth={large ? 1200 : 900} align={'center'}>
-      {/*<SignInButton />*/}
       <Flex direction={large ? 'row' : 'column-reverse'}>
         <Flex align={large ? 'flex-start' : 'center'} direction={'column'} justify={'space-evenly'} maxWidth={900}>
           <HomePageWelcomeTitle>Ahoj dobrodruh. Vitaj na našom travel blogu!</HomePageWelcomeTitle>
@@ -20,7 +20,8 @@ const WelcomeAboutUs = () => {
               cestovať sa dá jednoducho a lacno.
             </HomePageWelcomeDescription>
           </Flex>
-          <Flex justify={'center'} align={'center'} minWidth={'100%'}>
+          <Flex direction={'column'} justify={'center'} align={'center'} minWidth={'100%'}>
+            <AboutUsDetails />
             <SocialNetworkLinks outlined />
           </Flex>
         </Flex>
@@ -45,4 +46,4 @@ const WelcomeAboutUs = () => {
   );
 };
 
-export default WelcomeAboutUs;
+export default AboutUs;

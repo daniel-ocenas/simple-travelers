@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SFooterWrapper = styled.footer`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
   bottom: 0;
   right: 0;
 `;
@@ -12,7 +12,7 @@ export const SFooterDivider = styled.div`
   position: absolute;
   width: 102%;
   height: 104px;
-  bottom: 310px;
+  bottom: 410px;
   left: -1px;
   overflow: hidden;
   z-index: 2;
@@ -25,7 +25,7 @@ export const SFooterDivider = styled.div`
 `;
 
 export const SFooter = styled.div`
-  height: 400px;
+  height: 500px;
   position: relative;
   max-width: 1200px;
   margin: 0 auto;

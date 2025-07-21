@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SWelcomePhoto = styled.div`
   position: absolute;
   width: 100%;
-  height: 330px;
+  height: 500px;
   top: 0;
   right: 0;
 `;
@@ -12,7 +12,7 @@ export const SWelcomePhotoDivider = styled.div`
   position: absolute;
   width: 102%;
   height: 104px;
-  top: 235px;
+  top: 406px;
   left: -1px;
   overflow: hidden;
 

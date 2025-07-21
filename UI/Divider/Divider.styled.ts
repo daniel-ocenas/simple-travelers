@@ -35,7 +35,7 @@ export const SDivider = styled.div`
   }
 
   span:nth-child(2) {
-    padding: 0px 5px;
+    padding: 0 5px;
     width: auto;
     white-space: nowrap;
   }
@@ -47,4 +47,9 @@ export const SDivider = styled.div`
     background-image: -o-linear-gradient(180deg, #bababa, transparent);
     background-image: linear-gradient(90deg, #bababa, transparent);
   }
+`;
+
+export const VerticalDivider = styled.div`
+  border-left: 1px solid #bababa;
+  height: 100%;
 `;

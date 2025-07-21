@@ -7,7 +7,7 @@ export default function Custom500() {
   return (
     <Page>
       <WithSidebar>
-        <Text type={'h2'}>500 Internal Server Error</Text>
+        <Text type={'h2'}>500 - Technické problémy na trase</Text>
       </WithSidebar>
     </Page>
   );

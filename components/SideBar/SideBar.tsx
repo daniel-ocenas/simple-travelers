@@ -1,4 +1,5 @@
 import FacebookPage from 'components/FacebookPage';
+import InstagramFeed from 'components/InstagramFeed';
 import { SSideBar } from 'components/SideBar/SideBar.styled';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -57,9 +58,9 @@ const SideBar = () => {
       )}
       <Divider text="Facebook" />
       <FacebookPage token={process.env.NEXT_PUBLIC_FB_APP_ID} />
-      {/*<MarginBox mt={16} />*/}
-      {/*<Divider text="Instagram" />*/}
-      {/*<InstagramFeed />*/}
+      <MarginBox mt={16} />
+      <Divider text="Instagram" />
+      <InstagramFeed counter={9} />
     </SSideBar>
   );
 };

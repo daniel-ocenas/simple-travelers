@@ -1,3 +1,3 @@
-import WelcomeAboutUs from './WelcomeAboutUs';
+import AboutUs from 'components/AboutUs/AboutUs';
 
-export default WelcomeAboutUs;
+export default AboutUs;

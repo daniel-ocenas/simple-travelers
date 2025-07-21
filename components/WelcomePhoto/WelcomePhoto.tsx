@@ -13,13 +13,13 @@ const WelcomePhoto = () => {
 
   return (
     <SWelcomePhoto>
-      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} fetchPriority={'high'} fill />
+      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} priority fill />
       <SWelcomePhotoDivider>
         <Image
           alt={'welcome-photo-divider'}
           src={'/static/images/BackgroundDivider2.png'}
           style={{ objectFit: 'cover' }}
-          fetchPriority={'high'}
+          priority
           fill
         />
       </SWelcomePhotoDivider>

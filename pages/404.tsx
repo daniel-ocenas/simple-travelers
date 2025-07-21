@@ -9,7 +9,7 @@ export default function Custom404() {
     <Page>
       <WithSidebar>
         <Flex direction={'column'} justify={'flex-start'} align={'center'}>
-          <Text type={'h2'}>Táto stránka nebola nájdená</Text>
+          <Text type={'h2'}>404 - Stránka sa stratila na cestách</Text>
           <Text>
             <Link href={'/'}>Naspäť na úvodnú stránku.</Link>
           </Text>
