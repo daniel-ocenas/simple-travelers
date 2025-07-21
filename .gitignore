@@ -37,11 +37,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/public/icons/
-/public/images/
-/public/static/
 /public/videos/
 /public/uploads/
 /public/workbox*
+/public/sw.js
 
 
