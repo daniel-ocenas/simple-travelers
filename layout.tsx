@@ -54,8 +54,8 @@ export default function Layout({ children }: { children: any }) {
           });`,
         }}
       />
-      <WelcomePhoto />
       <Header />
+      <WelcomePhoto />
       <ScrollToTopButton />
       <main>{children}</main>
       <Footer />

@@ -1,5 +1,6 @@
 import { SPage } from 'components/Page/Page.styled';
 import React, { PropsWithChildren } from 'react';
+import { MarginBox } from 'UI';
 import { useLarge } from 'utils/useBreakpoint';
 
 interface PageProps extends PropsWithChildren {
@@ -11,7 +12,7 @@ const Page = ({ mr, ml, children }: PageProps) => {
   const large = useLarge();
   return (
     <SPage id={'page'} $top={large ? '400px' : '480px'} $mr={mr} $ml={ml}>
-      {children}
+      <MarginBox mt={-80}>{children}</MarginBox>
     </SPage>
   );
 };

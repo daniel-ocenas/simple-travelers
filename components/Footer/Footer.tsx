@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Flex, MarginBox, Text } from 'UI';
-import { useMedium, useSmall } from 'utils/useBreakpoint';
+import { useLarge, useMedium } from 'utils/useBreakpoint';
 import { SFooter, SFooterCatchLine, SFooterCopyright, SFooterDivider, SFooterWrapper } from './Footer.styled';
 
 function Footer() {
-  const small = useSmall();
+  const large = useLarge();
   const medium = useMedium();
   const location = useRouter();
   const year = new Date().getFullYear();
@@ -42,8 +42,9 @@ function Footer() {
             <Flex>{'ktorý nakopne tvoju chuť objavovať svet.'}</Flex>
           </Flex>
         </SFooterCatchLine>
+        <MarginBox mt={32} />
         <Flex direction={'column'} align={'center'}>
-          <Flex direction={small ? 'column' : 'row'} align={'center'} justify={'center'}>
+          <Flex direction={large ? 'row' : 'column'} align={'center'} justify={'center'}>
             {links.map((item, index) => {
               return (
                 <li

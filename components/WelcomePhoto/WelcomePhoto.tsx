@@ -24,11 +24,10 @@ const WelcomePhoto = () => {
           fill
         />
       </SWelcomePhotoDivider>
-      <TitleContainer>
-        <TitleCatchLine>
-          <Flex align={'center'} direction={'column'}>
-            <MarginBox mt={large ? '8vh' : '0'} />
-            {!large && (
+      {!large && (
+        <TitleContainer>
+          <TitleCatchLine>
+            <Flex align={'center'} direction={'column'}>
               <MarginBox my={24}>
                 <Link href={'/'}>
                   <LogoSimpleTravelers
@@ -38,10 +37,10 @@ const WelcomePhoto = () => {
                   />
                 </Link>
               </MarginBox>
-            )}
-          </Flex>
-        </TitleCatchLine>
-      </TitleContainer>
+            </Flex>
+          </TitleCatchLine>
+        </TitleContainer>
+      )}
     </SWelcomePhoto>
   );
 };

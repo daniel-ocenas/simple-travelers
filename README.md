@@ -1,18 +1,45 @@
-Based on the price data shown in the chart — specifically the current price being $0.006072 — and the layout of the
-interface, it appears this is a low-cap or micro-cap cryptocurrency, possibly a meme coin or newly launched token on a
-decentralized exchange (DEX), such as PancakeSwap or Uniswap.
+# 🌍 Simple Travelers Blog
 
-Here are a few indicators:
+**Simple Travelers** is a personal travel blog built with **React**, **Next.js**, and **TypeScript** designed to share
+mine and my partner's couple's hiking adventures, remote destinations, and travel tips from around the world.
 
-The price level (around $0.006) is typical for newer or speculative tokens.
+Hosted on **AWS Amplify**, the blog is automatically deployed on each push to the `main` branch, making the publishing
+workflow seamless and efficient.
 
-The interface at the bottom (with "TXN", "Top Traders", "Holders", etc.) resembles tools like DEXTools, DexScreener, or
-PooCoin, commonly used for tracking new token launches and DEX activity.
+To access the blog page visit: [simpletravelers.sk](https://simpletravelers.sk/)
 
-The large number of holders (8,300+) suggests it has gained some traction.
+---
 
-However, the exact token name is not shown in the visible portion of the image. If you want to identify the specific
-token, try checking the full token contract address or symbol from the DEXTools/DexScreener interface directly above
-this screen.
+## 🚀 Project Overview
 
-Would you like help identifying it using a partial contract address or symbol if available?
+Simple Travelers is more than a blog — it's our story and our platform for:
+
+- Sharing remote hikes and scenic routes
+- Documenting budget-friendly travel experiences
+- Posting tips, itineraries, and funny behind-the-scenes moments
+- Reaching fellow travelers through curated content
+- And of course, showcasing my development skills and skills of partner on social media
+
+---
+
+## 🛠 Tech Stack
+
+| Tech        | Purpose                            |
+|-------------|------------------------------------|
+| React       | UI components                      |
+| Next.js     | Server-side rendering & routing    |
+| TypeScript  | Type safety & developer experience |
+| AWS Amplify | Hosting + CI/CD                    |
+
+---
+
+## 📦 Getting Started Locally
+
+```
+npm install
+
+npm run dev
+
+go to http://localhost:3000
+```
+

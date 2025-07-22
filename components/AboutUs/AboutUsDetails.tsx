@@ -21,7 +21,7 @@ const AboutUsDetails = () => {
         <AboutUsItem
           text={
             <>
-              Prejdených <b>5000+km</b>
+              Nakráčaných <b>5000km +</b>
             </>
           }
           icon={'footprints'}

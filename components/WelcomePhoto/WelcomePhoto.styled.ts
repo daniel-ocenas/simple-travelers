@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const SWelcomePhoto = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 500px;
-  top: 0;
+  top: -80px;
   right: 0;
 `;
 
@@ -30,9 +30,7 @@ export const TitleContainer = styled.div`
   text-align: center;
   padding-bottom: 3px;
 
-  @media (min-width: 1200px) {
-    margin-top: 80px;
-  }
+  margin-top: 80px;
 `;
 
 export const TitleCatchLine = styled.div`
