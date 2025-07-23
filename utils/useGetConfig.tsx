@@ -6,7 +6,7 @@ export const useGetConfig = () => {
 
   useEffect(() => {
     const fetchConfig = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/config`).catch(() => {
+      const response = await fetch('/api/config').catch(() => {
         return undefined;
       });
       let data = await response?.json();
