@@ -21,6 +21,11 @@
     "incremental": true,
     "types": [
       "vite-plugin-svgr/client"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
     ]
   },
   "include": [

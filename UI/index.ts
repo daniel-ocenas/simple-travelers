@@ -1,7 +1,6 @@
 import CheckButton from './Button';
 import Divider from './Divider';
 import { CenterFlex, Flex } from './Flex';
-import Icon from './Icon';
 import { FloatingLabel, TextArea, TextInput } from './Inputs';
 import Link from './Link';
 import Loader from './Loader';
@@ -16,7 +15,6 @@ export {
   Divider,
   CenterFlex,
   Flex,
-  Icon,
   FloatingLabel,
   TextArea,
   TextInput,

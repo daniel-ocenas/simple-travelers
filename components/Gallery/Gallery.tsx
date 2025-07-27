@@ -58,7 +58,7 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    const viewParam = searchParams.get('view') ?? undefined;
+    const viewParam = searchParams?.get('view') ?? undefined;
     const optionToSet = galleryOptions.find((opt) => opt.option === viewParam);
     if (optionToSet) {
       setFilterState(optionToSet);

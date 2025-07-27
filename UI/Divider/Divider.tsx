@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Flex } from '../Flex';
 import MarginBox from '../MarginBox';

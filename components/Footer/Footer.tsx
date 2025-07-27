@@ -7,12 +7,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Flex, MarginBox, Text } from 'UI';
-import { useLarge, useMedium } from 'utils/useBreakpoint';
+import { useLarge } from 'utils/useBreakpoint';
 import { SFooter, SFooterCatchLine, SFooterCopyright, SFooterDivider, SFooterWrapper } from './Footer.styled';
 
 function Footer() {
   const large = useLarge();
-  const medium = useMedium();
   const location = useRouter();
   const year = new Date().getFullYear();
   const links = NAV_LINK_DATA.filter((l) => l.small || l.footer);
@@ -64,10 +63,10 @@ function Footer() {
         </Flex>
         <MarginBox mt={16} />
         <SFooterCopyright>
-          <Flex direction={medium ? 'column-reverse' : 'row'} align={'center'} justify={'space-between'}>
+          <Flex direction={'column-reverse'} align={'center'} justify={'space-between'}>
             <MarginBox mt={64} />
             <Text>©{year} Simple Travelers</Text>
-            <MarginBox mt={medium ? 16 : 0} mr={medium ? 0 : 64} />
+            <MarginBox mt={16} />
             <SocialNetworkLinks />
           </Flex>
         </SFooterCopyright>

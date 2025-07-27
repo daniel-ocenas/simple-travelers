@@ -1,3 +1,4 @@
+'use client';
 import React, { PropsWithChildren } from 'react';
 
 export type FlexDirectionType = 'row' | 'row-reverse' | 'column' | 'column-reverse' | 'initial' | 'inherit';

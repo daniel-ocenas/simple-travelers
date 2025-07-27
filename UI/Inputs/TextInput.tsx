@@ -1,3 +1,4 @@
+'use client';
 import { Input } from 'antd';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React, { useEffect, useState } from 'react';

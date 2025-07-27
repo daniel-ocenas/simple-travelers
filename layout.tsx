@@ -1,9 +1,8 @@
 import ScrollToTopButton from 'components/ScrollToTopButton';
 import WelcomePhoto from 'components/WelcomePhoto';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import Script from 'next/script';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import * as gtag from 'utils/gtag';
 import Footer from './components/Footer';
@@ -17,27 +16,10 @@ declare global {
 }
 
 export default function Layout({ children }: { children: any }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    // function to get the current page url and pass it to gtag pageView() function
-    const handleRouteChange = (url: string) => {
-      gtag.pageView(url);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-    router.events.on('hashChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-      router.events.off('hashChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-
   return (
     <>
       <Head>
-        <title></title>
+        <title>Simple Travelers, cestovateľský blog</title>
         <link rel={'manifest'} href={'/manifest.json'} />
         <meta name={'theme-color'} content={'#ffffff'} />
       </Head>
