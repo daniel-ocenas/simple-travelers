@@ -1,3 +1,4 @@
+'use client';
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import { SBlogCardsContainer } from 'components/BlogCardsView/BlogCardsView.styled';
 import Card from 'components/Card';

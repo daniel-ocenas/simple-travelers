@@ -37,6 +37,7 @@ export default function Layout({ children }: { children: any }) {
   return (
     <>
       <Head>
+        <title></title>
         <link rel={'manifest'} href={'/manifest.json'} />
         <meta name={'theme-color'} content={'#ffffff'} />
       </Head>

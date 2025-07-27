@@ -1,3 +1,4 @@
+'use client';
 import { Button } from 'antd';
 import { notify } from 'components/Notification/notification';
 import { useState } from 'react';

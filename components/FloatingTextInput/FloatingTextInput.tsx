@@ -1,3 +1,4 @@
+'use client';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 import { FloatingLabel, TextInput } from 'UI';

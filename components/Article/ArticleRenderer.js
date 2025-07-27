@@ -1,3 +1,4 @@
+'use client';
 import ArticleSubtitle from 'components/Article/ArticleSubtitle';
 import React from 'react';
 import ArticleHeader from './ArticleHeader';

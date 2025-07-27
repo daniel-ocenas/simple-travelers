@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Loader, Text } from 'UI';
-import { useGetConfig } from 'utils/useGetConfig';
 import styles from './InstagramFeed.module.css';
 
 const InstagramFeed = ({ counter }: { counter: number }) => {
@@ -11,16 +10,16 @@ const InstagramFeed = ({ counter }: { counter: number }) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [showImage, setShowImage] = useState<boolean>(true);
 
-  const { config } = useGetConfig();
+  const instagramToken = process.env.INSTAGRAM_TOKEN;
 
   useEffect(() => {
-    if (!config?.instagramToken) {
+    if (!instagramToken) {
       return;
     }
 
     const url = new URL(`https://graph.instagram.com/v23.0/daniel_ocenas/media`);
     url.searchParams.set('fields', 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp');
-    url.searchParams.set('access_token', config.instagramToken);
+    url.searchParams.set('access_token', instagramToken);
     const fetchData = async () => {
       setIsLoading(true);
       fetch(url)
@@ -48,7 +47,7 @@ const InstagramFeed = ({ counter }: { counter: number }) => {
     if (placeholder.current) observer.observe(placeholder.current);
 
     return () => observer.disconnect();
-  }, [config, counter]);
+  }, [instagramToken, counter]);
 
   return (
     <>

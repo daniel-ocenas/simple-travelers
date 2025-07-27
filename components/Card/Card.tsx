@@ -1,3 +1,4 @@
+'use client';
 import { CardText, CategoryButton, SCard, SCardImage, SContent } from 'components/Card/Card.styled';
 import React, { useState } from 'react';
 import { CenterFlex, Flex, Link, Loader, MarginBox, Text } from 'UI';

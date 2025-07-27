@@ -12,16 +12,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Simple Travelers, cestovateľský blog</title>
-        <meta property="og:title" content="Simple Travelers" />
-        <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
-        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:title" content="Simple Travelers, cestovateľský blog" />
+        <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/Background.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/" />
         <meta property="og:type" content="article" />
         <meta
           name="keywords"
-          content="cestovateľský blog, cestuj po svete, erasmus, roadtrip, lacné cestovanie, cestovanie bez cestovky"
+          content="cestovateľský blog, erasmus, roadtripy, lacné cestovanie, cestovanie bez cestovky, dialkova turistika, thru-hiking, turistikovanie, hiking"
         />
       </Head>
       <Page>

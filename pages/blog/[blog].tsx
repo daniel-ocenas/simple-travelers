@@ -1,27 +1,40 @@
 import ArticleRenderer from 'components/Article';
 import Page from 'components/Page';
 import { WithSidebar } from 'components/SideBar/SideBar';
-import Head from 'next/head';
+import { Metadata } from 'next';
 import React, { useEffect, useRef, useState } from 'react';
 import { Text } from 'UI';
 import { useScreenSize } from 'utils/useBreakpoint';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const id = query.blog;
-  // TODO local / vs prod url
-  const response = await fetch(`/api/articles/${id}`).catch(() => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/articles/${id}`).catch(() => {
     return undefined;
   });
 
   let data = await response?.json();
-  // if (response?.status !== 200) {
-  //   data = ArticlesList.find((article) => article.url === id);
-  // }
 
   return {
     props: {
       articleData: data,
     },
+  };
+}
+
+export async function generateMetadata({ articleData }: { articleData: any }): Promise<Metadata> {
+  const { title, description, image, keywords } = articleData;
+  console.log(articleData);
+  return {
+    title: `${title}, Simple Travelers`,
+    openGraph: {
+      description: `${description ?? ''}`,
+      title: `${title}, Simple Travelers`,
+      images: [{ url: `${image ? process.env.NEXT_PUBLIC_BASE_URL + image : ''}` }],
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${articleData.url}`,
+      type: 'article',
+    },
+    description: `${description ?? ''}`,
+    keywords: `${keywords ?? ''}`,
   };
 }
 
@@ -45,29 +58,8 @@ const BlogPage = ({ articleData }: { articleData: any }) => {
     return () => window.removeEventListener('resize', getTextAreaWidth);
   }, []);
 
-  const head = {
-    title: `${title}, Simple Travelers`,
-    articleTitle: `${title ?? ''}`,
-    description: `${description ?? ''}`,
-    image: `${image ? 'https://simpletravelers.sk' + image : ''}`,
-    keywords: `${keywords ?? ''}`,
-    url: `https://simpletravelers.sk/blog/${articleData.url}`,
-  };
-
   return (
     <>
-      {articleData.tags && (
-        <Head>
-          <title>{head.title}</title>
-          <meta property="og:title" content={head.articleTitle} />
-          <meta property="og:description" content={head.description} />
-          <meta name="description" content={head.description} />
-          <meta property="og:image" content={head.image} />
-          <meta property="og:url" content={head.url} />
-          <meta property="og:type" content={'article'} />
-          <meta name="keywords" content={head.keywords} />
-        </Head>
-      )}
       <Page>
         <WithSidebar>
           <div ref={refTextArea}>

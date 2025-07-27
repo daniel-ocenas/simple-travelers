@@ -10,14 +10,14 @@ export default function Galeria() {
   return (
     <>
       <Head>
-        <title>Galéria, Simple Travelers</title>
-        <meta property="og:title" content="Simple Travelers - Galéria" />
+        <meta property="og:title" content="Galéria, Simple Travelers" />
         <meta
           property="og:description"
           content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete."
         />
         <meta name="description" content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
-        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:text" content="GDPR" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/Background.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/galeria" />
         <meta property="og:type" content="article" />
         <link rel="canonical" href="https://simpletravelers.sk/galeria" />

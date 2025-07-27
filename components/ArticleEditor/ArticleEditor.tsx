@@ -1,3 +1,4 @@
+'use client';
 import { Button } from 'antd';
 import CreateArticle from 'components/ArticleEditor/CreateArticle';
 import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';

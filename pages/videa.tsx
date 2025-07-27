@@ -10,13 +10,13 @@ export default function Videos() {
     <>
       <Head>
         <title>Videá, Simple Travelers</title>
-        <meta property="og:title" content="Videá" />
+        <meta property="og:title" content="Videá, Simple Travelers" />
         <meta property="og:description" content="Videá cestovateľského blogu Simple Travelers" />
         <meta name="description" content="Videá cestovateľského blogu Simple Travelers" />
         <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/videa" />
         <meta property="og:type" content="article" />
-        <meta name="keywords" content="video, videos" />
+        <meta name="keywords" content="video, videos, travel videos, hiking videos" />
       </Head>
       <Page>
         <WithSidebar>

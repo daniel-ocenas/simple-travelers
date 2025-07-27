@@ -1,3 +1,4 @@
+'use client';
 import { SSocialNetworkLinks } from 'components/SocialSideBar/SocialNetworkLinks.styled';
 import Image from 'next/image';
 import React from 'react';

@@ -1,3 +1,4 @@
+'use client';
 import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { ArticleHeader } from 'components/Article';

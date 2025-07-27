@@ -1,3 +1,4 @@
+'use client';
 import { MenuProps } from 'antd';
 import { LogoSimpleTravelers, SDropdown, SideBar, SNavList, STabsContainers } from 'components/Header/Header.styled';
 import SocialNetworkLinks from 'components/SocialSideBar';

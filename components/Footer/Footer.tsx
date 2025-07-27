@@ -1,3 +1,4 @@
+'use client';
 import { NAV_LINK_DATA } from 'components/Header/Header';
 import styles from 'components/Header/Header.module.css';
 import SocialNetworkLinks from 'components/SocialSideBar';
@@ -70,7 +71,6 @@ function Footer() {
             <SocialNetworkLinks />
           </Flex>
         </SFooterCopyright>
-        <MarginBox mt={32} />
       </SFooter>
     </SFooterWrapper>
   );

@@ -1,3 +1,4 @@
+'use client';
 import FacebookPage from 'components/FacebookPage';
 import { SSideBar } from 'components/SideBar/SideBar.styled';
 import Image from 'next/image';

@@ -3,7 +3,7 @@ import skSK from 'antd/locale/sk_SK';
 import dayjs from 'dayjs';
 import dayJsSk from 'dayjs/locale/sk';
 import Layout from 'layout';
-import type { NextPage } from 'next';
+import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import type { ReactElement, ReactNode } from 'react';
@@ -27,15 +27,16 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <Layout>
       <Head>
+        <title>Simple Travelers, cestovateľský blog</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="icon" type="image/png" sizes="72x72" href="/static/icons/icon-72x72.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/static/icons/icon-96x96.png" />
+        <link rel="icon" type="image/png" href="/static/icons/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/static/icons/favicon.svg" />
+        <link rel="shortcut icon" href="/static/icons/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Simple Travelers" />
         <meta
           name="viewport"
-          content="height=device-height,
-                      width=device-width, initial-scale=1.0,
-                      minimum-scale=1.0, maximum-scale=1.0,
-                      user-scalable=no"
+          content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0"
         />
       </Head>
       {getLayout(

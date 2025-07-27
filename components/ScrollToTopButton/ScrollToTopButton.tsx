@@ -1,3 +1,4 @@
+'use client';
 import { SStyledScrollToTopButton } from 'components/ScrollToTopButton/ScrollToTopButton.styled';
 import React from 'react';
 import { scrollToTopSmooth, useGetScroll } from 'utils/useGetScroll';

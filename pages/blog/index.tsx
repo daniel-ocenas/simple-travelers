@@ -62,6 +62,7 @@ function Blog() {
     <>
       <Head>
         <title>Blog, Simple Travelers</title>
+        <meta property="og:title" content="Blog, Simple Travelers" />
         <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
         <meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
         <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
@@ -73,7 +74,7 @@ function Blog() {
         <meta property="og:type" content="article" />
         <meta
           name="keywords"
-          content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky"
+          content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky, hiking, thru-hiking, turistika, dialkova turistika"
         />
       </Head>
       <Page>

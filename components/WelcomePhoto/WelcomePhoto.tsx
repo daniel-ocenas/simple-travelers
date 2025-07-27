@@ -1,3 +1,4 @@
+'use client';
 import { LogoSimpleTravelers } from 'components/Header/Header.styled';
 import Image from 'next/image';
 import backgroundPhoto from 'public/static/images/Background.jpg';
@@ -20,6 +21,7 @@ const WelcomePhoto = () => {
           alt={'welcome-photo-divider'}
           src={'/static/images/BackgroundDivider2.png'}
           style={{ objectFit: 'cover' }}
+          sizes={'(max-width: 768px) 100vw, 33vw'}
           priority
           fill
         />

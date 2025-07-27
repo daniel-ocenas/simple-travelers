@@ -1,3 +1,4 @@
+'use client';
 import { Form, Select } from 'antd';
 import ImageGrid from 'components/Gallery/ImageGrid';
 import { GalleryImageProps } from 'components/Gallery/ImageGrid/ImageGrid';

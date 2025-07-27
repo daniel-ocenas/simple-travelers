@@ -1,3 +1,4 @@
+'use client';
 import { SPage } from 'components/Page/Page.styled';
 import React, { PropsWithChildren } from 'react';
 import { MarginBox } from 'UI';

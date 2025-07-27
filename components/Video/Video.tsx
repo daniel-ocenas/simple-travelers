@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { SVideo } from './Video.styled';
 

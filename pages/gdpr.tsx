@@ -9,12 +9,12 @@ export default function GDPR() {
     <Page>
       <Head>
         <title>GDPR, Simple Travelers</title>
-        <meta property="og:title" content="Simple Travelers | GDPR" />
+        <meta property="og:title" content="GDPR, Simple Travelers" />
         <meta property="og:description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
         <meta name="description" content="Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet." />
-        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/ZionAngelsLanding.jpg" />
+        <meta property="og:image" content="https://simpletravelers.sk/static/images/photosFull/Background.jpg" />
         <meta property="og:url" content="https://simpletravelers.sk/gdpr" />
-        <meta name="keywords" content="" />
+        <meta property="og:type" content="articles" />
       </Head>
       <MarginBox mt={16} />
       <Text type={'h2'}>Zásady používania osobných údajov</Text>

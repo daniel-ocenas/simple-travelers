@@ -1,3 +1,4 @@
+'use client';
 import parse from 'html-react-parser';
 import React from 'react';
 import { Flex, Text } from 'UI';

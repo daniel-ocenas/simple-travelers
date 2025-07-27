@@ -1,11 +1,12 @@
-import React from 'react'
-import ArticleLink from './ArticleLink'
-import ArticleSimpleText from './ArticleSimpleText'
+'use client';
+import React from 'react';
+import ArticleLink from './ArticleLink';
+import ArticleSimpleText from './ArticleSimpleText';
 
 const KeysToComponentMap = {
   link: ArticleLink,
   simpleText: ArticleSimpleText,
-}
+};
 
 function ArticleTextRenderer(config, idx) {
   if (typeof KeysToComponentMap[config.component] !== 'undefined') {
@@ -17,8 +18,8 @@ function ArticleTextRenderer(config, idx) {
       name: config.name,
       url: config.url,
       type: config.type,
-    })
+    });
   }
 }
 
-export default ArticleTextRenderer
+export default ArticleTextRenderer;
