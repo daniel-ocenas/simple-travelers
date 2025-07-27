@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const SWelcomePhoto = styled.div`
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 500px;
-  top: -80px;
+  top: 0;
   right: 0;
 `;
 

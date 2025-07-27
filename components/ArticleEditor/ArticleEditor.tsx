@@ -1,9 +1,9 @@
 'use client';
 import { Button } from 'antd';
 import CreateArticle from 'components/ArticleEditor/CreateArticle';
-import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import BlogCardsView from 'components/BlogCardsView';
 import { notify } from 'components/Notification/notification';
+import { ArticleProps } from 'lib/domains/Article/Article.types';
 import React, { useState } from 'react';
 import { Flex, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';

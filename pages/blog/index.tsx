@@ -1,8 +1,8 @@
 import { Col, Form, Row, Select } from 'antd';
-import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import BlogCardsView from 'components/BlogCardsView';
 import Page from 'components/Page';
 import { WithSidebar } from 'components/SideBar/SideBar';
+import { ArticleProps } from 'lib/domains/Article/Article.types';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { Flex, Loader, MarginBox } from 'UI';

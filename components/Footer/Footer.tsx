@@ -22,7 +22,7 @@ function Footer() {
         src={'/static/images/photosFull/NZSeftonView.jpg'}
         alt={'footer-image'}
         fetchPriority={'low'}
-        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        style={{ objectFit: 'cover' }}
         fill
       />
       <SFooterDivider>
@@ -30,7 +30,7 @@ function Footer() {
           alt={'welcome-photo-divider'}
           src={'/static/images/BackgroundDivider.png'}
           style={{ objectFit: 'cover' }}
-          fetchPriority={'high'}
+          fetchPriority={'low'}
           fill
         />
       </SFooterDivider>
@@ -63,7 +63,7 @@ function Footer() {
         </Flex>
         <MarginBox mt={16} />
         <SFooterCopyright>
-          <Flex direction={'column-reverse'} align={'center'} justify={'space-between'}>
+          <Flex direction={'column-reverse'} align={'center'} justify={'space-between'} maxHeight={150}>
             <MarginBox mt={64} />
             <Text>©{year} Simple Travelers</Text>
             <MarginBox mt={16} />

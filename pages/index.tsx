@@ -29,7 +29,9 @@ export default function Home() {
           <MarginBox mt={64} />
           <WithSidebar>
             <Flex direction={'column'}>
-              <Text type={'h6'}>Najnovšie články</Text>
+              <Text $size={20} $weight={'bold'}>
+                Najnovšie články
+              </Text>
               {isLoading ? <Loader /> : <BlogCardsView articles={articlesList} />}
             </Flex>
           </WithSidebar>

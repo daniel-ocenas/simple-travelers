@@ -35,23 +35,14 @@ const nextConfig = {
       },
     ],
   },
+  productionBrowserSourceMaps: true,
   compiler: {
     styledComponents: true,
   },
   i18n: {
-    // These are all the locales you want to support in
-    // your application
     locales: ['sk', 'sk-SK'],
-    // This is the default locale used when visiting
-    // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'sk',
   },
-  // domains: [
-  //   {
-  //     domain: 'simpletravelers.sk',
-  //     defaultLocale: 'sk',
-  //   },
-  // ],
   transpilePackages: [
     'antd',
     '@ant-design',

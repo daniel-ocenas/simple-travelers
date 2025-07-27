@@ -1,4 +1,4 @@
-import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+import { ArticleProps } from 'lib/domains/Article/Article.types';
 import { useEffect, useState } from 'react';
 
 interface UseGetArticlesProps {

@@ -2,9 +2,9 @@
 import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { ArticleHeader } from 'components/Article';
-import { ArticleComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import FloatingTextInput from 'components/FloatingTextInput';
 import ImageUploader from 'components/ImageUploader/ImageUploader';
+import { ArticleComponent } from 'lib/domains/Article/Article.types';
 import React, { useCallback } from 'react';
 import { Flex, MarginBox, RichTextEditor } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';

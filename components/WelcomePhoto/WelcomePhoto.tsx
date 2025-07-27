@@ -15,7 +15,16 @@ const WelcomePhoto = () => {
 
   return (
     <SWelcomePhoto>
-      <Image alt={'welcome-photo'} src={backgroundImage} style={{ objectFit: 'cover' }} priority fill />
+      <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+        <Image
+          alt={'welcome-photo'}
+          src={backgroundImage}
+          style={{ objectFit: 'cover', position: 'absolute' }}
+          sizes="100vw"
+          priority
+          fill
+        />
+      </div>
       <SWelcomePhotoDivider>
         <Image
           alt={'welcome-photo-divider'}

@@ -6,7 +6,7 @@ import {
   emptySectionTitleComponent,
   emptySubtitleComponent,
   emptyTextComponent,
-} from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+} from 'lib/domains/Article/Article.types';
 import React, { useCallback } from 'react';
 import { Flex, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';

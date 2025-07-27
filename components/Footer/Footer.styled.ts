@@ -4,7 +4,7 @@ export const SFooterWrapper = styled.footer`
   position: relative;
   width: 100%;
   height: 500px;
-  bottom: -80px;
+  bottom: 0;
   right: 0;
 `;
 

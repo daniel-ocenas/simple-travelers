@@ -12,7 +12,7 @@ interface PageProps extends PropsWithChildren {
 const Page = ({ mr, ml, children }: PageProps) => {
   const large = useLarge();
   return (
-    <SPage id={'page'} $top={large ? '400px' : '480px'} $mr={mr} $ml={ml}>
+    <SPage id={'page'} $top={large ? '500px' : '530px'} $mr={mr} $ml={ml}>
       <MarginBox mt={-80}>{children}</MarginBox>
     </SPage>
   );

@@ -1,5 +1,5 @@
 import { ObjectId } from 'bson';
-import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+import { ArticleProps } from 'lib/domains/Article/Article.types';
 import ArticleList from 'lib/mongodb/ArticleList';
 import { connectToDatabase } from 'lib/mongodb/mongodb';
 

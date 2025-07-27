@@ -2,11 +2,11 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Divider, Input, Switch } from 'antd';
 import ArticleRenderer from 'components/Article';
-import { ArticleComponent, ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
 import { ComponentPicker } from 'components/ArticleEditor/CreateArticle/ComponentSelector/ComponentPicker';
 import { EditableComponent } from 'components/ArticleEditor/CreateArticle/ComponentSelector/EditableComponent';
 import FloatingTextInput from 'components/FloatingTextInput';
 import { notify } from 'components/Notification/notification';
+import { ArticleComponent, ArticleProps } from 'lib/domains/Article/Article.types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Flex, Link, MarginBox } from 'UI';
 import { useMedium } from 'utils/useBreakpoint';

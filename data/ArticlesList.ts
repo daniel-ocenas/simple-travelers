@@ -1,6 +1,6 @@
 //
 
-import { ArticleProps } from 'components/ArticleEditor/CreateArticle/ComponentSelector/Article.types';
+import { ArticleProps } from 'lib/domains/Article/Article.types';
 
 export function sortArticlesByDate(articleList: ArticleProps[]): ArticleProps[] {
   return articleList?.sort((a: any, b: any) => {

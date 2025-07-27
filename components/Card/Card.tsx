@@ -37,7 +37,7 @@ const CardWrapper = ({ title, date, text, image, category }: CardWrapperProps) =
         ) : (
           <SContent>
             <Flex direction={'column'}>
-              <Text color={'black'} type={'h5'}>
+              <Text color={'black'} $size={20} $weight={'bold'}>
                 {title}
               </Text>
               <Text color={'black'} $size={14} $weight={'light'}>
