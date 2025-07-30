@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const compose = require('./utils/compose');
+const compose = require('./src/utils/compose');
 // const runtimeCaching = require('next-pwa/cache');
 const withTM = require('next-transpile-modules')([
   'antd',
@@ -39,10 +39,17 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  i18n: {
-    locales: ['sk', 'sk-SK'],
-    defaultLocale: 'sk',
-  },
+  // i18n: {
+  //   locales: ['sk', 'sk-SK'],
+  //   defaultLocale: 'sk',
+  // },
+  // webpack: (config) => {
+  //   config.module.rules.push({
+  //     test: /\.css$/,
+  //     use: ['style-loader', 'css-loader', 'postcss-loader'],
+  //   });
+  //   return config;
+  // },
   transpilePackages: [
     'antd',
     '@ant-design',
