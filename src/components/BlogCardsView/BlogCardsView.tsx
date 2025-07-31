@@ -1,7 +1,6 @@
 'use client';
 import { Col, Form, Row, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { SBlogCardsContainer } from 'src/components/BlogCardsView/BlogCardsView.styled';
 import Card from 'src/components/Card';
 import { ArticleProps } from 'src/lib/domains/Article/Article.types';
 import { Flex, Loader, Text } from 'src/UI';
@@ -108,7 +107,8 @@ const BlogCardsView = ({ header, maxCount, edit, onClick, enableFilters }: BlogC
         {isLoading ? (
           <Loader />
         ) : (
-          <SBlogCardsContainer>
+          // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+          <div className="max-w-1200">
             {articlesDisplay?.map((card: ArticleProps) => (
               <div key={`card-${card.url}`} onClick={() => handleOnClick(card)}>
                 <Card
@@ -122,7 +122,7 @@ const BlogCardsView = ({ header, maxCount, edit, onClick, enableFilters }: BlogC
                 />
               </div>
             ))}
-          </SBlogCardsContainer>
+          </div>
         )}
       </Flex>
     </Flex>

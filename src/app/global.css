@@ -1,7 +1,11 @@
-html {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tu môžete ponechať vaše vlastné CSS premenné a štýly ktoré nie sú pokryté Tailwindom */
+:root {
   --backgroundColor: #f7f6f3;
   --titleColor: #0d0d0d;
-  /*--primaryColor: #ffbf80;  */
   --primaryColor: #88ab8e;
   --primaryColorDark: #6c8872;
   --primaryColorLight: #b0ccb5;
