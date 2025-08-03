@@ -3,11 +3,11 @@ import { Nunito } from 'next/font/google';
 import Head from 'next/head';
 import React from 'react';
 
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import Provider from '@/components/Providers/Provider';
-import ScrollToTop from '@/components/ScrollToTop';
-import WelcomePhoto from '@/components/WelcomePhoto';
+import ScrollTop from '@/components/buttons/scroll-top';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import Provider from '@/components/providers/provider';
+import WelcomePhoto from '@/components/welcome-photo';
 import '@/styles/globals.css';
 
 const nunito = Nunito({
@@ -29,7 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sk" className="scrollbar overflow-y-scroll">
+    <html
+      lang="sk"
+      className="scrollbar overflow-y-scroll"
+      suppressHydrationWarning
+    >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -40,11 +44,11 @@ export default function RootLayout({
         <Provider>
           <WelcomePhoto />
           <Header />
-          <div className="mx-auto mt-[340px] w-full max-w-screen-xl px-[10vw] md:px-[5vw]">
+          <div className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl px-[10vw] md:px-[5vw]">
             <main>{children}</main>
           </div>
           <div className="fixed bottom-12 right-10">
-            <ScrollToTop />
+            <ScrollTop />
           </div>
           <Footer />
         </Provider>

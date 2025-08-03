@@ -23,9 +23,9 @@ export const emptySubtitleComponent: ArticleComponent = {
 
 export type ArticleComponentType = 'p' | 'h4' | 'h3' | 'h2' | 'img';
 
-type ComponentType = {
+export type ComponentType = {
   component: 'text';
-  text: string;
+  text?: string;
 };
 
 type ImageSrcType = {

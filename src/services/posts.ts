@@ -1,4 +1,4 @@
-import { ArticlesList } from '@/data/ArticlesList';
+import { ArticleList } from '@/data/article-list';
 
 export async function getAllPosts(slug?: string) {
   // const allPosts: Article[] = [];
@@ -26,5 +26,5 @@ export async function getAllPosts(slug?: string) {
   // const blurImages = await Promise.all(blurImagesPromises);
   // allPosts.forEach((post, i) => (post.url = blurImages[i].base64));
 
-  return ArticlesList;
+  return ArticleList;
 }

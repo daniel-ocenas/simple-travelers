@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import ArticleRenderer from '@/components/Article';
-import RelatedPosts from '@/components/Posts/RelatedPosts';
+import ArticleRenderer from '@/components/article/article-renderer';
+import RelatedPosts from '@/components/posts/related-posts';
 import { getAllPosts } from '@/services/posts';
 import { Article } from '@/store/Article/Article.types';
 

@@ -1,10 +1,10 @@
-import PostsGrid from '@/components/Posts/PostsGrid';
+import PostsGrid from '@/components/posts/posts-grid';
 import { getAllPosts } from '@/services/posts';
 import { toUniqueArray } from '@/utils/toUniqueArray';
 
 export const metadata = {
   title: 'Blog',
-  description: 'All posts are created by notion ai.',
+  description: 'All posts are created by notion ai.'
 };
 
 export default async function BlogPage() {
@@ -12,9 +12,9 @@ export default async function BlogPage() {
 
   const allCategories = toUniqueArray(
     allPosts
-      .filter((post) => post.isPublished)
-      .map((post) => post.categories)
-      .flat()
+    .filter((post) => post.isPublished)
+    .map((post) => post.categories)
+    .flat()
   ).sort();
 
   return (

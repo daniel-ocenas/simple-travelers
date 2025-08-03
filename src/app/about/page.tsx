@@ -1,6 +1,8 @@
-import AboutUsPageSection from '@/components/AboutUs/AboutUsPageSection';
+import { Metadata } from 'next';
 
-export const metadata = {
+import AboutPageSection from '@/components/about/about-page-section';
+
+export const metadata: Metadata = {
   title: 'About',
   description: 'This is about page.',
 };
@@ -10,7 +12,7 @@ export default function AboutPage() {
     <>
       <h1 className="my-12 text-center text-3xl font-bold">O nás</h1>
       <div className="mb-12">
-        <AboutUsPageSection />
+        <AboutPageSection />
       </div>
       <p className="mb-4 text-base">
         Sme Liv a Dan a spoločne tvoríme obsah ako Simple travelers. Sme mladý
