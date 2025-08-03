@@ -1,24 +1,47 @@
 'use client';
+
 import Image from 'next/image';
 import React from 'react';
-import { Divider, Flex, MarginBox, Text } from 'src/UI';
-import { useMedium } from 'src/utils/useBreakpoint';
 
-const AboutUsItem = ({ text, icon, size = 32 }: { text: React.ReactNode; icon: string; size?: number }) => (
-  <Flex direction={'row'} align={'center'} justify={'center'}>
-    <Image className={'image'} src={`/static/icons/${icon}.svg`} alt={icon} width={size} height={size} />
-    <MarginBox mr={16} />
-    <Text color={'#888888'} $size={20}>
-      {text}
-    </Text>
-  </Flex>
-);
+import { useTheme } from 'next-themes';
+
+import { useMedium } from '@/hooks/useBreakpoint';
+
+
+const AboutUsItem = ({
+  text,
+  icon,
+  size = 32,
+}: {
+  text: React.ReactNode;
+  icon: string;
+  size?: number;
+}) => {
+  const { theme } = useTheme();
+  return (
+    <div className="flex flex-row items-center justify-center">
+      <Image
+        src={`/static/icons/${theme === 'dark' ? icon + '-white' : icon}.svg`}
+        alt={icon}
+        width={size}
+        height={size}
+      />
+      <div className="mr-4" />
+      <span className="text-lg">{text}</span>
+    </div>
+  );
+};
 
 const AboutUsDetails = () => {
   const medium = useMedium();
+
   return (
-    <MarginBox my={16}>
-      <Flex direction={medium ? 'row' : 'column'} align={'center'} justify={'center'}>
+    <div className="my-4">
+      <div
+        className={`flex items-center justify-center ${
+          medium ? 'flex-row' : 'flex-col'
+        }`}
+      >
         <AboutUsItem
           text={
             <>
@@ -28,9 +51,9 @@ const AboutUsDetails = () => {
           icon={'footprints'}
           size={36}
         />
-        <Flex maxWidth={16}>
-          <Divider direction={medium ? 'vertical' : 'horizontal'} />
-        </Flex>
+        <div className="max-w-4 mx-2">
+          <div className={`bg-gray-400 ${medium ? 'h-8 w-px' : 'h-px w-8'}`} />
+        </div>
         <AboutUsItem
           text={
             <>
@@ -39,9 +62,9 @@ const AboutUsDetails = () => {
           }
           icon={'group'}
         />
-        <Flex maxWidth={16}>
-          <Divider direction={medium ? 'vertical' : 'horizontal'} />
-        </Flex>
+        <div className="max-w-4 mx-2">
+          <div className={`bg-gray-400 ${medium ? 'h-8 w-px' : 'h-px w-8'}`} />
+        </div>
         <AboutUsItem
           text={
             <>
@@ -51,8 +74,9 @@ const AboutUsDetails = () => {
           icon={'globe'}
           size={28}
         />
-      </Flex>
-    </MarginBox>
+      </div>
+    </div>
   );
 };
+
 export default AboutUsDetails;

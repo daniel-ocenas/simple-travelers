@@ -1,13 +1,9 @@
 'use client';
+
 import React from 'react';
-import { Text } from 'src/UI';
 
 const ArticleSectionHeader = (props: any) => {
-  return (
-    <Text type={'h3'} className={props.className}>
-      {props.text}
-    </Text>
-  );
+  return <h3 className={props.className}>{props.text}</h3>;
 };
 
 export default ArticleSectionHeader;

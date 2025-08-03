@@ -24,12 +24,14 @@ Simple Travelers is more than a blog — it's our story and our platform for:
 
 ## 🛠 Tech Stack
 
-| Tech        | Purpose                            |
-|-------------|------------------------------------|
-| React       | UI components                      |
-| Next.js     | Server-side rendering & routing    |
-| TypeScript  | Type safety & developer experience |
-| AWS Amplify | Hosting + CI/CD                    |
+| Tech          | Purpose                            |
+|---------------|------------------------------------|
+| React         | UI components                      |
+| Next.js       | Server-side rendering & routing    |
+| TypeScript    | Type safety & developer experience |
+| Redux Toolkit | State management library           |
+| Tailwind      | CSS Framework                      |
+| AWS Amplify   | Hosting + CI/CD                    |
 
 ---
 
@@ -39,7 +41,8 @@ Simple Travelers is more than a blog — it's our story and our platform for:
 npm install
 
 npm run dev
-
-go to http://localhost:3000
 ```
+
+open [http://localhost:3000](http://localhost:3000) 
+
 

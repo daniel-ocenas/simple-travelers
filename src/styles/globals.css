@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-primary {
+    @apply bg-[#f7f7f7] dark:bg-customGray-dark;
+  }
+
+  .bg-secondary {
+    @apply bg-customGray-base dark:bg-customGray-light;
+  }
+
+  .bg-inverted {
+    @apply bg-customGray-dark dark:bg-customGray-light;
+  }
+
+  .bg-secondary {
+    @apply bg-customGray-base dark:bg-customGray-light;
+  }
+
+  .btn-secondary {
+    @apply bg-[#fce8d5];
+  }
+
+  .glass {
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: saturate(180%) blur(16px);
+  }
+
+  .glass-dark {
+    background: hsla(0, 0%, 20%, 0.8);
+    backdrop-filter: saturate(180%) blur(16px);
+  }
+
+  .bg-glass {
+    @apply glass dark:glass-dark;
+  }
+
+  .text-primary {
+    @apply text-black dark:text-white;
+  }
+
+  .text-secondary {
+    @apply text-gray-500 dark:text-slate-200;
+  }
+
+  ::-webkit-scrollbar {
+    appearance: auto;
+    -webkit-appearance: none;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .welcome-photo-divider img {
+    @apply translate-y-[-105px];
+    filter: drop-shadow(0 100px 0 theme('colors.dividerShadow.light'));
+  }
+
+  :is(.dark .welcome-photo-divider img) {
+    filter: drop-shadow(0 100px 0 theme('colors.dividerShadow.dark'));
+  }
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+a,
+div,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bachledkaTablePrice th,
+td {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  margin: 1em 0;
+  line-height: 1.5em;
+}

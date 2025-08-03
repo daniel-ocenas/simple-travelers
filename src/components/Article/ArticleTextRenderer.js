@@ -1,7 +1,9 @@
 'use client';
+
 import React from 'react';
-import ArticleLink from 'src/components/Article/ArticleLink';
-import ArticleSimpleText from 'src/components/Article/ArticleSimpleText';
+
+import ArticleLink from './ArticleLink';
+import ArticleSimpleText from './ArticleSimpleText';
 
 const KeysToComponentMap = {
   link: ArticleLink,

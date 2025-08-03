@@ -1,181 +1,107 @@
 'use client';
-import { MenuProps } from 'antd';
-import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
-import Burger from 'src/components/Header/BurgerButton';
-import styles from 'src/components/Header/Header.module.css';
-import {
-  LogoSimpleTravelers,
-  SDropdown,
-  SideBar,
-  SNavList,
-  STabsContainers,
-} from 'src/components/Header/Header.styled';
-import SocialNetworkLinks from 'src/components/SocialSideBar';
-import { Flex, Link, MarginBox } from 'src/UI';
-import { useLarge } from 'src/utils/useBreakpoint';
-import { useGetScroll } from 'src/utils/useGetScroll';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+import NavLink from './NavLink';
+import SocialNetworkLinks from '@/components/SocialSideBar/SocialNetworkLinks';
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
+import { useLarge } from '@/hooks/useBreakpoint';
+import { useGetScroll } from '@/hooks/useGetScroll';
 
 interface NavLinkDataProps {
   title: string;
   path: string;
-  small: boolean;
-  large: boolean;
-  footer?: boolean;
+  header: boolean;
 }
 
-export const NAV_LINK_DATA: NavLinkDataProps[] = [
+export const NAV_ITEMS: NavLinkDataProps[] = [
   {
     title: 'Domov',
     path: '/',
-    small: true,
-    large: false,
+    header: true,
   },
   {
     title: 'O nás',
-    path: '/onas',
-    small: true,
-    large: true,
+    path: '/about',
+    header: true,
   },
   {
     title: 'Blog',
     path: '/blog',
-    small: true,
-    large: true,
-  },
-  {
-    title: 'logo',
-    path: '/',
-    small: false,
-    large: true,
+    header: true,
   },
   {
     title: 'Galéria',
-    path: '/galeria',
-    small: true,
-    large: true,
+    path: '/gallery',
+    header: true,
   },
   {
     title: 'Videá',
-    path: '/videa',
-    small: true,
-    large: true,
+    path: '/videos',
+    header: true,
   },
   {
-    title: 'CustomPage',
+    title: 'gdpr',
     path: '/gdpr',
-    small: true,
-    large: true,
-    footer: true,
+    header: false,
   },
 ];
 
-const BlogCategories = ({ label, active }: { label: string; active: boolean }) => {
-  const items: MenuProps['items'] = [
-    {
-      label: '1st menu item',
-      key: '1',
-    },
-    {
-      label: '2nd menu item',
-      key: '2',
-    },
-    {
-      label: '3rd menu item',
-      key: '3',
-    },
-  ];
-  return (
-    <SDropdown menu={{ items }}>
-      <div className={`${styles.navLink} ${active && styles.navLinkActive}`}>{label}</div>
-    </SDropdown>
-  );
-};
-
-function NavList() {
-  const scroll = useGetScroll();
-  const pathname = usePathname();
-
-  const isTop = scroll === 0;
-  const links = NAV_LINK_DATA.filter((l) => l.large && !l.footer);
-
-  const getItem = (path: string, title: string) => {
-    switch (title) {
-      case '/blog':
-        return <BlogCategories label={title} active={pathname === path} />;
-      case 'logo':
-        return <LogoSimpleTravelers alt="simple-travelers-logo" src="/static/icons/SimpleTravelers.svg" />;
-      default:
-        return <p>{title}</p>;
-    }
-  };
-
-  return (
-    <STabsContainers $isTop={isTop}>
-      <Flex direction={'row'}>
-        {/*<TitleHeader />*/}
-        <SNavList>
-          <Flex direction={'row'} align={'center'}>
-            {links.map((item, index) => (
-              <div key={index} className={styles.navListItem}>
-                <div className={`${styles.navLink} ${pathname === item.path && styles.navLinkActive}`}>
-                  <Link href={item.path} passHref>
-                    {getItem(item.path, item.title)}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </Flex>
-          <SocialNetworkLinks position={'absolute'} top={10} right={0} outlined />
-        </SNavList>
-      </Flex>
-    </STabsContainers>
-  );
-}
-
-function NavMenu() {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
-  const links = NAV_LINK_DATA.filter((l) => l.small && !l.footer);
-
-  return (
-    <>
-      <Burger showSidebar={showSidebar} buttonState={sidebar} />
-      <div className={sidebar ? styles.navMenuActive : styles.navMenu}>
-        <MarginBox my={5}>
-          <SocialNetworkLinks outlined />
-        </MarginBox>
-        <ul className={styles.navMenuItems} onClick={showSidebar}>
-          {links.map((item, index) => {
-            return (
-              <li key={index} className={styles.navText}>
-                <Link href={item.path} passHref>
-                  {item.title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      {sidebar && <SideBar onClick={showSidebar} />}
-    </>
-  );
-}
-
-function Header() {
+export default function Header() {
   const large = useLarge();
-
-  // // Autoscroll into view
-  // const location = useRouter();
-  // const initialTop = 280;
-  // useEffect(() => {
-  //   if (pathname !== '/') {
-  //     scrollToTopSmooth(initialTop - (large ? 0 : 16));
-  //   }
-  //   // eslint-disable-next-line
-  // }, [location]);
-
-  return large ? <NavList /> : <NavMenu />;
+  const headerList = NAV_ITEMS.filter((item) => item.header);
+  const isTop = useGetScroll() === 0;
+  return (
+    <nav
+      className={`sticky top-0 z-[100] py-6 ${
+        isTop ? 'bg-transparent' : 'bg-glass'
+      }`}
+    >
+      <div
+        className={
+          'mx-auto flex w-full max-w-screen-xl flex-col justify-between px-[10vw] md:flex-row md:px-[5vw]'
+        }
+      >
+        <Link href="/" className="self-start md:self-auto">
+          <Image
+            alt="simple-travelers-logo"
+            src="/static/icons/SimpleTravelers.svg"
+            height={12}
+            width={100}
+          />
+        </Link>
+        <div className="my-6 flex space-x-8 self-center md:my-0 md:self-auto">
+          <ul className="flex flex-wrap  space-x-8">
+            {headerList.map((item) => (
+              <li
+                key={item.path}
+                className={`${
+                  isTop
+                    ? 'text-gray-500 hover:text-black'
+                    : 'text-secondary hover:text-primary'
+                } whitespace-nowrap py-2 text-lg 
+                font-medium transition-all duration-300`}
+              >
+                <NavLink path={item.path}>{item.title}</NavLink>
+              </li>
+            ))}
+          </ul>
+          {/*Dropping out from dark theme as its not aligned with the brand*/}
+          <div className="right-[10vw] my-auto md:static">
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+      {large && (
+        <div
+          className={
+            'absolute -top-[40%] bottom-0 right-0 h-[120px] translate-y-[50%] transform'
+          }
+        >
+          <SocialNetworkLinks outlined />
+        </div>
+      )}
+    </nav>
+  );
 }
-
-export default Header;

@@ -1,10 +1,12 @@
-import { connectToDatabase } from 'src/lib/mongodb/mongodb';
+import { connectToDatabase } from './mongodb';
 
 async function ArticleGet(lang: string, articleUrl: string) {
   const { db } = await connectToDatabase();
 
   try {
-    const result = await db.collection('articles-' + lang).findOne({ url: articleUrl });
+    const result = await db
+      .collection('articles-' + lang)
+      .findOne({ url: articleUrl });
     if (result === undefined) {
       return {
         article: [

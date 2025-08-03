@@ -1,63 +1,57 @@
 'use client';
+
 import Image from 'next/image';
-import backgroundPhoto from 'public/static/images/Background.jpg';
-import backgroundPhotoSmall from 'public/static/images/BackgroundSmall.jpg';
 import React from 'react';
-import { LogoSimpleTravelers } from 'src/components/Header/Header.styled';
-import {
-  SWelcomePhoto,
-  SWelcomePhotoDivider,
-  TitleCatchLine,
-  TitleContainer,
-} from 'src/components/WelcomePhoto/WelcomePhoto.styled';
-import { Flex, Link, MarginBox } from 'src/UI';
-import { useLarge, useMedium } from 'src/utils/useBreakpoint';
+
+import { useLarge, useMedium } from '@/hooks/useBreakpoint';
+
+const BG_PHOTO = '/static/images/Background.jpg';
+const BG_PHOTO_SMALL = '/static/images/BackgroundSmall.jpg';
 
 const WelcomePhoto = () => {
-  const large = useLarge();
   const medium = useMedium();
-  const backgroundImage = medium ? backgroundPhoto : backgroundPhotoSmall;
+  const large = useLarge();
+  const backgroundImage = medium ? BG_PHOTO : BG_PHOTO_SMALL;
 
   return (
-    <SWelcomePhoto>
-      <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+    <div className="absolute right-0 top-0 -z-10 h-[500px] w-full">
+      <div className="relative h-[500px] w-full">
         <Image
-          alt={'welcome-photo'}
+          alt="welcome-photo"
           src={backgroundImage}
-          style={{ objectFit: 'cover', position: 'absolute' }}
+          className="absolute object-cover"
           sizes="100vw"
           priority
           fill
         />
       </div>
-      <SWelcomePhotoDivider>
+      <div className="welcome-photo-divider absolute top-[406px] h-[104px] w-full overflow-y-hidden ">
         <Image
-          alt={'welcome-photo-divider'}
-          src={'/static/images/BackgroundDivider2.png'}
-          style={{ objectFit: 'cover' }}
-          sizes={'(max-width: 768px) 100vw, 33vw'}
+          alt="welcome-photo-divider"
+          src="/static/images/BackgroundDivider2.png"
+          sizes="(max-width: 768px) 100vw, 33vw"
           priority
           fill
         />
-      </SWelcomePhotoDivider>
-      {!large && (
-        <TitleContainer>
-          <TitleCatchLine>
-            <Flex align={'center'} direction={'column'}>
-              <MarginBox my={24}>
-                <Link href={'/public'}>
-                  <LogoSimpleTravelers
-                    $maxHeight={100}
-                    alt="simple-travelers-logo"
-                    src="/static/icons/SimpleTravelers.svg"
-                  />
-                </Link>
-              </MarginBox>
-            </Flex>
-          </TitleCatchLine>
-        </TitleContainer>
-      )}
-    </SWelcomePhoto>
+      </div>
+      {/*{!large && (*/}
+      {/*  <div className="absolute left-0 right-0 top-0 pb-[3px] text-center">*/}
+      {/*    <div className="m-0 text-center font-['Indie_Flower',serif] text-2xl [text-shadow:2px_3px_3px_rgba(255,255,255,0.75),-3px_3px_3px_rgba(255,255,255,0.75),1px_-3px_3px_rgba(255,255,255,0.75),-3px_-3px_3px_rgba(255,255,255,0.75)] md:text-[2em]">*/}
+      {/*      <div className="flex flex-col items-center">*/}
+      {/*        <div className="my-6">*/}
+      {/*          <Link href="/public">*/}
+      {/*            <img*/}
+      {/*              className="max-h-[100px]"*/}
+      {/*              alt="simple-travelers-logo"*/}
+      {/*              src="/static/icons/SimpleTravelers.svg"*/}
+      {/*            />*/}
+      {/*          </Link>*/}
+      {/*        </div>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
+    </div>
   );
 };
 

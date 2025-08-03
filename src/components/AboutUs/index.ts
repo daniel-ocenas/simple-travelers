@@ -1,3 +1,3 @@
-import AboutUs from 'src/components/AboutUs/AboutUs';
+import AboutUs from './AboutUs';
 
 export default AboutUs;

@@ -1,33 +1,53 @@
+import { Metadata } from 'next';
+import { Nunito } from 'next/font/google';
 import Head from 'next/head';
 import React from 'react';
-import Footer from 'src/components/Footer';
-import Header from 'src/components/Header';
-import ScrollToTopButton from 'src/components/ScrollToTopButton';
-import WelcomePhoto from 'src/components/WelcomePhoto';
-// import './global.css';
 
-// const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] });
-// const nunito = Nunito({ subsets: ['latin'], weight: ['400', '700'] });
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Provider from '@/components/Providers/Provider';
+import ScrollToTop from '@/components/ScrollToTop';
+import WelcomePhoto from '@/components/WelcomePhoto';
+import '@/styles/globals.css';
 
-export const metadata = {
-  title: 'Simple Travelers, cestovateľský blog',
-  description: 'Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet.',
+const nunito = Nunito({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-nunito',
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Simple Travelers',
+    template: '%s | Simple Travelers',
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html lang="sk" className="scrollbar overflow-y-scroll">
       <Head>
-        <title>Simple Travelers, cestovateľský blog</title>
-        <link rel={'manifest'} href={'/manifest.json'} />
-        <meta name={'theme-color'} content={'#ffffff'} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-      <body>
-        <Header />
-        <WelcomePhoto />
-        <ScrollToTopButton />
-        {children}
-        <Footer />
+      <body
+        className={`text-primary bg-primary scrollbar flex flex-col ${nunito.variable} font-nunito`}
+      >
+        <Provider>
+          <WelcomePhoto />
+          <Header />
+          <div className="mx-auto mt-[340px] w-full max-w-screen-xl px-[10vw] md:px-[5vw]">
+            <main>{children}</main>
+          </div>
+          <div className="fixed bottom-12 right-10">
+            <ScrollToTop />
+          </div>
+          <Footer />
+        </Provider>
       </body>
     </html>
   );

@@ -1,18 +1,13 @@
 'use client';
+
 import Image from 'next/image';
 import React from 'react';
-import { Flex, MarginBox } from 'src/UI';
-import { useLarge } from 'src/utils/useBreakpoint';
+
+import { useLarge } from '@/hooks/useBreakpoint';
 
 interface ImageProps {
   src: string;
   name: string;
-}
-
-interface ArticleImage {
-  src: ImageProps[];
-  width: number;
-  idx: number;
 }
 
 const ArticleImage = (props: any) => {
@@ -25,11 +20,11 @@ const ArticleImage = (props: any) => {
   const imageHeight = singleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
 
   return (
-    <Flex direction={'column'}>
-      <Flex direction={large ? 'row' : 'column'} align={'center'}>
+    <div className="flex flex-col">
+      <div className={`flex ${large ? 'flex-row' : 'flex-col'} items-center`}>
         {props.src?.map((image: any) => {
           return (
-            <MarginBox mx={1} key={image.name}>
+            <div className="mx-1" key={image.name}>
               <Image
                 alt={image.name}
                 key={image.name}
@@ -37,17 +32,14 @@ const ArticleImage = (props: any) => {
                 width={imageWidth}
                 height={imageHeight}
                 priority={props.idx < 4}
-                style={{
-                  objectFit: 'cover',
-                  borderRadius: '2px',
-                }}
+                className="rounded-[2px] object-cover"
               />
-            </MarginBox>
+            </div>
           );
         })}
-      </Flex>
-      <MarginBox mt={16} />
-    </Flex>
+      </div>
+      <div className="mt-4" />
+    </div>
   );
 };
 export default ArticleImage;

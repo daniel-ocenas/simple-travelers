@@ -1,3 +1,3 @@
-import WelcomePhoto from 'src/components/WelcomePhoto/WelcomePhoto';
+import WelcomePhoto from './WelcomePhoto';
 
 export default WelcomePhoto;

@@ -1,30 +1,30 @@
-import Head from 'next/head';
-import BlogCardsView from 'src/components/BlogCardsView';
-import CustomPage from 'src/components/CustomPage';
+import PostsGrid from '@/components/Posts/PostsGrid';
+import { getAllPosts } from '@/services/posts';
+import { toUniqueArray } from '@/utils/toUniqueArray';
 
-export default function Blog() {
+export const metadata = {
+  title: 'Blog',
+  description: 'All posts are created by notion ai.',
+};
+
+export default async function BlogPage() {
+  const allPosts = await getAllPosts();
+
+  const allCategories = toUniqueArray(
+    allPosts
+      .filter((post) => post.isPublished)
+      .map((post) => post.categories)
+      .flat()
+  ).sort();
+
   return (
     <>
-      <Head>
-        <title>Blog, Simple Travelers</title>
-        <meta property="og:title" content="Blog, Simple Travelers" />
-        <meta property="og:text" content="Blog | Cestopisy | Cestovateľský blog" />
-        <meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
-        <meta name="description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
-        <meta
-          property="og:image"
-          content="https://simpletravelers.sk/static/images/photosFull/BaliBlackBeachDroneUs.jpg"
-        />
-        <meta property="og:url" content="https://simpletravelers.sk/blog" />
-        <meta property="og:type" content="article" />
-        <meta
-          name="keywords"
-          content="cestovatelsky blog, blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky, hiking, thru-hiking, turistika, dialkova turistika"
-        />
-      </Head>
-      <CustomPage>
-        <BlogCardsView enableFilters />
-      </CustomPage>
+      <h1 className="my-12 text-center text-3xl font-bold">Blog</h1>
+      {/*<section className="mb-16 mt-0 space-y-8 md:mt-20">*/}
+      {/*  <SearchBar />*/}
+      {/*  <CategoryFilter allCategories={allCategories} />*/}
+      {/*</section>*/}
+      <PostsGrid allPosts={allPosts} />
     </>
   );
 }

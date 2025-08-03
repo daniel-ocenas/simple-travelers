@@ -16,7 +16,8 @@
 /build
 
 # misc
-.nvm
+.DS_Store
+*.pem
 
 # debug
 npm-debug.log*
@@ -37,9 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/public/videos/
-/public/uploads/
-/public/workbox*
-/public/sw.js
-
-
+# ide settings
+.vscode
+.idea
