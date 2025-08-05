@@ -17,9 +17,17 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? ''),
   title: {
     default: 'Simple Travelers',
     template: '%s | Simple Travelers',
+  },
+  authors: [{ name: 'Daniel Ocenas' }, { name: 'Livia Bozonova' }],
+  generator: 'Next.js',
+  keywords: [],
+  openGraph: {
+    title: 'Simple Travelers',
+    images: ['/static/images/Background.jpg'],
   },
 };
 
@@ -37,6 +45,7 @@ export default function RootLayout({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/static/icons/favicon-192x192.png" />
       </Head>
       <body
         className={`text-primary bg-primary scrollbar flex flex-col ${nunito.variable} font-nunito`}
@@ -44,10 +53,13 @@ export default function RootLayout({
         <Provider>
           <WelcomePhoto />
           <Header />
-          <div className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl px-[10vw] md:px-[5vw]">
+          <div
+            className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl
+          px-[5vw] xl:px-0"
+          >
             <main>{children}</main>
           </div>
-          <div className="fixed bottom-12 right-10">
+          <div className={'fixed bottom-[32px] right-0 z-[100] p-3'}>
             <ScrollTop />
           </div>
           <Footer />

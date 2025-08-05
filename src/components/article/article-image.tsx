@@ -1,8 +1,9 @@
 'use client';
 
-import { useLarge } from '@/hooks/use-breakpoint';
 import Image from 'next/image';
 import React from 'react';
+
+import { useLarge } from '@/hooks/use-breakpoint';
 
 interface ImageProps {
   src: string;
@@ -11,15 +12,15 @@ interface ImageProps {
 
 const ArticleImage = (props: any) => {
   const large = useLarge();
-  if(!Array.isArray(props?.src)) return null;
+  if (!Array.isArray(props?.src)) return null;
   let imageWidth = !isNaN(props.width) ? props.width - 2 : 300;
-  if(props.src.length > 1 && large) imageWidth = imageWidth / 2;
+  if (props.src.length > 1 && large) imageWidth = imageWidth / 2;
 
   const singleImage = props.src.length === 1;
   const imageHeight = singleImage ? (imageWidth / 3) * 2 : (imageWidth / 4) * 5;
 
   return (
-    <div className="flex flex-col">
+    <div className="mb-4 flex flex-col">
       <div className={`flex ${large ? 'flex-row' : 'flex-col'} items-center`}>
         {props.src?.map((image: any) => {
           return (
@@ -37,7 +38,6 @@ const ArticleImage = (props: any) => {
           );
         })}
       </div>
-      <div className="mt-4" />
     </div>
   );
 };

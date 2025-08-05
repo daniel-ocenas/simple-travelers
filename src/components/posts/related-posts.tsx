@@ -24,14 +24,12 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
       <h1 className="text-3xl font-bold">Related Posts</h1>
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {posts.slice(0, numPosts).map((post) => (
-          <div
+          <li
             key={post.url}
-            className="scale-[0.8] transition-all duration-300 hover:scale-[0.85]"
+            className="scale-[0.8] transition-all duration-300 "
           >
-            <li key={post.url}>
-              <Card post={post} />
-            </li>
-          </div>
+            <Card post={post} />
+          </li>
         ))}
       </ul>
       {numPosts < posts.length && (

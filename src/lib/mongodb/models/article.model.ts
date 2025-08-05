@@ -83,7 +83,7 @@ const articleSchema = new mongoose.Schema(
       required: true,
     },
     keywords: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     content: {
@@ -95,5 +95,5 @@ const articleSchema = new mongoose.Schema(
 );
 
 const Article =
-  mongoose.models.Article || mongoose.model('articles-sk', articleSchema);
+  mongoose.models.Article || mongoose.model('posts', articleSchema);
 export default Article;

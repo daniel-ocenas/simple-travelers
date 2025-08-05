@@ -1,6 +1,12 @@
-import { ArticleList } from '@/data/article-list';
+import { ArticleList, sortArticlesByDate } from '@/data/article-list';
 
-export async function getAllPosts(slug?: string) {
+
+// Temporary loading static data
+export async function getPost(slug?: string) {
+  return ArticleList.find((post) => post.url === slug);
+}
+
+export async function getAllPosts() {
   // const allPosts: Article[] = [];
   // // @ts-ignore
   // const schema = Object.values(collection)[0].value.schema;
@@ -26,5 +32,5 @@ export async function getAllPosts(slug?: string) {
   // const blurImages = await Promise.all(blurImagesPromises);
   // allPosts.forEach((post, i) => (post.url = blurImages[i].base64));
 
-  return ArticleList;
+  return sortArticlesByDate(ArticleList);
 }

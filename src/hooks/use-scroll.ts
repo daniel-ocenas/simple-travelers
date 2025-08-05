@@ -1,70 +1,37 @@
-import { useEffect, useRef, useState } from 'react';
+'use client';
 
-const SCROLL_THROTTLE = 100;
-const BUTTON_DURATION = 1500;
-const SCROLL_THRESHOLD = 800;
+import { useEffect, useState } from 'react';
 
-export default function useScroll() {
-  const [show, setShow] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+export function useScroll() {
+  const [scroll, setScroll] = useState(0);
 
-  const handleButtonClick = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+  function onScroll() {
+    setScroll(scrollY);
+  }
 
   useEffect(() => {
-    const button = buttonRef.current;
-    if (!button) return;
-
-    button.addEventListener('mousedown', handleButtonClick);
-
-    let timeId: NodeJS.Timeout | null;
-    let durationId: NodeJS.Timeout | null;
-
-    const handleScroll = () => {
-      if (timeId) return;
-
-      timeId = setTimeout(() => {
-        timeId = null;
-
-        const scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        if (scrollTop > SCROLL_THRESHOLD) {
-          setShow(true);
-          durationId && clearTimeout(durationId);
-          durationId = setTimeout(() => {
-            setShow(false);
-          }, BUTTON_DURATION);
-        } else {
-          setShow(false);
-        }
-      }, SCROLL_THROTTLE);
-    };
-
-    const handleMouseOver = () => {
-      durationId && clearTimeout(durationId);
-    };
-
-    const handleMouseLeave = () => {
-      durationId = setTimeout(() => {
-        setShow(false);
-      }, BUTTON_DURATION);
-    };
-
-    document.addEventListener('scroll', handleScroll);
-    button.addEventListener('mouseover', handleMouseOver);
-    button.addEventListener('mouseleave', handleMouseLeave);
-
+    window.addEventListener('scroll', onScroll);
     return () => {
-      button.removeEventListener('mousedown', handleButtonClick);
-      document.removeEventListener('scroll', handleScroll);
-      button.removeEventListener('mouseover', handleMouseOver);
-      button.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', onScroll);
     };
-  }, [buttonRef]);
+  }, []);
+  return scroll;
+}
 
-  return { show, buttonRef };
+export function scrollToTopSmooth(top?: number): void {
+  window.scrollTo({
+    top: top ?? 0,
+    behavior: 'smooth',
+  });
+}
+
+export function scrollIntoViewSmooth(elementId: string): void {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'nearest',
+      block: 'start',
+    });
+  }
 }

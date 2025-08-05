@@ -1,22 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import { NAV_ITEMS } from '@/components/header/header';
 import NavLink from '@/components/header/nav-link';
 import SocialNetworkLinks from '@/components/social-side-bar';
-import { useLarge } from '@/hooks/use-breakpoint';
 
 function Footer() {
-  const large = useLarge();
-  const pathname = usePathname();
   const year = new Date().getFullYear();
   const links = NAV_ITEMS.filter((l) => l.header);
 
   return (
-    <div className="bg-background relative h-[500px] w-full">
+    <div className="bg-background relative z-10 h-[500px] w-full">
       <Image
         src={'/static/images/photosFull/NZSeftonView.jpg'}
         alt={'footer-image'}

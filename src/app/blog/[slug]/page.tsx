@@ -1,13 +1,40 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import ArticleRenderer from '@/components/article/article-renderer';
 import RelatedPosts from '@/components/posts/related-posts';
-import { getAllPosts } from '@/services/posts';
+import { getAllPosts, getPost } from '@/services/posts';
 import { Article } from '@/store/Article/Article.types';
 
 
 type Params = Promise<{ slug: string }>;
+
+type Props = {
+  params: Params;
+  // searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getPost(slug);
+
+  if (!article) {
+    return notFound();
+  }
+
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? ''),
+    title: article.title,
+    description: article.description,
+    keywords: article.keywords,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      images: [article.image],
+    },
+  };
+}
 
 export default async function PostPage({ params }: { params: Params }) {
   const { slug } = await params;
@@ -40,15 +67,13 @@ export default async function PostPage({ params }: { params: Params }) {
       p.categories.some((v) => post.categories.includes(v))
   );
 
-  const recordMap = [];
-
   return (
     <>
       <div
         data-revalidated-at={new Date().getTime()}
         className="height-fit mt-12 flex flex-col items-center md:mt-20"
       >
-        <div className="relative w-[90vw] max-w-[900px]">
+        <div className="relative w-[90vw] max-w-screen-xl">
           {post?.content === undefined ? (
             <h4>Article Could Not Be Found</h4>
           ) : (
@@ -58,7 +83,7 @@ export default async function PostPage({ params }: { params: Params }) {
                   key={idx}
                   idx={idx}
                   config={data}
-                  textAreaWidth={900}
+                  textAreaWidth={1200}
                 />
               ))}
             </>

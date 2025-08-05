@@ -1,15 +1,12 @@
 import { NextRequest } from 'next/server';
 
-import Article from '@/lib/models/article.model';
+import Article from '@/lib/mongodb/models/article.model';
 import { connect } from '@/lib/mongodb/mongoose';
 
 export const POST = async (req: NextRequest) => {
-  console.log('req', req);
   await connect();
   const data = await req.json();
-  console.log('data', data);
-  const articleList = await Article.find();
-  console.log('articleList', articleList);
+  // const articleList = await Article.find();
 
   try {
     const startIndex = parseInt(data.startIndex) || 0;

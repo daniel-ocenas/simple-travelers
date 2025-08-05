@@ -10,8 +10,8 @@ import NavLink from './nav-link';
 import Burger from '@/components/buttons/burger';
 import SocialNetworkLinks from '@/components/social-side-bar';
 import ThemeToggle from '@/components/theme-toggle';
-import { useLarge } from '@/hooks/use-breakpoint';
-import { useGetScroll } from '@/hooks/use-get-scroll';
+import { useMedium } from '@/hooks/use-breakpoint';
+import { useScroll } from '@/hooks/use-scroll';
 
 interface NavLinkDataProps {
   title: string;
@@ -54,7 +54,7 @@ export const NAV_ITEMS: NavLinkDataProps[] = [
 
 const Logo = () => {
   const { theme } = useTheme();
-  const isTop = useGetScroll() === 0;
+  const isTop = useScroll() === 0;
   return (
     <Link href="/" className="self-start md:self-auto">
       {theme === 'dark' && !isTop ? (
@@ -77,25 +77,27 @@ const Logo = () => {
 };
 
 const NavList = () => {
-  const isTop = useGetScroll() === 0;
-  const large = useLarge();
+  const isTop = useScroll() === 0;
+  const medium = useMedium();
 
   const links = NAV_ITEMS.filter((item) => item.header);
 
   return (
     <nav
-      className={`sticky top-0 z-[100] h-[80px] py-4 ${
+      className={`sticky top-0 z-[100] h-[80px] py-5 ${
         isTop ? 'bg-transparent' : 'bg-glass'
       }`}
     >
       <div
         className={
-          'mx-auto flex w-full max-w-screen-xl flex-col justify-between px-[10vw] md:flex-row md:px-[5vw]'
+          'mx-auto flex w-full max-w-screen-xl flex-col justify-end px-[5vw] md:flex-row xl:px-0'
         }
       >
-        <Logo />
-        <div className="my-6 flex space-x-8 self-center md:my-0 md:self-auto">
-          <ul className="flex flex-wrap space-x-8">
+        <div className={'fjustify-start'}>
+          <Logo />
+        </div>
+        <div className="my-6 ml-auto flex space-x-8 self-center md:my-0 md:self-auto">
+          <ul className="flex flex-nowrap space-x-8">
             {links.map((item) => (
               <li
                 key={item.path}
@@ -110,16 +112,12 @@ const NavList = () => {
               </li>
             ))}
           </ul>
-          <div className="right-[10vw] my-auto">
-            <ThemeToggle />
-          </div>
         </div>
+        <div className="my-auto ml-8 mr-6">
+          <ThemeToggle />
+        </div>
+        {medium && <SocialNetworkLinks outlined />}
       </div>
-      {large && (
-        <div className={'absolute bottom-0 right-0 h-[80px] py-[18px]'}>
-          <SocialNetworkLinks outlined />
-        </div>
-      )}
     </nav>
   );
 };
@@ -167,7 +165,7 @@ function NavMenu() {
 }
 
 export default function Header() {
-  const large = useLarge();
+  const medium = useMedium();
 
   // // Autoscroll into view
   // const location = useRouter();
@@ -179,5 +177,5 @@ export default function Header() {
   //   // eslint-disable-next-line
   // }, [location]);
 
-  return large ? <NavList /> : <NavMenu />;
+  return medium ? <NavList /> : <NavMenu />;
 }

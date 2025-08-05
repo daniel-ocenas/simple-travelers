@@ -11,7 +11,6 @@ const KeysToComponentMap = {
 };
 
 function ArticleTextRenderer(config, idx) {
-  console.log(config);
   if (typeof KeysToComponentMap[config.component] !== 'undefined') {
     return React.createElement(KeysToComponentMap[config.component], {
       key: idx,
