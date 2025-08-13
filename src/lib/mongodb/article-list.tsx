@@ -1,13 +1,11 @@
-import { connectToDatabase } from './mongodb';
+import { dbConnect } from './dbConnect';
 
-async function ArticleList(lang: string) {
-  const { db } = await connectToDatabase();
+async function ArticleList() {
+  const { db } = await dbConnect();
 
   try {
-    const findResult = await db
-      .collection('articles-' + lang)
-      .find()
-      .toArray();
+    const findResult = await db.collection('articles').find().toArray();
+    // add type checking
     return {
       articles: findResult,
       status: 200,

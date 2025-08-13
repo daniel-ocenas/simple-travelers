@@ -21,7 +21,7 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
 
   return (
     <section className="relative mt-10 flex flex-col">
-      <h1 className="text-3xl font-bold">Related Posts</h1>
+      <h1 className="text-3xl font-bold">Podobné články</h1>
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {posts.slice(0, numPosts).map((post) => (
           <li
@@ -38,7 +38,7 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
           className="bg-inverted mt-10 self-center rounded-3xl px-8 py-2 text-white
           opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100"
         >
-          Load More
+          Viac článkov...
         </button>
       )}
     </section>

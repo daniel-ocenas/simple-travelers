@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="sk"
-      className="scrollbar overflow-y-scroll"
+      className="scrollbar light overflow-y-scroll"
       suppressHydrationWarning
     >
       <Head>

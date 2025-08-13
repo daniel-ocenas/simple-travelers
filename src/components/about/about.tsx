@@ -1,6 +1,5 @@
 'use client';
 
-// import SocialNetworkLinks from 'src/components/SocialSideBar';
 import Image from 'next/image';
 import React from 'react';
 
