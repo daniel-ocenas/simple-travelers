@@ -1,15 +1,15 @@
 'use client';
 
-import { useLarge, useMedium } from '@/hooks/use-breakpoint';
 import Image from 'next/image';
 import React from 'react';
+
+import { useMedium } from '@/hooks/use-breakpoint';
 
 const BG_PHOTO = '/static/images/Background.jpg';
 const BG_PHOTO_SMALL = '/static/images/BackgroundSmall.jpg';
 
 const WelcomePhoto = () => {
   const medium = useMedium();
-  const large = useLarge();
   const backgroundImage = medium ? BG_PHOTO : BG_PHOTO_SMALL;
 
   return (

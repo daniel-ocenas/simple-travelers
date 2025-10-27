@@ -6,6 +6,7 @@ import { getAllPosts } from '@/services/posts';
 
 export const metadata: Metadata = {
   title: 'Simple Travelers',
+  description: 'Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet!',
 };
 
 export default async function HomePage() {

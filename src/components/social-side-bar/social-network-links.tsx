@@ -24,7 +24,7 @@ const SocialNetworkLinks = ({ outlined }: { outlined?: boolean }) => {
         icon={`/static/icons/facebook${
           theme === 'dark' || !outlined ? '' : '-outline'
         }.png`}
-        alt={'instagram'}
+        alt={'facebook'}
       />
       <SocialItem
         href={'https://www.tiktok.com/@simple_travelers'}

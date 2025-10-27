@@ -154,9 +154,9 @@ function NavMenu() {
               </Link>
             </li>
           ))}
-          <div className={'px-2 py-2'}>
+          <li className={'px-2 py-2'}>
             <ThemeToggle />
-          </div>
+          </li>
         </ul>
       </div>
       {sidebar && <div className="fixed inset-0 " onClick={showSidebar} />}
