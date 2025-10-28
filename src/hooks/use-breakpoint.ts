@@ -1,9 +1,20 @@
 'use client';
+
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+const getInitialBreakpoint = () => {
+  if (typeof window === 'undefined') return true; // Default to desktop on server
+  return window.innerWidth >= Breakpoints.lg;
+};
+
 export const useScreenSize = () => {
-  const [size, setSize] = useState([0, 0]);
+  const [size, setSize] = useState(() =>
+    typeof window === 'undefined'
+      ? [1200, 800] // Default size for SSR
+      : [window.innerWidth, window.innerHeight]
+  );
+
   useEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
@@ -29,13 +40,28 @@ export function useSmall(): boolean {
 }
 
 export function useMedium(): boolean {
+  const [isMedium, setIsMedium] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth >= Breakpoints.md;
+  });
   const { width } = useScreenSize();
-  return width >= Breakpoints.md;
+
+  useEffect(() => {
+    setIsMedium(width >= Breakpoints.md);
+  }, [width]);
+
+  return isMedium;
 }
 
 export function useLarge(): boolean {
+  const [isLarge, setIsLarge] = useState(getInitialBreakpoint());
   const { width } = useScreenSize();
-  return width >= Breakpoints.lg;
+
+  useEffect(() => {
+    setIsLarge(width >= Breakpoints.lg);
+  }, [width]);
+
+  return isLarge;
 }
 
 export function useXL(): boolean {
