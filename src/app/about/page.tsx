@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 import AboutPageSection from '@/components/about/about-page-section';
+import Card from '@/components/posts/card';
+import { Video } from '@/components/video/videos';
+import { SNPBystrica24Article, TAInterezArticle } from '@/constants/constants';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -9,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className={'mb-12'}>
       <h1 className="my-12 text-center text-3xl font-bold">O nás</h1>
       <div className="mb-12">
         <AboutPageSection />
@@ -22,9 +25,10 @@ export default function AboutPage() {
         sveta a doposiaľ sme spolu navštívili 25 krajín. Štyri mesiace sme žili
         vo Fínsku v extrémnych podmienkach, kde teploty málokedy dosiahli
         plusové hodnoty. V USA sme najazdili už cez 6 500 km po západnom aj
-        východnom pobreží. Dva mesiace sme low-costovo cestovali po
-        juhovýchodnej Ázii a zdolali niekoľko diaľkových trailov v Kyrgyzstáne,
-        Špaielnsku a Škótsku, iba s batohom na pleciach.
+        východnom pobreží. Low-costovo sme cestovali po juhovýchodnej Ázii a
+        zdolali niekoľko diaľkových trailov v Kyrgyzstáne, Špaielnsku a Škótsku,
+        iba s batohom na pleciach. A to najväčšie dobrodružstvo ktoré sme zatiaľ
+        zažili vôbec, je 3000km peší prechod naprieč Novým Zélandom.
       </p>
       <h3 className="my-4 text-2xl font-semibold">O blogu</h3>
       <p className="my-4 text-base">
@@ -37,6 +41,19 @@ export default function AboutPage() {
         chuť objavovať svet. A ak sa pri tom budete usmievať, náš zámer bude
         naplnený.
       </p>
-    </>
+      <h3 className="mb-4 mt-12 text-2xl font-semibold">Napísali o nás</h3>
+      <div className={'flex flex-col items-center gap-4'}>
+        <div className={'flex flex-col gap-4 sm:flex-row '}>
+          <Card post={TAInterezArticle} external />
+          <Card post={SNPBystrica24Article} external />
+        </div>
+        <div className="h-[50vh] w-full md:h-[40vh] md:w-1/2">
+          <Video
+            src={'https://www.youtube.com/embed/pOlTgfnzAFo'}
+            title={'Prstom na mape - Lívia Božoňová'}
+          />
+        </div>
+      </div>
+    </div>
   );
 }

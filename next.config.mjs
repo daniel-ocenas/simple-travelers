@@ -3,9 +3,8 @@ import withPlaiceholder from '@plaiceholder/next';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    dirs: ['src'], // Specify the directories to be linted
-  },
+  reactCompiler: true,
+  turbopack: {},
 };
 
 export default withPlaiceholder(nextConfig);

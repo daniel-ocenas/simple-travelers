@@ -32,6 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: article.title,
       description: article.description,
       images: [article.image],
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${article.url}`,
+      type: 'article',
     },
   };
 }

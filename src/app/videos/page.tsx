@@ -1,8 +1,10 @@
+import { Metadata } from 'next';
+
 import { Video } from '@/components/video/videos';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Videos',
-  description: 'This is videos page.'
+  description: 'This is videos page.',
 };
 
 export default function VideosPage() {

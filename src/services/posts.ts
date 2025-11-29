@@ -8,7 +8,6 @@ export async function getPost(slug?: string) {
 
 export async function getAllPosts() {
   // const allPosts: Article[] = [];
-  // // @ts-ignore
   // const schema = Object.values(collection)[0].value.schema;
   // const propertyMap: Record<string, string> = {};
   //

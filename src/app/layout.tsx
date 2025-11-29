@@ -1,3 +1,4 @@
+import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import Head from 'next/head';
@@ -9,6 +10,13 @@ import Header from '@/components/header';
 import Provider from '@/components/providers/provider';
 import WelcomePhoto from '@/components/welcome-photo';
 import '@/styles/globals.css';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -39,11 +47,10 @@ export default function RootLayout({
   return (
     <html
       lang="sk"
-      className="scrollbar light overflow-y-scroll"
+      className={`scrollbar overflow-y-scroll`}
       suppressHydrationWarning
     >
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/static/icons/favicon-192x192.png" />
       </Head>
@@ -53,15 +60,10 @@ export default function RootLayout({
         <Provider>
           <WelcomePhoto />
           <Header />
-          <div
-            className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl
-          px-[5vw] xl:px-0"
-          >
-            <main>{children}</main>
-          </div>
-          <div className={'fixed bottom-[32px] right-0 z-[100] p-3'}>
-            <ScrollTop />
-          </div>
+          <main className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl px-[5vw] xl:px-0">
+            {children}
+          </main>
+          <ScrollTop />
           <Footer />
         </Provider>
       </body>

@@ -8,14 +8,20 @@ import { Article } from '@/store/Article/Article.types';
 
 export default function Card({
   post: { url, title, date, image, categories },
+  external = false,
 }: {
   post: Article;
+  external?: boolean;
 }) {
   return (
-    <Link href={`/blog/${url}`}>
-      <article
-        className="bg-glass z-0 mx-auto flex max-w-[25rem] flex-col overflow-hidden rounded-xl
-      shadow-xl transition-all duration-100 ease-out hover:scale-[1.02] hover:shadow-2xl "
+    <Link
+      href={external ? url : `/blog/${url}`}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      <div
+        className={`"bg-glass z-0 mx-auto flex max-w-[25rem] flex-col overflow-hidden rounded-xl
+      shadow-xl transition-all duration-100 ease-out hover:scale-[1.02] hover:shadow-2xl`}
       >
         <div className="relative z-0 h-60">
           <Image
@@ -32,7 +38,7 @@ export default function Card({
           <time className="mb-4 mt-2 pl-2 text-sm text-gray-600">{date}</time>
           <CategoryList categories={categories} />
         </div>
-      </article>
+      </div>
     </Link>
   );
 }

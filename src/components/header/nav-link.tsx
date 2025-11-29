@@ -21,7 +21,7 @@ export default function NavLink({
         className={`block h-0.5 max-w-0 bg-black transition-all duration-300 group-hover:max-w-full dark:bg-white ${
           isActive && 'max-w-full'
         }`}
-      ></span>
+      />
     </Link>
   );
 }
