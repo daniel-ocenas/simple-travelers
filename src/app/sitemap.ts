@@ -1,6 +1,7 @@
+import { ArticleList, sortArticlesByDate } from '@/data/article-list';
 import { MetadataRoute } from 'next';
 
-import { getAllPosts } from '@/services/posts';
+export const dynamic = 'force-static';
 
 const STATIC_ROUTES = [
   '/',
@@ -13,8 +14,8 @@ const STATIC_ROUTES = [
   '/500',
 ];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const allPosts = await getAllPosts();
+export default function sitemap(): MetadataRoute.Sitemap {
+  const allPosts = sortArticlesByDate(ArticleList);
   const currentDate = new Date().toISOString();
 
   const staticRoutes: MetadataRoute.Sitemap = STATIC_ROUTES.map(
