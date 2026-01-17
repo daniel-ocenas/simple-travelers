@@ -1,5 +1,6 @@
-import { ArticleList, sortArticlesByDate } from '@/data/article-list';
 import { MetadataRoute } from 'next';
+
+import { ArticleList, sortArticlesByDate } from '@/data/article-list';
 
 export const dynamic = 'force-static';
 
