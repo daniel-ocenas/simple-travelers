@@ -1,12 +1,4 @@
-export type GalleryImage = {
-  src: string;
-  thumbnail: string;
-  thumbnailWidth: number;
-  thumbnailHeight: number;
-  caption: string;
-};
-
-const IMAGES: GalleryImage[] = [
+const IMAGES = [
   // bryce bez nas
   // la ruzove kridla
   {
@@ -70,24 +62,21 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/BaliWaterfallKantoLampo.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      '"Sprchovanie sa" v širočiznom vodopáde Kanto Lampo. Bali, júl 2022.',
+    caption: '"Sprchovanie sa" v širočiznom vodopáde Kanto Lampo. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/TeryhoPleso.jpg',
     thumbnail: '/images/photosMobile/TeryhoPleso.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Oslava narodenín Liv na Téryho chate, Vysoké Tatry, december 2020',
+    caption: 'Oslava narodenín Liv na Téryho chate, Vysoké Tatry, december 2020',
   },
   {
     src: '/images/photosFull/VRSmoothClouds.jpg',
     thumbnail: '/images/photosMobile/VRSmoothClouds.jpg',
     thumbnailWidth: 340,
     thumbnailHeight: 212,
-    caption:
-      'Hladučké oblaky pod Veľkým rozsutcom, v pozadí Choč. Nízke Tatry a Malá Fatra, november 2020',
+    caption: 'Hladučké oblaky pod Veľkým rozsutcom, v pozadí Choč. Nízke Tatry a Malá Fatra, november 2020',
   },
   {
     src: '/images/photosFull/BBJesen.jpg',
@@ -143,16 +132,14 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/srdcovky/KriznaJumpLiv.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Liv vo výskoku radosti pri zdolaní zimného výstupu na Krížnu - Veľká Fatra, február 2020',
+    caption: 'Liv vo výskoku radosti pri zdolaní zimného výstupu na Krížnu - Veľká Fatra, február 2020',
   },
   {
     src: '/images/photosFull/MVSunrise.jpg',
     thumbnail: '/images/photosMobile/MVSunrise.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Pred východom slnka nad Monument Valley - Utah USA, september 2019',
+    caption: 'Pred východom slnka nad Monument Valley - Utah USA, september 2019',
   },
   {
     src: '/images/photosFull/MVMorning.jpg',
@@ -173,8 +160,7 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SDSunsetSiluethe.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Silueta Liv pri západe slnka na pláži - San Diego USA, september 2019',
+    caption: 'Silueta Liv pri západe slnka na pláži - San Diego USA, september 2019',
   },
   {
     src: '/images/photosFull/SDSunsetChill.jpg',
@@ -195,8 +181,7 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SFLombardiStreetBus.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Výhliadkový autobus na Lombardi street - San Francisco USA, september 2019',
+    caption: 'Výhliadkový autobus na Lombardi street - San Francisco USA, september 2019',
   },
   {
     src: '/images/photosFull/SFBernalHeights.jpg',
@@ -252,24 +237,21 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/YGlacierPointTrail3.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Výhľad z turistickej cesty na Glacier Point - Yosemite National Park USA, september 2019',
+    caption: 'Výhľad z turistickej cesty na Glacier Point - Yosemite National Park USA, september 2019',
   },
   {
     src: '/images/photosFull/YosemiteHalfDome.jpg',
     thumbnail: '/images/photosMobile/YosemiteHalfDome.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Výhľad na Half Dome z Glacier Point - Yosemite National Park USA, september 2019',
+    caption: 'Výhľad na Half Dome z Glacier Point - Yosemite National Park USA, september 2019',
   },
   {
     src: '/images/photosFull/SeqFallen.jpg',
     thumbnail: '/images/photosMobile/SeqFallen.jpg',
     thumbnailWidth: 230,
     thumbnailHeight: 212,
-    caption:
-      'Spadnutý strom sekvoja blokujúci chodník - Sequoia National Forest USA, september 2019',
+    caption: 'Spadnutý strom sekvoja blokujúci chodník - Sequoia National Forest USA, september 2019',
   },
   {
     src: '/images/photosFull/HorseShoe.jpg',
@@ -304,8 +286,7 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/LVSignUs.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Obľubená fotogragická zastávka vítajúca turistov - Las Vegas USA, september 2019',
+    caption: 'Obľubená fotogragická zastávka vítajúca turistov - Las Vegas USA, september 2019',
   },
   {
     src: '/images/photosFull/MojaveJoshuaTreeDetail.jpg',
@@ -347,8 +328,7 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/LASunsterRoad.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Západ slnka na ulici v Santa Monica - Los Angeles USA, september 2019',
+    caption: 'Západ slnka na ulici v Santa Monica - Los Angeles USA, september 2019',
   },
   {
     src: '/images/photosFull/LASWHouse.jpg',
@@ -362,19 +342,17 @@ const IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/LAGriffith.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Pohľad na Los Angeles z Griffitovho observatória - Los Angeles USA, september 2019',
+    caption: 'Pohľad na Los Angeles z Griffitovho observatória - Los Angeles USA, september 2019',
   },
 ];
 
-const SNP_IMAGES: GalleryImage[] = [
+const SNP_IMAGES = [
   {
     src: '/images/photosFull/SNPznacka.jpg',
     thumbnail: '/images/photosMobile/SNPznacka.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Približné značenie trasy Cesty hrdinov SNP ako prechádza Slovenskom, júl 2020',
+    caption: 'Približné značenie trasy Cesty hrdinov SNP ako prechádza Slovenskom, júl 2020',
   },
   {
     src: '/images/photosFull/SNPVeci.jpg',
@@ -409,8 +387,7 @@ const SNP_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SNPPosed.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Kempovanie neďaleko dedinky Medvedie, naša prvá noc na ceste, júl 2020',
+    caption: 'Kempovanie neďaleko dedinky Medvedie, naša prvá noc na ceste, júl 2020',
   },
   {
     src: '/images/photosFull/SNPBardejovskeKupele.jpg',
@@ -452,8 +429,7 @@ const SNP_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SNPTelgartMost.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Telgártsky most, foto vybraná do 30 najlepších fotiek súťaže PRO.Laika ČESKO A SLOVENSKO 2020 , júl 2020',
+    caption: 'Telgártsky most, foto vybraná do 30 najlepších fotiek súťaže PRO.Laika ČESKO A SLOVENSKO 2020 , júl 2020',
   },
   {
     src: '/images/photosFull/SNPChopok.jpg',
@@ -509,8 +485,7 @@ const SNP_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SNPKranieVDzungli.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Turistický chodník na niektorých miestach vyzerá ako džungľa, august 2020',
+    caption: 'Turistický chodník na niektorých miestach vyzerá ako džungľa, august 2020',
   },
   {
     src: '/images/photosFull/SNPCicmany.jpg',
@@ -552,8 +527,7 @@ const SNP_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SNPMohylaFront.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Spoločná foto s parťákmi turistami Líviou a Patrikom, august 2020',
+    caption: 'Spoločná foto s parťákmi turistami Líviou a Patrikom, august 2020',
   },
   {
     src: '/images/photosFull/SNPVapennaVrch.jpg',
@@ -567,12 +541,11 @@ const SNP_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/SNPKonskeHlavy.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Pri rozcestníku Konské hlavy v Malých Karpatoch sa naozaj nachádzajú konské hlavy, august 2020',
+    caption: 'Pri rozcestníku Konské hlavy v Malých Karpatoch sa naozaj nachádzajú konské hlavy, august 2020',
   },
 ];
 
-const BALI_IMAGES: GalleryImage[] = [
+const BALI_IMAGES = [
   {
     src: '/images/photosFull/BaliBlackBeachDroneUs.jpg',
     thumbnail: '/images/photosMobile/BaliBlackBeachDroneUs.jpg',
@@ -627,16 +600,14 @@ const BALI_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/BaliSunriseBatursUs.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      'Východ slnka na sopke Batur, v pozadí hora Abang. Bali, júl 2022.',
+    caption: 'Východ slnka na sopke Batur, v pozadí hora Abang. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/BaliSwingLiv.jpg',
     thumbnail: '/images/photosMobile/BaliSwingLiv.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Hojdanie podnad zráz ryžových polí, vyskutuje sa na viacerých miestach. Bali, júl 2022.',
+    caption: 'Hojdanie podnad zráz ryžových polí, vyskutuje sa na viacerých miestach. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/BaliTukadTistaUs.jpg',
@@ -650,8 +621,7 @@ const BALI_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/BaliUlunDanuBeratan.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Hinduistický chrám v horskom komplexe Ulun Danu Beratan. Bali, júl 2022.',
+    caption: 'Hinduistický chrám v horskom komplexe Ulun Danu Beratan. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/BaliWaterfallBlackBeachUs.jpg',
@@ -665,16 +635,14 @@ const BALI_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/BaliWaterfallBunutin.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Menej známy vodopád Bunutin, ku ktorému vedie cesta pomedzi záhradky. Bali, júl 2022.',
+    caption: 'Menej známy vodopád Bunutin, ku ktorému vedie cesta pomedzi záhradky. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/BaliWaterfallKantoLampo.jpg',
     thumbnail: '/images/photosMobile/BaliWaterfallKantoLampo.jpg',
     thumbnailWidth: 318,
     thumbnailHeight: 212,
-    caption:
-      '"Sprchovanie sa" v širočiznom vodopáde Kanto Lampo. Bali, júl 2022.',
+    caption: '"Sprchovanie sa" v širočiznom vodopáde Kanto Lampo. Bali, júl 2022.',
   },
   {
     src: '/images/photosFull/BaliWaterfallLekeLekeUs.jpg',
@@ -692,14 +660,13 @@ const BALI_IMAGES: GalleryImage[] = [
   },
 ];
 
-const OTHER_IMAGES: GalleryImage[] = [
+const OTHER_IMAGES = [
   {
     src: '/images/photosFull/TeryhoUs.jpg',
     thumbnail: '/images/photosMobile/TeryhoUs.jpg',
     thumbnailWidth: 170,
     thumbnailHeight: 212,
-    caption:
-      'Oslava narodenín Liv na Téryho chate, Vysoké Tatry, december 2020',
+    caption: 'Oslava narodenín Liv na Téryho chate, Vysoké Tatry, december 2020',
   },
   {
     src: '/images/photosFull/VRInverzia.jpg',
@@ -755,8 +722,7 @@ const OTHER_IMAGES: GalleryImage[] = [
     thumbnail: '/images/photosMobile/VFPloskaBorisov.jpg',
     thumbnailWidth: 550,
     thumbnailHeight: 212,
-    caption:
-      'Pohľad na Ploskú, Šoproň a Borišov (z ľava) - Veľká Fatra, júl 2020',
+    caption: 'Pohľad na Ploskú, Šoproň a Borišov (z ľava) - Veľká Fatra, júl 2020',
   },
   {
     src: '/images/photosFull/srdcovky/RebrikAlone.jpg',
