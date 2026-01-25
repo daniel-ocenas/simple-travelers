@@ -1,14 +1,13 @@
-import type { Viewport } from 'next';
-import { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
-import Head from 'next/head';
-import React from 'react';
-
 import ScrollTop from '@/components/buttons/scroll-top';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Provider from '@/components/providers/provider';
 import WelcomePhoto from '@/components/welcome-photo';
+import type { Viewport } from 'next';
+import { Metadata } from 'next';
+import { Nunito } from 'next/font/google';
+import Head from 'next/head';
+import React from 'react';
 import '@/styles/globals.css';
 
 export const viewport: Viewport = {
@@ -25,14 +24,16 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? ''),
+  metadataBase: process.env.NEXT_PUBLIC_BASE_URL
+    ? new URL(process.env.NEXT_PUBLIC_BASE_URL)
+    : undefined,
   title: {
     default: 'Simple Travelers',
     template: '%s | Simple Travelers',
   },
   authors: [{ name: 'Daniel Ocenas' }, { name: 'Livia Bozonova' }],
   generator: 'Next.js',
-  keywords: [],
+  keywords: ['cestovateľský blog', 'travel blog', 'travel', 'hiking', 'blog'],
   openGraph: {
     title: 'Simple Travelers',
     images: ['/static/images/Background.jpg'],

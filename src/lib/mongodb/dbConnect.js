@@ -1,17 +1,5 @@
 import { MongoClient } from 'mongodb';
 
-if (!process.env.DB_URL) {
-  throw new Error(
-    'Please define the process.env.DB_URL environment variable inside .env.local.production.local'
-  );
-}
-
-if (!process.env.DB_NAME) {
-  throw new Error(
-    'Please define the process.env.DB_NAME environment variable inside .env.local.production.local'
-  );
-}
-
 let cached = global.mongo;
 
 if (!cached) {
@@ -19,6 +7,18 @@ if (!cached) {
 }
 
 export async function dbConnect() {
+  if (!process.env.DB_URL) {
+    throw new Error(
+      'Please define the process.env.DB_URL environment variable inside .env.local.production.local'
+    );
+  }
+
+  if (!process.env.DB_NAME) {
+    throw new Error(
+      'Please define the process.env.DB_NAME environment variable inside .env.local.production.local'
+    );
+  }
+
   if (cached.conn) {
     return cached.conn;
   }

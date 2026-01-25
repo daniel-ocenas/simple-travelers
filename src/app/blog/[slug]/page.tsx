@@ -24,7 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? ''),
+    metadataBase: process.env.NEXT_PUBLIC_BASE_URL
+      ? new URL(process.env.NEXT_PUBLIC_BASE_URL)
+      : undefined,
     title: article.title,
     description: article.description,
     keywords: article.keywords,
@@ -32,7 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: article.title,
       description: article.description,
       images: [article.image],
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${article.url}`,
+      url: process.env.NEXT_PUBLIC_BASE_URL
+        ? `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${article.url}`
+        : `/blog/${article.url}`,
       type: 'article',
     },
   };
