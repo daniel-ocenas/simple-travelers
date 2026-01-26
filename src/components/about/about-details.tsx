@@ -12,7 +12,7 @@ const Divider = () => {
   const medium = useMedium();
 
   return (
-    <div className="max-w-4 mx-2">
+    <div className="mx-2 max-w-4">
       <div
         className={`bg-gray-400 ${medium ? 'mx-1 h-8 w-px' : 'my-2 h-px w-20'}`}
       />
@@ -66,7 +66,7 @@ const AboutDetails = () => {
         <AboutUsItem
           text={
             <>
-              <b>969</b> Sledovateľov
+              <b>1 391</b> Sledovateľov
             </>
           }
           icon={'group'}

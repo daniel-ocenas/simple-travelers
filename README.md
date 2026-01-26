@@ -3,7 +3,7 @@
 **Simple Travelers** is a personal travel blog built with **React**, **Next.js**, and **TypeScript** designed to share
 mine and my partner's couple's hiking adventures, remote destinations, and travel tips from around the world.
 
-Hosted on **AWS Amplify**, the blog is automatically deployed on each push to the `main` branch, making the publishing
+Hosted on **Vercel**, the blog is automatically deployed on each push to the `main` branch, making the publishing
 workflow seamless and efficient.
 
 To access the blog page visit: [simpletravelers.sk](https://simpletravelers.sk/)
@@ -31,7 +31,7 @@ Simple Travelers is more than a blog — it's our story and our platform for:
 | TypeScript    | Type safety & developer experience |
 | Redux Toolkit | State management library           |
 | Tailwind      | CSS Framework                      |
-| AWS Amplify   | Hosting + CI/CD                    |
+| Vercel        | Hosting + CI/CD                    |
 
 ---
 
