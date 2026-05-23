@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 
 import About from '@/components/about';
+import InstagramGrid from '@/components/instagram-grid/instagram-grid';
 import PostsGrid from '@/components/posts/posts-grid';
 import { getAllPosts } from '@/services/posts';
 
@@ -61,6 +62,9 @@ export default async function HomePage() {
       </div>
       <div className="my-12">
         <PostsGrid allPosts={allPosts} />
+      </div>
+      <div className="my-12">
+        <InstagramGrid />
       </div>
     </>
   );
