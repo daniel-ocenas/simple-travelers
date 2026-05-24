@@ -7,7 +7,6 @@ import { useTheme } from 'next-themes';
 
 import { useMedium } from '@/hooks/use-breakpoint';
 
-
 const Divider = () => {
   const medium = useMedium();
 
@@ -56,7 +55,7 @@ const AboutDetails = () => {
         <AboutUsItem
           text={
             <>
-              Nakráčaných <b>5000km +</b>
+              Nakráčaných <b>5500km +</b>
             </>
           }
           icon={'footprints'}
@@ -66,7 +65,7 @@ const AboutDetails = () => {
         <AboutUsItem
           text={
             <>
-              <b>1 391</b> Sledovateľov
+              <b>2200</b> Sledovateľov
             </>
           }
           icon={'group'}
