@@ -8,8 +8,7 @@ import {
     LuMonitor as Monitor,
     LuShieldCheck as ShieldCheck,
     LuTrendingUp as TrendingUp,
-    LuBarChart3 as BarChart3,
-    LuBot as Bot
+    LuChartColumnBig as BarChart3,
 } from 'react-icons/lu';
 
 const FlowpayLogo = ({ className = "h-8" }) => (

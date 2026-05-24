@@ -17,7 +17,7 @@ export default function Category({ category }: { category: string }) {
     getCategoriesState(state)
   );
   const dispatch = useAppDispatch();
-  const [page, setPage] = useState<number>(0);
+  const [, setPage] = useState<number>(0);
   const checked = categories.selected.includes(category);
   const active = categories.active.includes(category);
 

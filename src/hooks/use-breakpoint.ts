@@ -1,17 +1,20 @@
 'use client';
 
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-const getInitialBreakpoint = () => {
-  if (typeof window === 'undefined') return true; // Default to desktop on server
-  return window.innerWidth >= Breakpoints.lg;
+export const Breakpoints = {
+  sm: 380,
+  md: 768,
+  lg: 1200,
+  xl: 1920,
 };
 
+const DEFAULT_SIZE: [number, number] = [1200, 800];
+
 export const useScreenSize = () => {
-  const [size, setSize] = useState(() =>
+  const [size, setSize] = useState<[number, number]>(() =>
     typeof window === 'undefined'
-      ? [1200, 800] // Default size for SSR
+      ? DEFAULT_SIZE
       : [window.innerWidth, window.innerHeight]
   );
 
@@ -24,14 +27,8 @@ export const useScreenSize = () => {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
-  return { width: size[0], height: size[1] };
-};
 
-export const Breakpoints = {
-  sm: 380,
-  md: 768,
-  lg: 1200,
-  xl: 1920,
+  return { width: size[0], height: size[1] };
 };
 
 export function useSmall(): boolean {
@@ -40,48 +37,16 @@ export function useSmall(): boolean {
 }
 
 export function useMedium(): boolean {
-  const [isMedium, setIsMedium] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    return window.innerWidth >= Breakpoints.md;
-  });
   const { width } = useScreenSize();
-
-  useEffect(() => {
-    setIsMedium(width >= Breakpoints.md);
-  }, [width]);
-
-  return isMedium;
+  return width >= Breakpoints.md;
 }
 
 export function useLarge(): boolean {
-  const [isLarge, setIsLarge] = useState(getInitialBreakpoint());
   const { width } = useScreenSize();
-
-  useEffect(() => {
-    setIsLarge(width >= Breakpoints.lg);
-  }, [width]);
-
-  return isLarge;
+  return width >= Breakpoints.lg;
 }
 
 export function useXL(): boolean {
   const { width } = useScreenSize();
   return width >= Breakpoints.xl;
-}
-
-export function usePageMargin(): { mr: string; ml: string } {
-  const md = useMedium();
-  const lg = useLarge();
-  const xxl = useXL();
-  const location = useRouter();
-  if (location.pathname === '/editor') {
-    return { mr: '10%', ml: '10%' };
-  }
-  if (xxl || lg) {
-    return { mr: '20%', ml: '20%' };
-  } else if (md) {
-    return { mr: '10%', ml: '10%' };
-  } else {
-    return { mr: '2%', ml: '2%' };
-  }
 }

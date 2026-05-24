@@ -3,42 +3,7 @@
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  BALI_IMAGES,
-  IMAGES,
-  OTHER_IMAGES,
-  SNP_IMAGES,
-} from '@/data/gallery-images';
 import { useScreenSize } from '@/hooks/use-breakpoint';
-
-interface GalleryOption {
-  title: string;
-  option: string;
-  images: GalleryImageProps[];
-}
-
-const galleryOptions: GalleryOption[] = [
-  {
-    title: 'Výber našich najlepších fotiek',
-    option: 'vyberfotiek',
-    images: IMAGES,
-  },
-  {
-    title: 'Bali',
-    option: 'bali',
-    images: BALI_IMAGES,
-  },
-  {
-    title: 'Cesta hrdinov SNP',
-    option: 'cestahrdinovsnp',
-    images: SNP_IMAGES,
-  },
-  {
-    title: 'Ďalšie fotky',
-    option: 'dalsiefotky',
-    images: OTHER_IMAGES,
-  },
-];
 
 export interface GalleryImageProps {
   src: string;
