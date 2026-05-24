@@ -1,23 +1,23 @@
+import { Article } from '@/store/Article/Article.types';
+
 import { dbConnect } from './dbConnect';
 
-async function ArticleList() {
+type ArticleListResult =
+  | { articles: Article[]; status: 200 }
+  | { articles: []; status: 500; error: unknown };
+
+async function ArticleList(): Promise<ArticleListResult> {
   const { db } = await dbConnect();
 
   try {
-    const findResult = await db.collection('articles').find().toArray();
-    // add type checking
-    return {
-      articles: findResult,
-      status: 200,
-    };
-  } catch (e) {
-    console.error(e);
-    return {
-      // articles: ArticlesList,
-      articles: [],
-      status: 500,
-      errorMap: e,
-    };
+    const articles = await db
+      .collection<Article>('articles')
+      .find()
+      .toArray();
+    return { articles, status: 200 };
+  } catch (error) {
+    console.error(error);
+    return { articles: [], status: 500, error };
   }
 }
 

@@ -30,14 +30,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   );
 
-  const dynamicRoutes: MetadataRoute.Sitemap = allPosts.map((post) => {
-    return {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${post.url}`,
-      lastModified: currentDate,
-      changeFreq: 'monthly',
-      priority: 0.7,
-    };
-  });
+  const dynamicRoutes: MetadataRoute.Sitemap = allPosts
+    .filter((post) => post.status === 'published')
+    .map((post) => {
+      return {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${post.slug}`,
+        lastModified: post.updatedAt ?? currentDate,
+        changeFreq: 'monthly',
+        priority: 0.7,
+      };
+    });
 
   return [...staticRoutes, ...dynamicRoutes];
 }

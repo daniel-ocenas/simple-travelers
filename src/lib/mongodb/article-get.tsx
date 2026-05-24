@@ -1,38 +1,23 @@
+import { Article } from '@/store/Article/Article.types';
+
 import { dbConnect } from './dbConnect';
 
-async function ArticleGet(url: string) {
+type ArticleGetResult =
+  | { article: Article; status: 200 }
+  | { article: null; status: 404 | 500; error?: unknown };
+
+async function ArticleGet(slug: string): Promise<ArticleGetResult> {
   const { db } = await dbConnect();
 
   try {
-    const result = await db.collection('articles').findOne({ url });
-    if (result === undefined) {
-      return {
-        article: [
-          {
-            component: 'h4',
-            text: 'Article Could Not Be Found',
-            key: 1,
-          },
-        ],
-        status: 500,
-      };
+    const result = await db.collection<Article>('articles').findOne({ slug });
+    if (!result) {
+      return { article: null, status: 404 };
     }
-    return {
-      article: result,
-      code: 200,
-    };
-  } catch (e) {
-    console.error(e);
-    return {
-      article: [
-        {
-          component: 'h4',
-          text: 'There was a problem loading article from the database',
-        },
-      ],
-      status: 500,
-      errorMap: e,
-    };
+    return { article: result, status: 200 };
+  } catch (error) {
+    console.error(error);
+    return { article: null, status: 500, error };
   }
 }
 

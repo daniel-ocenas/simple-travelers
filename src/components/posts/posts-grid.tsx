@@ -12,7 +12,7 @@ export default function PostsGrid({ allPosts }: { allPosts: Article[] }) {
           className="grid w-full grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-2 xl:grid-cols-3"
         >
           {allPosts.map((post) => (
-            <li key={post.url}>
+            <li key={post.slug}>
               <Card post={post} />
             </li>
           ))}

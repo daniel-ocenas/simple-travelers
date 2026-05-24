@@ -25,7 +25,7 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {posts.slice(0, numPosts).map((post) => (
           <li
-            key={post.url}
+            key={post.slug}
             className="scale-[0.8] transition-all duration-300 "
           >
             <Card post={post} />

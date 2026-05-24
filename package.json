@@ -8,7 +8,8 @@
     "format": "prettier --write src/",
     "lint": "next lint",
     "ts": "tsc --noEmit",
-    "inspect": "npm run lint && npm run ts"
+    "inspect": "npm run lint && npm run ts",
+    "migrate-articles": "tsx scripts/migration/migrate.ts"
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
@@ -17,7 +18,6 @@
     "bson": "^6.10.4",
     "encoding": "^0.1.13",
     "hangul-chosung-search": "^1.0.2",
-    "html-react-parser": "^5.2.6",
     "mongodb": "^6.18.0",
     "next": "^16.0.5",
     "next-themes": "^0.2.1",

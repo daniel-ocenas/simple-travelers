@@ -1,30 +1,25 @@
 import { ObjectId } from 'bson';
 
-import { dbConnect } from '@/lib/mongodb/dbConnect';
 import { Article } from '@/store/Article/Article.types';
 
-export async function createArticle(lang: string, article: Article) {
-  article.date = new Date(
-    Date.parse(article.dateCreated ?? '')
-  ).toLocaleDateString('sk', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-  article.dateCreated =
-    article.dateCreated ?? new Date().toLocaleDateString('sk');
+import { dbConnect } from './dbConnect';
+
+export async function createArticle(article: Article) {
   const { db } = await dbConnect();
 
+  const now = new Date().toISOString();
   const _id = article._id ? new ObjectId(article._id) : new ObjectId();
-  const newArticle = {
+
+  const doc = {
     ...article,
     _id,
+    createdAt: article.createdAt || now,
+    updatedAt: now,
   };
 
-  console.log(newArticle);
-
-  const query = { _id };
-  const update = { $set: newArticle };
-  const options = { upsert: true };
-  return await db.collection('articles').updateOne(query, update, options);
+  return db.collection('articles').updateOne(
+    { _id },
+    { $set: doc },
+    { upsert: true }
+  );
 }
