@@ -33,7 +33,7 @@ const About = () => {
             large ? 'items-start text-left' : 'items-center text-center'
           }`}
         >
-          <p className=" text-lg leading-relaxed">
+          <p className="text-lg leading-relaxed">
             Voláme sa Liv a Dan, sme mladý pár zo Slovenska s vášňou pre
             cestovanie, fotografovanie a dobrodružstvo. Na našom blogu a
             sociálnych sieťach zdieľame autentické zážitky z ciest a inšpirujeme

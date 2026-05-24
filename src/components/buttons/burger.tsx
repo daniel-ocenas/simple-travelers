@@ -20,7 +20,7 @@ const Burger = ({
         }
         showSidebar();
       }}
-      className=" group focus-within:bg-transparent"
+      className="group focus-within:bg-transparent"
       aria-label="menu"
     >
       <div className="outline-hidden flex h-12 w-12 transform items-center justify-center rounded-full bg-slate-700 transition-all duration-200">

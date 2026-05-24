@@ -1,6 +1,5 @@
-import { Article } from '@/store/Article/Article.types';
-
 import { dbConnect } from './dbConnect';
+import { Article } from '@/store/Article/Article.types';
 
 type ArticleListResult =
   | { articles: Article[]; status: 200 }
@@ -10,10 +9,7 @@ async function ArticleList(): Promise<ArticleListResult> {
   const { db } = await dbConnect();
 
   try {
-    const articles = await db
-      .collection<Article>('articles')
-      .find()
-      .toArray();
+    const articles = await db.collection<Article>('articles').find().toArray();
     return { articles, status: 200 };
   } catch (error) {
     console.error(error);

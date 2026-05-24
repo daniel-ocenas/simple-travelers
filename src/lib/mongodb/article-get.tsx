@@ -1,6 +1,5 @@
-import { Article } from '@/store/Article/Article.types';
-
 import { dbConnect } from './dbConnect';
+import { Article } from '@/store/Article/Article.types';
 
 type ArticleGetResult =
   | { article: Article; status: 200 }

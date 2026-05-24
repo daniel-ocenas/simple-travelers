@@ -26,7 +26,7 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
         {posts.slice(0, numPosts).map((post) => (
           <li
             key={post.slug}
-            className="scale-[0.8] transition-all duration-300 "
+            className="scale-[0.8] transition-all duration-300"
           >
             <Card post={post} />
           </li>
@@ -35,8 +35,7 @@ export default function RelatedPosts({ posts }: { posts: Article[] }) {
       {numPosts < posts.length && (
         <button
           onClick={handleLoadMore}
-          className="bg-inverted mt-10 self-center rounded-3xl px-8 py-2 text-white
-          opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100"
+          className="bg-inverted mt-10 self-center rounded-3xl px-8 py-2 text-white opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100"
         >
           Viac článkov...
         </button>

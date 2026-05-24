@@ -50,9 +50,9 @@ export default articleSlice.reducer;
 // SELECTORS
 export const getCategoriesState = createSelector(
   (state: RootState) => state.articles.categories,
-  (categories) => categories
+  (categories) => categories,
 );
 export const getCategoriesQuery = createSelector(
   (state: RootState) => state.articles.query,
-  (query) => query
+  (query) => query,
 );

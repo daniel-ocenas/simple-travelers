@@ -7,7 +7,6 @@ import { useTheme } from 'next-themes';
 import SocialItem from '@/components/social-side-bar/social-item';
 import useMounted from '@/hooks/use-mounted';
 
-
 const SocialNetworkLinks = ({ outlined }: { outlined?: boolean }) => {
   const { theme } = useTheme();
   const mounted = useMounted();

@@ -22,7 +22,7 @@ const fetchInstagramPosts = async (): Promise<InstagramPost[]> => {
     // Cache for 1 hour to prevent rate limiting
     const res = await fetch(
       `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${token}`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 3600 } },
     );
 
     if (!res.ok) {

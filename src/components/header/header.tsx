@@ -105,8 +105,7 @@ const NavList = () => {
                   isTop
                     ? 'text-gray-500 hover:text-black'
                     : 'text-secondary hover:text-primary'
-                } whitespace-nowrap py-2 text-lg 
-                font-medium transition-all duration-300`}
+                } whitespace-nowrap py-2 text-lg font-medium transition-all duration-300`}
               >
                 <NavLink path={item.path}>{item.title}</NavLink>
               </li>
@@ -137,7 +136,7 @@ function NavMenu() {
         <Burger showSidebar={showSidebar} buttonState={sidebar} />
       </div>
       <div
-        className={`bg-primary fixed inset-y-0 right-0 z-50 w-64  transform transition duration-300 ease-in-out ${
+        className={`bg-primary fixed inset-y-0 right-0 z-50 w-64 transform transition duration-300 ease-in-out ${
           sidebar ? '-translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -159,7 +158,7 @@ function NavMenu() {
           </li>
         </ul>
       </div>
-      {sidebar && <div className="fixed inset-0 " onClick={showSidebar} />}
+      {sidebar && <div className="fixed inset-0" onClick={showSidebar} />}
     </>
   );
 }

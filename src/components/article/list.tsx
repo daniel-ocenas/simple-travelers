@@ -1,6 +1,5 @@
-import { ListBlock } from '@/store/Article/Article.types';
-
 import Spans from './spans';
+import { ListBlock } from '@/store/Article/Article.types';
 
 export default function List({ block }: { block: ListBlock }) {
   const items = block.items.map((spans, i) => (

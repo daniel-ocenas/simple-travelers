@@ -1,6 +1,5 @@
-import { HeadingBlock } from '@/store/Article/Article.types';
-
 import Spans from './spans';
+import { HeadingBlock } from '@/store/Article/Article.types';
 
 const CLASSES: Record<HeadingBlock['level'], string> = {
   2: 'mb-8 text-4xl font-bold leading-tight',

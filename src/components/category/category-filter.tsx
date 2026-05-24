@@ -16,7 +16,7 @@ export default function CategoryFilter({
 }) {
   const dispatch = useAppDispatch();
   const categories = useSelector((state: RootState) =>
-    getCategoriesState(state)
+    getCategoriesState(state),
   );
   const clearAllActive = categories.selected.length > 0;
 
@@ -25,7 +25,7 @@ export default function CategoryFilter({
       setCategories({
         selected: [],
         active: [],
-      })
+      }),
     );
   };
 

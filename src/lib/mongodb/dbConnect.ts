@@ -11,10 +11,14 @@ const cached = (g.mongo ??= { conn: null, promise: null });
 
 export async function dbConnect(): Promise<MongoConn> {
   if (!process.env.DB_URL) {
-    throw new Error('Please define the process.env.DB_URL environment variable');
+    throw new Error(
+      'Please define the process.env.DB_URL environment variable',
+    );
   }
   if (!process.env.DB_NAME) {
-    throw new Error('Please define the process.env.DB_NAME environment variable');
+    throw new Error(
+      'Please define the process.env.DB_NAME environment variable',
+    );
   }
 
   if (cached.conn) return cached.conn;

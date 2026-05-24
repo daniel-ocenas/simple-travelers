@@ -34,7 +34,7 @@ export default function Image({
         />
       </div>
       {caption && (
-        <figcaption className="mt-2 text-center text-sm text-customGray-600 dark:text-customGray-400">
+        <figcaption className="text-customGray-600 dark:text-customGray-400 mt-2 text-center text-sm">
           {caption}
         </figcaption>
       )}

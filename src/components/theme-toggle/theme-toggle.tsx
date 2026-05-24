@@ -13,7 +13,7 @@ export default function ThemeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="relative flex h-8 w-[2rem] cursor-pointer items-center justify-between rounded-full bg-white  px-2 dark:bg-black">
+    <div className="relative flex h-8 w-[2rem] cursor-pointer items-center justify-between rounded-full bg-white px-2 dark:bg-black">
       {theme === 'light' ? (
         <BsSun
           className={`${iconCN} text-black`}

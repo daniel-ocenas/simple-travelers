@@ -7,7 +7,11 @@ function renderSpan(span: Span, key: number): React.ReactNode {
   let node: React.ReactNode = span.text;
 
   if (span.marks?.includes('code')) {
-    node = <code className="rounded bg-customGray-100 px-1 py-0.5 text-sm dark:bg-customGray-800">{node}</code>;
+    node = (
+      <code className="bg-customGray-100 dark:bg-customGray-800 rounded px-1 py-0.5 text-sm">
+        {node}
+      </code>
+    );
   }
   if (span.marks?.includes('italic')) {
     node = <em>{node}</em>;

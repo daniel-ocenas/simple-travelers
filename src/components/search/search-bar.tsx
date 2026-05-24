@@ -1,14 +1,14 @@
 'use client';
 
-import useFocus from '@/hooks/use-focus';
-import useHover from '@/hooks/use-hover';
-import { RootState, useAppDispatch, useAppSelector } from '@/store/AppStore';
-import { getCategoriesQuery, setQuery } from '@/store/Article/Article.store';
 import { ChangeEvent } from 'react';
 
 import { BsSearch } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 
+import useFocus from '@/hooks/use-focus';
+import useHover from '@/hooks/use-hover';
+import { RootState, useAppDispatch, useAppSelector } from '@/store/AppStore';
+import { getCategoriesQuery, setQuery } from '@/store/Article/Article.store';
 
 export default function SearchBar() {
   const query = useAppSelector((state: RootState) => getCategoriesQuery(state));
@@ -29,7 +29,7 @@ export default function SearchBar() {
       ref={hoverRef}
       className="relative mx-auto w-[80%] max-w-[24rem] md:mx-0"
     >
-      <BsSearch className=" absolute left-6 flex h-full items-center text-xl text-gray-400" />
+      <BsSearch className="absolute left-6 flex h-full items-center text-xl text-gray-400" />
       {query && (isHovering || isFocusing) && (
         <IoMdClose
           onClick={handleInputClear}

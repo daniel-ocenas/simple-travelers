@@ -1,13 +1,14 @@
-import ScrollTop from '@/components/buttons/scroll-top';
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import Provider from '@/components/providers/provider';
-import WelcomePhoto from '@/components/welcome-photo';
 import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import Head from 'next/head';
 import React from 'react';
+
+import ScrollTop from '@/components/buttons/scroll-top';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import Provider from '@/components/providers/provider';
+import WelcomePhoto from '@/components/welcome-photo';
 import '@/styles/globals.css';
 
 export const viewport: Viewport = {

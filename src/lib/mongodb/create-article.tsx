@@ -1,8 +1,7 @@
 import { ObjectId } from 'bson';
 
-import { Article } from '@/store/Article/Article.types';
-
 import { dbConnect } from './dbConnect';
+import { Article } from '@/store/Article/Article.types';
 
 export async function createArticle(article: Article) {
   const { db } = await dbConnect();
@@ -17,9 +16,7 @@ export async function createArticle(article: Article) {
     updatedAt: now,
   };
 
-  return db.collection('articles').updateOne(
-    { _id },
-    { $set: doc },
-    { upsert: true }
-  );
+  return db
+    .collection('articles')
+    .updateOne({ _id }, { $set: doc }, { upsert: true });
 }

@@ -1,12 +1,11 @@
-import { Block } from '@/store/Article/Article.types';
-
+import Heading from './heading';
 import BlockImage from './image';
 import BlockImagePair from './image-pair';
-import Heading from './heading';
 import List from './list';
 import Paragraph from './paragraph';
 import Quote from './quote';
 import Video from './video';
+import { Block } from '@/store/Article/Article.types';
 
 const PRIORITY_THRESHOLD = 2;
 

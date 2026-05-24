@@ -65,7 +65,7 @@ export default async function PostPage({ params }: { params: Params }) {
     (p) =>
       p.slug !== slug &&
       p.status === 'published' &&
-      p.categories.some((v) => post.categories.includes(v))
+      p.categories.some((v) => post.categories.includes(v)),
   );
 
   return (

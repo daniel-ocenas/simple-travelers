@@ -43,7 +43,7 @@ export default function AboutPage() {
       </p>
       <h3 className="mb-4 mt-12 text-2xl font-semibold">Napísali o nás</h3>
       <div className={'flex flex-col items-center gap-4'}>
-        <div className={'flex flex-col gap-4 sm:flex-row '}>
+        <div className={'flex flex-col gap-4 sm:flex-row'}>
           <Card post={TAInterezArticle} external />
           <Card post={SNPBystrica24Article} external />
         </div>

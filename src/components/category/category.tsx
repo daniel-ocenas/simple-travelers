@@ -11,10 +11,9 @@ import {
 } from '@/store/Article/Article.store';
 import { isTouchDevice } from '@/utils/isTouchDevice';
 
-
 export default function Category({ category }: { category: string }) {
   const categories = useSelector((state: RootState) =>
-    getCategoriesState(state)
+    getCategoriesState(state),
   );
   const dispatch = useAppDispatch();
   const [, setPage] = useState<number>(0);
@@ -28,7 +27,7 @@ export default function Category({ category }: { category: string }) {
         selected: categories.selected.includes(category)
           ? categories.selected.filter((value: string) => value !== category)
           : [...categories.selected, category],
-      })
+      }),
     );
 
     setPage(1);

@@ -33,8 +33,7 @@ export default function Card({
       rel={external ? 'noopener noreferrer' : undefined}
     >
       <div
-        className={`"bg-glass z-0 mx-auto flex max-w-[25rem] flex-col overflow-hidden rounded-xl
-      shadow-xl transition-all duration-100 ease-out hover:scale-[1.02] hover:shadow-2xl`}
+        className={`"bg-glass z-0 mx-auto flex max-w-[25rem] flex-col overflow-hidden rounded-xl shadow-xl transition-all duration-100 ease-out hover:scale-[1.02] hover:shadow-2xl`}
       >
         <div className="relative z-0 h-60">
           <Image

@@ -20,7 +20,7 @@ function Footer() {
         className="object-cover"
         fill
       />
-      <div className="welcome-photo-divider absolute bottom-[400px] h-[104px] w-full overflow-y-hidden ">
+      <div className="welcome-photo-divider absolute bottom-[400px] h-[104px] w-full overflow-y-hidden">
         <Image
           alt={'welcome-photo-divider'}
           src={'/static/images/BackgroundDivider.png'}

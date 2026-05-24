@@ -1,8 +1,9 @@
 'use client';
 
-import { useLarge } from '@/hooks/use-breakpoint';
 import Image from 'next/image';
 import React from 'react';
+
+import { useLarge } from '@/hooks/use-breakpoint';
 
 const AboutPageSection = () => {
   const large = useLarge();

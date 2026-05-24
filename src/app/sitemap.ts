@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFreq: 'monthly',
         priority: staticRoute === '/' ? 1 : 0.9,
       };
-    }
+    },
   );
 
   const dynamicRoutes: MetadataRoute.Sitemap = allPosts

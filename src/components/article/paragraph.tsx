@@ -1,6 +1,5 @@
-import { ParagraphBlock } from '@/store/Article/Article.types';
-
 import Spans from './spans';
+import { ParagraphBlock } from '@/store/Article/Article.types';
 
 export default function Paragraph({ block }: { block: ParagraphBlock }) {
   if (!block.spans.length) return null;

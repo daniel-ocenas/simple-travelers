@@ -15,7 +15,7 @@ export const useScreenSize = () => {
   const [size, setSize] = useState<[number, number]>(() =>
     typeof window === 'undefined'
       ? DEFAULT_SIZE
-      : [window.innerWidth, window.innerHeight]
+      : [window.innerWidth, window.innerHeight],
   );
 
   useEffect(() => {
