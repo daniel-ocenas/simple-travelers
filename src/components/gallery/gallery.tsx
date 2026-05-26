@@ -99,13 +99,13 @@ function Gallery({ id = 'ImageGridGallery', images }: ImageGridProps) {
               backgroundImage: `url(/static/${item.thumbnail})`,
               minHeight: !small ? '300px' : '400px',
             }}
-            className="cursor-pointer rounded bg-cover bg-center hover:opacity-80"
+            className="cursor-pointer rounded-sm bg-cover bg-center hover:opacity-80"
           />
         ))}
       </div>
       {lightboxDisplay && (
         <div
-          className="fixed inset-0 z-[1001] flex items-center justify-center bg-[rgba(100,100,100,0.7)]"
+          className="fixed inset-0 z-1001 flex items-center justify-center bg-[rgba(100,100,100,0.7)]"
           ref={refLightBox}
         >
           {imageToShow && (
@@ -136,17 +136,17 @@ function Gallery({ id = 'ImageGridGallery', images }: ImageGridProps) {
           {/* Right arrow */}
           <button
             onClick={handleNext}
-            className="absolute bottom-0 right-4 top-0 z-[1010] m-auto h-[70%] w-12 cursor-pointer bg-transparent transition-transform duration-300 hover:scale-110 active:scale-90"
+            className="absolute bottom-0 right-4 top-0 z-1010 m-auto h-[70%] w-12 cursor-pointer bg-transparent transition-transform duration-300 hover:scale-110 active:scale-90"
           >
-            <div className="rotate-[-45deg] border-b-[4px] border-l-0 border-r-[4px] border-t-0 border-solid border-gray-100 p-2" />
+            <div className="-rotate-45 border-b-4 border-l-0 border-r-4 border-t-0 border-solid border-gray-100 p-2" />
           </button>
 
           {/* Left arrow */}
           <button
             onClick={handlePrev}
-            className="absolute bottom-0 left-4 top-0 z-[1010] m-auto h-[70%] w-12 cursor-pointer bg-transparent transition-transform duration-300 hover:scale-110 active:scale-90"
+            className="absolute bottom-0 left-4 top-0 z-1010 m-auto h-[70%] w-12 cursor-pointer bg-transparent transition-transform duration-300 hover:scale-110 active:scale-90"
           >
-            <div className="rotate-[135deg] border-b-[4px] border-l-0 border-r-[4px] border-t-0 border-solid border-gray-100 p-2" />
+            <div className="rotate-135 border-b-4 border-l-0 border-r-4 border-t-0 border-solid border-gray-100 p-2" />
           </button>
         </div>
       )}

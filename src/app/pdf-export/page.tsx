@@ -33,7 +33,7 @@ const RobotMascot = () => (
     style={{ animationDuration: '3s' }}
   >
     {/* Head/Body */}
-    <div className="absolute inset-0 rounded-2xl border-t-4 border-orange-300 bg-gradient-to-br from-orange-400 to-orange-600 shadow-xl">
+    <div className="absolute inset-0 rounded-2xl border-t-4 border-orange-300 bg-linear-to-br from-orange-400 to-orange-600 shadow-xl">
       {/* Screen */}
       <div className="absolute inset-2 flex items-center justify-center rounded-xl border-2 border-orange-800 bg-black">
         {/* Smiling Eyes */}
@@ -56,9 +56,9 @@ const App = () => {
   return (
     <div className="flex min-h-screen flex-col items-center space-y-12 bg-slate-100 p-4 font-sans text-slate-800 md:p-8">
       {/* PAGE 1 */}
-      <div className="flex min-h-[1100px] w-full max-w-4xl flex-col overflow-hidden rounded-sm bg-white shadow-2xl">
+      <div className="flex min-h-[1100px] w-full max-w-4xl flex-col overflow-hidden rounded-xs bg-white shadow-2xl">
         {/* Header Gradient */}
-        <div className="relative flex h-80 items-center justify-between bg-gradient-to-r from-[#FF0080] via-[#FF8C00] to-[#FFD700] p-10">
+        <div className="relative flex h-80 items-center justify-between bg-linear-to-r from-[#FF0080] via-[#FF8C00] to-[#FFD700] p-10">
           <div className="z-10 max-w-lg">
             <h1 className="mb-2 text-4xl font-bold leading-tight text-white md:text-5xl">
               Unlock growth for your SMEs.
@@ -128,7 +128,7 @@ const App = () => {
               </li>
             </ul>
             {/* Arrow Pointer */}
-            <div className="absolute -bottom-3 left-1/2 h-0 w-0 -translate-x-1/2 border-l-[12px] border-r-[12px] border-t-[12px] border-l-transparent border-r-transparent border-t-blue-600"></div>
+            <div className="absolute -bottom-3 left-1/2 h-0 w-0 -translate-x-1/2 border-l-12 border-r-12 border-t-12 border-l-transparent border-r-transparent border-t-blue-600"></div>
           </div>
 
           {/* Column 3 */}
@@ -171,7 +171,7 @@ const App = () => {
             ].map((item, idx, arr) => (
               <React.Fragment key={idx}>
                 <div className="flex flex-1 flex-col items-center space-y-3 text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-blue-600 shadow-sm">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-blue-600 shadow-xs">
                     {item.icon}
                   </div>
                   <span className="text-sm font-bold uppercase tracking-tight text-blue-900">
@@ -186,7 +186,7 @@ const App = () => {
           </div>
 
           {/* Bottom Gradient Decor */}
-          <div className="mt-12 h-2 w-full rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-30"></div>
+          <div className="mt-12 h-2 w-full rounded-full bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 opacity-30"></div>
         </div>
 
         {/* Logo Footer */}
@@ -196,7 +196,7 @@ const App = () => {
       </div>
 
       {/* PAGE 2 */}
-      <div className="relative flex min-h-[1100px] w-full max-w-4xl flex-col overflow-hidden rounded-sm bg-white shadow-2xl">
+      <div className="relative flex min-h-[1100px] w-full max-w-4xl flex-col overflow-hidden rounded-xs bg-white shadow-2xl">
         {/* Background Petals Decoration (CSS based) */}
         <div className="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] opacity-20">
           <div className="absolute right-0 top-1/4 h-80 w-64 rotate-45 rounded-full bg-purple-500 blur-[80px]"></div>
@@ -237,7 +237,7 @@ const App = () => {
           ].map((box) => (
             <div
               key={box.number}
-              className="flex flex-col gap-4 rounded-xl border border-slate-100 bg-slate-50/80 p-8 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-md"
+              className="flex flex-col gap-4 rounded-xl border border-slate-100 bg-slate-50/80 p-8 shadow-xs backdrop-blur-xs transition-shadow hover:shadow-md"
             >
               <div className="flex items-center gap-4">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-lg font-bold text-white">
@@ -268,7 +268,7 @@ const App = () => {
 
           {/* Visual abstract art placeholder (similar to the image's right bottom) */}
           <div className="relative mt-8 h-64 w-full max-w-lg overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-blue-50 to-purple-50"></div>
             {/* Abstract petals created with divs */}
             <div className="absolute -right-10 bottom-0 h-48 w-48 animate-pulse rounded-full bg-purple-400/20 blur-xl"></div>
             <div className="absolute -bottom-10 right-20 h-64 w-64 rounded-full bg-blue-400/20 blur-2xl"></div>

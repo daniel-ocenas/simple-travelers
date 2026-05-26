@@ -62,7 +62,7 @@ export default function RootLayout({
         <Provider>
           <WelcomePhoto />
           <Header />
-          <main className="mx-auto mb-10 mt-[360px] w-full max-w-screen-xl px-[5vw] xl:px-0">
+          <main className="mx-auto mb-10 mt-[360px] w-full max-w-(--breakpoint-xl) px-[5vw] xl:px-0">
             {children}
           </main>
           <ScrollTop />

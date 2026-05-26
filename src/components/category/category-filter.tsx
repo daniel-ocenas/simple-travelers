@@ -43,7 +43,7 @@ export default function CategoryFilter({
           Clear All
         </button>
       </div>
-      <div className="flex min-h-[56px] w-[90vw] max-w-[36rem] flex-wrap justify-start gap-y-[0.3rem]">
+      <div className="flex min-h-[56px] w-[90vw] max-w-xl flex-wrap justify-start gap-y-[0.3rem]">
         {allCategories.map((category) => (
           <Category key={category} category={category} />
         ))}

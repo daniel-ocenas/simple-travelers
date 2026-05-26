@@ -4,7 +4,7 @@ import { ImageAsset, ImagePairBlock } from '@/store/Article/Article.types';
 
 function Half({ asset, priority }: { asset: ImageAsset; priority?: boolean }) {
   return (
-    <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-[2px]">
+    <div className="relative aspect-4/5 flex-1 overflow-hidden rounded-[2px]">
       <NextImage
         src={asset.src}
         alt={asset.alt}

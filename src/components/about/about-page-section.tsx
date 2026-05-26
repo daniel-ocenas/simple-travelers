@@ -24,7 +24,7 @@ const AboutPageSection = () => {
       <Image
         width={250}
         height={250}
-        className="z-[1] content-center rounded-full object-cover"
+        className="z-1 content-center rounded-full object-cover"
         alt="Liv a Dan"
         src="/static/images/photosFull/AboutUs.jpg"
       />

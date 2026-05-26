@@ -84,13 +84,13 @@ const NavList = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-[100] h-[80px] py-5 ${
+      className={`sticky top-0 z-100 h-[80px] py-5 ${
         isTop ? 'bg-transparent' : 'bg-glass'
       }`}
     >
       <div
         className={
-          'mx-auto flex w-full max-w-screen-xl flex-col justify-end px-[5vw] md:flex-row xl:px-0'
+          'mx-auto flex w-full max-w-(--breakpoint-xl) flex-col justify-end px-[5vw] md:flex-row xl:px-0'
         }
       >
         <div className={'fjustify-start'}>
@@ -129,15 +129,15 @@ function NavMenu() {
 
   return (
     <>
-      <div className="relative z-[100] flex h-[80px] flex-row justify-between p-3">
+      <div className="relative z-100 flex h-[80px] flex-row justify-between p-3">
         <Logo />
       </div>
-      <div className={'fixed right-0 top-0 z-[100] p-3'}>
+      <div className={'fixed right-0 top-0 z-100 p-3'}>
         <Burger showSidebar={showSidebar} buttonState={sidebar} />
       </div>
       <div
         className={`bg-primary fixed inset-y-0 right-0 z-50 w-64 transform transition duration-300 ease-in-out ${
-          sidebar ? '-translate-x-0' : 'translate-x-full'
+          sidebar ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="p-4">
@@ -147,7 +147,7 @@ function NavMenu() {
           {links.map((item, index) => (
             <li key={index} className="nav-text">
               <Link href={item.path} passHref>
-                <span className="hover:bg-secondary block cursor-pointer rounded px-4 py-2">
+                <span className="hover:bg-secondary block cursor-pointer rounded-sm px-4 py-2">
                   {item.title}
                 </span>
               </Link>

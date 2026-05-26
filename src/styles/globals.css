@@ -1,49 +1,75 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility bg-primary {
+  @apply bg-[#f7f7f7] dark:bg-customGray-dark;
+}
+
+@utility bg-secondary {
+  @apply bg-customGray-base dark:bg-customGray-light;
+}
+
+@utility bg-inverted {
+  @apply bg-customGray-dark dark:bg-customGray-light;
+}
+
+@utility btn-secondary {
+  @apply bg-[#fce8d5];
+}
+
+@utility glass {
+  background: hsla(0, 0%, 100%, 0.8);
+  backdrop-filter: saturate(180%) blur(16px);
+}
+
+@utility glass-dark {
+  background: hsla(0, 0%, 20%, 0.8);
+  backdrop-filter: saturate(180%) blur(16px);
+}
+
+@utility bg-glass {
+  @apply glass dark:glass-dark;
+}
+
+@utility text-primary {
+  @apply text-black dark:text-white;
+}
+
+@utility text-secondary {
+  @apply text-gray-500 dark:text-slate-200;
+}
+
+@utility welcome-photo-divider {
+  & img {
+    @apply translate-y-[-105px];
+    filter: drop-shadow(0 100px 0 var(--color-dividerShadow-light));
+  }
+
+  :is(.dark & img) {
+    filter: drop-shadow(0 100px 0 var(--color-dividerShadow-dark));
+  }
+}
 
 @layer components {
-  .bg-primary {
-    @apply bg-[#f7f7f7] dark:bg-customGray-dark;
-  }
-
-  .bg-secondary {
-    @apply bg-customGray-base dark:bg-customGray-light;
-  }
-
-  .bg-inverted {
-    @apply bg-customGray-dark dark:bg-customGray-light;
-  }
-
-  .bg-secondary {
-    @apply bg-customGray-base dark:bg-customGray-light;
-  }
-
-  .btn-secondary {
-    @apply bg-[#fce8d5];
-  }
-
-  .glass {
-    background: hsla(0, 0%, 100%, 0.8);
-    backdrop-filter: saturate(180%) blur(16px);
-  }
-
-  .glass-dark {
-    background: hsla(0, 0%, 20%, 0.8);
-    backdrop-filter: saturate(180%) blur(16px);
-  }
-
-  .bg-glass {
-    @apply glass dark:glass-dark;
-  }
-
-  .text-primary {
-    @apply text-black dark:text-white;
-  }
-
-  .text-secondary {
-    @apply text-gray-500 dark:text-slate-200;
-  }
 
   ::-webkit-scrollbar {
     appearance: auto;
@@ -59,15 +85,6 @@
 
   ::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  .welcome-photo-divider img {
-    @apply translate-y-[-105px];
-    filter: drop-shadow(0 100px 0 theme('colors.dividerShadow.light'));
-  }
-
-  :is(.dark .welcome-photo-divider img) {
-    filter: drop-shadow(0 100px 0 theme('colors.dividerShadow.dark'));
   }
 }
 

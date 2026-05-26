@@ -8,7 +8,7 @@ function renderSpan(span: Span, key: number): React.ReactNode {
 
   if (span.marks?.includes('code')) {
     node = (
-      <code className="bg-customGray-100 dark:bg-customGray-800 rounded px-1 py-0.5 text-sm">
+      <code className="bg-customGray-100 dark:bg-customGray-800 rounded-sm px-1 py-0.5 text-sm">
         {node}
       </code>
     );

@@ -74,7 +74,7 @@ export default async function PostPage({ params }: { params: Params }) {
         data-revalidated-at={new Date().getTime()}
         className="height-fit mt-12 flex flex-col items-center md:mt-20"
       >
-        <div className="relative w-[90vw] max-w-screen-xl">
+        <div className="relative w-[90vw] max-w-(--breakpoint-xl)">
           <ArticleRenderer body={post.body} />
         </div>
       </div>

@@ -70,7 +70,7 @@ export default async function InstagramGrid() {
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all hover:shadow-lg dark:bg-gray-800 md:rounded-xl"
+              className="group relative block aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 shadow-xs transition-all hover:shadow-lg dark:bg-gray-800 md:rounded-xl"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

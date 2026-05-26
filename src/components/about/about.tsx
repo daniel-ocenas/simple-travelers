@@ -49,7 +49,7 @@ const About = () => {
         <Image
           width={300}
           height={300}
-          className="z-[1] w-[300px] rounded-full object-cover"
+          className="z-1 w-[300px] rounded-full object-cover"
           alt={'Liv a Dan'}
           src={'/static/images/photosFull/AboutUs2.jpg'}
         />

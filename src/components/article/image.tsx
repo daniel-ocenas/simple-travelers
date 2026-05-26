@@ -3,8 +3,8 @@ import NextImage from 'next/image';
 import { ImageBlock } from '@/store/Article/Article.types';
 
 const ASPECT_CLASS: Record<ImageBlock['aspect'], string> = {
-  landscape: 'aspect-[3/2]',
-  portrait: 'aspect-[2/3]',
+  landscape: 'aspect-3/2',
+  portrait: 'aspect-2/3',
   auto: '',
 };
 
