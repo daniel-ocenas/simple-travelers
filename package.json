@@ -9,7 +9,8 @@
     "lint": "eslint src",
     "ts": "tsc --noEmit",
     "inspect": "npm run lint && npm run ts",
-    "migrate-articles": "tsx scripts/migration/migrate.ts"
+    "migrate-articles": "tsx scripts/migration/migrate.ts",
+    "seed-articles": "tsx --env-file=.env.local scripts/seed-articles.ts"
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
