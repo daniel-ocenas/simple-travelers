@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import DataTable, { Column } from '@/components/admin/ui/data-table';
-import EmptyState from '@/components/admin/ui/empty-state';
-import StatusPill from '@/components/admin/ui/status-pill';
-import TagList from '@/components/admin/ui/tag-list';
+import DataTable, { Column } from '@/ui/data-table';
+import EmptyState from '@/ui/empty-state';
+import StatusPill from '@/ui/status-pill';
+import TagList from '@/ui/tag-list';
 import { Article } from '@/store/Article/Article.types';
 
 const DATE_FORMATTER = new Intl.DateTimeFormat('sk-SK', {

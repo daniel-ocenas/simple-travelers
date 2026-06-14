@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import ArticlesTable from '@/components/admin/articles/articles-table';
-import PageHeader from '@/components/admin/ui/page-header';
+import PageHeader from '@/ui/page-header';
 import { getAllPosts } from '@/services/posts';
 
 export const metadata = {
