@@ -1,16 +1,20 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
+import { emptyArticle } from '@/lib/cms/empty-article';
 import { tiptapToBlocks } from '@/lib/cms/tiptap-adapter';
 import { createArticle } from '@/lib/mongodb/create-article';
-import { getPost } from '@/services/posts';
+import { getPost, invalidateArticlesCache } from '@/services/posts';
 import { ImageAsset } from '@/store/Article/Article.types';
 
 export type SaveResult =
   | { status: 'idle' }
   | { status: 'success' }
   | { status: 'error'; error: string };
+
+const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function parseList(value: FormDataEntryValue | null): string[] {
   return String(value ?? '')
@@ -23,11 +27,33 @@ export async function saveArticleAction(
   _prev: SaveResult,
   formData: FormData,
 ): Promise<SaveResult> {
-  const slug = String(formData.get('slug') ?? '');
-  if (!slug) return { status: 'error', error: 'Missing slug' };
+  const slug = String(formData.get('slug') ?? '').trim();
+  // `originalSlug` is empty when creating; set to the current slug when editing.
+  const originalSlug = String(formData.get('originalSlug') ?? '').trim();
+  const isCreate = !originalSlug;
 
-  const existing = await getPost(slug);
-  if (!existing) return { status: 'error', error: `Article "${slug}" not found` };
+  if (!slug) return { status: 'error', error: 'Slug is required' };
+  if (!SLUG_RE.test(slug)) {
+    return {
+      status: 'error',
+      error: 'Slug may contain only lowercase letters, numbers and hyphens',
+    };
+  }
+
+  const existing = isCreate ? undefined : await getPost(originalSlug);
+  if (!isCreate && !existing) {
+    return { status: 'error', error: `Article "${originalSlug}" not found` };
+  }
+
+  // Guard against clobbering another article when creating or renaming.
+  if (slug !== originalSlug) {
+    const collision = await getPost(slug);
+    if (collision) {
+      return { status: 'error', error: `Slug "${slug}" is already in use` };
+    }
+  }
+
+  const base = existing ?? emptyArticle();
 
   const title = String(formData.get('title') ?? '').trim();
   const description = String(formData.get('description') ?? '').trim();
@@ -47,7 +73,7 @@ export async function saveArticleAction(
 
   const body = tiptapToBlocks(bodyJSON);
 
-  let hero = existing.hero;
+  let hero = base.hero;
   const heroRaw = formData.get('hero');
   if (heroRaw) {
     try {
@@ -58,8 +84,9 @@ export async function saveArticleAction(
   }
 
   const now = new Date().toISOString();
-  const updated = {
-    ...existing,
+  const saved = {
+    ...base,
+    slug,
     title,
     description,
     categories,
@@ -70,14 +97,14 @@ export async function saveArticleAction(
     updatedAt: now,
     publishedAt:
       status === 'published'
-        ? (existing.publishedAt ?? now)
+        ? (base.publishedAt ?? now)
         : status === 'draft'
           ? null
-          : existing.publishedAt,
+          : base.publishedAt,
   };
 
   try {
-    await createArticle(updated);
+    await createArticle(saved);
   } catch (err) {
     return {
       status: 'error',
@@ -88,9 +115,18 @@ export async function saveArticleAction(
     };
   }
 
+  invalidateArticlesCache();
   revalidatePath('/blog');
   revalidatePath(`/blog/${slug}`);
+  if (originalSlug && originalSlug !== slug) {
+    revalidatePath(`/blog/${originalSlug}`);
+  }
   revalidatePath('/admin/articles');
+
+  // After a successful create (or rename) land on the canonical edit URL.
+  if (isCreate || originalSlug !== slug) {
+    redirect(`/admin/articles/${slug}`);
+  }
 
   return { status: 'success' };
 }

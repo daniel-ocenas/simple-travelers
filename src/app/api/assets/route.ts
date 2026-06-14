@@ -3,11 +3,16 @@ import { NextResponse } from 'next/server';
 import { isAdminRequest } from '@/lib/auth/session';
 import { deleteAssetRecord, listAssets } from '@/lib/mongodb/assets';
 import { deleteFromR2 } from '@/lib/r2/delete';
+import { RATE_LIMITS } from '@/lib/rate-limit/limiter';
+import { enforceRateLimit } from '@/lib/rate-limit/http';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const limited = enforceRateLimit(request, 'assets-list', RATE_LIMITS.assetsList);
+  if (limited) return limited;
+
   if (!(await isAdminRequest())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
@@ -21,6 +26,13 @@ export async function GET() {
 }
 
 export async function DELETE(request: Request) {
+  const limited = enforceRateLimit(
+    request,
+    'assets-delete',
+    RATE_LIMITS.assetsDelete,
+  );
+  if (limited) return limited;
+
   if (!(await isAdminRequest())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

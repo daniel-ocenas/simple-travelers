@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import {
@@ -8,6 +8,8 @@ import {
   signSession,
   verifyPassword,
 } from '@/lib/auth/session';
+import { clientIp } from '@/lib/rate-limit/http';
+import { RATE_LIMITS, consume } from '@/lib/rate-limit/limiter';
 
 type LoginState = { error?: string };
 
@@ -15,6 +17,11 @@ export async function loginAction(
   _prev: LoginState,
   formData: FormData,
 ): Promise<LoginState> {
+  const ip = clientIp(await headers());
+  if (!consume(`login:${ip}`, RATE_LIMITS.login).allowed) {
+    return { error: 'Too many attempts. Please try again later.' };
+  }
+
   const password = String(formData.get('password') ?? '');
   const from = String(formData.get('from') ?? '/admin');
 

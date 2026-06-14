@@ -6,6 +6,10 @@ import { useActionState, useRef, useState } from 'react';
 
 import MediaDialog from '@/components/admin/media/media-dialog';
 import { Article, ArticleStatus, ImageAsset } from '@/store/Article/Article.types';
+import Alert from '@/ui/alert';
+import Button from '@/ui/button';
+import Input from '@/ui/input';
+import Textarea from '@/ui/textarea';
 
 import { saveArticleAction, SaveResult } from './actions';
 import TiptapEditor, { EditorHandle } from './tiptap-editor';
@@ -15,9 +19,11 @@ const STATUS_OPTIONS: ArticleStatus[] = ['draft', 'scheduled', 'published'];
 export default function ArticleEditor({
   article,
   initialBody,
+  mode = 'edit',
 }: {
   article: Article;
   initialBody: JSONContent;
+  mode?: 'create' | 'edit';
 }) {
   const editorRef = useRef<EditorHandle>(null);
   const [hero, setHero] = useState<ImageAsset>(article.hero);
@@ -34,12 +40,20 @@ export default function ArticleEditor({
 
   return (
     <form action={action} className="space-y-8">
-      <input type="hidden" name="slug" value={article.slug} />
+      {/* Original slug lets the save action find the existing doc even when the
+          editable slug below is changed (or empty, for a new article). */}
+      <input type="hidden" name="originalSlug" value={article.slug} />
       <input type="hidden" name="hero" value={JSON.stringify(hero)} />
 
       <div className="flex items-center justify-between gap-4">
         <div className="text-sm text-gray-500 dark:text-gray-400">
-          Editing <span className="font-mono">{article.slug}</span>
+          {mode === 'create' ? (
+            'New article'
+          ) : (
+            <>
+              Editing <span className="font-mono">{article.slug}</span>
+            </>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <select
@@ -53,65 +67,63 @@ export default function ArticleEditor({
               </option>
             ))}
           </select>
-          <button
-            type="submit"
-            disabled={pending}
-            className="rounded-md bg-gray-900 px-4 py-1.5 text-sm font-medium text-white transition hover:bg-gray-800 disabled:opacity-60 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
-          >
-            {pending ? 'Saving…' : 'Save changes'}
-          </button>
+          <Button type="submit" disabled={pending}>
+            {pending
+              ? 'Saving…'
+              : mode === 'create'
+                ? 'Create article'
+                : 'Save changes'}
+          </Button>
         </div>
       </div>
 
-      {state.status === 'error' && (
-        <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
-          {state.error}
-        </p>
-      )}
-      {state.status === 'success' && (
-        <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300">
-          Saved.
-        </p>
-      )}
+      {state.status === 'error' && <Alert variant="error">{state.error}</Alert>}
+      {state.status === 'success' && <Alert variant="success">Saved.</Alert>}
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="space-y-6 lg:col-span-2">
+        <div className="order-1 space-y-6 lg:col-span-2 lg:col-start-1 lg:row-start-1">
           <Field label="Title">
-            <input
+            <Input
               name="title"
               defaultValue={article.title}
               required
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-base dark:border-gray-700 dark:bg-gray-950"
+              inputSize="lg"
+            />
+          </Field>
+
+          <Field label="Slug (URL)">
+            <Input
+              name="slug"
+              defaultValue={article.slug}
+              required
+              placeholder="napr-moja-cesta-do-talianska"
+              pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+              title="Lowercase letters, numbers and hyphens only"
             />
           </Field>
 
           <Field label="Description">
-            <textarea
+            <Textarea
               name="description"
               defaultValue={article.description}
               rows={3}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
             />
-          </Field>
-
-          <Field label="Body">
-            <TiptapEditor initialContent={initialBody} ref={editorRef} />
           </Field>
         </div>
 
-        <aside className="space-y-6">
+        {/* Meta sits in the right column on desktop, but on small screens it
+            renders before the body (order-2, between Description and Body). */}
+        <aside className="order-2 space-y-6 lg:order-none lg:col-start-3 lg:row-span-2 lg:row-start-1">
           <Field label="Categories (comma separated)">
-            <input
+            <Input
               name="categories"
               defaultValue={article.categories.join(', ')}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
             />
           </Field>
           <Field label="Keywords (comma separated)">
-            <input
+            <Input
               name="keywords"
               defaultValue={article.keywords.join(', ')}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
             />
           </Field>
           <Field label="Hero image">
@@ -127,16 +139,22 @@ export default function ArticleEditor({
                   />
                 )}
               </div>
-              <button
-                type="button"
+              <Button
+                variant="secondary"
                 onClick={() => setHeroPickerOpen(true)}
-                className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-900"
+                className="w-full"
               >
                 Choose from media
-              </button>
+              </Button>
             </div>
           </Field>
         </aside>
+
+        <div className="order-3 lg:order-none lg:col-span-2 lg:col-start-1 lg:row-start-2">
+          <Field label="Body">
+            <TiptapEditor initialContent={initialBody} ref={editorRef} />
+          </Field>
+        </div>
       </div>
 
       <MediaDialog

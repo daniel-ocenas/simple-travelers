@@ -33,6 +33,15 @@ async function getArticles(): Promise<Article[]> {
   return articlesPromise;
 }
 
+/**
+ * Drop the in-memory article cache so the next read re-fetches from Mongo.
+ * Call after any write (create/update) — `revalidatePath` only clears Next's
+ * route cache, not this module-level memo.
+ */
+export function invalidateArticlesCache(): void {
+  articlesPromise = null;
+}
+
 export async function getPost(slug?: string): Promise<Article | undefined> {
   const articles = await getArticles();
   return articles.find((post) => post.slug === slug);
