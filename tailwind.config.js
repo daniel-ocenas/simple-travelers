@@ -3,18 +3,7 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      colors: {
-        customGray: {
-          light: '#3c3c48',
-          // light: '#2e3039',
-          base: '#eeeeee',
-          dark: '#1f2028',
-        },
-        dividerShadow: {
-          light: '#f7f7f7',
-          dark: '#1f2028',
-        },
-      },
+      // Color tokens live in the `@theme` block in src/styles/globals.css (Tailwind v4).
       fontFamily: { nunito: 'var(--font-nunito), sans-serif' },
       textShadow: {
         custom:

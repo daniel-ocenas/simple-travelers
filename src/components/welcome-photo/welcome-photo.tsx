@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
 
 import { useMedium } from '@/hooks/use-breakpoint';
 
@@ -18,7 +17,7 @@ const WelcomePhoto = () => {
 
   return (
     <div
-      className="absolute right-0 top-0 -z-10 h-[500px] w-full"
+      className="absolute top-0 right-0 -z-10 h-[500px] w-full"
       style={{ height: `${PHOTO_HEIGHT}px` }}
     >
       <div className="relative h-[500px] w-full">

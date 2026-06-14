@@ -3,6 +3,22 @@
 @config '../../tailwind.config.js';
 
 /*
+  Custom color tokens. In Tailwind v4 these MUST live in a CSS `@theme` block —
+  colors defined only in the JS config (via `@config`) generate utilities but are
+  NOT emitted as `--color-*` CSS variables, so `var(--color-...)` references break.
+  Defining them here gives us both the utilities (bg-customGray-dark, ...) and the
+  CSS variables (var(--color-dividerShadow-light)).
+*/
+@theme {
+  --color-customGray-light: #3c3c48;
+  --color-customGray-base: #eeeeee;
+  --color-customGray-dark: #1f2028;
+
+  --color-dividerShadow-light: #f7f7f7;
+  --color-dividerShadow-dark: #1f2028;
+}
+
+/*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
@@ -21,7 +37,7 @@
 }
 
 @utility bg-primary {
-  @apply bg-[#f7f7f7] dark:bg-customGray-dark;
+  @apply dark:bg-customGray-dark bg-[#f7f7f7];
 }
 
 @utility bg-secondary {
@@ -58,19 +74,24 @@
   @apply text-gray-500 dark:text-slate-200;
 }
 
-@utility welcome-photo-divider {
-  & img {
-    @apply translate-y-[-105px];
+@layer components {
+  /*
+    This styles a descendant <img>, so it's a component rule — not an atomic
+    utility. The v4 codemod turned it into `@utility welcome-photo-divider`,
+    which is the wrong construct (@utility is for variant-capable atomic
+    classes, tree-shaken by class-name use). Keep it in `@layer components`.
+  */
+  .welcome-photo-divider img {
+    translate: 0 -105px;
     filter: drop-shadow(0 100px 0 var(--color-dividerShadow-light));
   }
 
-  :is(.dark & img) {
+  :is(.dark .welcome-photo-divider img) {
     filter: drop-shadow(0 100px 0 var(--color-dividerShadow-dark));
   }
 }
 
 @layer components {
-
   ::-webkit-scrollbar {
     appearance: auto;
     -webkit-appearance: none;
