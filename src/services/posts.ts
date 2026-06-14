@@ -23,8 +23,14 @@ async function fetchFromMongo(): Promise<Article[] | null> {
   }
 }
 
+let articlesPromise: Promise<Article[]> | null = null;
+
 async function getArticles(): Promise<Article[]> {
-  return (await fetchFromMongo()) ?? ArticleList;
+  articlesPromise ??= (async () => {
+    const fromMongo = await fetchFromMongo();
+    return fromMongo ?? ArticleList;
+  })();
+  return articlesPromise;
 }
 
 export async function getPost(slug?: string): Promise<Article | undefined> {
