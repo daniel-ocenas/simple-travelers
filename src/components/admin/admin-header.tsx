@@ -15,6 +15,12 @@ export default function AdminHeader() {
             Articles
           </Link>
           <Link
+            href="/admin/media"
+            className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+          >
+            Media
+          </Link>
+          <Link
             href="/"
             target="_blank"
             rel="noopener"

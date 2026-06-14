@@ -87,4 +87,14 @@ export function verifyPassword(submitted: string): boolean {
   return timingSafeEqual(a, b);
 }
 
+/**
+ * Verify the admin session from the request cookie jar. Use in route
+ * handlers (the proxy only guards the `/admin/*` page tree, not `/api/*`).
+ */
+export async function isAdminRequest(): Promise<boolean> {
+  const { cookies } = await import('next/headers');
+  const token = (await cookies()).get(SESSION_COOKIE)?.value;
+  return verifySession(token);
+}
+
 export { SESSION_COOKIE };

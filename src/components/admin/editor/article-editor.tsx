@@ -1,9 +1,11 @@
 'use client';
 
 import { JSONContent } from '@tiptap/core';
-import { useActionState, useRef } from 'react';
+import Image from 'next/image';
+import { useActionState, useRef, useState } from 'react';
 
-import { Article, ArticleStatus } from '@/store/Article/Article.types';
+import MediaDialog from '@/components/admin/media/media-dialog';
+import { Article, ArticleStatus, ImageAsset } from '@/store/Article/Article.types';
 
 import { saveArticleAction, SaveResult } from './actions';
 import TiptapEditor, { EditorHandle } from './tiptap-editor';
@@ -18,6 +20,8 @@ export default function ArticleEditor({
   initialBody: JSONContent;
 }) {
   const editorRef = useRef<EditorHandle>(null);
+  const [hero, setHero] = useState<ImageAsset>(article.hero);
+  const [heroPickerOpen, setHeroPickerOpen] = useState(false);
 
   const [state, action, pending] = useActionState<SaveResult, FormData>(
     async (_prev, formData) => {
@@ -31,6 +35,7 @@ export default function ArticleEditor({
   return (
     <form action={action} className="space-y-8">
       <input type="hidden" name="slug" value={article.slug} />
+      <input type="hidden" name="hero" value={JSON.stringify(hero)} />
 
       <div className="flex items-center justify-between gap-4">
         <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -110,13 +115,43 @@ export default function ArticleEditor({
             />
           </Field>
           <Field label="Hero image">
-            <div className="rounded-md border border-dashed border-gray-300 px-3 py-4 text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
-              Upload comes in the next slice. Current:
-              <span className="ml-1 font-mono">{article.hero.src}</span>
+            <div className="space-y-2">
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+                {hero.src && (
+                  <Image
+                    src={hero.src}
+                    alt={hero.alt || 'Hero image'}
+                    fill
+                    sizes="320px"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <button
+                type="button"
+                onClick={() => setHeroPickerOpen(true)}
+                className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-900"
+              >
+                Choose from media
+              </button>
             </div>
           </Field>
         </aside>
       </div>
+
+      <MediaDialog
+        open={heroPickerOpen}
+        onClose={() => setHeroPickerOpen(false)}
+        onSelect={(asset) =>
+          setHero({
+            src: asset.src,
+            alt: asset.alt,
+            width: asset.width,
+            height: asset.height,
+            blurDataURL: asset.blurDataURL,
+          })
+        }
+      />
     </form>
   );
 }

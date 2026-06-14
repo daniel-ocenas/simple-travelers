@@ -3,15 +3,20 @@
 import { Node } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 
+import {
+  ImageBlock,
+  ImagePairBlock,
+  VideoBlock,
+} from '@/store/Article/Article.types';
+
 import MediaBlockView from './media-block-view';
+
+export type MediaBlock = ImageBlock | ImagePairBlock | VideoBlock;
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     mediaBlock: {
-      insertMediaBlock: (attrs: {
-        key: string;
-        blockType: 'image' | 'imagePair' | 'video';
-      }) => ReturnType;
+      insertMediaBlock: (block: MediaBlock) => ReturnType;
     };
   }
 }
@@ -25,8 +30,9 @@ export const MediaBlockExtension = Node.create({
 
   addAttributes() {
     return {
-      key: { default: null },
-      blockType: { default: 'image' },
+      // The full typed Block is carried in the node so new uploads survive
+      // the round-trip without depending on the original article.
+      block: { default: null },
     };
   },
 
@@ -34,15 +40,8 @@ export const MediaBlockExtension = Node.create({
     return [{ tag: 'div[data-media-block]' }];
   },
 
-  renderHTML({ node }) {
-    return [
-      'div',
-      {
-        'data-media-block': '',
-        'data-key': node.attrs.key,
-        'data-block-type': node.attrs.blockType,
-      },
-    ];
+  renderHTML() {
+    return ['div', { 'data-media-block': '' }];
   },
 
   addNodeView() {
@@ -52,9 +51,9 @@ export const MediaBlockExtension = Node.create({
   addCommands() {
     return {
       insertMediaBlock:
-        (attrs) =>
+        (block) =>
         ({ commands }) =>
-          commands.insertContent({ type: this.name, attrs }),
+          commands.insertContent({ type: this.name, attrs: { block } }),
     };
   },
 });

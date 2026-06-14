@@ -2,9 +2,10 @@
 
 import { revalidatePath } from 'next/cache';
 
-import { indexMediaBlocks, tiptapToBlocks } from '@/lib/cms/tiptap-adapter';
+import { tiptapToBlocks } from '@/lib/cms/tiptap-adapter';
 import { createArticle } from '@/lib/mongodb/create-article';
 import { getPost } from '@/services/posts';
+import { ImageAsset } from '@/store/Article/Article.types';
 
 export type SaveResult =
   | { status: 'idle' }
@@ -44,8 +45,17 @@ export async function saveArticleAction(
     return { status: 'error', error: 'Body payload was not valid JSON' };
   }
 
-  const mediaByKey = indexMediaBlocks(existing.body);
-  const body = tiptapToBlocks(bodyJSON, mediaByKey);
+  const body = tiptapToBlocks(bodyJSON);
+
+  let hero = existing.hero;
+  const heroRaw = formData.get('hero');
+  if (heroRaw) {
+    try {
+      hero = JSON.parse(String(heroRaw)) as ImageAsset;
+    } catch {
+      return { status: 'error', error: 'Hero payload was not valid JSON' };
+    }
+  }
 
   const now = new Date().toISOString();
   const updated = {
@@ -55,6 +65,7 @@ export async function saveArticleAction(
     categories,
     keywords,
     status,
+    hero,
     body,
     updatedAt: now,
     publishedAt:

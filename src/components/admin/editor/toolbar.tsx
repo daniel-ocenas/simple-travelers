@@ -87,7 +87,13 @@ function promptLink(editor: Editor) {
   editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
 }
 
-export default function Toolbar({ editor }: { editor: Editor | null }) {
+export default function Toolbar({
+  editor,
+  onInsertImage,
+}: {
+  editor: Editor | null;
+  onInsertImage?: () => void;
+}) {
   if (!editor) return null;
 
   const buttonsWithDividers = BUTTONS.map((btn, i) => ({
@@ -131,6 +137,19 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
       >
         Link
       </button>
+      {onInsertImage && (
+        <>
+          <span className="mx-1 h-5 w-px bg-gray-200 dark:bg-gray-700" />
+          <button
+            type="button"
+            title="Insert image"
+            onClick={onInsertImage}
+            className="rounded px-2 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+          >
+            Image
+          </button>
+        </>
+      )}
     </div>
   );
 }

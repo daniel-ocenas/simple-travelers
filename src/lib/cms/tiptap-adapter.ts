@@ -76,7 +76,7 @@ function blockToTiptapNode(block: Block): JSONContent {
     case 'video':
       return {
         type: 'mediaBlock',
-        attrs: { key: block._key, blockType: block._type },
+        attrs: { block },
       };
   }
 }
@@ -138,20 +138,17 @@ function mergeSpans(spans: Span[]): Span[] {
   return out.filter((s) => s.text.length > 0);
 }
 
-export function indexMediaBlocks(blocks: Block[]): Map<string, Block> {
-  const map = new Map<string, Block>();
-  for (const b of blocks) {
-    if (b._type === 'image' || b._type === 'imagePair' || b._type === 'video') {
-      map.set(b._key, b);
-    }
-  }
-  return map;
+function isMediaBlock(value: unknown): value is Block {
+  return (
+    !!value &&
+    typeof value === 'object' &&
+    ['image', 'imagePair', 'video'].includes(
+      (value as { _type?: string })._type ?? '',
+    )
+  );
 }
 
-export function tiptapToBlocks(
-  doc: JSONContent,
-  mediaByKey: Map<string, Block>,
-): Block[] {
+export function tiptapToBlocks(doc: JSONContent): Block[] {
   if (doc.type !== 'doc') return [];
   const out: Block[] = [];
 
@@ -216,9 +213,10 @@ export function tiptapToBlocks(
         break;
       }
       case 'mediaBlock': {
-        const key = (node.attrs as { key?: string } | undefined)?.key;
-        const original = key ? mediaByKey.get(key) : undefined;
-        if (original) out.push(original);
+        const block = (node.attrs as { block?: unknown } | undefined)?.block;
+        if (isMediaBlock(block)) {
+          out.push(block._key ? block : { ...block, _key: newKey() });
+        }
         break;
       }
     }
