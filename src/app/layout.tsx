@@ -49,6 +49,7 @@ export default function RootLayout({
     <html
       lang="sk"
       className="scrollbar overflow-y-scroll"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body

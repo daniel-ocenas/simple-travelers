@@ -2,14 +2,17 @@ import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { randomUUID } from 'node:crypto';
 
 import { getPlaiceholder } from 'plaiceholder';
-import sharp from 'sharp';
 
 import { StoredAsset } from '@/lib/cms/asset.types';
 
 import { r2Bucket, r2Client, r2PublicUrl } from './client';
 
-const MAX_WIDTH = 2400;
-const WEBP_QUALITY = 82;
+const CONTENT_TYPE_EXT: Record<string, string> = {
+  'image/jpeg': 'jpg',
+  'image/png': 'png',
+  'image/webp': 'webp',
+  'image/avif': 'avif',
+};
 
 function slugifyName(filename: string): string {
   return (
@@ -23,31 +26,26 @@ function slugifyName(filename: string): string {
 }
 
 /**
- * Resize → WebP → blur, then PUT to R2. Returns the stored asset record.
- * Caller is responsible for persisting it to the assets collection.
+ * Store the image as-is (resizing/format is done upstream, e.g. Lightroom),
+ * generating a blur placeholder + reading dimensions, then PUT to R2.
+ * Caller persists the returned record to the assets collection.
  */
 export async function uploadImageToR2(
   input: Buffer,
   filename: string,
+  contentType: string,
 ): Promise<StoredAsset> {
-  const pipeline = sharp(input).rotate();
-  const meta = await pipeline.metadata();
+  const { base64, metadata } = await getPlaiceholder(input);
 
-  const resized = await pipeline
-    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-    .webp({ quality: WEBP_QUALITY })
-    .toBuffer({ resolveWithObject: true });
-
-  const { base64 } = await getPlaiceholder(resized.data);
-
-  const key = `articles/${slugifyName(filename)}-${randomUUID().slice(0, 8)}.webp`;
+  const ext = CONTENT_TYPE_EXT[contentType] ?? 'jpg';
+  const key = `articles/${slugifyName(filename)}-${randomUUID().slice(0, 8)}.${ext}`;
 
   await r2Client().send(
     new PutObjectCommand({
       Bucket: r2Bucket(),
       Key: key,
-      Body: resized.data,
-      ContentType: 'image/webp',
+      Body: input,
+      ContentType: contentType,
       CacheControl: 'public, max-age=31536000, immutable',
     }),
   );
@@ -56,8 +54,8 @@ export async function uploadImageToR2(
     key,
     src: r2PublicUrl(key),
     alt: '',
-    width: resized.info.width ?? meta.width ?? 0,
-    height: resized.info.height ?? meta.height ?? 0,
+    width: metadata.width ?? 0,
+    height: metadata.height ?? 0,
     blurDataURL: base64,
     filename,
     uploadedAt: new Date().toISOString(),

@@ -50,10 +50,13 @@ This file is the **single source of truth** for AI sessions.
 | `src/app/` | Next.js App Router pages, layout, route handlers, metadata |
 | `src/app/<route>/page.tsx` | Server component by default; mark `'use client'` only when needed |
 | `src/pages/api/revalidate.ts` | Legacy Pages-Router API route (ISR revalidation hook) |
-| `src/components/<feature>/` | Components grouped by feature (`header`, `posts`, `gallery`, ...) |
+| `src/components/<feature>/` | Components grouped by feature (`header`, `posts`, `gallery`, `admin`, ...) |
+| `src/ui/` | Reusable, feature-agnostic UI primitives (`Button` + `buttonClasses`, `Link`, `Input`, `Textarea`, `Alert`, `DataTable`, `EmptyState`, `PageHeader`, `StatusPill`, `TagList`) |
 | `src/store/` | Redux Toolkit — `AppStore.tsx` + per-domain slices under `Article/`, `User/` |
 | `src/services/` | Service-layer functions consumed by pages (e.g. `getAllPosts`) |
 | `src/lib/mongodb/` | MongoDB helpers (`dbConnect`, `article-get`, `article-list`, `create-article`) — currently dormant |
+| `src/lib/r2/` | Cloudflare R2 client + upload/delete helpers (`client`, `upload`, `delete`) |
+| `src/lib/rate-limit/` | In-memory rate limiter — `limiter.ts` (`consume` + `RATE_LIMITS` config), `http.ts` (`clientIp`, `enforceRateLimit` 429 helper) |
 | `src/data/` | Static seed data (`article-list.ts`, `gallery-images.ts`) |
 | `src/hooks/` | Reusable hooks (`use-breakpoint`, `use-scroll`, `use-mounted`, `use-hover`, `use-focus`) |
 | `src/utils/` | Pure utilities (`getBlurImage`, `getErrorMessage`, `getBaseUrl`, `isTouchDevice`, `toUniqueArray`) |
@@ -76,6 +79,14 @@ This file is the **single source of truth** for AI sessions.
 | `/videos` | `src/app/videos/page.tsx` | Server | Video gallery |
 | `/pdf-export` | `src/app/pdf-export/page.tsx` | Server | PDF export view |
 | `/cache` | `src/app/cache/page.tsx` | Server | Cache utility page |
+| `/admin` | `src/app/(admin)/admin/page.tsx` | Server (dynamic) | Admin dashboard (auth-gated by `(admin)/layout.tsx`) |
+| `/admin/login` | `src/app/(admin)/admin/login/page.tsx` | Client form | Editor password login (`loginAction`) |
+| `/admin/articles` | `src/app/(admin)/admin/articles/page.tsx` | Server (dynamic) | Article list (`ArticlesTable`) |
+| `/admin/articles/new` | `src/app/(admin)/admin/articles/new/page.tsx` | Server (dynamic) | Create article — renders `ArticleEditor` with a blank `emptyArticle()`, `mode="create"` |
+| `/admin/articles/[slug]` | `src/app/(admin)/admin/articles/[slug]/page.tsx` | Server (dynamic) | Edit article — `ArticleEditor`, `mode="edit"` |
+| `/admin/media` | `src/app/(admin)/admin/media/page.tsx` | Server (dynamic) | Media library (R2 upload/browse/delete) |
+| `/api/upload` | `src/app/api/upload/route.ts` | App route | Admin image upload → R2 (rate-limited) |
+| `/api/assets` | `src/app/api/assets/route.ts` | App route | List (GET) / delete (DELETE) R2 assets (rate-limited) |
 | `/api/revalidate` | `src/pages/api/revalidate.ts` | Pages-API | On-demand ISR revalidation |
 
 Server vs Client: routes are server components by default. Reach for `'use client'` ONLY for files that use hooks, Redux, theme, browser APIs, or event handlers. See `[[.agent/rules/nextjs-patterns]]`.
@@ -88,6 +99,11 @@ Server vs Client: routes are server components by default. Reach for `'use clien
 |---|---|---|
 | `Header` | [`src/components/header/header.tsx`](src/components/header/header.tsx) | Responsive nav (desktop `<NavList>` / mobile `<NavMenu>`); theme-aware logo |
 | `AdminHeader` | [`src/components/admin/admin-header.tsx`](src/components/admin/admin-header.tsx) | Admin CMS top nav (rendered by `(admin)/layout.tsx` only when authed) |
+| `Button` (+ `buttonClasses`) | [`src/ui/button.tsx`](src/ui/button.tsx) | Themed button primitive — `variant` (primary/secondary/ghost/danger) + `size` (xs/sm/md/lg). Use `buttonClasses()` for `<Link>`/`<a>` CTAs. Admin UI uses this everywhere; `className` is layout-only (no tailwind-merge). |
+| `Link` | [`src/ui/link.tsx`](src/ui/link.tsx) | Themed `next/link` wrapper — `variant` (plain/nav/muted). Reach for this for text links; use `buttonClasses()` for button-styled CTAs. |
+| `Input` / `Textarea` | [`src/ui/input.tsx`](src/ui/input.tsx), [`src/ui/textarea.tsx`](src/ui/textarea.tsx) | Themed form fields (`Input` has `inputSize` sm/md/lg) |
+| `Alert` | [`src/ui/alert.tsx`](src/ui/alert.tsx) | Inline form-feedback banner (`variant` error/success) |
+| `ArticleEditor` | [`src/components/admin/editor/article-editor.tsx`](src/components/admin/editor/article-editor.tsx) | Shared create/edit form (`mode` create/edit); editable slug, status, hero picker, TipTap body. Saves via `saveArticleAction`. |
 | `Footer` | [`src/components/footer/footer.tsx`](src/components/footer/footer.tsx) | Footer block |
 | `WelcomePhoto` | [`src/components/welcome-photo/welcome-photo.tsx`](src/components/welcome-photo/welcome-photo.tsx) | Hero photo on every page (full-bleed background) |
 | `ScrollTop` | [`src/components/buttons/scroll-top.tsx`](src/components/buttons/scroll-top.tsx) | Back-to-top button |
@@ -217,7 +233,10 @@ Vercel auto-deploys `main`. There is no separate staging env.
 | Image paths broken in production | `images.unoptimized = true` — paths under `public/` work, but external/remote URLs need to be self-hosted or proxied. |
 | `Article.content` is loose-typed (`any`) at the renderer site | The CMS block type is `ArticleComponent` (see `src/store/Article/Article.types.ts`). When tightening, change the renderer signature too. |
 | Mongo helpers currently dormant | `src/services/posts.ts` reads from `src/data/article-list.ts`. Don't assume changes to Mongo helpers reach the UI yet. |
+| `services/posts.ts` memoizes articles in a module-level promise | After any write (`createArticle`), call `invalidateArticlesCache()` — `revalidatePath` only clears Next's route cache, not this in-memory memo, so reads would otherwise stay stale. `saveArticleAction` already does this. |
+| Article create vs edit go through the same `ArticleEditor` | `mode="create"` renders a blank `emptyArticle()`; the form posts `slug` (editable) + `originalSlug` (hidden). `saveArticleAction` treats empty `originalSlug` as create, validates slug format/uniqueness, and redirects to `/admin/articles/<slug>` on create or rename. |
 | `pages/api/revalidate.ts` is the only Pages-Router file | When adding new API endpoints, prefer App Router route handlers (`src/app/<route>/route.ts`). Don't add to `src/pages/api/`. |
+| Rate limiter is in-memory (per-instance) | `src/lib/rate-limit` counters live in module memory, so on Vercel each serverless instance counts independently — a strong accidental-runaway guard (retry loops, bulk uploads, brute-force bursts) protecting R2 Class-A ops + Vercel invocations, NOT a hard global cap. Guards `/api/upload`, `/api/assets` (GET+DELETE) and the login action. `consume()` is storage-agnostic, so swap to Mongo/Upstash for a true global cap without touching call sites. Limits live in `RATE_LIMITS`. |
 
 ---
 

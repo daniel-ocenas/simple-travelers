@@ -2,6 +2,8 @@
 
 import { Editor } from '@tiptap/react';
 
+import Button from '@/ui/button';
+
 type Btn = {
   label: string;
   title: string;
@@ -109,45 +111,39 @@ export default function Toolbar({
             {showDivider && (
               <span className="mx-1 h-5 w-px bg-gray-200 dark:bg-gray-700" />
             )}
-            <button
-              type="button"
+            <Button
+              variant={btn.isActive(editor) ? 'primary' : 'ghost'}
+              size="sm"
               title={btn.title}
               onClick={() => btn.action(editor)}
-              className={`min-w-7 rounded px-2 py-1 text-xs font-medium transition-colors ${
-                btn.isActive(editor)
-                  ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
-                  : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
-              }`}
+              className="min-w-7"
             >
               {btn.label}
-            </button>
+            </Button>
           </span>
         );
       })}
       <span className="mx-1 h-5 w-px bg-gray-200 dark:bg-gray-700" />
-      <button
-        type="button"
+      <Button
+        variant={editor.isActive('link') ? 'primary' : 'ghost'}
+        size="sm"
         title="Link"
         onClick={() => promptLink(editor)}
-        className={`min-w-7 rounded px-2 py-1 text-xs font-medium transition-colors ${
-          editor.isActive('link')
-            ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
-            : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
-        }`}
+        className="min-w-7"
       >
         Link
-      </button>
+      </Button>
       {onInsertImage && (
         <>
           <span className="mx-1 h-5 w-px bg-gray-200 dark:bg-gray-700" />
-          <button
-            type="button"
+          <Button
+            variant="ghost"
+            size="sm"
             title="Insert image"
             onClick={onInsertImage}
-            className="rounded px-2 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
           >
             Image
-          </button>
+          </Button>
         </>
       )}
     </div>

@@ -9,6 +9,8 @@ import {
   ImagePairBlock,
   VideoBlock,
 } from '@/store/Article/Article.types';
+import Button from '@/ui/button';
+import Input from '@/ui/input';
 
 function Thumb({ src, alt }: { src: string; alt: string }) {
   return (
@@ -52,23 +54,19 @@ export default function MediaBlockView({
           <span className="rounded bg-gray-200 px-1.5 py-0.5 text-xs font-medium uppercase tracking-wide text-gray-700 dark:bg-gray-700 dark:text-gray-200">
             {block._type}
           </span>
-          <button
-            type="button"
-            onClick={deleteNode}
-            className="rounded px-2 py-1 text-xs text-gray-500 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100"
-          >
+          <Button variant="ghost" size="sm" onClick={deleteNode}>
             Remove
-          </button>
+          </Button>
         </div>
 
         {block._type === 'image' && (
           <div className="space-y-2">
             <Thumb src={block.asset.src} alt={block.asset.alt} />
-            <input
+            <Input
               value={block.asset.alt}
               onChange={(e) => setAlt(e.target.value)}
               placeholder="Alt text (describe the image)"
-              className="w-full rounded-md border border-gray-300 bg-white px-2 py-1 text-xs dark:border-gray-700 dark:bg-gray-950"
+              inputSize="sm"
             />
           </div>
         )}

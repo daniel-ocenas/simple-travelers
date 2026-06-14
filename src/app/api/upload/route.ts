@@ -3,13 +3,18 @@ import { NextResponse } from 'next/server';
 import { isAdminRequest } from '@/lib/auth/session';
 import { createAsset } from '@/lib/mongodb/assets';
 import { uploadImageToR2 } from '@/lib/r2/upload';
+import { RATE_LIMITS } from '@/lib/rate-limit/limiter';
+import { enforceRateLimit } from '@/lib/rate-limit/http';
 
 export const runtime = 'nodejs';
 
-const MAX_BYTES = 15 * 1024 * 1024; // 15 MB
+const MAX_BYTES = 2 * 1024 * 1024; // 2 MB — images should be exported sized
 const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp', 'image/avif'];
 
 export async function POST(request: Request) {
+  const limited = enforceRateLimit(request, 'upload', RATE_LIMITS.upload);
+  if (limited) return limited;
+
   if (!(await isAdminRequest())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
@@ -27,12 +32,15 @@ export async function POST(request: Request) {
     );
   }
   if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: 'File too large' }, { status: 413 });
+    return NextResponse.json(
+      { error: 'Image is larger than 2 MB. Export a smaller version first.' },
+      { status: 413 },
+    );
   }
 
   try {
     const buffer = Buffer.from(await file.arrayBuffer());
-    const asset = await uploadImageToR2(buffer, file.name);
+    const asset = await uploadImageToR2(buffer, file.name, file.type);
     await createAsset(asset).catch((err) => {
       // R2 upload succeeded; the Mongo record is best-effort (library listing).
       console.warn('[api/upload] asset record not saved:', err?.message);

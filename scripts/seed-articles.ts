@@ -15,6 +15,23 @@ async function main() {
 
   console.log(`Connected to ${process.env.DB_NAME}.${COLLECTION}`);
 
+  // Remove stale docs from the pre-rebuild schema (they used `url`, not
+  // `slug`, so `slug` is missing/null). Multiple null slugs block the
+  // unique index below.
+  const purged = await articles.deleteMany({
+    slug: { $in: [null, ''] },
+  });
+  const purgedMissing = await articles.deleteMany({
+    slug: { $exists: false },
+  });
+  const removed = purged.deletedCount + purgedMissing.deletedCount;
+  if (removed > 0) {
+    console.log(`Purged ${removed} legacy doc(s) without a slug.`);
+  }
+
+  // Drop a pre-existing slug index so a re-run can rebuild it cleanly.
+  await articles.dropIndex('slug_1').catch(() => {});
+
   await articles.createIndex({ slug: 1 }, { unique: true });
   await articles.createIndex({ status: 1, publishedAt: -1 });
 
@@ -31,7 +48,9 @@ async function main() {
   }
 
   const total = await articles.countDocuments();
-  console.log(`\n✓ Seeded ${upserts} change(s). Collection now has ${total} docs.`);
+  console.log(
+    `\n✓ Seeded ${upserts} change(s). Collection now has ${total} docs.`,
+  );
 
   await client.close();
 }

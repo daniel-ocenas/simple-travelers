@@ -34,6 +34,9 @@ export default function TiptapEditor({
         strike: false,
         horizontalRule: false,
         codeBlock: false,
+        // StarterKit v3 bundles its own Link; disable it so our configured
+        // instance below is the only one (avoids duplicate-extension warning).
+        link: false,
       }),
       Link.configure({
         openOnClick: false,
