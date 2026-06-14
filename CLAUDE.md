@@ -87,6 +87,7 @@ Server vs Client: routes are server components by default. Reach for `'use clien
 | Component | Location | Description |
 |---|---|---|
 | `Header` | [`src/components/header/header.tsx`](src/components/header/header.tsx) | Responsive nav (desktop `<NavList>` / mobile `<NavMenu>`); theme-aware logo |
+| `AdminHeader` | [`src/components/admin/admin-header.tsx`](src/components/admin/admin-header.tsx) | Admin CMS top nav (rendered by `(admin)/layout.tsx` only when authed) |
 | `Footer` | [`src/components/footer/footer.tsx`](src/components/footer/footer.tsx) | Footer block |
 | `WelcomePhoto` | [`src/components/welcome-photo/welcome-photo.tsx`](src/components/welcome-photo/welcome-photo.tsx) | Hero photo on every page (full-bleed background) |
 | `ScrollTop` | [`src/components/buttons/scroll-top.tsx`](src/components/buttons/scroll-top.tsx) | Back-to-top button |
@@ -175,6 +176,8 @@ The site is **Slovak-only** today. There is **no `i18next` setup**. User-facing 
 | `NEXT_PUBLIC_BASE_URL` | Metadata canonical URLs, OG image URLs |
 | `NODE_ENV` | Standard Next.js gating |
 | `DB_URL`, `DB_NAME`, `DB_USER_VIEWER_*`, `DB_USER_EDITOR_*` | `src/lib/mongodb/dbConnect.js` |
+| `ADMIN_PASSWORD` | Admin CMS login (`src/app/(admin)/admin/login/actions.ts`) |
+| `SESSION_SECRET` | HMAC key for admin session cookie — must be ≥32 chars (`src/lib/auth/session.ts`) |
 | `NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN`, `NEXT_PUBLIC_INSTAGRAM_APP_SECRET` | `InstagramGrid` |
 | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_FB_APP_ID` | Analytics / social |
 | `NEXT_PUBLIC_GOOGLE_MAP_API_KEY`, `NEXT_PUBLIC_GOOGLE_MAP_ID` | Map embeds (if used) |
