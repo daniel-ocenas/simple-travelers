@@ -1,14 +1,9 @@
 import type { Viewport } from 'next';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
-import Head from 'next/head';
 import React from 'react';
 
-import ScrollTop from '@/components/buttons/scroll-top';
-import Footer from '@/components/footer';
-import Header from '@/components/header';
 import Provider from '@/components/providers/provider';
-import WelcomePhoto from '@/components/welcome-photo';
 import '@/styles/globals.css';
 
 export const viewport: Viewport = {
@@ -39,6 +34,10 @@ export const metadata: Metadata = {
     title: 'Simple Travelers',
     images: ['/static/images/Background.jpg'],
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/static/icons/favicon-192x192.png',
+  },
 };
 
 export default function RootLayout({
@@ -49,25 +48,13 @@ export default function RootLayout({
   return (
     <html
       lang="sk"
-      className={`scrollbar overflow-y-scroll`}
+      className="scrollbar overflow-y-scroll"
       suppressHydrationWarning
     >
-      <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/static/icons/favicon-192x192.png" />
-      </Head>
       <body
         className={`text-primary bg-primary scrollbar flex flex-col ${nunito.variable} font-nunito`}
       >
-        <Provider>
-          <WelcomePhoto />
-          <Header />
-          <main className="mx-auto mb-10 mt-[360px] w-full max-w-(--breakpoint-xl) px-[5vw] xl:px-0">
-            {children}
-          </main>
-          <ScrollTop />
-          <Footer />
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
