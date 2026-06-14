@@ -9,6 +9,8 @@ import {
   fetchAssets,
   uploadImage,
 } from '@/lib/cms/upload-client';
+import Alert from '@/ui/alert';
+import Button from '@/ui/button';
 
 export default function MediaLibrary({
   onSelect,
@@ -69,14 +71,9 @@ export default function MediaLibrary({
           hidden
           onChange={(e) => handleFiles(e.target.files)}
         />
-        <button
-          type="button"
-          onClick={() => inputRef.current?.click()}
-          disabled={busy}
-          className="inline-flex items-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-gray-800 disabled:opacity-60 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
-        >
+        <Button onClick={() => inputRef.current?.click()} disabled={busy}>
           {busy ? 'Uploading…' : 'Upload images'}
-        </button>
+        </Button>
         {onSelect && (
           <span className="text-xs text-gray-500 dark:text-gray-400">
             Click an image to select it
@@ -84,11 +81,7 @@ export default function MediaLibrary({
         )}
       </div>
 
-      {error && (
-        <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
-          {error}
-        </p>
-      )}
+      {error && <Alert variant="error">{error}</Alert>}
 
       {loading ? (
         <p className="py-12 text-center text-sm text-gray-400">Loading…</p>
@@ -123,13 +116,13 @@ export default function MediaLibrary({
                 <span className="truncate text-xs text-gray-500 dark:text-gray-400">
                   {asset.width}×{asset.height}
                 </span>
-                <button
-                  type="button"
+                <Button
+                  variant="danger"
+                  size="xs"
                   onClick={() => handleDelete(asset.key)}
-                  className="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40"
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </li>
           ))}

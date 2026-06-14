@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { buttonClasses } from '@/ui/button';
 import DataTable, { Column } from '@/ui/data-table';
 import EmptyState from '@/ui/empty-state';
 import StatusPill from '@/ui/status-pill';
@@ -63,7 +64,7 @@ export default function ArticlesTable({ articles }: { articles: Article[] }) {
         action={
           <Link
             href="/admin/articles/new"
-            className="inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
+            className={buttonClasses({ size: 'lg' })}
           >
             New article
           </Link>

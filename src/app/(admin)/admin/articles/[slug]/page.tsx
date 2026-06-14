@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import ArticleEditor from '@/components/admin/editor/article-editor';
 import { blocksToTiptap } from '@/lib/cms/tiptap-adapter';
 import { getPost } from '@/services/posts';
+import Link from '@/ui/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,10 +27,7 @@ export default async function EditArticlePage({
 
   return (
     <div className="space-y-4">
-      <Link
-        href="/admin/articles"
-        className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
-      >
+      <Link href="/admin/articles" variant="muted">
         ← Articles
       </Link>
       <ArticleEditor article={article} initialBody={initialBody} />

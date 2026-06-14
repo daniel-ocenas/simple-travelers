@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 
 import { StoredAsset } from '@/lib/cms/asset.types';
+import Button from '@/ui/button';
 
 import MediaLibrary from './media-library';
 
@@ -37,13 +38,9 @@ export default function MediaDialog({
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">Media library</h2>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-md px-2 py-1 text-sm text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
+          <Button variant="ghost" size="sm" onClick={onClose}>
             Close
-          </button>
+          </Button>
         </div>
         <MediaLibrary
           onSelect={(asset) => {

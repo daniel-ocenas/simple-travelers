@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import ArticlesTable from '@/components/admin/articles/articles-table';
+import { buttonClasses } from '@/ui/button';
 import PageHeader from '@/ui/page-header';
 import { getAllPosts } from '@/services/posts';
 
@@ -19,10 +20,7 @@ export default async function AdminArticlesPage() {
         title="Articles"
         description={`${articles.length} ${articles.length === 1 ? 'article' : 'articles'}`}
         actions={
-          <Link
-            href="/admin/articles/new"
-            className="inline-flex items-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
-          >
+          <Link href="/admin/articles/new" className={buttonClasses()}>
             New article
           </Link>
         }
