@@ -54,7 +54,7 @@ This file is the **single source of truth** for AI sessions.
 | `src/ui/` | Reusable, feature-agnostic UI primitives (`Button` + `buttonClasses`, `Link`, `Input`, `Textarea`, `Alert`, `DataTable`, `EmptyState`, `PageHeader`, `StatusPill`, `TagList`) |
 | `src/store/` | Redux Toolkit — `AppStore.tsx` + per-domain slices under `Article/`, `User/` |
 | `src/services/` | Service-layer functions consumed by pages (e.g. `getAllPosts`) |
-| `src/lib/mongodb/` | MongoDB helpers (`dbConnect`, `article-get`, `article-list`, `create-article`) — currently dormant |
+| `src/lib/mongodb/` | MongoDB helpers (`dbConnect`, `article-get`, `article-list`, `create-article`, `update-article`) — currently dormant |
 | `src/lib/r2/` | Cloudflare R2 client + upload/delete helpers (`client`, `upload`, `delete`) |
 | `src/lib/rate-limit/` | In-memory rate limiter — `limiter.ts` (`consume` + `RATE_LIMITS` config), `http.ts` (`clientIp`, `enforceRateLimit` 429 helper) |
 | `src/data/` | Static seed data (`article-list.ts`, `gallery-images.ts`) |
@@ -163,7 +163,8 @@ Async data is fetched via `createAsyncThunk` (see [`Article.api.ts`](src/store/A
 | `dbConnect` | `src/lib/mongodb/dbConnect.js` | Establishes the Mongo client (envs: `DB_URL`, `DB_NAME`, `DB_USER_VIEWER_*`, `DB_USER_EDITOR_*`) |
 | `ArticleGet` | `src/lib/mongodb/article-get.tsx` | Fetch a single article by `url` |
 | `ArticleList` | `src/lib/mongodb/article-list.tsx` | List all articles |
-| `create-article` | `src/lib/mongodb/create-article.tsx` | Insert an article (editor user) |
+| `createArticle` | `src/lib/mongodb/create-article.tsx` | Insert a new article (upsert keyed on `_id`) |
+| `updateArticle` | `src/lib/mongodb/update-article.tsx` | Update an existing article, matched on its CURRENT slug (`originalSlug`) — never writes `_id`. Edits use this; creates use `createArticle`. |
 | `UserGet` / `UserPost` | `src/lib/mongodb/UserGet.tsx`, `UserPost.tsx` | User helpers (currently commented out) |
 
 Currently `src/services/posts.ts` returns from the in-repo static `ArticleList` — Mongo is wired but not the source of truth. Treat the Mongo layer as the eventual replacement path; when you switch over, wire reads through `services/posts.ts` so callers don't change.
@@ -235,6 +236,7 @@ Vercel auto-deploys `main`. There is no separate staging env.
 | Mongo helpers currently dormant | `src/services/posts.ts` reads from `src/data/article-list.ts`. Don't assume changes to Mongo helpers reach the UI yet. |
 | `services/posts.ts` memoizes articles in a module-level promise | After any write (`createArticle`), call `invalidateArticlesCache()` — `revalidatePath` only clears Next's route cache, not this in-memory memo, so reads would otherwise stay stale. `saveArticleAction` already does this. |
 | Article create vs edit go through the same `ArticleEditor` | `mode="create"` renders a blank `emptyArticle()`; the form posts `slug` (editable) + `originalSlug` (hidden). `saveArticleAction` treats empty `originalSlug` as create, validates slug format/uniqueness, and redirects to `/admin/articles/<slug>` on create or rename. |
+| Editing a Mongo article must NOT re-insert | `services/posts` reads with `{ _id: 0 }`, so loaded articles carry no `_id`. The save path therefore branches: creates → `createArticle`, edits → `updateArticle(originalSlug, …)` (matches on the existing slug, never writes `_id`). Routing an edit through `createArticle` mints a fresh `_id` and inserts a dup → `E11000 … slug_1`. |
 | `pages/api/revalidate.ts` is the only Pages-Router file | When adding new API endpoints, prefer App Router route handlers (`src/app/<route>/route.ts`). Don't add to `src/pages/api/`. |
 | Rate limiter is in-memory (per-instance) | `src/lib/rate-limit` counters live in module memory, so on Vercel each serverless instance counts independently — a strong accidental-runaway guard (retry loops, bulk uploads, brute-force bursts) protecting R2 Class-A ops + Vercel invocations, NOT a hard global cap. Guards `/api/upload`, `/api/assets` (GET+DELETE) and the login action. `consume()` is storage-agnostic, so swap to Mongo/Upstash for a true global cap without touching call sites. Limits live in `RATE_LIMITS`. |
 

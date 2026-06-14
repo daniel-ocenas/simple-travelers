@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { emptyArticle } from '@/lib/cms/empty-article';
 import { tiptapToBlocks } from '@/lib/cms/tiptap-adapter';
 import { createArticle } from '@/lib/mongodb/create-article';
+import { updateArticle } from '@/lib/mongodb/update-article';
 import { getPost, invalidateArticlesCache } from '@/services/posts';
 import { ImageAsset } from '@/store/Article/Article.types';
 
@@ -104,7 +105,11 @@ export async function saveArticleAction(
   };
 
   try {
-    await createArticle(saved);
+    if (isCreate) {
+      await createArticle(saved);
+    } else {
+      await updateArticle(originalSlug, saved);
+    }
   } catch (err) {
     return {
       status: 'error',

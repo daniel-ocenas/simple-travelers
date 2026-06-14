@@ -151,9 +151,12 @@ export default function ArticleEditor({
         </aside>
 
         <div className="order-3 lg:order-none lg:col-span-2 lg:col-start-1 lg:row-start-2">
-          <Field label="Body">
+          {/* Not a <label>: a contenteditable isn't a labelable control, so a
+              wrapping <label> would silently bind to the first toolbar button. */}
+          <div className="block">
+            <FieldLabel>Body</FieldLabel>
             <TiptapEditor initialContent={initialBody} ref={editorRef} />
-          </Field>
+          </div>
         </div>
       </div>
 
@@ -183,10 +186,16 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
-        {label}
-      </span>
+      <FieldLabel>{label}</FieldLabel>
       {children}
     </label>
+  );
+}
+
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
+      {children}
+    </span>
   );
 }

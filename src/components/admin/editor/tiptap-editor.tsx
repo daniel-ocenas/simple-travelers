@@ -51,6 +51,11 @@ export default function TiptapEditor({
         class: 'tiptap-prose focus:outline-none',
       },
     },
+    // `immediatelyRender: false` defers the editor to a client mount, so the
+    // (potentially tall) article body is injected after first paint — which
+    // grows the page and parks the viewport on the editor. Reset to the top
+    // once on mount so edit loads land at the title, like create does.
+    onCreate: () => window.scrollTo({ top: 0 }),
   });
 
   useImperativeHandle(
