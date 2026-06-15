@@ -51,3 +51,13 @@ export async function getAllPosts(): Promise<Article[]> {
   const articles = await getArticles();
   return sortArticlesByDate(articles);
 }
+
+/**
+ * Public-facing reads: only `published` articles. Drafts and scheduled posts
+ * are editor-only and must never surface on the site (home, blog list, static
+ * params). Admin pages keep using `getAllPosts`.
+ */
+export async function getPublishedPosts(): Promise<Article[]> {
+  const articles = await getAllPosts();
+  return articles.filter((post) => post.status === 'published');
+}

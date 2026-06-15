@@ -14,11 +14,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   return { title: `Edit · ${slug}` };
 }
 
-export default async function EditArticlePage({
-  params,
-}: {
-  params: Params;
-}) {
+export default async function EditArticlePage({ params }: { params: Params }) {
   const { slug } = await params;
   const article = await getPost(slug);
   if (!article) return notFound();
@@ -26,8 +22,8 @@ export default async function EditArticlePage({
   const initialBody = blocksToTiptap(article.body);
 
   return (
-    <div className="space-y-4">
-      <Link href="/admin/articles" variant="muted">
+    <div>
+      <Link href="/admin/articles" variant="muted" className="mb-8 inline-block">
         ← Articles
       </Link>
       <ArticleEditor article={article} initialBody={initialBody} />

@@ -51,7 +51,7 @@ This file is the **single source of truth** for AI sessions.
 | `src/app/<route>/page.tsx` | Server component by default; mark `'use client'` only when needed |
 | `src/pages/api/revalidate.ts` | Legacy Pages-Router API route (ISR revalidation hook) |
 | `src/components/<feature>/` | Components grouped by feature (`header`, `posts`, `gallery`, `admin`, ...) |
-| `src/ui/` | Reusable, feature-agnostic UI primitives (`Button` + `buttonClasses`, `Link`, `Input`, `Textarea`, `Alert`, `DataTable`, `EmptyState`, `PageHeader`, `StatusPill`, `TagList`) |
+| `src/ui/` | Reusable, feature-agnostic UI primitives (`Button` + `buttonClasses`, `Link`, `Input`, `Textarea`, `Select`, `Alert`, `DataTable`, `EmptyState`, `PageHeader`, `StatusPill`, `TagList`) |
 | `src/store/` | Redux Toolkit — `AppStore.tsx` + per-domain slices under `Article/`, `User/` |
 | `src/services/` | Service-layer functions consumed by pages (e.g. `getAllPosts`) |
 | `src/lib/mongodb/` | MongoDB helpers (`dbConnect`, `article-get`, `article-list`, `create-article`, `update-article`) — currently dormant |
@@ -71,9 +71,9 @@ This file is the **single source of truth** for AI sessions.
 
 | Route | File | Type | Description |
 |---|---|---|---|
-| `/` | `src/app/page.tsx` | Server | Landing — `About`, `PostsGrid`, `InstagramGrid` |
+| `/` | `src/app/(site)/page.tsx` | Server (dynamic) | Landing — `About`, `PostsGrid`. `force-dynamic` so published-article changes surface without redeploy. |
 | `/about` | `src/app/about/page.tsx` | Server | About-us page |
-| `/blog` | `src/app/blog/page.tsx` | Server | List of blog posts |
+| `/blog` | `src/app/(site)/blog/page.tsx` | Server (dynamic) | List of blog posts. `force-dynamic` so published-article changes surface without redeploy. |
 | `/blog/[slug]` | `src/app/blog/[slug]/page.tsx` | Server | Single article; uses `generateStaticParams` + `generateMetadata` |
 | `/gallery` | `src/app/gallery/page.tsx` | Server | Photo gallery |
 | `/videos` | `src/app/videos/page.tsx` | Server | Video gallery |
@@ -101,9 +101,10 @@ Server vs Client: routes are server components by default. Reach for `'use clien
 | `AdminHeader` | [`src/components/admin/admin-header.tsx`](src/components/admin/admin-header.tsx) | Admin CMS top nav (rendered by `(admin)/layout.tsx` only when authed) |
 | `Button` (+ `buttonClasses`) | [`src/ui/button.tsx`](src/ui/button.tsx) | Themed button primitive — `variant` (primary/secondary/ghost/danger) + `size` (xs/sm/md/lg). Use `buttonClasses()` for `<Link>`/`<a>` CTAs. Admin UI uses this everywhere; `className` is layout-only (no tailwind-merge). |
 | `Link` | [`src/ui/link.tsx`](src/ui/link.tsx) | Themed `next/link` wrapper — `variant` (plain/nav/muted). Reach for this for text links; use `buttonClasses()` for button-styled CTAs. |
-| `Input` / `Textarea` | [`src/ui/input.tsx`](src/ui/input.tsx), [`src/ui/textarea.tsx`](src/ui/textarea.tsx) | Themed form fields (`Input` has `inputSize` sm/md/lg) |
+| `Input` / `Textarea` / `Select` | [`src/ui/input.tsx`](src/ui/input.tsx), [`src/ui/textarea.tsx`](src/ui/textarea.tsx), [`src/ui/select.tsx`](src/ui/select.tsx) | Themed form fields (`Input` has `inputSize`, `Select` has `selectSize` — sm/md/lg; pass `<option>`s as children) |
 | `Alert` | [`src/ui/alert.tsx`](src/ui/alert.tsx) | Inline form-feedback banner (`variant` error/success) |
-| `ArticleEditor` | [`src/components/admin/editor/article-editor.tsx`](src/components/admin/editor/article-editor.tsx) | Shared create/edit form (`mode` create/edit); editable slug, status, hero picker, TipTap body. Saves via `saveArticleAction`. |
+| `ArticleEditor` | [`src/components/admin/editor/article-editor.tsx`](src/components/admin/editor/article-editor.tsx) | Shared create/edit form (`mode` create/edit); editable slug, status, hero picker, TipTap body. Saves via `saveArticleAction`. Shows `DeleteArticleButton` in edit mode. |
+| `DeleteArticleButton` | [`src/components/admin/articles/delete-article-button.tsx`](src/components/admin/articles/delete-article-button.tsx) | Client confirm-then-delete button (calls `deleteArticleAction`). Used in the articles table row + the editor header (edit mode). |
 | `Footer` | [`src/components/footer/footer.tsx`](src/components/footer/footer.tsx) | Footer block |
 | `WelcomePhoto` | [`src/components/welcome-photo/welcome-photo.tsx`](src/components/welcome-photo/welcome-photo.tsx) | Hero photo on every page (full-bleed background) |
 | `ScrollTop` | [`src/components/buttons/scroll-top.tsx`](src/components/buttons/scroll-top.tsx) | Back-to-top button |
@@ -165,7 +166,10 @@ Async data is fetched via `createAsyncThunk` (see [`Article.api.ts`](src/store/A
 | `ArticleList` | `src/lib/mongodb/article-list.tsx` | List all articles |
 | `createArticle` | `src/lib/mongodb/create-article.tsx` | Insert a new article (upsert keyed on `_id`) |
 | `updateArticle` | `src/lib/mongodb/update-article.tsx` | Update an existing article, matched on its CURRENT slug (`originalSlug`) — never writes `_id`. Edits use this; creates use `createArticle`. |
+| `deleteArticle` | `src/lib/mongodb/delete-article.tsx` | Permanently remove an article, matched on its slug. Used by `deleteArticleAction`. |
 | `UserGet` / `UserPost` | `src/lib/mongodb/UserGet.tsx`, `UserPost.tsx` | User helpers (currently commented out) |
+
+**Public vs admin reads**: `getPublishedPosts()` returns only `status === 'published'` articles and is used by every public surface (home, `/blog`, `/blog/[slug]` `generateStaticParams`). Admin pages use `getAllPosts()` (all statuses). Never wire a public page to `getAllPosts` — drafts/scheduled posts would leak.
 
 Currently `src/services/posts.ts` returns from the in-repo static `ArticleList` — Mongo is wired but not the source of truth. Treat the Mongo layer as the eventual replacement path; when you switch over, wire reads through `services/posts.ts` so callers don't change.
 
@@ -234,7 +238,8 @@ Vercel auto-deploys `main`. There is no separate staging env.
 | Image paths broken in production | `images.unoptimized = true` — paths under `public/` work, but external/remote URLs need to be self-hosted or proxied. |
 | `Article.content` is loose-typed (`any`) at the renderer site | The CMS block type is `ArticleComponent` (see `src/store/Article/Article.types.ts`). When tightening, change the renderer signature too. |
 | Mongo helpers currently dormant | `src/services/posts.ts` reads from `src/data/article-list.ts`. Don't assume changes to Mongo helpers reach the UI yet. |
-| `services/posts.ts` memoizes articles in a module-level promise | After any write (`createArticle`), call `invalidateArticlesCache()` — `revalidatePath` only clears Next's route cache, not this in-memory memo, so reads would otherwise stay stale. `saveArticleAction` already does this. |
+| `services/posts.ts` memoizes articles in a module-level promise | After any write (`createArticle`/`updateArticle`/`deleteArticle`), call `invalidateArticlesCache()` — `revalidatePath` only clears Next's route cache, not this in-memory memo, so reads would otherwise stay stale. `saveArticleAction` and `deleteArticleAction` already do this. |
+| Editing Mongo data directly (outside the app) doesn't surface | Two caches sit in front of reads: (1) the `services/posts` module-level memo (lives for the serverless-instance / dev-server lifetime), and (2) Next's full static render of `/` and `/blog` (no `force-dynamic`). A manual Mongo insert/delete bypasses both `invalidateArticlesCache()` AND `revalidatePath`, so it only appears after a redeploy/rebuild. Mutate through the admin UI (`saveArticleAction`/`deleteArticleAction`) — they invalidate the memo and revalidate the paths. |
 | Article create vs edit go through the same `ArticleEditor` | `mode="create"` renders a blank `emptyArticle()`; the form posts `slug` (editable) + `originalSlug` (hidden). `saveArticleAction` treats empty `originalSlug` as create, validates slug format/uniqueness, and redirects to `/admin/articles/<slug>` on create or rename. |
 | Editing a Mongo article must NOT re-insert | `services/posts` reads with `{ _id: 0 }`, so loaded articles carry no `_id`. The save path therefore branches: creates → `createArticle`, edits → `updateArticle(originalSlug, …)` (matches on the existing slug, never writes `_id`). Routing an edit through `createArticle` mints a fresh `_id` and inserts a dup → `E11000 … slug_1`. |
 | `pages/api/revalidate.ts` is the only Pages-Router file | When adding new API endpoints, prefer App Router route handlers (`src/app/<route>/route.ts`). Don't add to `src/pages/api/`. |

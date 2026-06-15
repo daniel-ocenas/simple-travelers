@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import DeleteArticleButton from '@/components/admin/articles/delete-article-button';
 import { buttonClasses } from '@/ui/button';
 import DataTable, { Column } from '@/ui/data-table';
 import EmptyState from '@/ui/empty-state';
@@ -52,6 +53,13 @@ const columns: Column<Article>[] = [
         {formatDate(a.updatedAt)}
       </span>
     ),
+  },
+  {
+    key: 'actions',
+    header: '',
+    width: '100px',
+    align: 'right',
+    cell: (a) => <DeleteArticleButton slug={a.slug} title={a.title} />,
   },
 ];
 

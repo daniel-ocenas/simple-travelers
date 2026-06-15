@@ -2,15 +2,18 @@ import { Metadata } from 'next';
 
 import About from '@/components/about';
 import PostsGrid from '@/components/posts/posts-grid';
-import { getAllPosts } from '@/services/posts';
+import { getPublishedPosts } from '@/services/posts';
 
 export const metadata: Metadata = {
   title: 'Simple Travelers',
   description: 'Cestovateľský blog, ktorý nakopne Tvoju chuť objavovať svet!',
 };
 
+// Render per-request so published-article changes surface without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
-  const allPosts = await getAllPosts();
+  const allPosts = await getPublishedPosts();
   //
   // try {
   //   const result = await fetch(

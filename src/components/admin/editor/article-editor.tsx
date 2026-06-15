@@ -1,18 +1,24 @@
 'use client';
 
-import { JSONContent } from '@tiptap/core';
 import Image from 'next/image';
 import { useActionState, useRef, useState } from 'react';
 
-import MediaDialog from '@/components/admin/media/media-dialog';
-import { Article, ArticleStatus, ImageAsset } from '@/store/Article/Article.types';
-import Alert from '@/ui/alert';
-import Button from '@/ui/button';
-import Input from '@/ui/input';
-import Textarea from '@/ui/textarea';
+import { JSONContent } from '@tiptap/core';
 
 import { saveArticleAction, SaveResult } from './actions';
 import TiptapEditor, { EditorHandle } from './tiptap-editor';
+import DeleteArticleButton from '@/components/admin/articles/delete-article-button';
+import MediaDialog from '@/components/admin/media/media-dialog';
+import {
+  Article,
+  ArticleStatus,
+  ImageAsset,
+} from '@/store/Article/Article.types';
+import Alert from '@/ui/alert';
+import Button from '@/ui/button';
+import Input from '@/ui/input';
+import Select from '@/ui/select';
+import Textarea from '@/ui/textarea';
 
 const STATUS_OPTIONS: ArticleStatus[] = ['draft', 'scheduled', 'published'];
 
@@ -46,27 +52,33 @@ export default function ArticleEditor({
       <input type="hidden" name="hero" value={JSON.stringify(hero)} />
 
       <div className="flex items-center justify-between gap-4">
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="min-w-0">
           {mode === 'create' ? (
-            'New article'
+            <div className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              New article
+            </div>
           ) : (
             <>
-              Editing <span className="font-mono">{article.slug}</span>
+              <div className="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
+                Editing
+              </div>
+              <div className="truncate text-xl font-semibold text-gray-900 dark:text-gray-100">
+                {article.title || article.slug}
+              </div>
             </>
           )}
         </div>
         <div className="flex items-center gap-3">
-          <select
-            name="status"
-            defaultValue={article.status}
-            className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-700 dark:bg-gray-950"
-          >
+          <Select name="status" defaultValue={article.status}>
             {STATUS_OPTIONS.map((s) => (
               <option key={s} value={s}>
                 {s}
               </option>
             ))}
-          </select>
+          </Select>
+          {mode === 'edit' && (
+            <DeleteArticleButton slug={article.slug} title={article.title} />
+          )}
           <Button type="submit" disabled={pending}>
             {pending
               ? 'Saving…'
@@ -121,10 +133,7 @@ export default function ArticleEditor({
             />
           </Field>
           <Field label="Keywords (comma separated)">
-            <Input
-              name="keywords"
-              defaultValue={article.keywords.join(', ')}
-            />
+            <Input name="keywords" defaultValue={article.keywords.join(', ')} />
           </Field>
           <Field label="Hero image">
             <div className="space-y-2">
@@ -194,7 +203,7 @@ function Field({
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
+    <span className="mb-1.5 block text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-gray-400">
       {children}
     </span>
   );

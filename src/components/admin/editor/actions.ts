@@ -3,9 +3,11 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
+import { isAdminRequest } from '@/lib/auth/session';
 import { emptyArticle } from '@/lib/cms/empty-article';
 import { tiptapToBlocks } from '@/lib/cms/tiptap-adapter';
 import { createArticle } from '@/lib/mongodb/create-article';
+import { deleteArticle } from '@/lib/mongodb/delete-article';
 import { updateArticle } from '@/lib/mongodb/update-article';
 import { getPost, invalidateArticlesCache } from '@/services/posts';
 import { ImageAsset } from '@/store/Article/Article.types';
@@ -134,4 +136,28 @@ export async function saveArticleAction(
   }
 
   return { status: 'success' };
+}
+
+/**
+ * Permanently delete an article and refresh every surface that listed it.
+ * Server actions are directly invocable, so we re-check auth here rather than
+ * relying on the admin layout gate. Always redirects back to the article list.
+ */
+export async function deleteArticleAction(slug: string): Promise<void> {
+  if (!(await isAdminRequest())) {
+    throw new Error('Unauthorized');
+  }
+  if (!slug) {
+    throw new Error('Slug is required');
+  }
+
+  await deleteArticle(slug);
+
+  invalidateArticlesCache();
+  revalidatePath('/');
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${slug}`);
+  revalidatePath('/admin/articles');
+
+  redirect('/admin/articles');
 }

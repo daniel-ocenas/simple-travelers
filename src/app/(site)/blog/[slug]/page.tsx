@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import ArticleRenderer from '@/components/article/article-renderer';
 import RelatedPosts from '@/components/posts/related-posts';
-import { getAllPosts, getPost } from '@/services/posts';
+import { getAllPosts, getPost, getPublishedPosts } from '@/services/posts';
 import { Article } from '@/store/Article/Article.types';
 
 type Params = Promise<{ slug: string }>;
@@ -84,9 +84,9 @@ export default async function PostPage({ params }: { params: Params }) {
 }
 
 export async function generateStaticParams() {
-  const allPosts = await getAllPosts();
+  const publishedPosts = await getPublishedPosts();
 
-  return allPosts.map((post) => ({
+  return publishedPosts.map((post) => ({
     slug: post.slug,
   }));
 }

@@ -1,14 +1,17 @@
 import { Metadata } from 'next';
 
 import PostsGrid from '@/components/posts/posts-grid';
-import { getAllPosts } from '@/services/posts';
+import { getPublishedPosts } from '@/services/posts';
 
 export const metadata: Metadata = {
   title: 'Blog',
 };
 
+// Render per-request so published-article changes surface without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export default async function BlogPage() {
-  const allPosts = await getAllPosts();
+  const allPosts = await getPublishedPosts();
 
   // const allCategories = toUniqueArray(
   //   allPosts
